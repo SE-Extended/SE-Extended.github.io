@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge branch &#39;rhunk:dev&#39; into dev - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/10cc36548236a072ef189243f70b6bbf7a01a438.html">10cc36548236a072ef189243f70b6bbf7a01a438</a>
+<b>parent</b> <a href="../commit/00fdba17cdd2f0a44695ab9d5075495c6d13a36e.html">00fdba17cdd2f0a44695ab9d5075495c6d13a36e</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Sun,  2 Jun 2024 15:20:02 +0100
+
+Merge branch &#39;rhunk:dev&#39; into dev
+
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">LICENSE_google-aosp</a></td><td> | </td><td class="num">201</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/LoggerHistoryRoot.kt</a></td><td> | </td><td class="num">58</td><td><span class="i">++++++++++++++++++++++++++++++++++</span><span class="d">------------------------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h2">common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/BridgeLoggedMessage.aidl</a></td><td> | </td><td class="num">12</td><td><span class="i">++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/LoggerInterface.aidl</a></td><td> | </td><td class="num">4</td><td><span class="i">+++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">common/src/main/kotlin/me/rhunk/snapenhance/common/bridge/wrapper/LoggerWrapper.kt</a></td><td> | </td><td class="num">200</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">--------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/spying/MessageLogger.kt</a></td><td> | </td><td class="num">20</td><td><span class="i">+++++++++++++++++++</span><span class="d">-</span></td></tr>
+</table></pre><pre>6 files changed, 388 insertions(+), 107 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/LICENSE_google-aosp.html">LICENSE_google-aosp</a> b/<a href="../file/LICENSE_google-aosp.html">LICENSE_google-aosp</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,201 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+                                 Apache License
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+                           Version 2.0, January 2004
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+                        http://www.apache.org/licenses/
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+   1. Definitions.
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+      &quot;License&quot; shall mean the terms and conditions for use, reproduction,
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+      and distribution as defined by Sections 1 through 9 of this document.
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+      &quot;Licensor&quot; shall mean the copyright owner or entity authorized by
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+      the copyright owner that is granting the License.
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+      &quot;Legal Entity&quot; shall mean the union of the acting entity and all
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+      other entities that control, are controlled by, or are under common
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+      control with that entity. For the purposes of this definition,
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+      &quot;control&quot; means (i) the power, direct or indirect, to cause the
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+      direction or management of such entity, whether by contract or
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+      outstanding shares, or (iii) beneficial ownership of such entity.
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+      &quot;You&quot; (or &quot;Your&quot;) shall mean an individual or Legal Entity
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+      exercising permissions granted by this License.
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+      &quot;Source&quot; form shall mean the preferred form for making modifications,
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+      including but not limited to software source code, documentation
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+      source, and configuration files.
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+      &quot;Object&quot; form shall mean any form resulting from mechanical
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+      transformation or translation of a Source form, including but
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+      not limited to compiled object code, generated documentation,
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+      and conversions to other media types.
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+      &quot;Work&quot; shall mean the work of authorship, whether in Source or
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+      Object form, made available under the License, as indicated by a
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+      copyright notice that is included in or attached to the work
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+      (an example is provided in the Appendix below).
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+      &quot;Derivative Works&quot; shall mean any work, whether in Source or Object
+</a><a href="#h0-0-40" id="h0-0-40" class="i">+      form, that is based on (or derived from) the Work and for which the
+</a><a href="#h0-0-41" id="h0-0-41" class="i">+      editorial revisions, annotations, elaborations, or other modifications
+</a><a href="#h0-0-42" id="h0-0-42" class="i">+      represent, as a whole, an original work of authorship. For the purposes
+</a><a href="#h0-0-43" id="h0-0-43" class="i">+      of this License, Derivative Works shall not include works that remain
+</a><a href="#h0-0-44" id="h0-0-44" class="i">+      separable from, or merely link (or bind by name) to the interfaces of,
+</a><a href="#h0-0-45" id="h0-0-45" class="i">+      the Work and Derivative Works thereof.
+</a><a href="#h0-0-46" id="h0-0-46" class="i">+
+</a><a href="#h0-0-47" id="h0-0-47" class="i">+      &quot;Contribution&quot; shall mean any work of authorship, including
+</a><a href="#h0-0-48" id="h0-0-48" class="i">+      the original version of the Work and any modifications or additions
+</a><a href="#h0-0-49" id="h0-0-49" class="i">+      to that Work or Derivative Works thereof, that is intentionally
+</a><a href="#h0-0-50" id="h0-0-50" class="i">+      submitted to Licensor for inclusion in the Work by the copyright owner
+</a><a href="#h0-0-51" id="h0-0-51" class="i">+      or by an individual or Legal Entity authorized to submit on behalf of
+</a><a href="#h0-0-52" id="h0-0-52" class="i">+      the copyright owner. For the purposes of this definition, &quot;submitted&quot;
+</a><a href="#h0-0-53" id="h0-0-53" class="i">+      means any form of electronic, verbal, or written communication sent
+</a><a href="#h0-0-54" id="h0-0-54" class="i">+      to the Licensor or its representatives, including but not limited to
+</a><a href="#h0-0-55" id="h0-0-55" class="i">+      communication on electronic mailing lists, source code control systems,
+</a><a href="#h0-0-56" id="h0-0-56" class="i">+      and issue tracking systems that are managed by, or on behalf of, the
+</a><a href="#h0-0-57" id="h0-0-57" class="i">+      Licensor for the purpose of discussing and improving the Work, but
+</a><a href="#h0-0-58" id="h0-0-58" class="i">+      excluding communication that is conspicuously marked or otherwise
+</a><a href="#h0-0-59" id="h0-0-59" class="i">+      designated in writing by the copyright owner as &quot;Not a Contribution.&quot;
+</a><a href="#h0-0-60" id="h0-0-60" class="i">+
+</a><a href="#h0-0-61" id="h0-0-61" class="i">+      &quot;Contributor&quot; shall mean Licensor and any individual or Legal Entity
+</a><a href="#h0-0-62" id="h0-0-62" class="i">+      on behalf of whom a Contribution has been received by Licensor and
+</a><a href="#h0-0-63" id="h0-0-63" class="i">+      subsequently incorporated within the Work.
+</a><a href="#h0-0-64" id="h0-0-64" class="i">+
+</a><a href="#h0-0-65" id="h0-0-65" class="i">+   2. Grant of Copyright License. Subject to the terms and conditions of
+</a><a href="#h0-0-66" id="h0-0-66" class="i">+      this License, each Contributor hereby grants to You a perpetual,
+</a><a href="#h0-0-67" id="h0-0-67" class="i">+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+</a><a href="#h0-0-68" id="h0-0-68" class="i">+      copyright license to reproduce, prepare Derivative Works of,
+</a><a href="#h0-0-69" id="h0-0-69" class="i">+      publicly display, publicly perform, sublicense, and distribute the
+</a><a href="#h0-0-70" id="h0-0-70" class="i">+      Work and such Derivative Works in Source or Object form.
+</a><a href="#h0-0-71" id="h0-0-71" class="i">+
+</a><a href="#h0-0-72" id="h0-0-72" class="i">+   3. Grant of Patent License. Subject to the terms and conditions of
+</a><a href="#h0-0-73" id="h0-0-73" class="i">+      this License, each Contributor hereby grants to You a perpetual,
+</a><a href="#h0-0-74" id="h0-0-74" class="i">+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+</a><a href="#h0-0-75" id="h0-0-75" class="i">+      (except as stated in this section) patent license to make, have made,
+</a><a href="#h0-0-76" id="h0-0-76" class="i">+      use, offer to sell, sell, import, and otherwise transfer the Work,
+</a><a href="#h0-0-77" id="h0-0-77" class="i">+      where such license applies only to those patent claims licensable
+</a><a href="#h0-0-78" id="h0-0-78" class="i">+      by such Contributor that are necessarily infringed by their
+</a><a href="#h0-0-79" id="h0-0-79" class="i">+      Contribution(s) alone or by combination of their Contribution(s)
+</a><a href="#h0-0-80" id="h0-0-80" class="i">+      with the Work to which such Contribution(s) was submitted. If You
+</a><a href="#h0-0-81" id="h0-0-81" class="i">+      institute patent litigation against any entity (including a
+</a><a href="#h0-0-82" id="h0-0-82" class="i">+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+</a><a href="#h0-0-83" id="h0-0-83" class="i">+      or a Contribution incorporated within the Work constitutes direct
+</a><a href="#h0-0-84" id="h0-0-84" class="i">+      or contributory patent infringement, then any patent licenses
+</a><a href="#h0-0-85" id="h0-0-85" class="i">+      granted to You under this License for that Work shall terminate
+</a><a href="#h0-0-86" id="h0-0-86" class="i">+      as of the date such litigation is filed.
+</a><a href="#h0-0-87" id="h0-0-87" class="i">+
+</a><a href="#h0-0-88" id="h0-0-88" class="i">+   4. Redistribution. You may reproduce and distribute copies of the
+</a><a href="#h0-0-89" id="h0-0-89" class="i">+      Work or Derivative Works thereof in any medium, with or without
+</a><a href="#h0-0-90" id="h0-0-90" class="i">+      modifications, and in Source or Object form, provided that You
+</a><a href="#h0-0-91" id="h0-0-91" class="i">+      meet the following conditions:
+</a><a href="#h0-0-92" id="h0-0-92" class="i">+
+</a><a href="#h0-0-93" id="h0-0-93" class="i">+      (a) You must give any other recipients of the Work or
+</a><a href="#h0-0-94" id="h0-0-94" class="i">+          Derivative Works a copy of this License; and
+</a><a href="#h0-0-95" id="h0-0-95" class="i">+
+</a><a href="#h0-0-96" id="h0-0-96" class="i">+      (b) You must cause any modified files to carry prominent notices
+</a><a href="#h0-0-97" id="h0-0-97" class="i">+          stating that You changed the files; and
+</a><a href="#h0-0-98" id="h0-0-98" class="i">+
+</a><a href="#h0-0-99" id="h0-0-99" class="i">+      (c) You must retain, in the Source form of any Derivative Works
+</a><a href="#h0-0-100" id="h0-0-100" class="i">+          that You distribute, all copyright, patent, trademark, and
+</a><a href="#h0-0-101" id="h0-0-101" class="i">+          attribution notices from the Source form of the Work,
+</a><a href="#h0-0-102" id="h0-0-102" class="i">+          excluding those notices that do not pertain to any part of
+</a><a href="#h0-0-103" id="h0-0-103" class="i">+          the Derivative Works; and
+</a><a href="#h0-0-104" id="h0-0-104" class="i">+
+</a><a href="#h0-0-105" id="h0-0-105" class="i">+      (d) If the Work includes a &quot;NOTICE&quot; text file as part of its
+</a><a href="#h0-0-106" id="h0-0-106" class="i">+          distribution, then any Derivative Works that You distribute must
+</a><a href="#h0-0-107" id="h0-0-107" class="i">+          include a readable copy of the attribution notices contained
+</a><a href="#h0-0-108" id="h0-0-108" class="i">+          within such NOTICE file, excluding those notices that do not
+</a><a href="#h0-0-109" id="h0-0-109" class="i">+          pertain to any part of the Derivative Works, in at least one
+</a><a href="#h0-0-110" id="h0-0-110" class="i">+          of the following places: within a NOTICE text file distributed
+</a><a href="#h0-0-111" id="h0-0-111" class="i">+          as part of the Derivative Works; within the Source form or
+</a><a href="#h0-0-112" id="h0-0-112" class="i">+          documentation, if provided along with the Derivative Works; or,
+</a><a href="#h0-0-113" id="h0-0-113" class="i">+          within a display generated by the Derivative Works, if and
+</a><a href="#h0-0-114" id="h0-0-114" class="i">+          wherever such third-party notices normally appear. The contents
+</a><a href="#h0-0-115" id="h0-0-115" class="i">+          of the NOTICE file are for informational purposes only and
+</a><a href="#h0-0-116" id="h0-0-116" class="i">+          do not modify the License. You may add Your own attribution
+</a><a href="#h0-0-117" id="h0-0-117" class="i">+          notices within Derivative Works that You distribute, alongside
+</a><a href="#h0-0-118" id="h0-0-118" class="i">+          or as an addendum to the NOTICE text from the Work, provided
+</a><a href="#h0-0-119" id="h0-0-119" class="i">+          that such additional attribution notices cannot be construed
+</a><a href="#h0-0-120" id="h0-0-120" class="i">+          as modifying the License.
+</a><a href="#h0-0-121" id="h0-0-121" class="i">+
+</a><a href="#h0-0-122" id="h0-0-122" class="i">+      You may add Your own copyright statement to Your modifications and
+</a><a href="#h0-0-123" id="h0-0-123" class="i">+      may provide additional or different license terms and conditions
+</a><a href="#h0-0-124" id="h0-0-124" class="i">+      for use, reproduction, or distribution of Your modifications, or
+</a><a href="#h0-0-125" id="h0-0-125" class="i">+      for any such Derivative Works as a whole, provided Your use,
+</a><a href="#h0-0-126" id="h0-0-126" class="i">+      reproduction, and distribution of the Work otherwise complies with
+</a><a href="#h0-0-127" id="h0-0-127" class="i">+      the conditions stated in this License.
+</a><a href="#h0-0-128" id="h0-0-128" class="i">+
+</a><a href="#h0-0-129" id="h0-0-129" class="i">+   5. Submission of Contributions. Unless You explicitly state otherwise,
+</a><a href="#h0-0-130" id="h0-0-130" class="i">+      any Contribution intentionally submitted for inclusion in the Work
+</a><a href="#h0-0-131" id="h0-0-131" class="i">+      by You to the Licensor shall be under the terms and conditions of
+</a><a href="#h0-0-132" id="h0-0-132" class="i">+      this License, without any additional terms or conditions.
+</a><a href="#h0-0-133" id="h0-0-133" class="i">+      Notwithstanding the above, nothing herein shall supersede or modify
+</a><a href="#h0-0-134" id="h0-0-134" class="i">+      the terms of any separate license agreement you may have executed
+</a><a href="#h0-0-135" id="h0-0-135" class="i">+      with Licensor regarding such Contributions.
+</a><a href="#h0-0-136" id="h0-0-136" class="i">+
+</a><a href="#h0-0-137" id="h0-0-137" class="i">+   6. Trademarks. This License does not grant permission to use the trade
+</a><a href="#h0-0-138" id="h0-0-138" class="i">+      names, trademarks, service marks, or product names of the Licensor,
+</a><a href="#h0-0-139" id="h0-0-139" class="i">+      except as required for reasonable and customary use in describing the
+</a><a href="#h0-0-140" id="h0-0-140" class="i">+      origin of the Work and reproducing the content of the NOTICE file.
+</a><a href="#h0-0-141" id="h0-0-141" class="i">+
+</a><a href="#h0-0-142" id="h0-0-142" class="i">+   7. Disclaimer of Warranty. Unless required by applicable law or
+</a><a href="#h0-0-143" id="h0-0-143" class="i">+      agreed to in writing, Licensor provides the Work (and each
+</a><a href="#h0-0-144" id="h0-0-144" class="i">+      Contributor provides its Contributions) on an &quot;AS IS&quot; BASIS,
+</a><a href="#h0-0-145" id="h0-0-145" class="i">+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+</a><a href="#h0-0-146" id="h0-0-146" class="i">+      implied, including, without limitation, any warranties or conditions
+</a><a href="#h0-0-147" id="h0-0-147" class="i">+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+</a><a href="#h0-0-148" id="h0-0-148" class="i">+      PARTICULAR PURPOSE. You are solely responsible for determining the
+</a><a href="#h0-0-149" id="h0-0-149" class="i">+      appropriateness of using or redistributing the Work and assume any
+</a><a href="#h0-0-150" id="h0-0-150" class="i">+      risks associated with Your exercise of permissions under this License.
+</a><a href="#h0-0-151" id="h0-0-151" class="i">+
+</a><a href="#h0-0-152" id="h0-0-152" class="i">+   8. Limitation of Liability. In no event and under no legal theory,
+</a><a href="#h0-0-153" id="h0-0-153" class="i">+      whether in tort (including negligence), contract, or otherwise,
+</a><a href="#h0-0-154" id="h0-0-154" class="i">+      unless required by applicable law (such as deliberate and grossly
+</a><a href="#h0-0-155" id="h0-0-155" class="i">+      negligent acts) or agreed to in writing, shall any Contributor be
+</a><a href="#h0-0-156" id="h0-0-156" class="i">+      liable to You for damages, including any direct, indirect, special,
+</a><a href="#h0-0-157" id="h0-0-157" class="i">+      incidental, or consequential damages of any character arising as a
+</a><a href="#h0-0-158" id="h0-0-158" class="i">+      result of this License or out of the use or inability to use the
+</a><a href="#h0-0-159" id="h0-0-159" class="i">+      Work (including but not limited to damages for loss of goodwill,
+</a><a href="#h0-0-160" id="h0-0-160" class="i">+      work stoppage, computer failure or malfunction, or any and all
+</a><a href="#h0-0-161" id="h0-0-161" class="i">+      other commercial damages or losses), even if such Contributor
+</a><a href="#h0-0-162" id="h0-0-162" class="i">+      has been advised of the possibility of such damages.
+</a><a href="#h0-0-163" id="h0-0-163" class="i">+
+</a><a href="#h0-0-164" id="h0-0-164" class="i">+   9. Accepting Warranty or Additional Liability. While redistributing
+</a><a href="#h0-0-165" id="h0-0-165" class="i">+      the Work or Derivative Works thereof, You may choose to offer,
+</a><a href="#h0-0-166" id="h0-0-166" class="i">+      and charge a fee for, acceptance of support, warranty, indemnity,
+</a><a href="#h0-0-167" id="h0-0-167" class="i">+      or other liability obligations and/or rights consistent with this
+</a><a href="#h0-0-168" id="h0-0-168" class="i">+      License. However, in accepting such obligations, You may act only
+</a><a href="#h0-0-169" id="h0-0-169" class="i">+      on Your own behalf and on Your sole responsibility, not on behalf
+</a><a href="#h0-0-170" id="h0-0-170" class="i">+      of any other Contributor, and only if You agree to indemnify,
+</a><a href="#h0-0-171" id="h0-0-171" class="i">+      defend, and hold each Contributor harmless for any liability
+</a><a href="#h0-0-172" id="h0-0-172" class="i">+      incurred by, or claims asserted against, such Contributor by reason
+</a><a href="#h0-0-173" id="h0-0-173" class="i">+      of your accepting any such warranty or additional liability.
+</a><a href="#h0-0-174" id="h0-0-174" class="i">+
+</a><a href="#h0-0-175" id="h0-0-175" class="i">+   END OF TERMS AND CONDITIONS
+</a><a href="#h0-0-176" id="h0-0-176" class="i">+
+</a><a href="#h0-0-177" id="h0-0-177" class="i">+   APPENDIX: How to apply the Apache License to your work.
+</a><a href="#h0-0-178" id="h0-0-178" class="i">+
+</a><a href="#h0-0-179" id="h0-0-179" class="i">+      To apply the Apache License to your work, attach the following
+</a><a href="#h0-0-180" id="h0-0-180" class="i">+      boilerplate notice, with the fields enclosed by brackets &quot;[]&quot;
+</a><a href="#h0-0-181" id="h0-0-181" class="i">+      replaced with your own identifying information. (Don&#39;t include
+</a><a href="#h0-0-182" id="h0-0-182" class="i">+      the brackets!)  The text should be enclosed in the appropriate
+</a><a href="#h0-0-183" id="h0-0-183" class="i">+      comment syntax for the file format. We also recommend that a
+</a><a href="#h0-0-184" id="h0-0-184" class="i">+      file or class name and description of purpose be included on the
+</a><a href="#h0-0-185" id="h0-0-185" class="i">+      same &quot;printed page&quot; as the copyright notice for easier
+</a><a href="#h0-0-186" id="h0-0-186" class="i">+      identification within third-party archives.
+</a><a href="#h0-0-187" id="h0-0-187" class="i">+
+</a><a href="#h0-0-188" id="h0-0-188" class="i">+   Copyright [yyyy] [name of copyright owner]
+</a><a href="#h0-0-189" id="h0-0-189" class="i">+
+</a><a href="#h0-0-190" id="h0-0-190" class="i">+   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+</a><a href="#h0-0-191" id="h0-0-191" class="i">+   you may not use this file except in compliance with the License.
+</a><a href="#h0-0-192" id="h0-0-192" class="i">+   You may obtain a copy of the License at
+</a><a href="#h0-0-193" id="h0-0-193" class="i">+
+</a><a href="#h0-0-194" id="h0-0-194" class="i">+       http://www.apache.org/licenses/LICENSE-2.0
+</a><a href="#h0-0-195" id="h0-0-195" class="i">+
+</a><a href="#h0-0-196" id="h0-0-196" class="i">+   Unless required by applicable law or agreed to in writing, software
+</a><a href="#h0-0-197" id="h0-0-197" class="i">+   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+</a><a href="#h0-0-198" id="h0-0-198" class="i">+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+</a><a href="#h0-0-199" id="h0-0-199" class="i">+   See the License for the specific language governing permissions and
+</a><a href="#h0-0-200" id="h0-0-200" class="i">+   limitations under the License.
+</a><b>diff --git a/<a id="h1" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/LoggerHistoryRoot.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/LoggerHistoryRoot.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/LoggerHistoryRoot.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/LoggerHistoryRoot.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -20,6 +20,7 @@ import androidx.compose.ui.input.pointer.pointerInput
+</a> import androidx.compose.ui.text.font.FontStyle
+ import androidx.compose.ui.text.font.FontWeight
+ import androidx.compose.ui.text.style.TextAlign
+<a href="#h1-0-3" id="h1-0-3" class="i">+import androidx.compose.ui.text.style.TextOverflow
+</a> import androidx.compose.ui.unit.dp
+ import androidx.compose.ui.unit.sp
+ import androidx.navigation.NavBackStackEntry
+<a href="#h1-1" id="h1-1" class="h">@@ -28,6 +29,7 @@ import kotlinx.coroutines.Dispatchers
+</a> import kotlinx.coroutines.launch
+ import kotlinx.coroutines.withContext
+ import me.rhunk.snapenhance.bridge.DownloadCallback
+<a href="#h1-1-3" id="h1-1-3" class="i">+import me.rhunk.snapenhance.common.bridge.wrapper.ConversationInfo
+</a> import me.rhunk.snapenhance.common.bridge.wrapper.LoggedMessage
+ import me.rhunk.snapenhance.common.bridge.wrapper.LoggerWrapper
+ import me.rhunk.snapenhance.common.data.ContentType
+<a href="#h1-2" id="h1-2" class="h">@@ -43,12 +45,8 @@ import me.rhunk.snapenhance.core.features.impl.downloader.decoder.DecodedAttachm
+</a> import me.rhunk.snapenhance.core.features.impl.downloader.decoder.MessageDecoder
+ import me.rhunk.snapenhance.download.DownloadProcessor
+ import me.rhunk.snapenhance.storage.findFriend
+<a href="#h1-2-3" id="h1-2-3" class="d">-import me.rhunk.snapenhance.storage.getFriendInfo
+</a><a href="#h1-2-4" id="h1-2-4" class="d">-import me.rhunk.snapenhance.storage.getGroupInfo
+</a> import me.rhunk.snapenhance.ui.manager.Routes
+<a href="#h1-2-6" id="h1-2-6" class="d">-import java.nio.ByteBuffer
+</a> import java.text.DateFormat
+<a href="#h1-2-8" id="h1-2-8" class="d">-import java.util.UUID
+</a> import kotlin.math.absoluteValue
+ 
+ 
+<a href="#h1-3" id="h1-3" class="h">@@ -58,15 +56,12 @@ class LoggerHistoryRoot : Routes.Route() {
+</a>     private var stringFilter by mutableStateOf(&quot;&quot;)
+     private var reverseOrder by mutableStateOf(true)
+ 
+<a href="#h1-3-3" id="h1-3-3" class="d">-    private inline fun decodeMessage(message: LoggedMessage, result: (senderId: String?, contentType: ContentType, messageReader: ProtoReader, attachments: List&lt;DecodedAttachment&gt;) -&gt; Unit) {
+</a><a href="#h1-3-4" id="h1-3-4" class="i">+    private inline fun decodeMessage(message: LoggedMessage, result: (contentType: ContentType, messageReader: ProtoReader, attachments: List&lt;DecodedAttachment&gt;) -&gt; Unit) {
+</a>         runCatching {
+             val messageObject = JsonParser.parseString(String(message.messageData, Charsets.UTF_8)).asJsonObject
+<a href="#h1-3-7" id="h1-3-7" class="d">-            val senderId = messageObject.getAsJsonObject(&quot;mSenderId&quot;)?.getAsJsonArray(&quot;mId&quot;)?.map { it.asByte }?.toByteArray()?.let {
+</a><a href="#h1-3-8" id="h1-3-8" class="d">-                ByteBuffer.wrap(it).run { UUID(long, long) }.toString()
+</a><a href="#h1-3-9" id="h1-3-9" class="d">-            }
+</a>             val messageContent = messageObject.getAsJsonObject(&quot;mMessageContent&quot;)
+             val messageReader = messageContent.getAsJsonArray(&quot;mContent&quot;).map { it.asByte }.toByteArray().let { ProtoReader(it) }
+<a href="#h1-3-12" id="h1-3-12" class="d">-            result(senderId, ContentType.fromMessageContainer(messageReader) ?: ContentType.UNKNOWN, messageReader, MessageDecoder.decode(messageContent))
+</a><a href="#h1-3-13" id="h1-3-13" class="i">+            result(ContentType.fromMessageContainer(messageReader) ?: ContentType.UNKNOWN, messageReader, MessageDecoder.decode(messageContent))
+</a>         }.onFailure {
+             context.log.error(&quot;Failed to decode message&quot;, it)
+         }
+<a href="#h1-4" id="h1-4" class="h">@@ -129,12 +124,10 @@ class LoggerHistoryRoot : Routes.Route() {
+</a> 
+                 LaunchedEffect(Unit, message) {
+                     runCatching {
+<a href="#h1-4-3" id="h1-4-3" class="d">-                        decodeMessage(message) { senderId, contentType, messageReader, attachments -&gt;
+</a><a href="#h1-4-4" id="h1-4-4" class="d">-                            val senderUsername = senderId?.let { context.database.getFriendInfo(it)?.mutableUsername } ?: translation[&quot;unknown_sender&quot;]
+</a><a href="#h1-4-5" id="h1-4-5" class="d">-
+</a><a href="#h1-4-6" id="h1-4-6" class="i">+                        decodeMessage(message) { contentType, messageReader, attachments -&gt;
+</a>                             @Composable
+                             fun ContentHeader() {
+<a href="#h1-4-9" id="h1-4-9" class="d">-                                Text(&quot;$senderUsername (${contentType.toString().lowercase()})&quot;, modifier = Modifier.padding(end = 4.dp), fontWeight = FontWeight.ExtraLight)
+</a><a href="#h1-4-10" id="h1-4-10" class="i">+                                Text(&quot;${message.username} (${contentType.toString().lowercase()}) - ${DateFormat.getDateTimeInstance().format(message.sendTimestamp)}&quot;, modifier = Modifier.padding(end = 4.dp), fontWeight = FontWeight.ExtraLight)
+</a>                             }
+ 
+                             if (contentType == ContentType.CHAT) {
+<a href="#h1-5" id="h1-5" class="h">@@ -187,7 +180,7 @@ class LoggerHistoryRoot : Routes.Route() {
+</a>                                             ElevatedButton(onClick = {
+                                                 context.coroutineScope.launch {
+                                                     runCatching {
+<a href="#h1-5-3" id="h1-5-3" class="d">-                                                        downloadAttachment(message.timestamp, attachment)
+</a><a href="#h1-5-4" id="h1-5-4" class="i">+                                                        downloadAttachment(message.sendTimestamp, attachment)
+</a>                                                     }.onFailure {
+                                                         context.log.error(&quot;Failed to download attachment&quot;, it)
+                                                         context.shortToast(translation[&quot;download_attachment_failed_toast&quot;])
+<a href="#h1-6" id="h1-6" class="h">@@ -232,17 +225,26 @@ class LoggerHistoryRoot : Routes.Route() {
+</a>                 expanded = expanded,
+                 onExpandedChange = { expanded = it },
+             ) {
+<a href="#h1-6-3" id="h1-6-3" class="d">-                fun formatConversationId(conversationId: String?): String? {
+</a><a href="#h1-6-4" id="h1-6-4" class="d">-                    if (conversationId == null) return null
+</a><a href="#h1-6-5" id="h1-6-5" class="d">-                    return context.database.getGroupInfo(conversationId)?.name?.let {
+</a><a href="#h1-6-6" id="h1-6-6" class="i">+                fun formatConversationInfo(conversationInfo: ConversationInfo?): String? {
+</a><a href="#h1-6-7" id="h1-6-7" class="i">+                    if (conversationInfo == null) return null
+</a><a href="#h1-6-8" id="h1-6-8" class="i">+
+</a><a href="#h1-6-9" id="h1-6-9" class="i">+                    return conversationInfo.groupTitle?.let {
+</a>                         translation.format(&quot;list_group_format&quot;, &quot;name&quot; to it)
+<a href="#h1-6-11" id="h1-6-11" class="d">-                    } ?: context.database.findFriend(conversationId)?.let {
+</a><a href="#h1-6-12" id="h1-6-12" class="d">-                        translation.format(&quot;list_friend_format&quot;, &quot;name&quot; to (it.displayName?.let { name -&gt; &quot;$name (${it.mutableUsername})&quot; } ?: it.mutableUsername))
+</a><a href="#h1-6-13" id="h1-6-13" class="d">-                    } ?: conversationId
+</a><a href="#h1-6-14" id="h1-6-14" class="i">+                    } ?: conversationInfo.usernames.takeIf { it.size &gt; 1 }?.let {
+</a><a href="#h1-6-15" id="h1-6-15" class="i">+                        translation.format(&quot;list_friend_format&quot;, &quot;name&quot; to (&quot;(&quot; + it.joinToString(&quot;, &quot;) + &quot;)&quot;))
+</a><a href="#h1-6-16" id="h1-6-16" class="i">+                    } ?: context.database.findFriend(conversationInfo.conversationId)?.let {
+</a><a href="#h1-6-17" id="h1-6-17" class="i">+                        translation.format(&quot;list_friend_format&quot;, &quot;name&quot; to &quot;(&quot; + (conversationInfo.usernames + listOf(it.mutableUsername)).toSet().joinToString(&quot;, &quot;) + &quot;)&quot;)
+</a><a href="#h1-6-18" id="h1-6-18" class="i">+                    } ?: conversationInfo.usernames.firstOrNull()?.let {
+</a><a href="#h1-6-19" id="h1-6-19" class="i">+                        translation.format(&quot;list_friend_format&quot;, &quot;name&quot; to &quot;($it)&quot;)
+</a><a href="#h1-6-20" id="h1-6-20" class="i">+                    }
+</a><a href="#h1-6-21" id="h1-6-21" class="i">+                }
+</a><a href="#h1-6-22" id="h1-6-22" class="i">+
+</a><a href="#h1-6-23" id="h1-6-23" class="i">+                val selectedConversationInfo by rememberAsyncMutableState(defaultValue = null, keys = arrayOf(selectedConversation)) {
+</a><a href="#h1-6-24" id="h1-6-24" class="i">+                    selectedConversation?.let { loggerWrapper.getConversationInfo(it) }
+</a>                 }
+ 
+                 OutlinedTextField(
+<a href="#h1-6-28" id="h1-6-28" class="d">-                    value = remember(selectedConversation) { formatConversationId(selectedConversation) ?: &quot;Select a conversation&quot; },
+</a><a href="#h1-6-29" id="h1-6-29" class="i">+                    value = remember(selectedConversationInfo) { formatConversationInfo(selectedConversationInfo) ?: &quot;Select a conversation&quot; },
+</a>                     onValueChange = {},
+                     readOnly = true,
+                     modifier = Modifier
+<a href="#h1-7" id="h1-7" class="h">@@ -260,7 +262,15 @@ class LoggerHistoryRoot : Routes.Route() {
+</a>                             selectedConversation = conversationId
+                             expanded = false
+                         }, text = {
+<a href="#h1-7-3" id="h1-7-3" class="d">-                            Text(remember(conversationId) { formatConversationId(conversationId) ?: &quot;Unknown conversation&quot; })
+</a><a href="#h1-7-4" id="h1-7-4" class="i">+                            val conversationInfo by rememberAsyncMutableState(defaultValue = null, keys = arrayOf(conversationId)) {
+</a><a href="#h1-7-5" id="h1-7-5" class="i">+                                formatConversationInfo(loggerWrapper.getConversationInfo(conversationId))
+</a><a href="#h1-7-6" id="h1-7-6" class="i">+                            }
+</a><a href="#h1-7-7" id="h1-7-7" class="i">+
+</a><a href="#h1-7-8" id="h1-7-8" class="i">+                            Text(
+</a><a href="#h1-7-9" id="h1-7-9" class="i">+                                text = remember(conversationInfo) { conversationInfo ?: conversationId },
+</a><a href="#h1-7-10" id="h1-7-10" class="i">+                                fontWeight = if (conversationId == selectedConversation) FontWeight.Bold else FontWeight.Normal,
+</a><a href="#h1-7-11" id="h1-7-11" class="i">+                                overflow = TextOverflow.Ellipsis
+</a><a href="#h1-7-12" id="h1-7-12" class="i">+                            )
+</a>                         })
+                     }
+                 }
+<a href="#h1-8" id="h1-8" class="h">@@ -320,7 +330,7 @@ class LoggerHistoryRoot : Routes.Route() {
+</a>                             ) { messageData -&gt;
+                                 if (stringFilter.isEmpty()) return@fetchMessages true
+                                 var isMatch = false
+<a href="#h1-8-3" id="h1-8-3" class="d">-                                decodeMessage(messageData) { _,  contentType, messageReader, _ -&gt;
+</a><a href="#h1-8-4" id="h1-8-4" class="i">+                                decodeMessage(messageData) { contentType, messageReader, _ -&gt;
+</a>                                     if (contentType == ContentType.CHAT) {
+                                         val content = messageReader.getString(2, 1) ?: return@decodeMessage
+                                         isMatch = content.contains(stringFilter, ignoreCase = true)
+<a href="#h1-9" id="h1-9" class="h">@@ -332,7 +342,7 @@ class LoggerHistoryRoot : Routes.Route() {
+</a>                                 hasReachedEnd = true
+                                 return@withContext
+                             }
+<a href="#h1-9-3" id="h1-9-3" class="d">-                            lastFetchMessageTimestamp = newMessages.lastOrNull()?.timestamp ?: return@withContext
+</a><a href="#h1-9-4" id="h1-9-4" class="i">+                            lastFetchMessageTimestamp = newMessages.lastOrNull()?.sendTimestamp ?: return@withContext
+</a>                             withContext(Dispatchers.Main) {
+                                 messages.addAll(newMessages)
+                             }
+<b>diff --git a/<a id="h2" href="../file/common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/BridgeLoggedMessage.aidl.html">common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/BridgeLoggedMessage.aidl</a> b/<a href="../file/common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/BridgeLoggedMessage.aidl.html">common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/BridgeLoggedMessage.aidl</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -0,0 +1,11 @@
+</a><a href="#h2-0-0" id="h2-0-0" class="i">+package me.rhunk.snapenhance.bridge.logger;
+</a><a href="#h2-0-1" id="h2-0-1" class="i">+
+</a><a href="#h2-0-2" id="h2-0-2" class="i">+parcelable BridgeLoggedMessage {
+</a><a href="#h2-0-3" id="h2-0-3" class="i">+    long messageId;
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+    String conversationId;
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+    String userId;
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+    String username;
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+    long sendTimestamp;
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+    @nullable String groupTitle;
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+    byte[] messageData;
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+}</a><a href="#h2-0-11" id="h2-0-11" class="i">+
+\ No newline at end of file
+</a><b>diff --git a/<a id="h3" href="../file/common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/LoggerInterface.aidl.html">common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/LoggerInterface.aidl</a> b/<a href="../file/common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/LoggerInterface.aidl.html">common/src/main/aidl/me/rhunk/snapenhance/bridge/logger/LoggerInterface.aidl</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1,5 +1,7 @@
+</a> package me.rhunk.snapenhance.bridge.logger;
+ 
+<a href="#h3-0-2" id="h3-0-2" class="i">+import me.rhunk.snapenhance.bridge.logger.BridgeLoggedMessage;
+</a><a href="#h3-0-3" id="h3-0-3" class="i">+
+</a> interface LoggerInterface {
+     /**
+      * Get the ids of the messages that are logged
+<a href="#h3-1" id="h3-1" class="h">@@ -15,7 +17,7 @@ interface LoggerInterface {
+</a>     /**
+      * Add a message to the message logger database if it is not already there
+      */
+<a href="#h3-1-3" id="h3-1-3" class="d">-    oneway void addMessage(String conversationId, long id, in byte[] message);
+</a><a href="#h3-1-4" id="h3-1-4" class="i">+    oneway void addMessage(in BridgeLoggedMessage message);
+</a> 
+     /**
+      * Delete a message from the message logger database
+<b>diff --git a/<a id="h4" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/bridge/wrapper/LoggerWrapper.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/bridge/wrapper/LoggerWrapper.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/bridge/wrapper/LoggerWrapper.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/bridge/wrapper/LoggerWrapper.kt</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
+</a> import com.google.gson.GsonBuilder
+ import com.google.gson.JsonObject
+ import kotlinx.coroutines.*
+<a href="#h4-0-3" id="h4-0-3" class="i">+import me.rhunk.snapenhance.bridge.logger.BridgeLoggedMessage
+</a> import me.rhunk.snapenhance.bridge.logger.LoggerInterface
+ import me.rhunk.snapenhance.common.bridge.InternalFileHandleType
+ import me.rhunk.snapenhance.common.data.StoryData
+<a href="#h4-1" id="h4-1" class="h">@@ -26,10 +27,22 @@ class LoggedMessageEdit(
+</a> 
+ class LoggedMessage(
+     val messageId: Long,
+<a href="#h4-1-3" id="h4-1-3" class="d">-    val timestamp: Long,
+</a><a href="#h4-1-4" id="h4-1-4" class="i">+    val conversationId: String,
+</a><a href="#h4-1-5" id="h4-1-5" class="i">+    val userId: String,
+</a><a href="#h4-1-6" id="h4-1-6" class="i">+    val username: String,
+</a><a href="#h4-1-7" id="h4-1-7" class="i">+    val sendTimestamp: Long,
+</a><a href="#h4-1-8" id="h4-1-8" class="i">+    val addedTimestamp: Long,
+</a><a href="#h4-1-9" id="h4-1-9" class="i">+    val groupTitle: String?,
+</a>     val messageData: ByteArray,
+ )
+ 
+<a href="#h4-1-13" id="h4-1-13" class="i">+class ConversationInfo(
+</a><a href="#h4-1-14" id="h4-1-14" class="i">+    val conversationId: String,
+</a><a href="#h4-1-15" id="h4-1-15" class="i">+    val participantSize: Int,
+</a><a href="#h4-1-16" id="h4-1-16" class="i">+    val groupTitle: String?,
+</a><a href="#h4-1-17" id="h4-1-17" class="i">+    val usernames: List&lt;String&gt;
+</a><a href="#h4-1-18" id="h4-1-18" class="i">+)
+</a><a href="#h4-1-19" id="h4-1-19" class="i">+
+</a> class TrackerLog(
+     val id: Int,
+     val timestamp: Long,
+<a href="#h4-2" id="h4-2" class="h">@@ -77,9 +90,13 @@ class LoggerWrapper(
+</a>             SQLiteDatabaseHelper.createTablesFromSchema(openedDatabase, mapOf(
+                 &quot;messages&quot; to listOf(
+                     &quot;id INTEGER PRIMARY KEY&quot;,
+<a href="#h4-2-3" id="h4-2-3" class="d">-                    &quot;added_timestamp BIGINT&quot;,
+</a><a href="#h4-2-4" id="h4-2-4" class="d">-                    &quot;conversation_id VARCHAR&quot;,
+</a>                     &quot;message_id BIGINT&quot;,
+<a href="#h4-2-6" id="h4-2-6" class="i">+                    &quot;conversation_id VARCHAR&quot;,
+</a><a href="#h4-2-7" id="h4-2-7" class="i">+                    &quot;user_id CHAR(36)&quot;,
+</a><a href="#h4-2-8" id="h4-2-8" class="i">+                    &quot;username VARCHAR&quot;,
+</a><a href="#h4-2-9" id="h4-2-9" class="i">+                    &quot;send_timestamp BIGINT&quot;,
+</a><a href="#h4-2-10" id="h4-2-10" class="i">+                    &quot;added_timestamp BIGINT&quot;,
+</a><a href="#h4-2-11" id="h4-2-11" class="i">+                    &quot;group_title VARCHAR&quot;,
+</a>                     &quot;message_data BLOB&quot;
+                 ),
+                 &quot;chat_edits&quot; to listOf(
+<a href="#h4-3" id="h4-3" class="h">@@ -150,67 +167,67 @@ class LoggerWrapper(
+</a>         }
+     }
+ 
+<a href="#h4-3-3" id="h4-3-3" class="d">-    override fun addMessage(conversationId: String, messageId: Long, serializedMessage: ByteArray) {
+</a><a href="#h4-3-4" id="h4-3-4" class="d">-        val hasMessage = database.rawQuery(&quot;SELECT message_id FROM messages WHERE conversation_id = ? AND message_id = ?&quot;, arrayOf(conversationId, messageId.toString())).use {
+</a><a href="#h4-3-5" id="h4-3-5" class="i">+    override fun addMessage(bridgeLoggedMessage: BridgeLoggedMessage) {
+</a><a href="#h4-3-6" id="h4-3-6" class="i">+        val hasMessage = database.rawQuery(&quot;SELECT message_id FROM messages WHERE conversation_id = ? AND message_id = ?&quot;, arrayOf(bridgeLoggedMessage.conversationId, bridgeLoggedMessage.messageId.toString())).use {
+</a>             it.moveToFirst()
+             it.count &gt; 0
+         }
+ 
+         if (!hasMessage) {
+<a href="#h4-3-12" id="h4-3-12" class="d">-            runBlocking {
+</a><a href="#h4-3-13" id="h4-3-13" class="d">-                withContext(coroutineScope.coroutineContext) {
+</a><a href="#h4-3-14" id="h4-3-14" class="d">-                    database.insert(&quot;messages&quot;, null, ContentValues().apply {
+</a><a href="#h4-3-15" id="h4-3-15" class="d">-                        put(&quot;added_timestamp&quot;, System.currentTimeMillis())
+</a><a href="#h4-3-16" id="h4-3-16" class="d">-                        put(&quot;conversation_id&quot;, conversationId)
+</a><a href="#h4-3-17" id="h4-3-17" class="d">-                        put(&quot;message_id&quot;, messageId)
+</a><a href="#h4-3-18" id="h4-3-18" class="d">-                        put(&quot;message_data&quot;, serializedMessage)
+</a><a href="#h4-3-19" id="h4-3-19" class="d">-                    })
+</a><a href="#h4-3-20" id="h4-3-20" class="d">-                }
+</a><a href="#h4-3-21" id="h4-3-21" class="i">+            runBlocking(coroutineScope.coroutineContext) {
+</a><a href="#h4-3-22" id="h4-3-22" class="i">+                database.insert(&quot;messages&quot;, null, ContentValues().apply {
+</a><a href="#h4-3-23" id="h4-3-23" class="i">+                    put(&quot;message_id&quot;, bridgeLoggedMessage.messageId)
+</a><a href="#h4-3-24" id="h4-3-24" class="i">+                    put(&quot;conversation_id&quot;, bridgeLoggedMessage.conversationId)
+</a><a href="#h4-3-25" id="h4-3-25" class="i">+                    put(&quot;user_id&quot;, bridgeLoggedMessage.userId)
+</a><a href="#h4-3-26" id="h4-3-26" class="i">+                    put(&quot;username&quot;, bridgeLoggedMessage.username)
+</a><a href="#h4-3-27" id="h4-3-27" class="i">+                    put(&quot;send_timestamp&quot;, bridgeLoggedMessage.sendTimestamp)
+</a><a href="#h4-3-28" id="h4-3-28" class="i">+                    put(&quot;added_timestamp&quot;, System.currentTimeMillis())
+</a><a href="#h4-3-29" id="h4-3-29" class="i">+                    put(&quot;group_title&quot;, bridgeLoggedMessage.groupTitle)
+</a><a href="#h4-3-30" id="h4-3-30" class="i">+                    put(&quot;message_data&quot;, bridgeLoggedMessage.messageData)
+</a><a href="#h4-3-31" id="h4-3-31" class="i">+                })
+</a>             }
+         }
+ 
+         // handle message edits
+<a href="#h4-3-36" id="h4-3-36" class="d">-        runBlocking {
+</a><a href="#h4-3-37" id="h4-3-37" class="d">-            withContext(coroutineScope.coroutineContext) {
+</a><a href="#h4-3-38" id="h4-3-38" class="d">-                runCatching {
+</a><a href="#h4-3-39" id="h4-3-39" class="d">-                    val messageObject = gson.fromJson(
+</a><a href="#h4-3-40" id="h4-3-40" class="d">-                        serializedMessage.toString(Charsets.UTF_8),
+</a><a href="#h4-3-41" id="h4-3-41" class="d">-                        JsonObject::class.java
+</a><a href="#h4-3-42" id="h4-3-42" class="d">-                    )
+</a><a href="#h4-3-43" id="h4-3-43" class="d">-                    if (messageObject.getAsJsonObject(&quot;mMessageContent&quot;)
+</a><a href="#h4-3-44" id="h4-3-44" class="d">-                            ?.getAsJsonPrimitive(&quot;mContentType&quot;)?.asString != &quot;CHAT&quot;
+</a><a href="#h4-3-45" id="h4-3-45" class="d">-                    ) return@withContext
+</a><a href="#h4-3-46" id="h4-3-46" class="d">-
+</a><a href="#h4-3-47" id="h4-3-47" class="d">-                    val metadata = messageObject.getAsJsonObject(&quot;mMetadata&quot;)
+</a><a href="#h4-3-48" id="h4-3-48" class="d">-                    if (metadata.get(&quot;mIsEdited&quot;)?.asBoolean != true) return@withContext
+</a><a href="#h4-3-49" id="h4-3-49" class="d">-
+</a><a href="#h4-3-50" id="h4-3-50" class="d">-                    val messageTextContent =
+</a><a href="#h4-3-51" id="h4-3-51" class="d">-                        messageObject.getAsJsonObject(&quot;mMessageContent&quot;)?.getAsJsonArray(&quot;mContent&quot;)
+</a><a href="#h4-3-52" id="h4-3-52" class="d">-                            ?.map { it.asByte }?.toByteArray()?.let {
+</a><a href="#h4-3-53" id="h4-3-53" class="d">-                                ProtoReader(it).getString(2, 1)
+</a><a href="#h4-3-54" id="h4-3-54" class="d">-                            } ?: return@withContext
+</a><a href="#h4-3-55" id="h4-3-55" class="d">-
+</a><a href="#h4-3-56" id="h4-3-56" class="d">-                    database.rawQuery(
+</a><a href="#h4-3-57" id="h4-3-57" class="d">-                        &quot;SELECT MAX(edit_number), message_text FROM chat_edits WHERE conversation_id = ? AND message_id = ?&quot;,
+</a><a href="#h4-3-58" id="h4-3-58" class="d">-                        arrayOf(conversationId, messageId.toString())
+</a><a href="#h4-3-59" id="h4-3-59" class="d">-                    ).use {
+</a><a href="#h4-3-60" id="h4-3-60" class="d">-                        it.moveToFirst()
+</a><a href="#h4-3-61" id="h4-3-61" class="d">-                        val editNumber = it.getInt(0)
+</a><a href="#h4-3-62" id="h4-3-62" class="d">-                        val lastEditedMessage = it.getString(1)
+</a><a href="#h4-3-63" id="h4-3-63" class="d">-
+</a><a href="#h4-3-64" id="h4-3-64" class="d">-                        if (lastEditedMessage == messageTextContent) return@withContext
+</a><a href="#h4-3-65" id="h4-3-65" class="d">-
+</a><a href="#h4-3-66" id="h4-3-66" class="d">-                        database.insert(&quot;chat_edits&quot;, null, ContentValues().apply {
+</a><a href="#h4-3-67" id="h4-3-67" class="d">-                            put(&quot;edit_number&quot;, editNumber + 1)
+</a><a href="#h4-3-68" id="h4-3-68" class="d">-                            put(&quot;added_timestamp&quot;, System.currentTimeMillis())
+</a><a href="#h4-3-69" id="h4-3-69" class="d">-                            put(&quot;conversation_id&quot;, conversationId)
+</a><a href="#h4-3-70" id="h4-3-70" class="d">-                            put(&quot;message_id&quot;, messageId)
+</a><a href="#h4-3-71" id="h4-3-71" class="d">-                            put(&quot;message_text&quot;, messageTextContent)
+</a><a href="#h4-3-72" id="h4-3-72" class="d">-                        })
+</a><a href="#h4-3-73" id="h4-3-73" class="d">-                    }
+</a><a href="#h4-3-74" id="h4-3-74" class="d">-                }.onFailure {
+</a><a href="#h4-3-75" id="h4-3-75" class="d">-                    AbstractLogger.directDebug(&quot;Failed to handle message edit: ${it.message}&quot;)
+</a><a href="#h4-3-76" id="h4-3-76" class="i">+        runBlocking(coroutineScope.coroutineContext) {
+</a><a href="#h4-3-77" id="h4-3-77" class="i">+            runCatching {
+</a><a href="#h4-3-78" id="h4-3-78" class="i">+                val messageObject = gson.fromJson(
+</a><a href="#h4-3-79" id="h4-3-79" class="i">+                    bridgeLoggedMessage.messageData.toString(Charsets.UTF_8),
+</a><a href="#h4-3-80" id="h4-3-80" class="i">+                    JsonObject::class.java
+</a><a href="#h4-3-81" id="h4-3-81" class="i">+                )
+</a><a href="#h4-3-82" id="h4-3-82" class="i">+                if (messageObject.getAsJsonObject(&quot;mMessageContent&quot;)
+</a><a href="#h4-3-83" id="h4-3-83" class="i">+                        ?.getAsJsonPrimitive(&quot;mContentType&quot;)?.asString != &quot;CHAT&quot;
+</a><a href="#h4-3-84" id="h4-3-84" class="i">+                ) return@runBlocking
+</a><a href="#h4-3-85" id="h4-3-85" class="i">+
+</a><a href="#h4-3-86" id="h4-3-86" class="i">+                val metadata = messageObject.getAsJsonObject(&quot;mMetadata&quot;)
+</a><a href="#h4-3-87" id="h4-3-87" class="i">+                if (metadata.get(&quot;mIsEdited&quot;)?.asBoolean != true) return@runBlocking
+</a><a href="#h4-3-88" id="h4-3-88" class="i">+
+</a><a href="#h4-3-89" id="h4-3-89" class="i">+                val messageTextContent =
+</a><a href="#h4-3-90" id="h4-3-90" class="i">+                    messageObject.getAsJsonObject(&quot;mMessageContent&quot;)?.getAsJsonArray(&quot;mContent&quot;)
+</a><a href="#h4-3-91" id="h4-3-91" class="i">+                        ?.map { it.asByte }?.toByteArray()?.let {
+</a><a href="#h4-3-92" id="h4-3-92" class="i">+                            ProtoReader(it).getString(2, 1)
+</a><a href="#h4-3-93" id="h4-3-93" class="i">+                        } ?: return@runBlocking
+</a><a href="#h4-3-94" id="h4-3-94" class="i">+
+</a><a href="#h4-3-95" id="h4-3-95" class="i">+                database.rawQuery(
+</a><a href="#h4-3-96" id="h4-3-96" class="i">+                    &quot;SELECT MAX(edit_number), message_text FROM chat_edits WHERE conversation_id = ? AND message_id = ?&quot;,
+</a><a href="#h4-3-97" id="h4-3-97" class="i">+                    arrayOf(bridgeLoggedMessage.conversationId, bridgeLoggedMessage.messageId.toString())
+</a><a href="#h4-3-98" id="h4-3-98" class="i">+                ).use {
+</a><a href="#h4-3-99" id="h4-3-99" class="i">+                    it.moveToFirst()
+</a><a href="#h4-3-100" id="h4-3-100" class="i">+                    val editNumber = it.getInt(0)
+</a><a href="#h4-3-101" id="h4-3-101" class="i">+                    val lastEditedMessage = it.getString(1)
+</a><a href="#h4-3-102" id="h4-3-102" class="i">+
+</a><a href="#h4-3-103" id="h4-3-103" class="i">+                    if (lastEditedMessage == messageTextContent) return@runBlocking
+</a><a href="#h4-3-104" id="h4-3-104" class="i">+
+</a><a href="#h4-3-105" id="h4-3-105" class="i">+                    database.insert(&quot;chat_edits&quot;, null, ContentValues().apply {
+</a><a href="#h4-3-106" id="h4-3-106" class="i">+                        put(&quot;edit_number&quot;, editNumber + 1)
+</a><a href="#h4-3-107" id="h4-3-107" class="i">+                        put(&quot;added_timestamp&quot;, System.currentTimeMillis())
+</a><a href="#h4-3-108" id="h4-3-108" class="i">+                        put(&quot;conversation_id&quot;, bridgeLoggedMessage.conversationId)
+</a><a href="#h4-3-109" id="h4-3-109" class="i">+                        put(&quot;message_id&quot;, bridgeLoggedMessage.messageId)
+</a><a href="#h4-3-110" id="h4-3-110" class="i">+                        put(&quot;message_text&quot;, messageTextContent)
+</a><a href="#h4-3-111" id="h4-3-111" class="i">+                    })
+</a>                 }
+<a href="#h4-3-113" id="h4-3-113" class="i">+            }.onFailure {
+</a><a href="#h4-3-114" id="h4-3-114" class="i">+                AbstractLogger.directDebug(&quot;Failed to handle message edit: ${it.message}&quot;)
+</a>             }
+         }
+     }
+<a href="#h4-4" id="h4-4" class="h">@@ -257,18 +274,16 @@ class LoggerWrapper(
+</a>         }) {
+             return false
+         }
+<a href="#h4-4-3" id="h4-4-3" class="d">-        runBlocking {
+</a><a href="#h4-4-4" id="h4-4-4" class="d">-            withContext(coroutineScope.coroutineContext) {
+</a><a href="#h4-4-5" id="h4-4-5" class="d">-                database.insert(&quot;stories&quot;, null, ContentValues().apply {
+</a><a href="#h4-4-6" id="h4-4-6" class="d">-                    put(&quot;user_id&quot;, userId)
+</a><a href="#h4-4-7" id="h4-4-7" class="d">-                    put(&quot;added_timestamp&quot;, System.currentTimeMillis())
+</a><a href="#h4-4-8" id="h4-4-8" class="d">-                    put(&quot;url&quot;, url)
+</a><a href="#h4-4-9" id="h4-4-9" class="d">-                    put(&quot;posted_timestamp&quot;, postedAt)
+</a><a href="#h4-4-10" id="h4-4-10" class="d">-                    put(&quot;created_timestamp&quot;, createdAt)
+</a><a href="#h4-4-11" id="h4-4-11" class="d">-                    put(&quot;encryption_key&quot;, key)
+</a><a href="#h4-4-12" id="h4-4-12" class="d">-                    put(&quot;encryption_iv&quot;, iv)
+</a><a href="#h4-4-13" id="h4-4-13" class="d">-                })
+</a><a href="#h4-4-14" id="h4-4-14" class="d">-            }
+</a><a href="#h4-4-15" id="h4-4-15" class="i">+        runBlocking(coroutineScope.coroutineContext) {
+</a><a href="#h4-4-16" id="h4-4-16" class="i">+            database.insert(&quot;stories&quot;, null, ContentValues().apply {
+</a><a href="#h4-4-17" id="h4-4-17" class="i">+                put(&quot;user_id&quot;, userId)
+</a><a href="#h4-4-18" id="h4-4-18" class="i">+                put(&quot;added_timestamp&quot;, System.currentTimeMillis())
+</a><a href="#h4-4-19" id="h4-4-19" class="i">+                put(&quot;url&quot;, url)
+</a><a href="#h4-4-20" id="h4-4-20" class="i">+                put(&quot;posted_timestamp&quot;, postedAt)
+</a><a href="#h4-4-21" id="h4-4-21" class="i">+                put(&quot;created_timestamp&quot;, createdAt)
+</a><a href="#h4-4-22" id="h4-4-22" class="i">+                put(&quot;encryption_key&quot;, key)
+</a><a href="#h4-4-23" id="h4-4-23" class="i">+                put(&quot;encryption_iv&quot;, iv)
+</a><a href="#h4-4-24" id="h4-4-24" class="i">+            })
+</a>         }
+         return true
+     }
+<a href="#h4-5" id="h4-5" class="h">@@ -282,19 +297,17 @@ class LoggerWrapper(
+</a>         eventType: String,
+         data: String
+     ) {
+<a href="#h4-5-3" id="h4-5-3" class="d">-        runBlocking {
+</a><a href="#h4-5-4" id="h4-5-4" class="d">-            withContext(coroutineScope.coroutineContext) {
+</a><a href="#h4-5-5" id="h4-5-5" class="d">-                database.insert(&quot;tracker_events&quot;, null, ContentValues().apply {
+</a><a href="#h4-5-6" id="h4-5-6" class="d">-                    put(&quot;timestamp&quot;, System.currentTimeMillis())
+</a><a href="#h4-5-7" id="h4-5-7" class="d">-                    put(&quot;conversation_id&quot;, conversationId)
+</a><a href="#h4-5-8" id="h4-5-8" class="d">-                    put(&quot;conversation_title&quot;, conversationTitle)
+</a><a href="#h4-5-9" id="h4-5-9" class="d">-                    put(&quot;is_group&quot;, isGroup)
+</a><a href="#h4-5-10" id="h4-5-10" class="d">-                    put(&quot;username&quot;, username)
+</a><a href="#h4-5-11" id="h4-5-11" class="d">-                    put(&quot;user_id&quot;, userId)
+</a><a href="#h4-5-12" id="h4-5-12" class="d">-                    put(&quot;event_type&quot;, eventType)
+</a><a href="#h4-5-13" id="h4-5-13" class="d">-                    put(&quot;data&quot;, data)
+</a><a href="#h4-5-14" id="h4-5-14" class="d">-                })
+</a><a href="#h4-5-15" id="h4-5-15" class="d">-            }
+</a><a href="#h4-5-16" id="h4-5-16" class="i">+        runBlocking(coroutineScope.coroutineContext) {
+</a><a href="#h4-5-17" id="h4-5-17" class="i">+            database.insert(&quot;tracker_events&quot;, null, ContentValues().apply {
+</a><a href="#h4-5-18" id="h4-5-18" class="i">+                put(&quot;timestamp&quot;, System.currentTimeMillis())
+</a><a href="#h4-5-19" id="h4-5-19" class="i">+                put(&quot;conversation_id&quot;, conversationId)
+</a><a href="#h4-5-20" id="h4-5-20" class="i">+                put(&quot;conversation_title&quot;, conversationTitle)
+</a><a href="#h4-5-21" id="h4-5-21" class="i">+                put(&quot;is_group&quot;, isGroup)
+</a><a href="#h4-5-22" id="h4-5-22" class="i">+                put(&quot;username&quot;, username)
+</a><a href="#h4-5-23" id="h4-5-23" class="i">+                put(&quot;user_id&quot;, userId)
+</a><a href="#h4-5-24" id="h4-5-24" class="i">+                put(&quot;event_type&quot;, eventType)
+</a><a href="#h4-5-25" id="h4-5-25" class="i">+                put(&quot;data&quot;, data)
+</a><a href="#h4-5-26" id="h4-5-26" class="i">+            })
+</a>         }
+     }
+ 
+<a href="#h4-6" id="h4-6" class="h">@@ -389,6 +402,26 @@ class LoggerWrapper(
+</a>         }
+     }
+ 
+<a href="#h4-6-3" id="h4-6-3" class="i">+    fun getConversationInfo(conversationId: String): ConversationInfo? {
+</a><a href="#h4-6-4" id="h4-6-4" class="i">+        val participantSize = database.rawQuery(&quot;SELECT COUNT(DISTINCT user_id) FROM messages WHERE conversation_id = ?&quot;, arrayOf(conversationId)).use {
+</a><a href="#h4-6-5" id="h4-6-5" class="i">+            if (!it.moveToFirst()) return null
+</a><a href="#h4-6-6" id="h4-6-6" class="i">+            it.getInt(0)
+</a><a href="#h4-6-7" id="h4-6-7" class="i">+        }
+</a><a href="#h4-6-8" id="h4-6-8" class="i">+        val groupTitle = if (participantSize &gt; 2) database.rawQuery(&quot;SELECT group_title FROM messages WHERE conversation_id = ? AND group_title IS NOT NULL LIMIT 1&quot;, arrayOf(conversationId)).use {
+</a><a href="#h4-6-9" id="h4-6-9" class="i">+            if (!it.moveToFirst()) return@use null
+</a><a href="#h4-6-10" id="h4-6-10" class="i">+            it.getStringOrNull(&quot;group_title&quot;)
+</a><a href="#h4-6-11" id="h4-6-11" class="i">+        } else null
+</a><a href="#h4-6-12" id="h4-6-12" class="i">+        val usernames = database.rawQuery(&quot;SELECT DISTINCT username FROM messages WHERE conversation_id = ?&quot;, arrayOf(conversationId)).use {
+</a><a href="#h4-6-13" id="h4-6-13" class="i">+            val usernames = mutableListOf&lt;String&gt;()
+</a><a href="#h4-6-14" id="h4-6-14" class="i">+            while (it.moveToNext()) {
+</a><a href="#h4-6-15" id="h4-6-15" class="i">+                usernames.add(it.getString(0))
+</a><a href="#h4-6-16" id="h4-6-16" class="i">+            }
+</a><a href="#h4-6-17" id="h4-6-17" class="i">+            usernames
+</a><a href="#h4-6-18" id="h4-6-18" class="i">+        }
+</a><a href="#h4-6-19" id="h4-6-19" class="i">+
+</a><a href="#h4-6-20" id="h4-6-20" class="i">+        return ConversationInfo(conversationId, participantSize, groupTitle, usernames)
+</a><a href="#h4-6-21" id="h4-6-21" class="i">+    }
+</a><a href="#h4-6-22" id="h4-6-22" class="i">+
+</a>     fun getMessageEdits(conversationId: String, messageId: Long): List&lt;LoggedMessageEdit&gt; {
+         val edits = mutableListOf&lt;LoggedMessageEdit&gt;()
+         database.rawQuery(
+<a href="#h4-7" id="h4-7" class="h">@@ -414,13 +447,18 @@ class LoggerWrapper(
+</a>     ): List&lt;LoggedMessage&gt; {
+         val messages = mutableListOf&lt;LoggedMessage&gt;()
+         database.rawQuery(
+<a href="#h4-7-3" id="h4-7-3" class="d">-            &quot;SELECT * FROM messages WHERE conversation_id = ? AND added_timestamp ${if (reverseOrder) &quot;&lt;&quot; else &quot;&gt;&quot;} ? ORDER BY added_timestamp ${if (reverseOrder) &quot;DESC&quot; else &quot;ASC&quot;}&quot;,
+</a><a href="#h4-7-4" id="h4-7-4" class="i">+            &quot;SELECT * FROM messages WHERE conversation_id = ? AND send_timestamp ${if (reverseOrder) &quot;&lt;&quot; else &quot;&gt;&quot;} ? ORDER BY send_timestamp ${if (reverseOrder) &quot;DESC&quot; else &quot;ASC&quot;}&quot;,
+</a>             arrayOf(conversationId, fromTimestamp.toString())
+         ).use {
+             while (it.moveToNext() &amp;&amp; messages.size &lt; limit) {
+                 val message = LoggedMessage(
+                     messageId = it.getLongOrNull(&quot;message_id&quot;) ?: continue,
+<a href="#h4-7-10" id="h4-7-10" class="d">-                    timestamp = it.getLongOrNull(&quot;added_timestamp&quot;) ?: continue,
+</a><a href="#h4-7-11" id="h4-7-11" class="i">+                    conversationId = it.getStringOrNull(&quot;conversation_id&quot;) ?: continue,
+</a><a href="#h4-7-12" id="h4-7-12" class="i">+                    userId = it.getStringOrNull(&quot;user_id&quot;) ?: continue,
+</a><a href="#h4-7-13" id="h4-7-13" class="i">+                    username = it.getStringOrNull(&quot;username&quot;) ?: continue,
+</a><a href="#h4-7-14" id="h4-7-14" class="i">+                    sendTimestamp = it.getLongOrNull(&quot;send_timestamp&quot;) ?: continue,
+</a><a href="#h4-7-15" id="h4-7-15" class="i">+                    addedTimestamp = it.getLongOrNull(&quot;added_timestamp&quot;) ?: continue,
+</a><a href="#h4-7-16" id="h4-7-16" class="i">+                    groupTitle = it.getStringOrNull(&quot;group_title&quot;),
+</a>                     messageData = it.getBlobOrNull(&quot;message_data&quot;) ?: continue
+                 )
+                 if (filter != null &amp;&amp; !filter(message)) continue
+<b>diff --git a/<a id="h5" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/spying/MessageLogger.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/spying/MessageLogger.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/spying/MessageLogger.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/spying/MessageLogger.kt</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -7,6 +7,7 @@ import android.graphics.drawable.shapes.Shape
+</a> import android.os.DeadObjectException
+ import com.google.gson.JsonObject
+ import com.google.gson.JsonParser
+<a href="#h5-0-3" id="h5-0-3" class="i">+import me.rhunk.snapenhance.bridge.logger.BridgeLoggedMessage
+</a> import me.rhunk.snapenhance.common.data.ContentType
+ import me.rhunk.snapenhance.common.data.MessageState
+ import me.rhunk.snapenhance.common.data.QuotedMessageContentStatus
+<a href="#h5-1" id="h5-1" class="h">@@ -40,6 +41,9 @@ class MessageLogger : Feature(&quot;MessageLogger&quot;,
+</a> 
+     private val threadPool = Executors.newFixedThreadPool(10)
+ 
+<a href="#h5-1-3" id="h5-1-3" class="i">+    private val usernameCache = EvictingMap&lt;String, String&gt;(500) // user id -&gt; username
+</a><a href="#h5-1-4" id="h5-1-4" class="i">+    private val groupTitleCache = EvictingMap&lt;String, String?&gt;(500) // conversation id -&gt; group title
+</a><a href="#h5-1-5" id="h5-1-5" class="i">+
+</a>     private val cachedIdLinks = EvictingMap&lt;Long, Long&gt;(500) // client id -&gt; server id
+     private val fetchedMessages = mutableListOf&lt;Long&gt;() // list of unique message ids
+     private val deletedMessageCache = EvictingMap&lt;Long, JsonObject&gt;(200) // unique message id -&gt; message json object
+<a href="#h5-2" id="h5-2" class="h">@@ -127,7 +131,21 @@ class MessageLogger : Feature(&quot;MessageLogger&quot;,
+</a> 
+                 threadPool.execute {
+                     try {
+<a href="#h5-2-3" id="h5-2-3" class="d">-                        loggerInterface.addMessage(conversationId, uniqueMessageIdentifier, context.gson.toJson(messageInstance).toByteArray(Charsets.UTF_8))
+</a><a href="#h5-2-4" id="h5-2-4" class="i">+                        loggerInterface.addMessage(
+</a><a href="#h5-2-5" id="h5-2-5" class="i">+                            BridgeLoggedMessage().also {
+</a><a href="#h5-2-6" id="h5-2-6" class="i">+                                it.messageId = uniqueMessageIdentifier
+</a><a href="#h5-2-7" id="h5-2-7" class="i">+                                it.conversationId = conversationId
+</a><a href="#h5-2-8" id="h5-2-8" class="i">+                                it.userId = event.message.senderId.toString()
+</a><a href="#h5-2-9" id="h5-2-9" class="i">+                                it.username = usernameCache.getOrPut(it.userId) {
+</a><a href="#h5-2-10" id="h5-2-10" class="i">+                                    context.database.getFriendInfo(it.userId)?.mutableUsername ?: it.userId
+</a><a href="#h5-2-11" id="h5-2-11" class="i">+                                }
+</a><a href="#h5-2-12" id="h5-2-12" class="i">+                                it.sendTimestamp = event.message.messageMetadata?.createdAt ?: System.currentTimeMillis()
+</a><a href="#h5-2-13" id="h5-2-13" class="i">+                                it.groupTitle = groupTitleCache.getOrPut(conversationId) {
+</a><a href="#h5-2-14" id="h5-2-14" class="i">+                                    context.database.getFeedEntryByConversationId(conversationId)?.feedDisplayName ?: conversationId
+</a><a href="#h5-2-15" id="h5-2-15" class="i">+                                }
+</a><a href="#h5-2-16" id="h5-2-16" class="i">+                                it.messageData = context.gson.toJson(messageInstance).toByteArray(Charsets.UTF_8)
+</a><a href="#h5-2-17" id="h5-2-17" class="i">+                            }
+</a><a href="#h5-2-18" id="h5-2-18" class="i">+                        )
+</a>                     } catch (ignored: DeadObjectException) {}
+                 }
+ 
+</pre>
+</div>
+</body>
+</html>

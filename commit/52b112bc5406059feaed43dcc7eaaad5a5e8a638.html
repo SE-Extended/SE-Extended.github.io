@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor: sync - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/52b112bc5406059feaed43dcc7eaaad5a5e8a638.html">52b112bc5406059feaed43dcc7eaaad5a5e8a638</a>
+<b>parent</b> <a href="../commit/68c16fa0b7b7e2f8fd8638617dae298f0a0c5b04.html">68c16fa0b7b7e2f8fd8638617dae298f0a0c5b04</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Fri, 19 Jul 2024 21:57:06 +0100
+
+refactor: sync
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt</a></td><td> | </td><td class="num">9</td><td><span class="i">++++</span><span class="d">-----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">248</td><td><span class="i">+++++++++++++++++++++</span><span class="d">----------------------------------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></td><td> | </td><td class="num">103</td><td><span class="i">+++++++++++++++++++++++++++++++</span><span class="d">------------------------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomTheming.kt</a></td><td> | </td><td class="num">450</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-</span></td></tr>
+</table></pre><pre>4 files changed, 556 insertions(+), 254 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -23,10 +23,9 @@ class SecurityScreen : SetupScreen() {
+</a>         )
+ 
+         DialogText(
+<a href="#h0-0-3" id="h0-0-3" class="d">-            &quot;Since Snapchat has implemented additional security measures against third-party applications such as SnapEnhance, we offer a non-opensource solution that reduces the risk of banning and prevents Snapchat from detecting SnapEnhance. &quot; +
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-                    &quot;\nPlease note that this solution does not provide a ban bypass or spoofer for anything, and does not take any personal data or communicate with the network.&quot; +
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-                    &quot;\nWe also encourage you to use official signed builds to avoid compromising the security of your account.&quot; +
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-            &quot;\nIf you&#39;re having trouble using the solution, or are experiencing crashes, join the Telegram Group for help: https://t.me/snapenhance_chat&quot;
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+            &quot;Since Snapchat has implemented additional security measures against third-party applications such as SE Extended, we offer a non-opensource solution that reduces the risk of banning and prevents Snapchat from detecting SE Extended. &quot; +
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+                    &quot;\nPlease note that this solution does not provide a ban bypass or A spoofer for anything, and does not take any personal data or communicate with the network.&quot; +
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+            &quot;\nIf you&#39;re having trouble using the solution, or are experiencing crashes, join the Telegram Group for help: https://t.me/SE_Extended_Chat&quot;
+</a>         )
+ 
+         var denyDialog by remember { mutableStateOf(false) }
+<a href="#h0-1" id="h0-1" class="h">@@ -37,7 +36,7 @@ class SecurityScreen : SetupScreen() {
+</a>                     denyDialog = false
+                 },
+                 text = {
+<a href="#h0-1-3" id="h0-1-3" class="d">-                    Text(&quot;Are you sure you don&#39;t want to use this solution? You can always change this later in the settings in the SnapEnhance app.&quot;)
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+                    Text(&quot;Are you sure you don&#39;t want to use this solution? You can always change this later in the settings in the SE Extended app.&quot;)
+</a>                 },
+                 dismissButton = {
+                     Button(onClick = {
+<b>diff --git a/<a id="h1" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -36,6 +36,9 @@
+</a>             &quot;friend_tracker&quot;: &quot;Friend Tracker&quot;,
+             &quot;edit_rule&quot;: &quot;Edit Rule&quot;,
+             &quot;file_imports&quot;: &quot;File Imports&quot;,
+<a href="#h1-0-3" id="h1-0-3" class="i">+            &quot;theming&quot;: &quot;Theming&quot;,
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+            &quot;edit_theme&quot;: &quot;Edit Theme&quot;,
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+            &quot;manage_repos&quot;: &quot;Manage Repositories&quot;,
+</a>             &quot;social&quot;: &quot;Social&quot;,
+             &quot;manage_scope&quot;: &quot;Manage Scope&quot;,
+             &quot;messaging_preview&quot;: &quot;Preview&quot;,
+<a href="#h1-1" id="h1-1" class="h">@@ -168,6 +171,9 @@
+</a>                 &quot;search_bar&quot;: &quot;Search&quot;,
+                 &quot;no_friends_map&quot;: &quot;No friends on the map&quot;,
+                 &quot;no_friends_found&quot;: &quot;No friends found&quot;
+<a href="#h1-1-3" id="h1-1-3" class="i">+            },
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+            &quot;theming&quot;: {
+</a><a href="#h1-1-5" id="h1-1-5" class="i">+                &quot;no_themes_hint&quot;: &quot;No themes found&quot;
+</a>             }
+         },
+         &quot;dialogs&quot;: {
+<a href="#h1-2" id="h1-2" class="h">@@ -293,6 +299,10 @@
+</a>             &quot;name&quot;: &quot;Change Language&quot;,
+             &quot;description&quot;: &quot;Change the language of SE Extended&quot;
+         },
+<a href="#h1-2-3" id="h1-2-3" class="i">+        &quot;security_features&quot;: {
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+            &quot;name&quot;: &quot;Security Features&quot;,
+</a><a href="#h1-2-5" id="h1-2-5" class="i">+            &quot;description&quot;: &quot;Access security features&quot;
+</a><a href="#h1-2-6" id="h1-2-6" class="i">+        },
+</a>         &quot;file_imports&quot;: {
+             &quot;name&quot;: &quot;File Imports&quot;,
+             &quot;description&quot;: &quot;Import files for use in Snapchat&quot;
+<a href="#h1-3" id="h1-3" class="h">@@ -304,6 +314,10 @@
+</a>         &quot;logger_history&quot;: {
+             &quot;name&quot;: &quot;Logger History&quot;,
+             &quot;description&quot;: &quot;View the history of logged messages&quot;
+<a href="#h1-3-3" id="h1-3-3" class="i">+        },
+</a><a href="#h1-3-4" id="h1-3-4" class="i">+        &quot;theming&quot;: {
+</a><a href="#h1-3-5" id="h1-3-5" class="i">+            &quot;name&quot;: &quot;Theming&quot;,
+</a><a href="#h1-3-6" id="h1-3-6" class="i">+            &quot;description&quot;: &quot;Customize the look and feel of Snapchat&quot;
+</a>         }
+     },
+ 
+<a href="#h1-4" id="h1-4" class="h">@@ -415,81 +429,9 @@
+</a>                         &quot;name&quot;: &quot;Enable App Appearance Settings&quot;,
+                         &quot;description&quot;: &quot;Enables the hidden App Appearance Setting\nMay not be required on newer Snapchat versions&quot;
+                     },
+<a href="#h1-4-3" id="h1-4-3" class="d">-                    &quot;customize_ui&quot;: {
+</a><a href="#h1-4-4" id="h1-4-4" class="d">-                        &quot;name&quot;: &quot;Colors&quot;,
+</a><a href="#h1-4-5" id="h1-4-5" class="d">-                        &quot;description&quot;: &quot;Customize Snapchats Colors&quot;,
+</a><a href="#h1-4-6" id="h1-4-6" class="d">-                        &quot;properties&quot;: {
+</a><a href="#h1-4-7" id="h1-4-7" class="d">-                            &quot;theme_picker&quot;: {
+</a><a href="#h1-4-8" id="h1-4-8" class="d">-                                &quot;name&quot;: &quot;Theme Picker&quot;,
+</a><a href="#h1-4-9" id="h1-4-9" class="d">-                                &quot;description&quot;: &quot;Preset Snapchat Themes&quot;
+</a><a href="#h1-4-10" id="h1-4-10" class="d">-                            },
+</a><a href="#h1-4-11" id="h1-4-11" class="d">-                            &quot;colors&quot;: {
+</a><a href="#h1-4-12" id="h1-4-12" class="d">-                                &quot;name&quot;: &quot;Custom Colors&quot;,
+</a><a href="#h1-4-13" id="h1-4-13" class="d">-                                &quot;description&quot;: &quot;Customize Individual colors\nNote: Select `Custom Colors` on Theme Picker to use&quot;,
+</a><a href="#h1-4-14" id="h1-4-14" class="d">-                                &quot;properties&quot;: {
+</a><a href="#h1-4-15" id="h1-4-15" class="d">-                                    &quot;text_color&quot;: {
+</a><a href="#h1-4-16" id="h1-4-16" class="d">-                                        &quot;name&quot;: &quot;Main Text Color&quot;,
+</a><a href="#h1-4-17" id="h1-4-17" class="d">-                                        &quot;description&quot;: &quot;Changes Snapchats main text color&quot;
+</a><a href="#h1-4-18" id="h1-4-18" class="d">-                                    },
+</a><a href="#h1-4-19" id="h1-4-19" class="d">-                                    &quot;chat_chat_text_color&quot;: {
+</a><a href="#h1-4-20" id="h1-4-20" class="d">-                                        &quot;name&quot;: &quot;Main Friend Feed Text Color&quot;,
+</a><a href="#h1-4-21" id="h1-4-21" class="d">-                                        &quot;description&quot;: &quot;Changes the text color of ( New Chat / New Snap And Chats / Typing / Calling / Missed call / Speaking / New Voice Note ) on the friend feed&quot;
+</a><a href="#h1-4-22" id="h1-4-22" class="d">-                                    },
+</a><a href="#h1-4-23" id="h1-4-23" class="d">-                                    &quot;pending_sending_text_color&quot;: {
+</a><a href="#h1-4-24" id="h1-4-24" class="d">-                                        &quot;name&quot;: &quot;Secondary Friend Feed Text Color&quot;,
+</a><a href="#h1-4-25" id="h1-4-25" class="d">-                                        &quot;description&quot;: &quot;Changes the text color of ( Delivered / Received / Sending / Opened / Tap To Chat / Hold To Replay / Replayed / Saved In Chat / Called ) on the friend feed&quot;
+</a><a href="#h1-4-26" id="h1-4-26" class="d">-                                    },
+</a><a href="#h1-4-27" id="h1-4-27" class="d">-                                    &quot;snap_with_sound_text_color&quot;: {
+</a><a href="#h1-4-28" id="h1-4-28" class="d">-                                        &quot;name&quot;: &quot;Snaps With Sound Text Color&quot;,
+</a><a href="#h1-4-29" id="h1-4-29" class="d">-                                        &quot;description&quot;: &quot;Changes the text color of ( New Snap ) on the friend feed\nNote: Video Snaps Only&quot;
+</a><a href="#h1-4-30" id="h1-4-30" class="d">-                                    },
+</a><a href="#h1-4-31" id="h1-4-31" class="d">-                                    &quot;snap_without_sound_text_color&quot;: {
+</a><a href="#h1-4-32" id="h1-4-32" class="d">-                                        &quot;name&quot;: &quot;Snaps Without Sound Text Color&quot;,
+</a><a href="#h1-4-33" id="h1-4-33" class="d">-                                        &quot;description&quot;: &quot;Changes the text color of ( New Snap ) on the friend feed\nNote: Video Snaps Only&quot;
+</a><a href="#h1-4-34" id="h1-4-34" class="d">-                                    },
+</a><a href="#h1-4-35" id="h1-4-35" class="d">-                                    &quot;action_sheet_description_text_color&quot;: {
+</a><a href="#h1-4-36" id="h1-4-36" class="d">-                                        &quot;name&quot;: &quot;Action Menu Description Text Color&quot;,
+</a><a href="#h1-4-37" id="h1-4-37" class="d">-                                        &quot;description&quot;: &quot;Changes the text color of the description on the action menu&quot;
+</a><a href="#h1-4-38" id="h1-4-38" class="d">-                                    },
+</a><a href="#h1-4-39" id="h1-4-39" class="d">-                                    &quot;background_color&quot;: {
+</a><a href="#h1-4-40" id="h1-4-40" class="d">-                                        &quot;name&quot;: &quot;Background Color&quot;,
+</a><a href="#h1-4-41" id="h1-4-41" class="d">-                                        &quot;description&quot;: &quot;Changes Snapchats background color&quot;
+</a><a href="#h1-4-42" id="h1-4-42" class="d">-                                    },
+</a><a href="#h1-4-43" id="h1-4-43" class="d">-                                    &quot;background_color_surface&quot;: {
+</a><a href="#h1-4-44" id="h1-4-44" class="d">-                                        &quot;name&quot;: &quot;Background Surface Color&quot;,
+</a><a href="#h1-4-45" id="h1-4-45" class="d">-                                        &quot;description&quot;: &quot;Changes Snapchats background surface color&quot;
+</a><a href="#h1-4-46" id="h1-4-46" class="d">-                                    },
+</a><a href="#h1-4-47" id="h1-4-47" class="d">-                                    &quot;list_background_drawable&quot;: {
+</a><a href="#h1-4-48" id="h1-4-48" class="d">-                                        &quot;name&quot;: &quot;Conversation list Background &quot;,
+</a><a href="#h1-4-49" id="h1-4-49" class="d">-                                        &quot;description&quot;: &quot;Changes the background color of the conversation list on the friend feed\nThis might break the friend feeds look&quot;
+</a><a href="#h1-4-50" id="h1-4-50" class="d">-                                    },
+</a><a href="#h1-4-51" id="h1-4-51" class="d">-                                    &quot;friend_feed_conversations_line_color&quot;: {
+</a><a href="#h1-4-52" id="h1-4-52" class="d">-                                        &quot;name&quot;: &quot;Conversations Line Color&quot;,
+</a><a href="#h1-4-53" id="h1-4-53" class="d">-                                        &quot;description&quot;: &quot;Changes the line divider color that splits Conversations on the friend feed&quot;
+</a><a href="#h1-4-54" id="h1-4-54" class="d">-                                    },
+</a><a href="#h1-4-55" id="h1-4-55" class="d">-                                    &quot;action_menu_background_color&quot;: {
+</a><a href="#h1-4-56" id="h1-4-56" class="d">-                                        &quot;name&quot;: &quot;Action Menu Background Color&quot;,
+</a><a href="#h1-4-57" id="h1-4-57" class="d">-                                        &quot;description&quot;: &quot;Changes Snapchats chat action menu background color&quot;
+</a><a href="#h1-4-58" id="h1-4-58" class="d">-                                    },
+</a><a href="#h1-4-59" id="h1-4-59" class="d">-                                    &quot;action_menu_round_background_color&quot;: {
+</a><a href="#h1-4-60" id="h1-4-60" class="d">-                                        &quot;name&quot;: &quot;Action Menu Round Background Color&quot;,
+</a><a href="#h1-4-61" id="h1-4-61" class="d">-                                        &quot;description&quot;: &quot;Changes Snapchats chat action menu round background color&quot;
+</a><a href="#h1-4-62" id="h1-4-62" class="d">-                                    },
+</a><a href="#h1-4-63" id="h1-4-63" class="d">-                                    &quot;sig_color_icon_primary&quot;: {
+</a><a href="#h1-4-64" id="h1-4-64" class="d">-                                        &quot;name&quot;: &quot;Action Menu Icon Color&quot;,
+</a><a href="#h1-4-65" id="h1-4-65" class="d">-                                        &quot;description&quot;: &quot;Changes the color of icons on chat action menu/friend feed menu&quot;
+</a><a href="#h1-4-66" id="h1-4-66" class="d">-                                    },
+</a><a href="#h1-4-67" id="h1-4-67" class="d">-                                    &quot;camera_grid_lines&quot;: {
+</a><a href="#h1-4-68" id="h1-4-68" class="d">-                                        &quot;name&quot;: &quot;Camera Gridlines Color&quot;,
+</a><a href="#h1-4-69" id="h1-4-69" class="d">-                                        &quot;description&quot;: &quot;Changes Snapchats Gridlines color on the Camera Preview\nNote: Enable the grid on the my camera settings&quot;
+</a><a href="#h1-4-70" id="h1-4-70" class="d">-                                    }
+</a><a href="#h1-4-71" id="h1-4-71" class="d">-                                }
+</a><a href="#h1-4-72" id="h1-4-72" class="d">-                            },
+</a><a href="#h1-4-73" id="h1-4-73" class="d">-                            &quot;colors_debug&quot;: {
+</a><a href="#h1-4-74" id="h1-4-74" class="d">-                                &quot;name&quot;: &quot;Colors Debug&quot;,
+</a><a href="#h1-4-75" id="h1-4-75" class="d">-                                &quot;description&quot;: &quot;Logs The obtainStyledAttributes, That are being used when Snapchat is loaded\nNote: This will significantly increase the size of your logs&quot;
+</a><a href="#h1-4-76" id="h1-4-76" class="d">-                            }
+</a><a href="#h1-4-77" id="h1-4-77" class="d">-                        }
+</a><a href="#h1-4-78" id="h1-4-78" class="i">+                    &quot;custom_theme&quot;: {
+</a><a href="#h1-4-79" id="h1-4-79" class="i">+                        &quot;name&quot;: &quot;Custom Theme&quot;,
+</a><a href="#h1-4-80" id="h1-4-80" class="i">+                        &quot;description&quot;: &quot;Customize Snapchat&#39;s Colors\nNote: if you choose a dark theme (like AMOLED), You may need to enable the dark mode on the App Appearance settings for better results&quot;
+</a>                     },
+                     &quot;friend_feed_message_preview&quot;: {
+                         &quot;name&quot;: &quot;Friend Feed Message Preview&quot;,
+<a href="#h1-5" id="h1-5" class="h">@@ -1049,112 +991,6 @@
+</a>                             }
+                         }
+                     },
+<a href="#h1-5-3" id="h1-5-3" class="d">-                    &quot;experimental_colors&quot;: {
+</a><a href="#h1-5-4" id="h1-5-4" class="d">-                        &quot;name&quot;: &quot;Experimental Color Options&quot;,
+</a><a href="#h1-5-5" id="h1-5-5" class="d">-                        &quot;description&quot;: &quot;Note: These color features are Experimental and therefore may cause your snapchat to look strange,\nSelect `Custom Colors` on Theme picker to use&quot;,
+</a><a href="#h1-5-6" id="h1-5-6" class="d">-                        &quot;properties&quot;: {
+</a><a href="#h1-5-7" id="h1-5-7" class="d">-                            &quot;ring_color&quot;: {
+</a><a href="#h1-5-8" id="h1-5-8" class="d">-                                &quot;name&quot;: &quot;Ring Color&quot;,
+</a><a href="#h1-5-9" id="h1-5-9" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-10" id="h1-5-10" class="d">-                            },
+</a><a href="#h1-5-11" id="h1-5-11" class="d">-                            &quot;sig_color_icon_secondary&quot;: {
+</a><a href="#h1-5-12" id="h1-5-12" class="d">-                                &quot;name&quot;: &quot;Sig Color Icon Secondary&quot;,
+</a><a href="#h1-5-13" id="h1-5-13" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-14" id="h1-5-14" class="d">-                            },
+</a><a href="#h1-5-15" id="h1-5-15" class="d">-                            &quot;item_shape_fill_color&quot;: {
+</a><a href="#h1-5-16" id="h1-5-16" class="d">-                                &quot;name&quot;: &quot;Item Shape Fill Color&quot;,
+</a><a href="#h1-5-17" id="h1-5-17" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-18" id="h1-5-18" class="d">-                            },
+</a><a href="#h1-5-19" id="h1-5-19" class="d">-                            &quot;ring_start_color&quot;: {
+</a><a href="#h1-5-20" id="h1-5-20" class="d">-                                &quot;name&quot;: &quot;Ring Start Color&quot;,
+</a><a href="#h1-5-21" id="h1-5-21" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-22" id="h1-5-22" class="d">-                            },
+</a><a href="#h1-5-23" id="h1-5-23" class="d">-                            &quot;sig_color_layout_place_holder&quot;: {
+</a><a href="#h1-5-24" id="h1-5-24" class="d">-                                &quot;name&quot;: &quot;Sig Color Layout Place Holder&quot;,
+</a><a href="#h1-5-25" id="h1-5-25" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-26" id="h1-5-26" class="d">-                            },
+</a><a href="#h1-5-27" id="h1-5-27" class="d">-                            &quot;sc_button_color&quot;: {
+</a><a href="#h1-5-28" id="h1-5-28" class="d">-                                &quot;name&quot;: &quot;Sc Button Color&quot;,
+</a><a href="#h1-5-29" id="h1-5-29" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-30" id="h1-5-30" class="d">-                            },
+</a><a href="#h1-5-31" id="h1-5-31" class="d">-                            &quot;recipient_pill_background_drawable&quot;: {
+</a><a href="#h1-5-32" id="h1-5-32" class="d">-                                &quot;name&quot;: &quot;Recipient Pill Background Drawable&quot;,
+</a><a href="#h1-5-33" id="h1-5-33" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-34" id="h1-5-34" class="d">-                            },
+</a><a href="#h1-5-35" id="h1-5-35" class="d">-                            &quot;box_background_color&quot;: {
+</a><a href="#h1-5-36" id="h1-5-36" class="d">-                                &quot;name&quot;: &quot;Box Background Color&quot;,
+</a><a href="#h1-5-37" id="h1-5-37" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-38" id="h1-5-38" class="d">-                            },
+</a><a href="#h1-5-39" id="h1-5-39" class="d">-                            &quot;edit_text_color&quot;: {
+</a><a href="#h1-5-40" id="h1-5-40" class="d">-                                &quot;name&quot;: &quot;Edit Text Color&quot;,
+</a><a href="#h1-5-41" id="h1-5-41" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-42" id="h1-5-42" class="d">-                            },
+</a><a href="#h1-5-43" id="h1-5-43" class="d">-                            &quot;chip_background_color&quot;: {
+</a><a href="#h1-5-44" id="h1-5-44" class="d">-                                &quot;name&quot;: &quot;Chip Background Color&quot;,
+</a><a href="#h1-5-45" id="h1-5-45" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-46" id="h1-5-46" class="d">-                            },
+</a><a href="#h1-5-47" id="h1-5-47" class="d">-                            &quot;recipient_input_style&quot;: {
+</a><a href="#h1-5-48" id="h1-5-48" class="d">-                                &quot;name&quot;: &quot;Recipient Input Style&quot;,
+</a><a href="#h1-5-49" id="h1-5-49" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-50" id="h1-5-50" class="d">-                            },
+</a><a href="#h1-5-51" id="h1-5-51" class="d">-                            &quot;range_fill_color&quot;: {
+</a><a href="#h1-5-52" id="h1-5-52" class="d">-                                &quot;name&quot;: &quot;Range Fill Color&quot;,
+</a><a href="#h1-5-53" id="h1-5-53" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-54" id="h1-5-54" class="d">-                            },
+</a><a href="#h1-5-55" id="h1-5-55" class="d">-                            &quot;psts_indicator_color&quot;: {
+</a><a href="#h1-5-56" id="h1-5-56" class="d">-                                &quot;name&quot;: &quot;Psts Indicator Color&quot;,
+</a><a href="#h1-5-57" id="h1-5-57" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-58" id="h1-5-58" class="d">-                            },
+</a><a href="#h1-5-59" id="h1-5-59" class="d">-                            &quot;psts_tab_background&quot;: {
+</a><a href="#h1-5-60" id="h1-5-60" class="d">-                                &quot;name&quot;: &quot;Psts Tab Background&quot;,
+</a><a href="#h1-5-61" id="h1-5-61" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-62" id="h1-5-62" class="d">-                            },
+</a><a href="#h1-5-63" id="h1-5-63" class="d">-                            &quot;psts_divider_color&quot;: {
+</a><a href="#h1-5-64" id="h1-5-64" class="d">-                                &quot;name&quot;: &quot;Psts Divider Color&quot;,
+</a><a href="#h1-5-65" id="h1-5-65" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-66" id="h1-5-66" class="d">-                            },
+</a><a href="#h1-5-67" id="h1-5-67" class="d">-                            &quot;tab_text_color&quot;: {
+</a><a href="#h1-5-68" id="h1-5-68" class="d">-                                &quot;name&quot;: &quot;Tab Text Color&quot;,
+</a><a href="#h1-5-69" id="h1-5-69" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-70" id="h1-5-70" class="d">-                            },
+</a><a href="#h1-5-71" id="h1-5-71" class="d">-                            &quot;status_bar_foreground&quot;: {
+</a><a href="#h1-5-72" id="h1-5-72" class="d">-                                &quot;name&quot;: &quot;Status Bar Foreground&quot;,
+</a><a href="#h1-5-73" id="h1-5-73" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-74" id="h1-5-74" class="d">-                            },
+</a><a href="#h1-5-75" id="h1-5-75" class="d">-                            &quot;status_bar_background&quot;: {
+</a><a href="#h1-5-76" id="h1-5-76" class="d">-                                &quot;name&quot;: &quot;Status Bar Background&quot;,
+</a><a href="#h1-5-77" id="h1-5-77" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-78" id="h1-5-78" class="d">-                            },
+</a><a href="#h1-5-79" id="h1-5-79" class="d">-                            &quot;stroke_color&quot;: {
+</a><a href="#h1-5-80" id="h1-5-80" class="d">-                                &quot;name&quot;: &quot;Stroke Color&quot;,
+</a><a href="#h1-5-81" id="h1-5-81" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-82" id="h1-5-82" class="d">-                            },
+</a><a href="#h1-5-83" id="h1-5-83" class="d">-                            &quot;story_replay_view_ring_color&quot;: {
+</a><a href="#h1-5-84" id="h1-5-84" class="d">-                                &quot;name&quot;: &quot;Story Replay View Ring Color&quot;,
+</a><a href="#h1-5-85" id="h1-5-85" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-86" id="h1-5-86" class="d">-                            },
+</a><a href="#h1-5-87" id="h1-5-87" class="d">-                            &quot;sig_color_button_primary&quot;: {
+</a><a href="#h1-5-88" id="h1-5-88" class="d">-                                &quot;name&quot;: &quot;Sig Color Button Primary&quot;,
+</a><a href="#h1-5-89" id="h1-5-89" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-90" id="h1-5-90" class="d">-                            },
+</a><a href="#h1-5-91" id="h1-5-91" class="d">-                            &quot;sig_color_base_app_yellow&quot;: {
+</a><a href="#h1-5-92" id="h1-5-92" class="d">-                                &quot;name&quot;: &quot;Sig Color Base App Yellow&quot;,
+</a><a href="#h1-5-93" id="h1-5-93" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-94" id="h1-5-94" class="d">-                            },
+</a><a href="#h1-5-95" id="h1-5-95" class="d">-                            &quot;sig_color_background_surface_translucent&quot;: {
+</a><a href="#h1-5-96" id="h1-5-96" class="d">-                                &quot;name&quot;: &quot;sigColorBackgroundSurfaceTranslucent&quot;,
+</a><a href="#h1-5-97" id="h1-5-97" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-98" id="h1-5-98" class="d">-                            },
+</a><a href="#h1-5-99" id="h1-5-99" class="d">-                            &quot;sig_color_story_ring_friends_feed_story_ring&quot;: {
+</a><a href="#h1-5-100" id="h1-5-100" class="d">-                                &quot;name&quot;: &quot;sigColorStoryRingFriendsFeedStoryRing&quot;,
+</a><a href="#h1-5-101" id="h1-5-101" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-102" id="h1-5-102" class="d">-                            },
+</a><a href="#h1-5-103" id="h1-5-103" class="d">-                            &quot;sig_color_story_ring_discover_tab_thumbnail_story_ring&quot;: {
+</a><a href="#h1-5-104" id="h1-5-104" class="d">-                                &quot;name&quot;: &quot;sigColorStoryRingDiscoverTabThumbnailStoryRing&quot;,
+</a><a href="#h1-5-105" id="h1-5-105" class="d">-                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h1-5-106" id="h1-5-106" class="d">-                            }
+</a><a href="#h1-5-107" id="h1-5-107" class="d">-                        }
+</a><a href="#h1-5-108" id="h1-5-108" class="d">-                    },
+</a>                     &quot;convert_message_locally&quot;: {
+                         &quot;name&quot;: &quot;Convert Message Locally&quot;,
+                         &quot;description&quot;: &quot;Converts snaps to chat external media locally. This appears in chat download context menu&quot;
+<a href="#h1-6" id="h1-6" class="h">@@ -1323,9 +1159,9 @@
+</a>                 &quot;always_light&quot;: &quot;Always Light&quot;,
+                 &quot;always_dark&quot;: &quot;Always Dark&quot;
+             },
+<a href="#h1-6-3" id="h1-6-3" class="d">-            &quot;theme_picker&quot;: {
+</a><a href="#h1-6-4" id="h1-6-4" class="i">+            &quot;custom_theme&quot;: {
+</a>                 &quot;amoled_dark_mode&quot;: &quot;AMOLED Dark Mode&quot;,
+<a href="#h1-6-6" id="h1-6-6" class="d">-                &quot;custom&quot;: &quot;Custom Colors&quot;,
+</a><a href="#h1-6-7" id="h1-6-7" class="i">+                &quot;custom&quot;: &quot;Custom Themes (Use the Quick Actions to manage themes)&quot;,
+</a>                 &quot;material_you_light&quot;: &quot;Material You Light (Android 12+)&quot;,
+                 &quot;material_you_dark&quot;: &quot;Material You Dark (Android 12+)&quot;,
+                 &quot;light_blue&quot;: &quot;Light Blue&quot;,
+<a href="#h1-7" id="h1-7" class="h">@@ -1833,5 +1669,48 @@
+</a>         &quot;date_input_invalid_year_range&quot;: &quot;Invalid year&quot;,
+         &quot;date_input_invalid_not_allowed&quot;: &quot;Invalid date&quot;,
+         &quot;date_range_input_invalid_range_input&quot;: &quot;Invalid date range&quot;
+<a href="#h1-7-3" id="h1-7-3" class="i">+    },
+</a><a href="#h1-7-4" id="h1-7-4" class="i">+
+</a><a href="#h1-7-5" id="h1-7-5" class="i">+    &quot;theming_attributes&quot;: {
+</a><a href="#h1-7-6" id="h1-7-6" class="i">+        &quot;sigColorTextPrimary&quot;: &quot;Main Text Color&quot;,
+</a><a href="#h1-7-7" id="h1-7-7" class="i">+        &quot;sigColorChatChat&quot;: &quot;Main Friend Feed Text Color&quot;,
+</a><a href="#h1-7-8" id="h1-7-8" class="i">+        &quot;sigColorBackgroundSurface&quot;: &quot;Background Surface Color&quot;,
+</a><a href="#h1-7-9" id="h1-7-9" class="i">+        &quot;sigColorChatPendingSending&quot;: &quot;Secondary Friend Feed Text Color&quot;,
+</a><a href="#h1-7-10" id="h1-7-10" class="i">+        &quot;sigColorChatSnapWithSound&quot;: &quot;Snaps With Sound Text Color&quot;,
+</a><a href="#h1-7-11" id="h1-7-11" class="i">+        &quot;sigColorChatSnapWithoutSound&quot;: &quot;Snaps Without Sound Text Color&quot;,
+</a><a href="#h1-7-12" id="h1-7-12" class="i">+        &quot;actionSheetDescriptionTextColor&quot;: &quot;Action Menu Description Text Color&quot;,
+</a><a href="#h1-7-13" id="h1-7-13" class="i">+        &quot;sigColorBackgroundMain&quot;: &quot;Background Color&quot;,
+</a><a href="#h1-7-14" id="h1-7-14" class="i">+        &quot;listBackgroundDrawable&quot;: &quot;Conversation list Background&quot;,
+</a><a href="#h1-7-15" id="h1-7-15" class="i">+        &quot;sigColorChatConversationsLine&quot;: &quot;Conversations Line Color&quot;,
+</a><a href="#h1-7-16" id="h1-7-16" class="i">+        &quot;actionSheetBackgroundDrawable&quot;: &quot;Action Menu Background Color&quot;,
+</a><a href="#h1-7-17" id="h1-7-17" class="i">+        &quot;actionSheetRoundedBackgroundDrawable&quot;: &quot;Action Menu Round Background Color&quot;,
+</a><a href="#h1-7-18" id="h1-7-18" class="i">+        &quot;sigColorIconPrimary&quot;: &quot;Action Menu Icon Color&quot;,
+</a><a href="#h1-7-19" id="h1-7-19" class="i">+        &quot;sigExceptionColorCameraGridLines&quot;: &quot;Camera Gridlines Color&quot;,
+</a><a href="#h1-7-20" id="h1-7-20" class="i">+        &quot;listDivider&quot;: &quot;List Divider Color&quot;,
+</a><a href="#h1-7-21" id="h1-7-21" class="i">+        &quot;sigColorIconSecondary&quot;: &quot;Secondary Icon Color&quot;,
+</a><a href="#h1-7-22" id="h1-7-22" class="i">+        &quot;itemShapeFillColor&quot;: &quot;Item Shape Fill Color&quot;,
+</a><a href="#h1-7-23" id="h1-7-23" class="i">+        &quot;ringColor&quot;: &quot;Ring Color&quot;,
+</a><a href="#h1-7-24" id="h1-7-24" class="i">+        &quot;ringStartColor&quot;: &quot;Ring Start Color&quot;,
+</a><a href="#h1-7-25" id="h1-7-25" class="i">+        &quot;sigColorLayoutPlaceholder&quot;: &quot;Layout Placeholder Color&quot;,
+</a><a href="#h1-7-26" id="h1-7-26" class="i">+        &quot;scButtonColor&quot;: &quot;Snapchat Button Color&quot;,
+</a><a href="#h1-7-27" id="h1-7-27" class="i">+        &quot;recipientPillBackgroundDrawable&quot;: &quot;Recipient Pill Background&quot;,
+</a><a href="#h1-7-28" id="h1-7-28" class="i">+        &quot;boxBackgroundColor&quot;: &quot;Box Background Color&quot;,
+</a><a href="#h1-7-29" id="h1-7-29" class="i">+        &quot;editTextColor&quot;: &quot;Edit Text Color&quot;,
+</a><a href="#h1-7-30" id="h1-7-30" class="i">+        &quot;chipBackgroundColor&quot;: &quot;Chip Background Color&quot;,
+</a><a href="#h1-7-31" id="h1-7-31" class="i">+        &quot;recipientInputStyle&quot;: &quot;Recipient Input Style&quot;,
+</a><a href="#h1-7-32" id="h1-7-32" class="i">+        &quot;rangeFillColor&quot;: &quot;Range Fill Color&quot;,
+</a><a href="#h1-7-33" id="h1-7-33" class="i">+        &quot;pstsIndicatorColor&quot;: &quot;PSTS Indicator Color&quot;,
+</a><a href="#h1-7-34" id="h1-7-34" class="i">+        &quot;pstsTabBackground&quot;: &quot;PSTS Tab Background&quot;,
+</a><a href="#h1-7-35" id="h1-7-35" class="i">+        &quot;pstsDividerColor&quot;: &quot;PSTS Divider Color&quot;,
+</a><a href="#h1-7-36" id="h1-7-36" class="i">+        &quot;tabTextColor&quot;: &quot;Tab Text Color&quot;,
+</a><a href="#h1-7-37" id="h1-7-37" class="i">+        &quot;statusBarForeground&quot;: &quot;Status Bar Foreground Color&quot;,
+</a><a href="#h1-7-38" id="h1-7-38" class="i">+        &quot;statusBarBackground&quot;: &quot;Status Bar Background Color&quot;,
+</a><a href="#h1-7-39" id="h1-7-39" class="i">+        &quot;strokeColor&quot;: &quot;Stroke Color&quot;,
+</a><a href="#h1-7-40" id="h1-7-40" class="i">+        &quot;storyReplayViewRingColor&quot;: &quot;Story Replay View Ring Color&quot;,
+</a><a href="#h1-7-41" id="h1-7-41" class="i">+        &quot;sigColorButtonPrimary&quot;: &quot;Primary Button Color&quot;,
+</a><a href="#h1-7-42" id="h1-7-42" class="i">+        &quot;sigColorBaseAppYellow&quot;: &quot;Base App Yellow Color&quot;,
+</a><a href="#h1-7-43" id="h1-7-43" class="i">+        &quot;sigColorBackgroundSurfaceTranslucent&quot;: &quot;Translucent Background Surface Color&quot;,
+</a><a href="#h1-7-44" id="h1-7-44" class="i">+        &quot;sigColorStoryRingFriendsFeedStoryRing&quot;: &quot;Story Ring Friends Feed Story Ring Color&quot;,
+</a><a href="#h1-7-45" id="h1-7-45" class="i">+        &quot;sigColorStoryRingDiscoverTabThumbnailStoryRing&quot;: &quot;Story Ring Discover Tab Thumbnail Story Ring Color&quot;
+</a>     }
+<a href="#h1-7-47" id="h1-7-47" class="d">-}
+</a><a href="#h1-7-48" id="h1-7-48" class="i">+}</a><a href="#h1-7-49" id="h1-7-49" class="i">+
+\ No newline at end of file
+</a><b>diff --git a/<a id="h2" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -18,75 +18,52 @@ class UserInterfaceTweaks : ConfigContainer() {
+</a>         val amount = integer(&quot;amount&quot;, defaultValue = 1)
+     }
+ 
+<a href="#h2-0-3" id="h2-0-3" class="d">-    class ColorsConfig : ConfigContainer() {
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-        val textColor = color(&quot;text_color&quot;)
+</a><a href="#h2-0-5" id="h2-0-5" class="d">-        val chatChatTextColor = color(&quot;chat_chat_text_color&quot;)
+</a><a href="#h2-0-6" id="h2-0-6" class="d">-        val pendingSendingTextColor = color(&quot;pending_sending_text_color&quot;)
+</a><a href="#h2-0-7" id="h2-0-7" class="d">-        val snapWithSoundTextColor = color(&quot;snap_with_sound_text_color&quot;)
+</a><a href="#h2-0-8" id="h2-0-8" class="d">-        val snapWithoutSoundTextColor = color(&quot;snap_without_sound_text_color&quot;)
+</a><a href="#h2-0-9" id="h2-0-9" class="d">-        val actionSheetDescriptionTextColor = color(&quot;action_sheet_description_text_color&quot;)
+</a><a href="#h2-0-10" id="h2-0-10" class="d">-        val backgroundColor = color(&quot;background_color&quot;)
+</a><a href="#h2-0-11" id="h2-0-11" class="d">-        val backgroundColorSurface = color(&quot;background_color_surface&quot;)
+</a><a href="#h2-0-12" id="h2-0-12" class="d">-        val listBackgroundDrawable = color(&quot;list_background_drawable&quot;)
+</a><a href="#h2-0-13" id="h2-0-13" class="d">-        val friendFeedConversationsLineColor = color(&quot;friend_feed_conversations_line_color&quot;)
+</a><a href="#h2-0-14" id="h2-0-14" class="d">-        val actionMenuBackgroundColor = color(&quot;action_menu_background_color&quot;)
+</a><a href="#h2-0-15" id="h2-0-15" class="d">-        val actionMenuRoundBackgroundColor = color(&quot;action_menu_round_background_color&quot;)
+</a><a href="#h2-0-16" id="h2-0-16" class="d">-        val sigColorIconPrimary = color(&quot;sig_color_icon_primary&quot;)
+</a><a href="#h2-0-17" id="h2-0-17" class="d">-        val cameraGridLines = color(&quot;camera_grid_lines&quot;)
+</a><a href="#h2-0-18" id="h2-0-18" class="d">-    }
+</a><a href="#h2-0-19" id="h2-0-19" class="d">-
+</a><a href="#h2-0-20" id="h2-0-20" class="d">-    inner class CustomizeUIConfig : ConfigContainer() {
+</a><a href="#h2-0-21" id="h2-0-21" class="d">-        val themePicker = unique(&quot;theme_picker&quot;,
+</a><a href="#h2-0-22" id="h2-0-22" class="d">-            &quot;custom&quot;,
+</a><a href="#h2-0-23" id="h2-0-23" class="d">-            &quot;amoled_dark_mode&quot;,
+</a><a href="#h2-0-24" id="h2-0-24" class="d">-            &quot;material_you_light&quot;,
+</a><a href="#h2-0-25" id="h2-0-25" class="d">-            &quot;material_you_dark&quot;,
+</a><a href="#h2-0-26" id="h2-0-26" class="d">-            &quot;light_blue&quot;,
+</a><a href="#h2-0-27" id="h2-0-27" class="d">-            &quot;dark_blue&quot;,
+</a><a href="#h2-0-28" id="h2-0-28" class="d">-            &quot;midnight_slate&quot;,
+</a><a href="#h2-0-29" id="h2-0-29" class="d">-            &quot;earthy_autumn&quot;,
+</a><a href="#h2-0-30" id="h2-0-30" class="d">-            &quot;mint_chocolate&quot;,
+</a><a href="#h2-0-31" id="h2-0-31" class="d">-            &quot;ginger_snap&quot;,
+</a><a href="#h2-0-32" id="h2-0-32" class="d">-            &quot;lemon_meringue&quot;,
+</a><a href="#h2-0-33" id="h2-0-33" class="d">-            &quot;lava_flow&quot;,
+</a><a href="#h2-0-34" id="h2-0-34" class="d">-            &quot;ocean_fog&quot;,
+</a><a href="#h2-0-35" id="h2-0-35" class="d">-            &quot;alien_landscape&quot;,
+</a><a href="#h2-0-36" id="h2-0-36" class="d">-            &quot;watercolor_wash&quot;,
+</a><a href="#h2-0-37" id="h2-0-37" class="d">-            &quot;zesty_lemon&quot;,
+</a><a href="#h2-0-38" id="h2-0-38" class="d">-            &quot;tropical_paradise&quot;,
+</a><a href="#h2-0-39" id="h2-0-39" class="d">-            &quot;industrial_chic&quot;,
+</a><a href="#h2-0-40" id="h2-0-40" class="d">-            &quot;cherry_bomb&quot;,
+</a><a href="#h2-0-41" id="h2-0-41" class="d">-            &quot;woodland_mystery&quot;,
+</a><a href="#h2-0-42" id="h2-0-42" class="d">-            &quot;galaxy_glitter&quot;,
+</a><a href="#h2-0-43" id="h2-0-43" class="d">-            &quot;creamy_vanilla&quot;,
+</a><a href="#h2-0-44" id="h2-0-44" class="d">-            &quot;spicy_chili&quot;,
+</a><a href="#h2-0-45" id="h2-0-45" class="d">-            &quot;spring_meadow&quot;,
+</a><a href="#h2-0-46" id="h2-0-46" class="d">-            &quot;midnight_library&quot;,
+</a><a href="#h2-0-47" id="h2-0-47" class="d">-            &quot;lemon_sorbet&quot;,
+</a><a href="#h2-0-48" id="h2-0-48" class="d">-            &quot;cosmic_night&quot;,
+</a><a href="#h2-0-49" id="h2-0-49" class="d">-            &quot;spicy_mustard&quot;,
+</a><a href="#h2-0-50" id="h2-0-50" class="d">-            &quot;peppermint_candy&quot;,
+</a><a href="#h2-0-51" id="h2-0-51" class="d">-            &quot;gingerbread_house&quot;,
+</a><a href="#h2-0-52" id="h2-0-52" class="d">-            &quot;art_deco_glam&quot;,
+</a><a href="#h2-0-53" id="h2-0-53" class="d">-            &quot;ocean_depths&quot;,
+</a><a href="#h2-0-54" id="h2-0-54" class="d">-            &quot;bubblegum_pink&quot;,
+</a><a href="#h2-0-55" id="h2-0-55" class="d">-            &quot;firefly_night&quot;,
+</a><a href="#h2-0-56" id="h2-0-56" class="d">-            &quot;apple_orchard&quot;,
+</a><a href="#h2-0-57" id="h2-0-57" class="d">-            &quot;lavender_field&quot;,
+</a><a href="#h2-0-58" id="h2-0-58" class="d">-            &quot;lemon_drop&quot;,
+</a><a href="#h2-0-59" id="h2-0-59" class="d">-            &quot;modern_farmhouse&quot;,
+</a><a href="#h2-0-60" id="h2-0-60" class="d">-        )
+</a><a href="#h2-0-61" id="h2-0-61" class="d">-        val colors = container(&quot;colors&quot;, ColorsConfig()) { requireRestart() }
+</a><a href="#h2-0-62" id="h2-0-62" class="d">-        val colorsDebug = boolean(&quot;colors_debug&quot;) { requireRestart() }
+</a><a href="#h2-0-63" id="h2-0-63" class="d">-    }
+</a><a href="#h2-0-64" id="h2-0-64" class="d">-
+</a>     val friendFeedMenuButtons = multiple(
+         &quot;friend_feed_menu_buttons&quot;,&quot;conversation_info&quot;, &quot;mark_snaps_as_seen&quot;, &quot;mark_stories_as_seen_locally&quot;, *MessagingRuleType.entries.filter { it.showInFriendMenu }.map { it.key }.toTypedArray()
+     ).apply {
+         set(mutableListOf(&quot;conversation_info&quot;, MessagingRuleType.STEALTH.key))
+     }
+     val autoCloseFriendFeedMenu = boolean(&quot;auto_close_friend_feed_menu&quot;)
+<a href="#h2-0-71" id="h2-0-71" class="d">-    val customizeUi = container(&quot;customize_ui&quot;, CustomizeUIConfig()) { addNotices(FeatureNotice.UNSTABLE); requireRestart() }
+</a><a href="#h2-0-72" id="h2-0-72" class="i">+    val customTheme = unique(
+</a><a href="#h2-0-73" id="h2-0-73" class="i">+        &quot;custom&quot;,
+</a><a href="#h2-0-74" id="h2-0-74" class="i">+        &quot;amoled_dark_mode&quot;,
+</a><a href="#h2-0-75" id="h2-0-75" class="i">+        &quot;material_you_light&quot;,
+</a><a href="#h2-0-76" id="h2-0-76" class="i">+        &quot;material_you_dark&quot;,
+</a><a href="#h2-0-77" id="h2-0-77" class="i">+        &quot;light_blue&quot;,
+</a><a href="#h2-0-78" id="h2-0-78" class="i">+        &quot;dark_blue&quot;,
+</a><a href="#h2-0-79" id="h2-0-79" class="i">+        &quot;midnight_slate&quot;,
+</a><a href="#h2-0-80" id="h2-0-80" class="i">+        &quot;earthy_autumn&quot;,
+</a><a href="#h2-0-81" id="h2-0-81" class="i">+        &quot;mint_chocolate&quot;,
+</a><a href="#h2-0-82" id="h2-0-82" class="i">+        &quot;ginger_snap&quot;,
+</a><a href="#h2-0-83" id="h2-0-83" class="i">+        &quot;lemon_meringue&quot;,
+</a><a href="#h2-0-84" id="h2-0-84" class="i">+        &quot;lava_flow&quot;,
+</a><a href="#h2-0-85" id="h2-0-85" class="i">+        &quot;ocean_fog&quot;,
+</a><a href="#h2-0-86" id="h2-0-86" class="i">+        &quot;alien_landscape&quot;,
+</a><a href="#h2-0-87" id="h2-0-87" class="i">+        &quot;watercolor_wash&quot;,
+</a><a href="#h2-0-88" id="h2-0-88" class="i">+        &quot;zesty_lemon&quot;,
+</a><a href="#h2-0-89" id="h2-0-89" class="i">+        &quot;tropical_paradise&quot;,
+</a><a href="#h2-0-90" id="h2-0-90" class="i">+        &quot;industrial_chic&quot;,
+</a><a href="#h2-0-91" id="h2-0-91" class="i">+        &quot;cherry_bomb&quot;,
+</a><a href="#h2-0-92" id="h2-0-92" class="i">+        &quot;woodland_mystery&quot;,
+</a><a href="#h2-0-93" id="h2-0-93" class="i">+        &quot;galaxy_glitter&quot;,
+</a><a href="#h2-0-94" id="h2-0-94" class="i">+        &quot;creamy_vanilla&quot;,
+</a><a href="#h2-0-95" id="h2-0-95" class="i">+        &quot;spicy_chili&quot;,
+</a><a href="#h2-0-96" id="h2-0-96" class="i">+        &quot;spring_meadow&quot;,
+</a><a href="#h2-0-97" id="h2-0-97" class="i">+        &quot;midnight_library&quot;,
+</a><a href="#h2-0-98" id="h2-0-98" class="i">+        &quot;lemon_sorbet&quot;,
+</a><a href="#h2-0-99" id="h2-0-99" class="i">+        &quot;cosmic_night&quot;,
+</a><a href="#h2-0-100" id="h2-0-100" class="i">+        &quot;spicy_mustard&quot;,
+</a><a href="#h2-0-101" id="h2-0-101" class="i">+        &quot;peppermint_candy&quot;,
+</a><a href="#h2-0-102" id="h2-0-102" class="i">+        &quot;gingerbread_house&quot;,
+</a><a href="#h2-0-103" id="h2-0-103" class="i">+        &quot;art_deco_glam&quot;,
+</a><a href="#h2-0-104" id="h2-0-104" class="i">+        &quot;ocean_depths&quot;,
+</a><a href="#h2-0-105" id="h2-0-105" class="i">+        &quot;bubblegum_pink&quot;,
+</a><a href="#h2-0-106" id="h2-0-106" class="i">+        &quot;firefly_night&quot;,
+</a><a href="#h2-0-107" id="h2-0-107" class="i">+        &quot;apple_orchard&quot;,
+</a><a href="#h2-0-108" id="h2-0-108" class="i">+        &quot;lavender_field&quot;,
+</a><a href="#h2-0-109" id="h2-0-109" class="i">+        &quot;lemon_drop&quot;,
+</a><a href="#h2-0-110" id="h2-0-110" class="i">+        &quot;modern_farmhouse&quot;,
+</a><a href="#h2-0-111" id="h2-0-111" class="i">+    )
+</a>     val friendFeedMessagePreview = container(&quot;friend_feed_message_preview&quot;, FriendFeedMessagePreview()) { requireRestart() }
+     val snapPreview = boolean(&quot;snap_preview&quot;) { addNotices(FeatureNotice.UNSTABLE); requireRestart() }
+     val bootstrapOverride = container(&quot;bootstrap_override&quot;, BootstrapOverride()) { requireRestart() }
+<b>diff --git a/<a id="h3" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomTheming.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomTheming.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomTheming.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomTheming.kt</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -69,6 +69,452 @@ class CustomTheming: Feature(&quot;Custom Theming&quot;) {
+</a>                 &quot;sigExceptionColorCameraGridLines&quot; to 0xFF000000,
+             )
+         }
+<a href="#h3-0-3" id="h3-0-3" class="i">+        if (customThemeName == &quot;light_blue&quot;) {
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF03BAFC,
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFBDE6FF,
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF78DBFF,
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+                &quot;listDivider&quot; to 0xFFBDE6FF,
+</a><a href="#h3-0-9" id="h3-0-9" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF78DBFF,
+</a><a href="#h3-0-10" id="h3-0-10" class="i">+                &quot;sigColorChatChat&quot; to 0xFF08D6FF,
+</a><a href="#h3-0-11" id="h3-0-11" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF08D6FF,
+</a><a href="#h3-0-12" id="h3-0-12" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF08D6FF,
+</a><a href="#h3-0-13" id="h3-0-13" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF08D6FF,
+</a><a href="#h3-0-14" id="h3-0-14" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF08D6FF,
+</a><a href="#h3-0-15" id="h3-0-15" class="i">+            )
+</a><a href="#h3-0-16" id="h3-0-16" class="i">+        }
+</a><a href="#h3-0-17" id="h3-0-17" class="i">+        if (customThemeName == &quot;dark_blue&quot;) {
+</a><a href="#h3-0-18" id="h3-0-18" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-19" id="h3-0-19" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF98C2FD,
+</a><a href="#h3-0-20" id="h3-0-20" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF192744,
+</a><a href="#h3-0-21" id="h3-0-21" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF192744,
+</a><a href="#h3-0-22" id="h3-0-22" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF192744,
+</a><a href="#h3-0-23" id="h3-0-23" class="i">+                &quot;sigColorChatChat&quot; to 0xFF98C2FD,
+</a><a href="#h3-0-24" id="h3-0-24" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF98C2FD,
+</a><a href="#h3-0-25" id="h3-0-25" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF98C2FD,
+</a><a href="#h3-0-26" id="h3-0-26" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF98C2FD,
+</a><a href="#h3-0-27" id="h3-0-27" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF192744,
+</a><a href="#h3-0-28" id="h3-0-28" class="i">+            )
+</a><a href="#h3-0-29" id="h3-0-29" class="i">+        }
+</a><a href="#h3-0-30" id="h3-0-30" class="i">+        if (customThemeName == &quot;midnight_slate&quot;) {
+</a><a href="#h3-0-31" id="h3-0-31" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-32" id="h3-0-32" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-33" id="h3-0-33" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF1F2833,
+</a><a href="#h3-0-34" id="h3-0-34" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF1F2833,
+</a><a href="#h3-0-35" id="h3-0-35" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF2C3E50,
+</a><a href="#h3-0-36" id="h3-0-36" class="i">+                &quot;actionSheetRoundedBackgroundDrawable&quot; to 0xFF34495E,
+</a><a href="#h3-0-37" id="h3-0-37" class="i">+                &quot;listDivider&quot; to 0xFF1F2833,
+</a><a href="#h3-0-38" id="h3-0-38" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFF00,
+</a><a href="#h3-0-39" id="h3-0-39" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF00FFFF,
+</a><a href="#h3-0-40" id="h3-0-40" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFF9800,
+</a><a href="#h3-0-41" id="h3-0-41" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF00E676,
+</a><a href="#h3-0-42" id="h3-0-42" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-43" id="h3-0-43" class="i">+                &quot;sigColorIconPrimary&quot; to 0xFFFFFF00,
+</a><a href="#h3-0-44" id="h3-0-44" class="i">+            )
+</a><a href="#h3-0-45" id="h3-0-45" class="i">+        }
+</a><a href="#h3-0-46" id="h3-0-46" class="i">+        if (customThemeName == &quot;earthy_autumn&quot;) {
+</a><a href="#h3-0-47" id="h3-0-47" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-48" id="h3-0-48" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFF7CAC9,
+</a><a href="#h3-0-49" id="h3-0-49" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF800000,
+</a><a href="#h3-0-50" id="h3-0-50" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF800000,
+</a><a href="#h3-0-51" id="h3-0-51" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF800000,
+</a><a href="#h3-0-52" id="h3-0-52" class="i">+                &quot;sigColorChatChat&quot; to 0xFFF7CAC9,
+</a><a href="#h3-0-53" id="h3-0-53" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFF7CAC9,
+</a><a href="#h3-0-54" id="h3-0-54" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFF7CAC9,
+</a><a href="#h3-0-55" id="h3-0-55" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFF7CAC9,
+</a><a href="#h3-0-56" id="h3-0-56" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF800000,
+</a><a href="#h3-0-57" id="h3-0-57" class="i">+            )
+</a><a href="#h3-0-58" id="h3-0-58" class="i">+        }
+</a><a href="#h3-0-59" id="h3-0-59" class="i">+        if (customThemeName == &quot;mint_chocolate&quot;) {
+</a><a href="#h3-0-60" id="h3-0-60" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-61" id="h3-0-61" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-62" id="h3-0-62" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF98FF98,
+</a><a href="#h3-0-63" id="h3-0-63" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF98FF98,
+</a><a href="#h3-0-64" id="h3-0-64" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF98FF98,
+</a><a href="#h3-0-65" id="h3-0-65" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-66" id="h3-0-66" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-67" id="h3-0-67" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-68" id="h3-0-68" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-69" id="h3-0-69" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF98FF98,
+</a><a href="#h3-0-70" id="h3-0-70" class="i">+            )
+</a><a href="#h3-0-71" id="h3-0-71" class="i">+        }
+</a><a href="#h3-0-72" id="h3-0-72" class="i">+        if (customThemeName == &quot;ginger_snap&quot;) {
+</a><a href="#h3-0-73" id="h3-0-73" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-74" id="h3-0-74" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-75" id="h3-0-75" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFC6893A,
+</a><a href="#h3-0-76" id="h3-0-76" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFC6893A,
+</a><a href="#h3-0-77" id="h3-0-77" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFC6893A,
+</a><a href="#h3-0-78" id="h3-0-78" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-79" id="h3-0-79" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-80" id="h3-0-80" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-81" id="h3-0-81" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-82" id="h3-0-82" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFC6893A,
+</a><a href="#h3-0-83" id="h3-0-83" class="i">+            )
+</a><a href="#h3-0-84" id="h3-0-84" class="i">+        }
+</a><a href="#h3-0-85" id="h3-0-85" class="i">+        if (customThemeName == &quot;lemon_meringue&quot;) {
+</a><a href="#h3-0-86" id="h3-0-86" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-87" id="h3-0-87" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF000000,
+</a><a href="#h3-0-88" id="h3-0-88" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFFCFFE7,
+</a><a href="#h3-0-89" id="h3-0-89" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFFCFFE7,
+</a><a href="#h3-0-90" id="h3-0-90" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFFCFFE7,
+</a><a href="#h3-0-91" id="h3-0-91" class="i">+                &quot;sigColorChatChat&quot; to 0xFF000000,
+</a><a href="#h3-0-92" id="h3-0-92" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF000000,
+</a><a href="#h3-0-93" id="h3-0-93" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF000000,
+</a><a href="#h3-0-94" id="h3-0-94" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF000000,
+</a><a href="#h3-0-95" id="h3-0-95" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFCFFE7,
+</a><a href="#h3-0-96" id="h3-0-96" class="i">+            )
+</a><a href="#h3-0-97" id="h3-0-97" class="i">+        }
+</a><a href="#h3-0-98" id="h3-0-98" class="i">+        if (customThemeName == &quot;lava_flow&quot;) {
+</a><a href="#h3-0-99" id="h3-0-99" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-100" id="h3-0-100" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFCC00,
+</a><a href="#h3-0-101" id="h3-0-101" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFC70039,
+</a><a href="#h3-0-102" id="h3-0-102" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFC70039,
+</a><a href="#h3-0-103" id="h3-0-103" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFC70039,
+</a><a href="#h3-0-104" id="h3-0-104" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFCC00,
+</a><a href="#h3-0-105" id="h3-0-105" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFCC00,
+</a><a href="#h3-0-106" id="h3-0-106" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFCC00,
+</a><a href="#h3-0-107" id="h3-0-107" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFCC00,
+</a><a href="#h3-0-108" id="h3-0-108" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFC70039,
+</a><a href="#h3-0-109" id="h3-0-109" class="i">+            )
+</a><a href="#h3-0-110" id="h3-0-110" class="i">+        }
+</a><a href="#h3-0-111" id="h3-0-111" class="i">+        if (customThemeName == &quot;ocean_fog&quot;) {
+</a><a href="#h3-0-112" id="h3-0-112" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-113" id="h3-0-113" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF333333,
+</a><a href="#h3-0-114" id="h3-0-114" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFB0C4DE,
+</a><a href="#h3-0-115" id="h3-0-115" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFB0C4DE,
+</a><a href="#h3-0-116" id="h3-0-116" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFB0C4DE,
+</a><a href="#h3-0-117" id="h3-0-117" class="i">+                &quot;sigColorChatChat&quot; to 0xFF333333,
+</a><a href="#h3-0-118" id="h3-0-118" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF333333,
+</a><a href="#h3-0-119" id="h3-0-119" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF333333,
+</a><a href="#h3-0-120" id="h3-0-120" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF333333,
+</a><a href="#h3-0-121" id="h3-0-121" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFB0C4DE,
+</a><a href="#h3-0-122" id="h3-0-122" class="i">+            )
+</a><a href="#h3-0-123" id="h3-0-123" class="i">+        }
+</a><a href="#h3-0-124" id="h3-0-124" class="i">+        if (customThemeName == &quot;alien_landscape&quot;) {
+</a><a href="#h3-0-125" id="h3-0-125" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-126" id="h3-0-126" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-127" id="h3-0-127" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF9B59B6,
+</a><a href="#h3-0-128" id="h3-0-128" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF9B59B6,
+</a><a href="#h3-0-129" id="h3-0-129" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF9B59B6,
+</a><a href="#h3-0-130" id="h3-0-130" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-131" id="h3-0-131" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-132" id="h3-0-132" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-133" id="h3-0-133" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-134" id="h3-0-134" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF9B59B6,
+</a><a href="#h3-0-135" id="h3-0-135" class="i">+            )
+</a><a href="#h3-0-136" id="h3-0-136" class="i">+        }
+</a><a href="#h3-0-137" id="h3-0-137" class="i">+        if (customThemeName == &quot;watercolor_wash&quot;) {
+</a><a href="#h3-0-138" id="h3-0-138" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-139" id="h3-0-139" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF3F51B5,
+</a><a href="#h3-0-140" id="h3-0-140" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFFFF5F3,
+</a><a href="#h3-0-141" id="h3-0-141" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFFFF5F3,
+</a><a href="#h3-0-142" id="h3-0-142" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFFFF5F3,
+</a><a href="#h3-0-143" id="h3-0-143" class="i">+                &quot;sigColorChatChat&quot; to 0xFF3F51B5,
+</a><a href="#h3-0-144" id="h3-0-144" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF3F51B5,
+</a><a href="#h3-0-145" id="h3-0-145" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF3F51B5,
+</a><a href="#h3-0-146" id="h3-0-146" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF3F51B5,
+</a><a href="#h3-0-147" id="h3-0-147" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFFF5F3,
+</a><a href="#h3-0-148" id="h3-0-148" class="i">+            )
+</a><a href="#h3-0-149" id="h3-0-149" class="i">+        }
+</a><a href="#h3-0-150" id="h3-0-150" class="i">+        if (customThemeName == &quot;zesty_lemon&quot;) {
+</a><a href="#h3-0-151" id="h3-0-151" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-152" id="h3-0-152" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF222222,
+</a><a href="#h3-0-153" id="h3-0-153" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFFFFFE0,
+</a><a href="#h3-0-154" id="h3-0-154" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFFFFFE0,
+</a><a href="#h3-0-155" id="h3-0-155" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFFFFFE0,
+</a><a href="#h3-0-156" id="h3-0-156" class="i">+                &quot;sigColorChatChat&quot; to 0xFF222222,
+</a><a href="#h3-0-157" id="h3-0-157" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF222222,
+</a><a href="#h3-0-158" id="h3-0-158" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF222222,
+</a><a href="#h3-0-159" id="h3-0-159" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF222222,
+</a><a href="#h3-0-160" id="h3-0-160" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFFFFE0,
+</a><a href="#h3-0-161" id="h3-0-161" class="i">+            )
+</a><a href="#h3-0-162" id="h3-0-162" class="i">+        }
+</a><a href="#h3-0-163" id="h3-0-163" class="i">+        if (customThemeName == &quot;tropical_paradise&quot;) {
+</a><a href="#h3-0-164" id="h3-0-164" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-165" id="h3-0-165" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF000000,
+</a><a href="#h3-0-166" id="h3-0-166" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFD3FFCE,
+</a><a href="#h3-0-167" id="h3-0-167" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFD3FFCE,
+</a><a href="#h3-0-168" id="h3-0-168" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFD3FFCE,
+</a><a href="#h3-0-169" id="h3-0-169" class="i">+                &quot;sigColorChatChat&quot; to 0xFF000000,
+</a><a href="#h3-0-170" id="h3-0-170" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF000000,
+</a><a href="#h3-0-171" id="h3-0-171" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF000000,
+</a><a href="#h3-0-172" id="h3-0-172" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF000000,
+</a><a href="#h3-0-173" id="h3-0-173" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFD3FFCE,
+</a><a href="#h3-0-174" id="h3-0-174" class="i">+            )
+</a><a href="#h3-0-175" id="h3-0-175" class="i">+        }
+</a><a href="#h3-0-176" id="h3-0-176" class="i">+        if (customThemeName == &quot;industrial_chic&quot;) {
+</a><a href="#h3-0-177" id="h3-0-177" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-178" id="h3-0-178" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF424242,
+</a><a href="#h3-0-179" id="h3-0-179" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFEEEEEE,
+</a><a href="#h3-0-180" id="h3-0-180" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFEEEEEE,
+</a><a href="#h3-0-181" id="h3-0-181" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFEEEEEE,
+</a><a href="#h3-0-182" id="h3-0-182" class="i">+                &quot;sigColorChatChat&quot; to 0xFF424242,
+</a><a href="#h3-0-183" id="h3-0-183" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF424242,
+</a><a href="#h3-0-184" id="h3-0-184" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF424242,
+</a><a href="#h3-0-185" id="h3-0-185" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF424242,
+</a><a href="#h3-0-186" id="h3-0-186" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFEEEEEE,
+</a><a href="#h3-0-187" id="h3-0-187" class="i">+            )
+</a><a href="#h3-0-188" id="h3-0-188" class="i">+        }
+</a><a href="#h3-0-189" id="h3-0-189" class="i">+        if (customThemeName == &quot;cherry_bomb&quot;) {
+</a><a href="#h3-0-190" id="h3-0-190" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-191" id="h3-0-191" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-192" id="h3-0-192" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFC24641,
+</a><a href="#h3-0-193" id="h3-0-193" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFC24641,
+</a><a href="#h3-0-194" id="h3-0-194" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFC24641,
+</a><a href="#h3-0-195" id="h3-0-195" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-196" id="h3-0-196" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-197" id="h3-0-197" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-198" id="h3-0-198" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-199" id="h3-0-199" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFC24641,
+</a><a href="#h3-0-200" id="h3-0-200" class="i">+            )
+</a><a href="#h3-0-201" id="h3-0-201" class="i">+        }
+</a><a href="#h3-0-202" id="h3-0-202" class="i">+        if (customThemeName == &quot;woodland_mystery&quot;) {
+</a><a href="#h3-0-203" id="h3-0-203" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-204" id="h3-0-204" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFC2C2F0,
+</a><a href="#h3-0-205" id="h3-0-205" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF333333,
+</a><a href="#h3-0-206" id="h3-0-206" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF333333,
+</a><a href="#h3-0-207" id="h3-0-207" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF333333,
+</a><a href="#h3-0-208" id="h3-0-208" class="i">+                &quot;sigColorChatChat&quot; to 0xFFC2C2F0,
+</a><a href="#h3-0-209" id="h3-0-209" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFC2C2F0,
+</a><a href="#h3-0-210" id="h3-0-210" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFC2C2F0,
+</a><a href="#h3-0-211" id="h3-0-211" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFC2C2F0,
+</a><a href="#h3-0-212" id="h3-0-212" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF333333,
+</a><a href="#h3-0-213" id="h3-0-213" class="i">+            )
+</a><a href="#h3-0-214" id="h3-0-214" class="i">+        }
+</a><a href="#h3-0-215" id="h3-0-215" class="i">+        if (customThemeName == &quot;galaxy_glitter&quot;) {
+</a><a href="#h3-0-216" id="h3-0-216" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-217" id="h3-0-217" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-218" id="h3-0-218" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF2F4F4F,
+</a><a href="#h3-0-219" id="h3-0-219" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF2F4F4F,
+</a><a href="#h3-0-220" id="h3-0-220" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF2F4F4F,
+</a><a href="#h3-0-221" id="h3-0-221" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-222" id="h3-0-222" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-223" id="h3-0-223" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-224" id="h3-0-224" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-225" id="h3-0-225" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF2F4F4F,
+</a><a href="#h3-0-226" id="h3-0-226" class="i">+            )
+</a><a href="#h3-0-227" id="h3-0-227" class="i">+        }
+</a><a href="#h3-0-228" id="h3-0-228" class="i">+        if (customThemeName == &quot;creamy_vanilla&quot;) {
+</a><a href="#h3-0-229" id="h3-0-229" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-230" id="h3-0-230" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF333333,
+</a><a href="#h3-0-231" id="h3-0-231" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFF1F1F1,
+</a><a href="#h3-0-232" id="h3-0-232" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFF1F1F1,
+</a><a href="#h3-0-233" id="h3-0-233" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFF1F1F1,
+</a><a href="#h3-0-234" id="h3-0-234" class="i">+                &quot;sigColorChatChat&quot; to 0xFF333333,
+</a><a href="#h3-0-235" id="h3-0-235" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF333333,
+</a><a href="#h3-0-236" id="h3-0-236" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF333333,
+</a><a href="#h3-0-237" id="h3-0-237" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF333333,
+</a><a href="#h3-0-238" id="h3-0-238" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFF1F1F1,
+</a><a href="#h3-0-239" id="h3-0-239" class="i">+            )
+</a><a href="#h3-0-240" id="h3-0-240" class="i">+        }
+</a><a href="#h3-0-241" id="h3-0-241" class="i">+        if (customThemeName == &quot;spicy_chili&quot;) {
+</a><a href="#h3-0-242" id="h3-0-242" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-243" id="h3-0-243" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFF5F5F5,
+</a><a href="#h3-0-244" id="h3-0-244" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFC70039,
+</a><a href="#h3-0-245" id="h3-0-245" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFC70039,
+</a><a href="#h3-0-246" id="h3-0-246" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFC70039,
+</a><a href="#h3-0-247" id="h3-0-247" class="i">+                &quot;sigColorChatChat&quot; to 0xFFF5F5F5,
+</a><a href="#h3-0-248" id="h3-0-248" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFF5F5F5,
+</a><a href="#h3-0-249" id="h3-0-249" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFF5F5F5,
+</a><a href="#h3-0-250" id="h3-0-250" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFF5F5F5,
+</a><a href="#h3-0-251" id="h3-0-251" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFC70039,
+</a><a href="#h3-0-252" id="h3-0-252" class="i">+            )
+</a><a href="#h3-0-253" id="h3-0-253" class="i">+        }
+</a><a href="#h3-0-254" id="h3-0-254" class="i">+        if (customThemeName == &quot;spring_meadow&quot;) {
+</a><a href="#h3-0-255" id="h3-0-255" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-256" id="h3-0-256" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF388E3C,
+</a><a href="#h3-0-257" id="h3-0-257" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFF5FBE0,
+</a><a href="#h3-0-258" id="h3-0-258" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFF5FBE0,
+</a><a href="#h3-0-259" id="h3-0-259" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFF5FBE0,
+</a><a href="#h3-0-260" id="h3-0-260" class="i">+                &quot;sigColorChatChat&quot; to 0xFF388E3C,
+</a><a href="#h3-0-261" id="h3-0-261" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF388E3C,
+</a><a href="#h3-0-262" id="h3-0-262" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF388E3C,
+</a><a href="#h3-0-263" id="h3-0-263" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF388E3C,
+</a><a href="#h3-0-264" id="h3-0-264" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFF5FBE0,
+</a><a href="#h3-0-265" id="h3-0-265" class="i">+            )
+</a><a href="#h3-0-266" id="h3-0-266" class="i">+        }
+</a><a href="#h3-0-267" id="h3-0-267" class="i">+        if (customThemeName == &quot;midnight_library&quot;) {
+</a><a href="#h3-0-268" id="h3-0-268" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-269" id="h3-0-269" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFEAEAEA,
+</a><a href="#h3-0-270" id="h3-0-270" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF424242,
+</a><a href="#h3-0-271" id="h3-0-271" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF424242,
+</a><a href="#h3-0-272" id="h3-0-272" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF424242,
+</a><a href="#h3-0-273" id="h3-0-273" class="i">+                &quot;sigColorChatChat&quot; to 0xFFEAEAEA,
+</a><a href="#h3-0-274" id="h3-0-274" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFEAEAEA,
+</a><a href="#h3-0-275" id="h3-0-275" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFEAEAEA,
+</a><a href="#h3-0-276" id="h3-0-276" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFEAEAEA,
+</a><a href="#h3-0-277" id="h3-0-277" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF424242,
+</a><a href="#h3-0-278" id="h3-0-278" class="i">+            )
+</a><a href="#h3-0-279" id="h3-0-279" class="i">+        }
+</a><a href="#h3-0-280" id="h3-0-280" class="i">+        if (customThemeName == &quot;lemon_sorbet&quot;) {
+</a><a href="#h3-0-281" id="h3-0-281" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-282" id="h3-0-282" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF000000,
+</a><a href="#h3-0-283" id="h3-0-283" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFFCFFE7,
+</a><a href="#h3-0-284" id="h3-0-284" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFFCFFE7,
+</a><a href="#h3-0-285" id="h3-0-285" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFFCFFE7,
+</a><a href="#h3-0-286" id="h3-0-286" class="i">+                &quot;sigColorChatChat&quot; to 0xFF000000,
+</a><a href="#h3-0-287" id="h3-0-287" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF000000,
+</a><a href="#h3-0-288" id="h3-0-288" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF000000,
+</a><a href="#h3-0-289" id="h3-0-289" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF000000,
+</a><a href="#h3-0-290" id="h3-0-290" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFCFFE7,
+</a><a href="#h3-0-291" id="h3-0-291" class="i">+            )
+</a><a href="#h3-0-292" id="h3-0-292" class="i">+        }
+</a><a href="#h3-0-293" id="h3-0-293" class="i">+        if (customThemeName == &quot;cosmic_night&quot;) {
+</a><a href="#h3-0-294" id="h3-0-294" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-295" id="h3-0-295" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-296" id="h3-0-296" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF2F4F4F,
+</a><a href="#h3-0-297" id="h3-0-297" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF2F4F4F,
+</a><a href="#h3-0-298" id="h3-0-298" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF2F4F4F,
+</a><a href="#h3-0-299" id="h3-0-299" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-300" id="h3-0-300" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-301" id="h3-0-301" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-302" id="h3-0-302" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-303" id="h3-0-303" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF2F4F4F,
+</a><a href="#h3-0-304" id="h3-0-304" class="i">+            )
+</a><a href="#h3-0-305" id="h3-0-305" class="i">+        }
+</a><a href="#h3-0-306" id="h3-0-306" class="i">+        if (customThemeName == &quot;spicy_mustard&quot;) {
+</a><a href="#h3-0-307" id="h3-0-307" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-308" id="h3-0-308" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-309" id="h3-0-309" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFFCC01E,
+</a><a href="#h3-0-310" id="h3-0-310" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFFCC01E,
+</a><a href="#h3-0-311" id="h3-0-311" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFFCC01E,
+</a><a href="#h3-0-312" id="h3-0-312" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-313" id="h3-0-313" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-314" id="h3-0-314" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-315" id="h3-0-315" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-316" id="h3-0-316" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFCC01E,
+</a><a href="#h3-0-317" id="h3-0-317" class="i">+            )
+</a><a href="#h3-0-318" id="h3-0-318" class="i">+        }
+</a><a href="#h3-0-319" id="h3-0-319" class="i">+        if (customThemeName == &quot;gingerbread_house&quot;) {
+</a><a href="#h3-0-320" id="h3-0-320" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-321" id="h3-0-321" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF333333,
+</a><a href="#h3-0-322" id="h3-0-322" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFCDB391,
+</a><a href="#h3-0-323" id="h3-0-323" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFCDB391,
+</a><a href="#h3-0-324" id="h3-0-324" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFCDB391,
+</a><a href="#h3-0-325" id="h3-0-325" class="i">+                &quot;sigColorChatChat&quot; to 0xFF333333,
+</a><a href="#h3-0-326" id="h3-0-326" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF333333,
+</a><a href="#h3-0-327" id="h3-0-327" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF333333,
+</a><a href="#h3-0-328" id="h3-0-328" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF333333,
+</a><a href="#h3-0-329" id="h3-0-329" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFCDB391,
+</a><a href="#h3-0-330" id="h3-0-330" class="i">+            )
+</a><a href="#h3-0-331" id="h3-0-331" class="i">+        }
+</a><a href="#h3-0-332" id="h3-0-332" class="i">+        if (customThemeName == &quot;peppermint_candy&quot;) {
+</a><a href="#h3-0-333" id="h3-0-333" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-334" id="h3-0-334" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF29ABCA,
+</a><a href="#h3-0-335" id="h3-0-335" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFFFDDCF,
+</a><a href="#h3-0-336" id="h3-0-336" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFFFDDCF,
+</a><a href="#h3-0-337" id="h3-0-337" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFFFDDCF,
+</a><a href="#h3-0-338" id="h3-0-338" class="i">+                &quot;sigColorChatChat&quot; to 0xFF29ABCA,
+</a><a href="#h3-0-339" id="h3-0-339" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF29ABCA,
+</a><a href="#h3-0-340" id="h3-0-340" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF29ABCA,
+</a><a href="#h3-0-341" id="h3-0-341" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF29ABCA,
+</a><a href="#h3-0-342" id="h3-0-342" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFFDDCF,
+</a><a href="#h3-0-343" id="h3-0-343" class="i">+            )
+</a><a href="#h3-0-344" id="h3-0-344" class="i">+        }
+</a><a href="#h3-0-345" id="h3-0-345" class="i">+        if (customThemeName == &quot;art_deco_glam&quot;) {
+</a><a href="#h3-0-346" id="h3-0-346" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-347" id="h3-0-347" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF000000,
+</a><a href="#h3-0-348" id="h3-0-348" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFF8F8F8,
+</a><a href="#h3-0-349" id="h3-0-349" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFF8F8F8,
+</a><a href="#h3-0-350" id="h3-0-350" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFF8F8F8,
+</a><a href="#h3-0-351" id="h3-0-351" class="i">+                &quot;sigColorChatChat&quot; to 0xFF000000,
+</a><a href="#h3-0-352" id="h3-0-352" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF000000,
+</a><a href="#h3-0-353" id="h3-0-353" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF000000,
+</a><a href="#h3-0-354" id="h3-0-354" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF000000,
+</a><a href="#h3-0-355" id="h3-0-355" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFF8F8F8,
+</a><a href="#h3-0-356" id="h3-0-356" class="i">+            )
+</a><a href="#h3-0-357" id="h3-0-357" class="i">+        }
+</a><a href="#h3-0-358" id="h3-0-358" class="i">+        if (customThemeName == &quot;ocean_depths&quot;) {
+</a><a href="#h3-0-359" id="h3-0-359" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-360" id="h3-0-360" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-361" id="h3-0-361" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF000080,
+</a><a href="#h3-0-362" id="h3-0-362" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF000080,
+</a><a href="#h3-0-363" id="h3-0-363" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF000080,
+</a><a href="#h3-0-364" id="h3-0-364" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-365" id="h3-0-365" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-366" id="h3-0-366" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-367" id="h3-0-367" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-368" id="h3-0-368" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF000080,
+</a><a href="#h3-0-369" id="h3-0-369" class="i">+            )
+</a><a href="#h3-0-370" id="h3-0-370" class="i">+        }
+</a><a href="#h3-0-371" id="h3-0-371" class="i">+        if (customThemeName == &quot;bubblegum_pink&quot;) {
+</a><a href="#h3-0-372" id="h3-0-372" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-373" id="h3-0-373" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-374" id="h3-0-374" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFFFC0CB,
+</a><a href="#h3-0-375" id="h3-0-375" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFFFC0CB,
+</a><a href="#h3-0-376" id="h3-0-376" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFFFC0CB,
+</a><a href="#h3-0-377" id="h3-0-377" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-378" id="h3-0-378" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-379" id="h3-0-379" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-380" id="h3-0-380" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFFF,
+</a><a href="#h3-0-381" id="h3-0-381" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFFC0CB,
+</a><a href="#h3-0-382" id="h3-0-382" class="i">+            )
+</a><a href="#h3-0-383" id="h3-0-383" class="i">+        }
+</a><a href="#h3-0-384" id="h3-0-384" class="i">+        if (customThemeName == &quot;firefly_night&quot;) {
+</a><a href="#h3-0-385" id="h3-0-385" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-386" id="h3-0-386" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFFFFFFF0,
+</a><a href="#h3-0-387" id="h3-0-387" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFF222222,
+</a><a href="#h3-0-388" id="h3-0-388" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFF222222,
+</a><a href="#h3-0-389" id="h3-0-389" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFF222222,
+</a><a href="#h3-0-390" id="h3-0-390" class="i">+                &quot;sigColorChatChat&quot; to 0xFFFFFFF0,
+</a><a href="#h3-0-391" id="h3-0-391" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFFFFFFF0,
+</a><a href="#h3-0-392" id="h3-0-392" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFFFFFFF0,
+</a><a href="#h3-0-393" id="h3-0-393" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFFFFFFF0,
+</a><a href="#h3-0-394" id="h3-0-394" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF222222,
+</a><a href="#h3-0-395" id="h3-0-395" class="i">+            )
+</a><a href="#h3-0-396" id="h3-0-396" class="i">+        }
+</a><a href="#h3-0-397" id="h3-0-397" class="i">+        if (customThemeName == &quot;apple_orchard&quot;) {
+</a><a href="#h3-0-398" id="h3-0-398" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-399" id="h3-0-399" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF333333,
+</a><a href="#h3-0-400" id="h3-0-400" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFF4D35E,
+</a><a href="#h3-0-401" id="h3-0-401" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFF4D35E,
+</a><a href="#h3-0-402" id="h3-0-402" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFF4D35E,
+</a><a href="#h3-0-403" id="h3-0-403" class="i">+                &quot;sigColorChatChat&quot; to 0xFF333333,
+</a><a href="#h3-0-404" id="h3-0-404" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF333333,
+</a><a href="#h3-0-405" id="h3-0-405" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF333333,
+</a><a href="#h3-0-406" id="h3-0-406" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF333333,
+</a><a href="#h3-0-407" id="h3-0-407" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFF4D35E,
+</a><a href="#h3-0-408" id="h3-0-408" class="i">+            )
+</a><a href="#h3-0-409" id="h3-0-409" class="i">+        }
+</a><a href="#h3-0-410" id="h3-0-410" class="i">+        if (customThemeName == &quot;lavender_field&quot;) {
+</a><a href="#h3-0-411" id="h3-0-411" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-412" id="h3-0-412" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF293145,
+</a><a href="#h3-0-413" id="h3-0-413" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFBDBDBD,
+</a><a href="#h3-0-414" id="h3-0-414" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFBDBDBD,
+</a><a href="#h3-0-415" id="h3-0-415" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFBDBDBD,
+</a><a href="#h3-0-416" id="h3-0-416" class="i">+                &quot;sigColorChatChat&quot; to 0xFF293145,
+</a><a href="#h3-0-417" id="h3-0-417" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF293145,
+</a><a href="#h3-0-418" id="h3-0-418" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF293145,
+</a><a href="#h3-0-419" id="h3-0-419" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF293145,
+</a><a href="#h3-0-420" id="h3-0-420" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFBDBDBD,
+</a><a href="#h3-0-421" id="h3-0-421" class="i">+            )
+</a><a href="#h3-0-422" id="h3-0-422" class="i">+        }
+</a><a href="#h3-0-423" id="h3-0-423" class="i">+        if (customThemeName == &quot;lemon_drop&quot;) {
+</a><a href="#h3-0-424" id="h3-0-424" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-425" id="h3-0-425" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF000000,
+</a><a href="#h3-0-426" id="h3-0-426" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFFCE5C7,
+</a><a href="#h3-0-427" id="h3-0-427" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFFCE5C7,
+</a><a href="#h3-0-428" id="h3-0-428" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFFCE5C7,
+</a><a href="#h3-0-429" id="h3-0-429" class="i">+                &quot;sigColorChatChat&quot; to 0xFF000000,
+</a><a href="#h3-0-430" id="h3-0-430" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF000000,
+</a><a href="#h3-0-431" id="h3-0-431" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF000000,
+</a><a href="#h3-0-432" id="h3-0-432" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF000000,
+</a><a href="#h3-0-433" id="h3-0-433" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFCE5C7,
+</a><a href="#h3-0-434" id="h3-0-434" class="i">+            )
+</a><a href="#h3-0-435" id="h3-0-435" class="i">+        }
+</a><a href="#h3-0-436" id="h3-0-436" class="i">+        if (customThemeName == &quot;modern_farmhouse&quot;) {
+</a><a href="#h3-0-437" id="h3-0-437" class="i">+            currentTheme = parseAttributeList(
+</a><a href="#h3-0-438" id="h3-0-438" class="i">+                &quot;sigColorTextPrimary&quot; to 0xFF333333,
+</a><a href="#h3-0-439" id="h3-0-439" class="i">+                &quot;sigColorBackgroundMain&quot; to 0xFFF2F2F2,
+</a><a href="#h3-0-440" id="h3-0-440" class="i">+                &quot;sigColorBackgroundSurface&quot; to 0xFFF2F2F2,
+</a><a href="#h3-0-441" id="h3-0-441" class="i">+                &quot;actionSheetBackgroundDrawable&quot; to 0xFFF2F2F2,
+</a><a href="#h3-0-442" id="h3-0-442" class="i">+                &quot;sigColorChatChat&quot; to 0xFF333333,
+</a><a href="#h3-0-443" id="h3-0-443" class="i">+                &quot;sigColorChatPendingSending&quot; to 0xFF333333,
+</a><a href="#h3-0-444" id="h3-0-444" class="i">+                &quot;sigColorChatSnapWithSound&quot; to 0xFF333333,
+</a><a href="#h3-0-445" id="h3-0-445" class="i">+                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF333333,
+</a><a href="#h3-0-446" id="h3-0-446" class="i">+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFFF2F2F2,
+</a><a href="#h3-0-447" id="h3-0-447" class="i">+            )
+</a><a href="#h3-0-448" id="h3-0-448" class="i">+        }
+</a> 
+         if (customThemeName == &quot;custom&quot;) {
+             val availableThemes = context.fileHandlerManager.getFileHandle(FileHandleScope.THEME.key, &quot;&quot;)?.open(ParcelFileDescriptor.MODE_READ_ONLY)?.use { pfd -&gt;
+<a href="#h3-1" id="h3-1" class="h">@@ -76,13 +522,13 @@ class CustomTheming: Feature(&quot;Custom Theming&quot;) {
+</a>             }?.let {
+                 context.gson.fromJson(it.toString(Charsets.UTF_8), object: TypeToken&lt;List&lt;DatabaseThemeContent&gt;&gt;() {})
+             } ?: run {
+<a href="#h3-1-3" id="h3-1-3" class="d">-                context.log.verbose(&quot;no custom themes found&quot;)
+</a><a href="#h3-1-4" id="h3-1-4" class="i">+                context.log.verbose(&quot;No custom themes found&quot;)
+</a>                 return
+             }
+ 
+             val customThemeColors = mutableMapOf&lt;Int, Int&gt;()
+ 
+<a href="#h3-1-10" id="h3-1-10" class="d">-            context.log.verbose(&quot;loading ${availableThemes.size} custom themes&quot;)
+</a><a href="#h3-1-11" id="h3-1-11" class="i">+            context.log.verbose(&quot;Loading ${availableThemes.size} custom themes&quot;)
+</a> 
+             availableThemes.forEach { themeContent -&gt;
+                 themeContent.colors.forEach colors@{ colorEntry -&gt;
+</pre>
+</div>
+</body>
+</html>

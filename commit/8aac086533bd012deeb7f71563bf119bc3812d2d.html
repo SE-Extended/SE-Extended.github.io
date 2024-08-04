@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>merge upstream/dev into dev - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8aac086533bd012deeb7f71563bf119bc3812d2d.html">8aac086533bd012deeb7f71563bf119bc3812d2d</a>
+<b>parent</b> <a href="../commit/bbe060c03b6f047edb291bc0ac2cd40a81ef7f82.html">bbe060c03b6f047edb291bc0ac2cd40a81ef7f82</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Wed, 24 Jul 2024 12:03:11 +0100
+
+merge upstream/dev into dev 
+
+* chore: readme (#1168)
+
+* feat(ui/sif): download indicator
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+
+* chore(build): disable profile installer for development environment
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+
+* fix(ui/settings_gear): simple Snapchat support
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+
+* fix(friend_mutation_observer): birthday month offset (#113)
+
+* Merge rhunk/dev into upstream/dev
+
+* Sync
+
+* fix(friend_mutation_observer): birthday month offset
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+
+* fix(e2ee): key exchange
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+
+* fix(core/send_override): snap duration
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+
+* feat(core): voice note auto play
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+
+---------
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+Co-authored-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+
+---------
+
+Signed-off-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+Co-authored-by: VendorAttestation &lt;132447890+VendorAttestation@users.noreply.github.com&gt;
+Co-authored-by: rhunk &lt;101876869+rhunk@users.noreply.github.com&gt;
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/build.gradle.kts</a></td><td> | </td><td class="num">5</td><td><span class="i">+++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSharedLibraryManager.kt</a></td><td> | </td><td class="num">47</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++</span><span class="d">----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a></td><td> | </td><td class="num">6</td><td><span class="i">+++++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/SetupActivity.kt</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt</a></td><td> | </td><td class="num">58</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">common/build.gradle.kts</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h6">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">11</td><td><span class="i">+++++++++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h7">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h8">core/src/main/kotlin/me/rhunk/snapenhance/core/event/EventDispatcher.kt</a></td><td> | </td><td class="num">29</td><td><span class="i">+++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h9">core/src/main/kotlin/me/rhunk/snapenhance/core/event/events/impl/MediaUploadEvent.kt</a></td><td> | </td><td class="num">22</td><td><span class="i">++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h10">core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h11">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/FriendMutationObserver.kt</a></td><td> | </td><td class="num">4</td><td><span class="i">++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h12">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/EndToEndEncryption.kt</a></td><td> | </td><td class="num">57</td><td><span class="i">++++++++++++++++++++++++++</span><span class="d">-------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h13">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/SendOverride.kt</a></td><td> | </td><td class="num">66</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-----------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h14">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/tweaks/VoiceNoteAutoPlay.kt</a></td><td> | </td><td class="num">143</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h15">core/src/main/kotlin/me/rhunk/snapenhance/core/messaging/MessageSender.kt</a></td><td> | </td><td class="num">24</td><td><span class="i"></span><span class="d">------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h16">core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/MenuViewInjector.kt</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h17">core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/impl/SettingsGearInjector.kt</a></td><td> | </td><td class="num">16</td><td><span class="i">+++++++++</span><span class="d">-------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h18">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/ClassMapper.kt</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="A">A</td><td><a href="#h19">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/PlaybackViewContextMapper.kt</a></td><td> | </td><td class="num">34</td><td><span class="i">++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>20 files changed, 442 insertions(+), 91 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/build.gradle.kts.html">app/build.gradle.kts</a> b/<a href="../file/app/build.gradle.kts.html">app/build.gradle.kts</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -181,3 +181,8 @@ afterEvaluate {
+</a>         }
+     }
+ }
+<a href="#h0-0-3" id="h0-0-3" class="i">+properties[&quot;debug_flavor&quot;]?.let {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+    configurations.all {
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+        exclude(group = &quot;androidx.profileinstaller&quot;, &quot;profileinstaller&quot;)
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+    }
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+}
+</a><b>diff --git a/<a id="h1" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/RemoteSharedLibraryManager.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSharedLibraryManager.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/RemoteSharedLibraryManager.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSharedLibraryManager.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -1,7 +1,14 @@
+</a> package me.rhunk.snapenhance
+ 
+ import android.annotation.SuppressLint
+<a href="#h1-0-3" id="h1-0-3" class="i">+import android.app.Notification
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+import android.app.NotificationChannel
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+import android.app.NotificationManager
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+import android.app.PendingIntent
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+import android.content.Intent
+</a> import android.os.Build
+<a href="#h1-0-9" id="h1-0-9" class="i">+import androidx.core.net.toUri
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+import me.rhunk.snapenhance.common.BuildConfig
+</a> import me.rhunk.snapenhance.common.bridge.InternalFileHandleType
+ import okhttp3.OkHttpClient
+ import okhttp3.Request
+<a href="#h1-1" id="h1-1" class="h">@@ -16,7 +23,7 @@ class RemoteSharedLibraryManager(
+</a>         return runCatching {
+             okHttpClient.newCall(
+                 Request.Builder()
+<a href="#h1-1-3" id="h1-1-3" class="d">-                    .url(&quot;https://raw.githubusercontent.com/SnapEnhance/resources/main/sif/version&quot;)
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+                    .url(&quot;${BuildConfig.SIF_ENDPOINT}/version&quot;)
+</a>                     .build()
+             ).execute().use { response -&gt;
+                 if (!response.isSuccessful) {
+<a href="#h1-2" id="h1-2" class="h">@@ -30,7 +37,7 @@ class RemoteSharedLibraryManager(
+</a>     private fun downloadLatest(outputFile: File): Boolean {
+         val abi = Build.SUPPORTED_ABIS.firstOrNull() ?: return false
+         val request = Request.Builder()
+<a href="#h1-2-3" id="h1-2-3" class="d">-            .url(&quot;https://raw.githubusercontent.com/SnapEnhance/resources/main/sif/$abi.so&quot;)
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+            .url(&quot;${BuildConfig.SIF_ENDPOINT}/$abi.so&quot;)
+</a>             .build()
+         runCatching {
+             okHttpClient.newCall(request).execute().use { response -&gt;
+<a href="#h1-3" id="h1-3" class="h">@@ -60,8 +67,7 @@ class RemoteSharedLibraryManager(
+</a>             return
+         }
+         val latestVersion = getVersion()?.trim() ?: run {
+<a href="#h1-3-3" id="h1-3-3" class="d">-            remoteSideContext.log.warn(&quot;Failed to get latest sif version&quot;)
+</a><a href="#h1-3-4" id="h1-3-4" class="d">-            return
+</a><a href="#h1-3-5" id="h1-3-5" class="i">+            throw Exception(&quot;Failed to get latest sif version&quot;)
+</a>         }
+ 
+         if (currentVersion == latestVersion) {
+<a href="#h1-4" id="h1-4" class="h">@@ -73,12 +79,45 @@ class RemoteSharedLibraryManager(
+</a>         if (downloadLatest(libraryFile)) {
+             remoteSideContext.sharedPreferences.edit().putString(&quot;sif&quot;, latestVersion).commit()
+             remoteSideContext.shortToast(&quot;SIF updated to $latestVersion!&quot;)
+<a href="#h1-4-3" id="h1-4-3" class="i">+
+</a><a href="#h1-4-4" id="h1-4-4" class="i">+            if (currentVersion.isNotEmpty()) {
+</a><a href="#h1-4-5" id="h1-4-5" class="i">+                val notificationManager = remoteSideContext.androidContext.getSystemService(NotificationManager::class.java)
+</a><a href="#h1-4-6" id="h1-4-6" class="i">+                val channelId = &quot;sif_update&quot;
+</a><a href="#h1-4-7" id="h1-4-7" class="i">+
+</a><a href="#h1-4-8" id="h1-4-8" class="i">+                notificationManager.createNotificationChannel(
+</a><a href="#h1-4-9" id="h1-4-9" class="i">+                    NotificationChannel(
+</a><a href="#h1-4-10" id="h1-4-10" class="i">+                        channelId,
+</a><a href="#h1-4-11" id="h1-4-11" class="i">+                        &quot;SIF Updates&quot;,
+</a><a href="#h1-4-12" id="h1-4-12" class="i">+                        NotificationManager.IMPORTANCE_DEFAULT
+</a><a href="#h1-4-13" id="h1-4-13" class="i">+                    )
+</a><a href="#h1-4-14" id="h1-4-14" class="i">+                )
+</a><a href="#h1-4-15" id="h1-4-15" class="i">+
+</a><a href="#h1-4-16" id="h1-4-16" class="i">+                notificationManager.notify(
+</a><a href="#h1-4-17" id="h1-4-17" class="i">+                    System.nanoTime().toInt(),
+</a><a href="#h1-4-18" id="h1-4-18" class="i">+                    Notification.Builder(remoteSideContext.androidContext, channelId)
+</a><a href="#h1-4-19" id="h1-4-19" class="i">+                        .setContentTitle(&quot;SnapEnhance&quot;)
+</a><a href="#h1-4-20" id="h1-4-20" class="i">+                        .setContentText(&quot;Security Features have been updated to version $latestVersion&quot;)
+</a><a href="#h1-4-21" id="h1-4-21" class="i">+                        .setSmallIcon(android.R.drawable.stat_sys_download_done)
+</a><a href="#h1-4-22" id="h1-4-22" class="i">+                        .setContentIntent(PendingIntent.getActivity(
+</a><a href="#h1-4-23" id="h1-4-23" class="i">+                            remoteSideContext.androidContext,
+</a><a href="#h1-4-24" id="h1-4-24" class="i">+                            0,
+</a><a href="#h1-4-25" id="h1-4-25" class="i">+                            Intent().apply {
+</a><a href="#h1-4-26" id="h1-4-26" class="i">+                                action = Intent.ACTION_VIEW
+</a><a href="#h1-4-27" id="h1-4-27" class="i">+                                data = &quot;https://github.com/SnapEnhance/resources&quot;.toUri()
+</a><a href="#h1-4-28" id="h1-4-28" class="i">+                                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+</a><a href="#h1-4-29" id="h1-4-29" class="i">+                            },
+</a><a href="#h1-4-30" id="h1-4-30" class="i">+                            PendingIntent.FLAG_UPDATE_CURRENT
+</a><a href="#h1-4-31" id="h1-4-31" class="i">+                        )).build()
+</a><a href="#h1-4-32" id="h1-4-32" class="i">+                )
+</a><a href="#h1-4-33" id="h1-4-33" class="i">+            }
+</a><a href="#h1-4-34" id="h1-4-34" class="i">+
+</a>             // force restart snapchat
+             runCatching {
+                 remoteSideContext.config.configStateListener?.takeIf { it.asBinder().pingBinder() }?.onRestartRequired()
+             }
+         } else {
+             remoteSideContext.log.warn(&quot;Failed to download latest sif&quot;)
+<a href="#h1-4-41" id="h1-4-41" class="i">+            throw Exception(&quot;Failed to download latest sif&quot;)
+</a>         }
+     }
+ } 
+\ No newline at end of file
+<b>diff --git a/<a id="h2" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -133,7 +133,11 @@ class RemoteSideContext(
+</a>                     }
+                 }
+                 coroutineScope.launch {
+<a href="#h2-0-3" id="h2-0-3" class="d">-                    remoteSharedLibraryManager.init()
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+                    runCatching {
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+                        remoteSharedLibraryManager.init()
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+                    }.onFailure {
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+                        log.error(&quot;Failed to init RemoteSharedLibraryManager&quot;, it)
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+                    }
+</a>                 }
+             }
+         }.onFailure {
+<b>diff --git a/<a id="h3" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/SetupActivity.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/SetupActivity.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/SetupActivity.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/SetupActivity.kt</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -66,9 +66,9 @@ class SetupActivity : ComponentActivity() {
+</a>             if (isFirstRun || hasRequirement(Requirements.MAPPINGS)) {
+                 add(MappingsScreen().apply { route = &quot;mappings&quot; })
+             }
+<a href="#h3-0-3" id="h3-0-3" class="d">-            /*if (isFirstRun || hasRequirement(Requirements.SIF)) {
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+            if (hasRequirement(Requirements.SIF)) {
+</a>                 add(SecurityScreen().apply { route = &quot;security&quot; })
+<a href="#h3-0-6" id="h3-0-6" class="d">-            }*/
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+            }
+</a>         }
+ 
+         // If there are no required screens, we can just finish the activity
+<b>diff --git a/<a id="h4" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/setup/screens/impl/SecurityScreen.kt</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1,6 +1,9 @@
+</a> package me.rhunk.snapenhance.ui.setup.screens.impl
+ 
+<a href="#h4-0-2" id="h4-0-2" class="i">+import android.annotation.SuppressLint
+</a> import androidx.compose.foundation.layout.*
+<a href="#h4-0-4" id="h4-0-4" class="i">+import androidx.compose.foundation.rememberScrollState
+</a><a href="#h4-0-5" id="h4-0-5" class="i">+import androidx.compose.foundation.verticalScroll
+</a> import androidx.compose.material.icons.Icons
+ import androidx.compose.material.icons.filled.WarningAmber
+ import androidx.compose.material3.*
+<a href="#h4-1" id="h4-1" class="h">@@ -10,16 +13,22 @@ import androidx.compose.ui.Modifier
+</a> import androidx.compose.ui.text.font.FontWeight
+ import androidx.compose.ui.unit.dp
+ import androidx.compose.ui.unit.sp
+<a href="#h4-1-3" id="h4-1-3" class="i">+import kotlinx.coroutines.Dispatchers
+</a><a href="#h4-1-4" id="h4-1-4" class="i">+import kotlinx.coroutines.Job
+</a> import kotlinx.coroutines.launch
+<a href="#h4-1-6" id="h4-1-6" class="i">+import kotlinx.coroutines.withContext
+</a> import me.rhunk.snapenhance.ui.setup.screens.SetupScreen
+ 
+ class SecurityScreen : SetupScreen() {
+<a href="#h4-1-10" id="h4-1-10" class="i">+    @SuppressLint(&quot;ApplySharedPref&quot;)
+</a>     @Composable
+     override fun Content() {
+         Icon(
+             imageVector = Icons.Default.WarningAmber,
+             contentDescription = null,
+<a href="#h4-1-16" id="h4-1-16" class="d">-            modifier = Modifier.padding(16.dp).size(30.dp),
+</a><a href="#h4-1-17" id="h4-1-17" class="i">+            modifier = Modifier
+</a><a href="#h4-1-18" id="h4-1-18" class="i">+                .padding(16.dp)
+</a><a href="#h4-1-19" id="h4-1-19" class="i">+                .size(30.dp),
+</a>         )
+ 
+         DialogText(
+<a href="#h4-2" id="h4-2" class="h">@@ -56,6 +65,47 @@ class SecurityScreen : SetupScreen() {
+</a>             )
+         }
+ 
+<a href="#h4-2-3" id="h4-2-3" class="i">+        var downloadJob by remember { mutableStateOf(null as Job?) }
+</a><a href="#h4-2-4" id="h4-2-4" class="i">+        var jobError by remember { mutableStateOf(null as Throwable?) }
+</a><a href="#h4-2-5" id="h4-2-5" class="i">+
+</a><a href="#h4-2-6" id="h4-2-6" class="i">+        if (downloadJob != null) {
+</a><a href="#h4-2-7" id="h4-2-7" class="i">+            AlertDialog(onDismissRequest = {
+</a><a href="#h4-2-8" id="h4-2-8" class="i">+                downloadJob?.cancel()
+</a><a href="#h4-2-9" id="h4-2-9" class="i">+                downloadJob = null
+</a><a href="#h4-2-10" id="h4-2-10" class="i">+            }, confirmButton = {}, text = {
+</a><a href="#h4-2-11" id="h4-2-11" class="i">+                Column(
+</a><a href="#h4-2-12" id="h4-2-12" class="i">+                    modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth(),
+</a><a href="#h4-2-13" id="h4-2-13" class="i">+                    horizontalAlignment = Alignment.CenterHorizontally,
+</a><a href="#h4-2-14" id="h4-2-14" class="i">+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+</a><a href="#h4-2-15" id="h4-2-15" class="i">+                ) {
+</a><a href="#h4-2-16" id="h4-2-16" class="i">+                    if (jobError != null) {
+</a><a href="#h4-2-17" id="h4-2-17" class="i">+                        Text(&quot;Failed to download the required files.\n\n${jobError?.message}&quot;)
+</a><a href="#h4-2-18" id="h4-2-18" class="i">+                    } else {
+</a><a href="#h4-2-19" id="h4-2-19" class="i">+                        Text(&quot;Downloading the required files...&quot;)
+</a><a href="#h4-2-20" id="h4-2-20" class="i">+                        CircularProgressIndicator(modifier = Modifier.padding(16.dp))
+</a><a href="#h4-2-21" id="h4-2-21" class="i">+                    }
+</a><a href="#h4-2-22" id="h4-2-22" class="i">+                }
+</a><a href="#h4-2-23" id="h4-2-23" class="i">+            })
+</a><a href="#h4-2-24" id="h4-2-24" class="i">+        }
+</a><a href="#h4-2-25" id="h4-2-25" class="i">+
+</a><a href="#h4-2-26" id="h4-2-26" class="i">+        fun newDownloadJob() {
+</a><a href="#h4-2-27" id="h4-2-27" class="i">+            downloadJob?.cancel()
+</a><a href="#h4-2-28" id="h4-2-28" class="i">+            downloadJob = context.coroutineScope.launch {
+</a><a href="#h4-2-29" id="h4-2-29" class="i">+                context.sharedPreferences.edit().putString(&quot;sif&quot;, &quot;&quot;).commit()
+</a><a href="#h4-2-30" id="h4-2-30" class="i">+                runCatching {
+</a><a href="#h4-2-31" id="h4-2-31" class="i">+                    context.remoteSharedLibraryManager.init()
+</a><a href="#h4-2-32" id="h4-2-32" class="i">+                }.onFailure {
+</a><a href="#h4-2-33" id="h4-2-33" class="i">+                    jobError = it
+</a><a href="#h4-2-34" id="h4-2-34" class="i">+                    context.log.error(&quot;Failed to download the required files&quot;, it)
+</a><a href="#h4-2-35" id="h4-2-35" class="i">+                }.onSuccess {
+</a><a href="#h4-2-36" id="h4-2-36" class="i">+                    downloadJob = null
+</a><a href="#h4-2-37" id="h4-2-37" class="i">+                    withContext(Dispatchers.Main) {
+</a><a href="#h4-2-38" id="h4-2-38" class="i">+                        goNext()
+</a><a href="#h4-2-39" id="h4-2-39" class="i">+                    }
+</a><a href="#h4-2-40" id="h4-2-40" class="i">+                }
+</a><a href="#h4-2-41" id="h4-2-41" class="i">+            }
+</a><a href="#h4-2-42" id="h4-2-42" class="i">+        }
+</a><a href="#h4-2-43" id="h4-2-43" class="i">+
+</a>         Column (
+             modifier = Modifier.padding(16.dp),
+             horizontalAlignment = Alignment.CenterHorizontally,
+<a href="#h4-3" id="h4-3" class="h">@@ -63,11 +113,7 @@ class SecurityScreen : SetupScreen() {
+</a>         ) {
+             Button(
+                 onClick = {
+<a href="#h4-3-3" id="h4-3-3" class="d">-                    context.coroutineScope.launch {
+</a><a href="#h4-3-4" id="h4-3-4" class="d">-                        context.sharedPreferences.edit().putString(&quot;sif&quot;, &quot;&quot;).commit()
+</a><a href="#h4-3-5" id="h4-3-5" class="d">-                        context.remoteSharedLibraryManager.init()
+</a><a href="#h4-3-6" id="h4-3-6" class="d">-                    }
+</a><a href="#h4-3-7" id="h4-3-7" class="d">-                    goNext()
+</a><a href="#h4-3-8" id="h4-3-8" class="i">+                    newDownloadJob()
+</a>                 }
+             ) {
+                 Text(&quot;Accept and continue&quot;, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+<b>diff --git a/<a id="h5" href="../file/common/build.gradle.kts.html">common/build.gradle.kts</a> b/<a href="../file/common/build.gradle.kts.html">common/build.gradle.kts</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -30,6 +30,7 @@ android {
+</a>             standardOutput = gitHash
+         }
+         buildConfigField(&quot;String&quot;, &quot;GIT_HASH&quot;, &quot;\&quot;${gitHash.toString(Charsets.UTF_8).trim()}\&quot;&quot;)
+<a href="#h5-0-3" id="h5-0-3" class="i">+        buildConfigField(&quot;String&quot;, &quot;SIF_ENDPOINT&quot;, &quot;\&quot;${properties[&quot;debug_sif_endpoint&quot;]?.toString() ?: &quot;https://raw.githubusercontent.com/SnapEnhance/resources/main/sif&quot;}\&quot;&quot;)
+</a>     }
+ 
+     compileOptions {
+<b>diff --git a/<a id="h6" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -1039,6 +1039,10 @@
+</a>                             }
+                         }
+                     },
+<a href="#h6-0-3" id="h6-0-3" class="i">+                    &quot;voice_note_auto_play&quot;: {
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+                        &quot;name&quot;: &quot;Voice Note Auto Play&quot;,
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+                        &quot;description&quot;: &quot;Automatically plays the next voice note after the current one finishes&quot;
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+                    },
+</a>                     &quot;cof_experiments&quot;: {
+                         &quot;name&quot;: &quot;COF Experiments&quot;,
+                         &quot;description&quot;: &quot;Enables unreleased/beta Snapchat features&quot;
+<a href="#h6-1" id="h6-1" class="h">@@ -1250,10 +1254,10 @@
+</a>             },
+             &quot;gallery_media_send_override&quot;: {
+                 &quot;always_ask&quot;: &quot;Always Ask&quot;,
+<a href="#h6-1-3" id="h6-1-3" class="d">-                &quot;ORIGINAL&quot;: &quot;Original&quot;,
+</a><a href="#h6-1-4" id="h6-1-4" class="i">+                &quot;ORIGINAL&quot;: &quot;Original Media&quot;,
+</a>                 &quot;NOTE&quot;: &quot;Audio Note&quot;,
+                 &quot;SNAP&quot;: &quot;Snap&quot;,
+<a href="#h6-1-7" id="h6-1-7" class="d">-                &quot;SAVABLE_SNAP&quot;: &quot;Savable Snap&quot;
+</a><a href="#h6-1-8" id="h6-1-8" class="i">+                &quot;SAVEABLE_SNAP&quot;: &quot;Saveable Snap&quot;
+</a>             },
+             &quot;strip_media_metadata&quot;: {
+                 &quot;hide_caption_text&quot;: &quot;Hide Caption Text&quot;,
+<a href="#h6-2" id="h6-2" class="h">@@ -1712,5 +1716,8 @@
+</a>         &quot;sigColorBackgroundSurfaceTranslucent&quot;: &quot;Translucent Background Surface Color&quot;,
+         &quot;sigColorStoryRingFriendsFeedStoryRing&quot;: &quot;Story Ring Friends Feed Story Ring Color&quot;,
+         &quot;sigColorStoryRingDiscoverTabThumbnailStoryRing&quot;: &quot;Story Ring Discover Tab Thumbnail Story Ring Color&quot;
+<a href="#h6-2-3" id="h6-2-3" class="i">+    },
+</a><a href="#h6-2-4" id="h6-2-4" class="i">+    &quot;send_override_dialog&quot;: {
+</a><a href="#h6-2-5" id="h6-2-5" class="i">+        &quot;title&quot;: &quot;Send media as ...&quot;
+</a>     }
+ } 
+\ No newline at end of file
+<b>diff --git a/<a id="h7" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -63,6 +63,7 @@ class Experimental : ConfigContainer() {
+</a>     val callRecorder = boolean(&quot;call_recorder&quot;) { requireRestart(); addNotices(FeatureNotice.UNSTABLE); }
+     val accountSwitcher = container(&quot;account_switcher&quot;, AccountSwitcherConfig()) { requireRestart(); addNotices(FeatureNotice.UNSTABLE) }
+     val betterTranscript = container(&quot;better_transcript&quot;, BetterTranscriptConfig()) { requireRestart() }
+<a href="#h7-0-3" id="h7-0-3" class="i">+    val voiceNoteAutoPlay = boolean(&quot;voice_note_auto_play&quot;) { requireRestart() }
+</a>     val editMessage = boolean(&quot;edit_message&quot;) { requireRestart() }
+     val contextMenuFix = boolean(&quot;context_menu_fix&quot;) { requireRestart() }
+     val cofExperiments = multiple(&quot;cof_experiments&quot;, *cofExperimentList.toTypedArray()) { requireRestart(); addFlags(ConfigFlag.NO_TRANSLATE); addNotices(FeatureNotice.UNSTABLE) }
+<b>diff --git a/<a id="h8" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/event/EventDispatcher.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/event/EventDispatcher.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/event/EventDispatcher.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/event/EventDispatcher.kt</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -19,6 +19,7 @@ import me.rhunk.snapenhance.core.wrapper.impl.Message
+</a> import me.rhunk.snapenhance.core.wrapper.impl.MessageContent
+ import me.rhunk.snapenhance.core.wrapper.impl.MessageDestinations
+ import me.rhunk.snapenhance.core.wrapper.impl.SnapUUID
+<a href="#h8-0-3" id="h8-0-3" class="i">+import me.rhunk.snapenhance.mapper.impl.CallbackMapper
+</a> import me.rhunk.snapenhance.mapper.impl.ViewBinderMapper
+ import java.nio.ByteBuffer
+ 
+<a href="#h8-1" id="h8-1" class="h">@@ -274,6 +275,34 @@ class EventDispatcher(
+</a>             }
+         }
+ 
+<a href="#h8-1-3" id="h8-1-3" class="i">+        context.mappings.useMapper(CallbackMapper::class) {
+</a><a href="#h8-1-4" id="h8-1-4" class="i">+            callbacks.getClass(&quot;UploadDelegate&quot;)?.hook(&quot;uploadMedia&quot;, HookStage.BEFORE) { param -&gt;
+</a><a href="#h8-1-5" id="h8-1-5" class="i">+                val uploadCallback = param.arg&lt;Any&gt;(2)
+</a><a href="#h8-1-6" id="h8-1-6" class="i">+
+</a><a href="#h8-1-7" id="h8-1-7" class="i">+                val event = context.event.post(MediaUploadEvent(
+</a><a href="#h8-1-8" id="h8-1-8" class="i">+                    localMessageContent = MessageContent(param.arg(0)),
+</a><a href="#h8-1-9" id="h8-1-9" class="i">+                    destinations = MessageDestinations(param.arg(1)),
+</a><a href="#h8-1-10" id="h8-1-10" class="i">+                    callback = uploadCallback
+</a><a href="#h8-1-11" id="h8-1-11" class="i">+                ).apply {
+</a><a href="#h8-1-12" id="h8-1-12" class="i">+                    adapter = param
+</a><a href="#h8-1-13" id="h8-1-13" class="i">+                })
+</a><a href="#h8-1-14" id="h8-1-14" class="i">+
+</a><a href="#h8-1-15" id="h8-1-15" class="i">+                if (event?.canceled == true) {
+</a><a href="#h8-1-16" id="h8-1-16" class="i">+                    param.setResult(null)
+</a><a href="#h8-1-17" id="h8-1-17" class="i">+                    return@hook
+</a><a href="#h8-1-18" id="h8-1-18" class="i">+                }
+</a><a href="#h8-1-19" id="h8-1-19" class="i">+
+</a><a href="#h8-1-20" id="h8-1-20" class="i">+                event?.mediaUploadCallbacks?.takeIf { it.isNotEmpty() }?.let { callbacks -&gt;
+</a><a href="#h8-1-21" id="h8-1-21" class="i">+                    Hooker.ephemeralHookObjectMethod(uploadCallback::class.java, uploadCallback, &quot;onUploadFinished&quot;, HookStage.BEFORE) { methodParam -&gt;
+</a><a href="#h8-1-22" id="h8-1-22" class="i">+                        val messageContent = MessageContent(methodParam.arg(1))
+</a><a href="#h8-1-23" id="h8-1-23" class="i">+                        callbacks.forEach {
+</a><a href="#h8-1-24" id="h8-1-24" class="i">+                            it(MediaUploadEvent.MediaUploadResult(messageContent))
+</a><a href="#h8-1-25" id="h8-1-25" class="i">+                        }
+</a><a href="#h8-1-26" id="h8-1-26" class="i">+                    }
+</a><a href="#h8-1-27" id="h8-1-27" class="i">+                }
+</a><a href="#h8-1-28" id="h8-1-28" class="i">+            }
+</a><a href="#h8-1-29" id="h8-1-29" class="i">+        }
+</a><a href="#h8-1-30" id="h8-1-30" class="i">+
+</a>         hookViewBinder()
+     }
+ } 
+\ No newline at end of file
+<b>diff --git a/<a id="h9" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/event/events/impl/MediaUploadEvent.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/event/events/impl/MediaUploadEvent.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/event/events/impl/MediaUploadEvent.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/event/events/impl/MediaUploadEvent.kt</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -0,0 +1,21 @@
+</a><a href="#h9-0-0" id="h9-0-0" class="i">+package me.rhunk.snapenhance.core.event.events.impl
+</a><a href="#h9-0-1" id="h9-0-1" class="i">+
+</a><a href="#h9-0-2" id="h9-0-2" class="i">+import me.rhunk.snapenhance.core.event.events.AbstractHookEvent
+</a><a href="#h9-0-3" id="h9-0-3" class="i">+import me.rhunk.snapenhance.core.wrapper.impl.MessageContent
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+import me.rhunk.snapenhance.core.wrapper.impl.MessageDestinations
+</a><a href="#h9-0-5" id="h9-0-5" class="i">+
+</a><a href="#h9-0-6" id="h9-0-6" class="i">+class MediaUploadEvent(
+</a><a href="#h9-0-7" id="h9-0-7" class="i">+    val localMessageContent: MessageContent,
+</a><a href="#h9-0-8" id="h9-0-8" class="i">+    val destinations: MessageDestinations,
+</a><a href="#h9-0-9" id="h9-0-9" class="i">+    val callback: Any,
+</a><a href="#h9-0-10" id="h9-0-10" class="i">+): AbstractHookEvent() {
+</a><a href="#h9-0-11" id="h9-0-11" class="i">+    class MediaUploadResult(
+</a><a href="#h9-0-12" id="h9-0-12" class="i">+        val messageContent: MessageContent
+</a><a href="#h9-0-13" id="h9-0-13" class="i">+    )
+</a><a href="#h9-0-14" id="h9-0-14" class="i">+
+</a><a href="#h9-0-15" id="h9-0-15" class="i">+    val mediaUploadCallbacks = mutableListOf&lt;(MediaUploadResult) -&gt; Unit&gt;()
+</a><a href="#h9-0-16" id="h9-0-16" class="i">+
+</a><a href="#h9-0-17" id="h9-0-17" class="i">+    fun onMediaUploaded(callback: (MediaUploadResult) -&gt; Unit) {
+</a><a href="#h9-0-18" id="h9-0-18" class="i">+        mediaUploadCallbacks.add(callback)
+</a><a href="#h9-0-19" id="h9-0-19" class="i">+    }
+</a><a href="#h9-0-20" id="h9-0-20" class="i">+}</a><a href="#h9-0-21" id="h9-0-21" class="i">+
+\ No newline at end of file
+</a><b>diff --git a/<a id="h10" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -134,6 +134,7 @@ class FeatureManager(
+</a>             ContextMenuFix(),
+             DisableTelecomFramework(),
+             BetterTranscript(),
+<a href="#h10-0-3" id="h10-0-3" class="i">+            VoiceNoteAutoPlay(),
+</a>         )
+ 
+         features.values.toList().forEach { feature -&gt;
+<b>diff --git a/<a id="h11" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/FriendMutationObserver.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/FriendMutationObserver.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/FriendMutationObserver.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/FriendMutationObserver.kt</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -112,14 +112,14 @@ class FriendMutationObserver: Feature(&quot;FriendMutationObserver&quot;) {
+</a>                                 } != friend.get(&quot;birthday&quot;)?.asString
+                             ) {
+                                 val oldBirthday = databaseFriend.birthday.takeIf { it != 0L }?.let {
+<a href="#h11-0-3" id="h11-0-3" class="d">-                                    prettyPrintBirthday((it shr 32).toInt(), it.toInt())
+</a><a href="#h11-0-4" id="h11-0-4" class="i">+                                    prettyPrintBirthday((it shr 32).toInt() - 1, it.toInt())
+</a>                                 }
+ 
+                                 if (!friend.has(&quot;birthday&quot;)) {
+                                     sendWarnNotification(translation.format(&quot;birthday_removed&quot;, &quot;username&quot; to formatUsername(databaseFriend), &quot;birthday&quot; to oldBirthday.orEmpty()))
+                                 } else {
+                                     val newBirthday = friend.get(&quot;birthday&quot;)?.asString?.split(&quot;-&quot;)?.let {
+<a href="#h11-0-11" id="h11-0-11" class="d">-                                        prettyPrintBirthday(it[0].toInt(), it[1].toInt())
+</a><a href="#h11-0-12" id="h11-0-12" class="i">+                                        prettyPrintBirthday(it[0].toInt() - 1, it[1].toInt())
+</a>                                     }
+                                     if (oldBirthday == null) {
+                                         sendWarnNotification(translation.format(&quot;birthday_added&quot;, &quot;username&quot; to formatUsername(databaseFriend), &quot;birthday&quot; to newBirthday.orEmpty()))
+<b>diff --git a/<a id="h12" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/EndToEndEncryption.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/EndToEndEncryption.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/EndToEndEncryption.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/EndToEndEncryption.kt</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -7,11 +7,8 @@ import android.graphics.drawable.ShapeDrawable
+</a> import android.graphics.drawable.shapes.Shape
+ import android.view.View
+ import android.view.ViewGroup
+<a href="#h12-0-3" id="h12-0-3" class="d">-import androidx.compose.foundation.layout.Box
+</a><a href="#h12-0-4" id="h12-0-4" class="d">-import androidx.compose.foundation.layout.Spacer
+</a><a href="#h12-0-5" id="h12-0-5" class="d">-import androidx.compose.foundation.layout.fillMaxWidth
+</a><a href="#h12-0-6" id="h12-0-6" class="d">-import androidx.compose.foundation.layout.height
+</a><a href="#h12-0-7" id="h12-0-7" class="d">-import androidx.compose.foundation.layout.padding
+</a><a href="#h12-0-8" id="h12-0-8" class="i">+import android.widget.LinearLayout
+</a><a href="#h12-0-9" id="h12-0-9" class="i">+import androidx.compose.foundation.layout.*
+</a> import androidx.compose.material3.Button
+ import androidx.compose.material3.Card
+ import androidx.compose.material3.Text
+<a href="#h12-1" id="h12-1" class="h">@@ -29,18 +26,15 @@ import me.rhunk.snapenhance.common.util.lazyBridge
+</a> import me.rhunk.snapenhance.common.util.protobuf.ProtoEditor
+ import me.rhunk.snapenhance.common.util.protobuf.ProtoReader
+ import me.rhunk.snapenhance.common.util.protobuf.ProtoWriter
+<a href="#h12-1-3" id="h12-1-3" class="d">-import me.rhunk.snapenhance.core.event.events.impl.BindViewEvent
+</a><a href="#h12-1-4" id="h12-1-4" class="d">-import me.rhunk.snapenhance.core.event.events.impl.BuildMessageEvent
+</a><a href="#h12-1-5" id="h12-1-5" class="d">-import me.rhunk.snapenhance.core.event.events.impl.NativeUnaryCallEvent
+</a><a href="#h12-1-6" id="h12-1-6" class="d">-import me.rhunk.snapenhance.core.event.events.impl.SendMessageWithContentEvent
+</a><a href="#h12-1-7" id="h12-1-7" class="i">+import me.rhunk.snapenhance.core.event.events.impl.*
+</a> import me.rhunk.snapenhance.core.features.MessagingRuleFeature
+ import me.rhunk.snapenhance.core.features.impl.ui.ConversationToolbox
+ import me.rhunk.snapenhance.core.ui.ViewAppearanceHelper
+ import me.rhunk.snapenhance.core.ui.addForegroundDrawable
+<a href="#h12-1-12" id="h12-1-12" class="i">+import me.rhunk.snapenhance.core.ui.findParent
+</a> import me.rhunk.snapenhance.core.ui.removeForegroundDrawable
+ import me.rhunk.snapenhance.core.util.EvictingMap
+ import me.rhunk.snapenhance.core.util.hook.HookStage
+<a href="#h12-1-16" id="h12-1-16" class="d">-import me.rhunk.snapenhance.core.util.hook.Hooker
+</a> import me.rhunk.snapenhance.core.util.hook.hook
+ import me.rhunk.snapenhance.core.util.ktx.getObjectField
+ import me.rhunk.snapenhance.core.util.ktx.getObjectFieldOrNull
+<a href="#h12-2" id="h12-2" class="h">@@ -250,7 +244,9 @@ class EndToEndEncryption : MessagingRuleFeature(
+</a> 
+             context.event.subscribe(BindViewEvent::class) { event -&gt;
+                 event.chatMessage { conversationId, messageId -&gt;
+<a href="#h12-2-3" id="h12-2-3" class="d">-                    val viewGroup = event.view.parent as? ViewGroup ?: return@subscribe
+</a><a href="#h12-2-4" id="h12-2-4" class="i">+                    val viewGroup = event.view.findParent(maxIteration = 3) {
+</a><a href="#h12-2-5" id="h12-2-5" class="i">+                        it is LinearLayout
+</a><a href="#h12-2-6" id="h12-2-6" class="i">+                    } as? ViewGroup ?: event.view.parent as? ViewGroup ?: return@chatMessage
+</a> 
+                     viewGroup.findViewWithTag&lt;View&gt;(specialCard)?.also {
+                         viewGroup.removeView(it)
+<a href="#h12-3" id="h12-3" class="h">@@ -312,28 +308,23 @@ class EndToEndEncryption : MessagingRuleFeature(
+</a>         defer {
+             val forceMessageEncryption by context.config.experimental.e2eEncryption.forceMessageEncryption
+ 
+<a href="#h12-3-3" id="h12-3-3" class="d">-            context.mappings.useMapper(CallbackMapper::class) {
+</a><a href="#h12-3-4" id="h12-3-4" class="d">-                callbacks.getClass(&quot;UploadDelegate&quot;)?.hook(&quot;uploadMedia&quot;, HookStage.BEFORE) { param -&gt;
+</a><a href="#h12-3-5" id="h12-3-5" class="d">-                    val messageDestinations = MessageDestinations(param.arg(1))
+</a><a href="#h12-3-6" id="h12-3-6" class="d">-                    val uploadCallback = param.arg&lt;Any&gt;(2)
+</a><a href="#h12-3-7" id="h12-3-7" class="d">-                    val e2eeConversations = messageDestinations.getEndToEndConversations()
+</a><a href="#h12-3-8" id="h12-3-8" class="d">-                    if (e2eeConversations.isEmpty()) return@hook
+</a><a href="#h12-3-9" id="h12-3-9" class="i">+            context.event.subscribe(MediaUploadEvent::class) { event -&gt;
+</a><a href="#h12-3-10" id="h12-3-10" class="i">+                val e2eeConversations = event.destinations.getEndToEndConversations()
+</a><a href="#h12-3-11" id="h12-3-11" class="i">+                if (e2eeConversations.isEmpty()) return@subscribe
+</a> 
+<a href="#h12-3-13" id="h12-3-13" class="d">-                    if (messageDestinations.conversations!!.size != e2eeConversations.size || messageDestinations.stories?.isNotEmpty() == true) {
+</a><a href="#h12-3-14" id="h12-3-14" class="d">-                        context.log.debug(&quot;skipping encryption&quot;)
+</a><a href="#h12-3-15" id="h12-3-15" class="d">-                        return@hook
+</a><a href="#h12-3-16" id="h12-3-16" class="d">-                    }
+</a><a href="#h12-3-17" id="h12-3-17" class="i">+                if (event.destinations.conversations!!.size != e2eeConversations.size || event.destinations.stories?.isNotEmpty() == true) {
+</a><a href="#h12-3-18" id="h12-3-18" class="i">+                    context.log.debug(&quot;skipping encryption&quot;)
+</a><a href="#h12-3-19" id="h12-3-19" class="i">+                    return@subscribe
+</a><a href="#h12-3-20" id="h12-3-20" class="i">+                }
+</a> 
+<a href="#h12-3-22" id="h12-3-22" class="d">-                    Hooker.hookObjectMethod(uploadCallback::class.java, uploadCallback, &quot;onUploadFinished&quot;, HookStage.BEFORE) { methodParam -&gt;
+</a><a href="#h12-3-23" id="h12-3-23" class="d">-                        val messageContent = MessageContent(methodParam.arg(1))
+</a><a href="#h12-3-24" id="h12-3-24" class="d">-                        runCatching {
+</a><a href="#h12-3-25" id="h12-3-25" class="d">-                            messageContent.content = ProtoWriter().apply {
+</a><a href="#h12-3-26" id="h12-3-26" class="d">-                                writeEncryptedMessage(e2eeConversations.map { getE2EParticipants(it) }.flatten().distinct(), messageContent.content!!)
+</a><a href="#h12-3-27" id="h12-3-27" class="d">-                            }.toByteArray()
+</a><a href="#h12-3-28" id="h12-3-28" class="d">-                        }.onFailure {
+</a><a href="#h12-3-29" id="h12-3-29" class="d">-                            context.log.error(&quot;Failed to encrypt message&quot;, it)
+</a><a href="#h12-3-30" id="h12-3-30" class="d">-                            context.longToast(translation[&quot;encryption_failed_toast&quot;])
+</a><a href="#h12-3-31" id="h12-3-31" class="d">-                        }
+</a><a href="#h12-3-32" id="h12-3-32" class="i">+                event.onMediaUploaded { result -&gt;
+</a><a href="#h12-3-33" id="h12-3-33" class="i">+                    runCatching {
+</a><a href="#h12-3-34" id="h12-3-34" class="i">+                        result.messageContent.content = ProtoWriter().apply {
+</a><a href="#h12-3-35" id="h12-3-35" class="i">+                            writeEncryptedMessage(e2eeConversations.map { getE2EParticipants(it) }.flatten().distinct(), result.messageContent.content!!)
+</a><a href="#h12-3-36" id="h12-3-36" class="i">+                        }.toByteArray()
+</a><a href="#h12-3-37" id="h12-3-37" class="i">+                    }.onFailure {
+</a><a href="#h12-3-38" id="h12-3-38" class="i">+                        context.log.error(&quot;Failed to encrypt message&quot;, it)
+</a><a href="#h12-3-39" id="h12-3-39" class="i">+                        context.longToast(translation[&quot;encryption_failed_toast&quot;])
+</a>                     }
+                 }
+             }
+<a href="#h12-4" id="h12-4" class="h">@@ -359,6 +350,10 @@ class EndToEndEncryption : MessagingRuleFeature(
+</a>                 }
+ 
+                 event.addInvokeLater {
+<a href="#h12-4-3" id="h12-4-3" class="i">+                    // check if the content is already encrypted
+</a><a href="#h12-4-4" id="h12-4-4" class="i">+                    if (ProtoReader(messageContent.content!!).getByteArray(2, 1, 2) != null) {
+</a><a href="#h12-4-5" id="h12-4-5" class="i">+                        return@addInvokeLater
+</a><a href="#h12-4-6" id="h12-4-6" class="i">+                    }
+</a>                     if (event.messageContent.localMediaReferences?.isEmpty() == true) {
+                         runCatching {
+                             event.messageContent.content = ProtoWriter().apply {
+<b>diff --git a/<a id="h13" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/SendOverride.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/SendOverride.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/SendOverride.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/SendOverride.kt</a></b>
+<a href="#h13-0" id="h13-0" class="h">@@ -5,6 +5,8 @@ import androidx.compose.material.icons.filled.WarningAmber
+</a> import me.rhunk.snapenhance.common.data.ContentType
+ import me.rhunk.snapenhance.common.util.protobuf.ProtoEditor
+ import me.rhunk.snapenhance.common.util.protobuf.ProtoReader
+<a href="#h13-0-3" id="h13-0-3" class="i">+import me.rhunk.snapenhance.common.util.protobuf.ProtoWriter
+</a><a href="#h13-0-4" id="h13-0-4" class="i">+import me.rhunk.snapenhance.core.event.events.impl.MediaUploadEvent
+</a> import me.rhunk.snapenhance.core.event.events.impl.NativeUnaryCallEvent
+ import me.rhunk.snapenhance.core.event.events.impl.SendMessageWithContentEvent
+ import me.rhunk.snapenhance.core.features.Feature
+<a href="#h13-1" id="h13-1" class="h">@@ -15,17 +17,17 @@ import me.rhunk.snapenhance.nativelib.NativeLib
+</a> import java.util.Locale
+ 
+ class SendOverride : Feature(&quot;Send Override&quot;) {
+<a href="#h13-1-3" id="h13-1-3" class="d">-    private var isLastSnapSavable = false
+</a>     private val typeNames by lazy {
+         mutableListOf(&quot;ORIGINAL&quot;, &quot;SNAP&quot;, &quot;NOTE&quot;).also {
+             if (NativeLib.initialized) {
+<a href="#h13-1-7" id="h13-1-7" class="d">-                it.add(&quot;SAVABLE_SNAP&quot;)
+</a><a href="#h13-1-8" id="h13-1-8" class="i">+                it.add(&quot;SAVEABLE_SNAP&quot;)
+</a>             }
+         }.associateWith { it }
+     }
+ 
+     override fun init() {
+         val stripSnapMetadata = context.config.messaging.stripMediaMetadata.get()
+<a href="#h13-1-15" id="h13-1-15" class="i">+        var postSavePolicy: Int? = null
+</a> 
+         context.event.subscribe(SendMessageWithContentEvent::class, {
+             stripSnapMetadata.isNotEmpty()
+<a href="#h13-2" id="h13-2" class="h">@@ -76,14 +78,38 @@ class SendOverride : Feature(&quot;Send Override&quot;) {
+</a> 
+         val configOverrideType = context.config.messaging.galleryMediaSendOverride.getNullable() ?: return
+ 
+<a href="#h13-2-3" id="h13-2-3" class="i">+        context.event.subscribe(MediaUploadEvent::class) { event -&gt;
+</a><a href="#h13-2-4" id="h13-2-4" class="i">+            ProtoReader(event.localMessageContent.content!!).followPath(11, 5)?.let { snapDocPlayback -&gt;
+</a><a href="#h13-2-5" id="h13-2-5" class="i">+                event.onMediaUploaded { result -&gt;
+</a><a href="#h13-2-6" id="h13-2-6" class="i">+                    result.messageContent.content = ProtoEditor(result.messageContent.content!!).apply {
+</a><a href="#h13-2-7" id="h13-2-7" class="i">+                        edit(11, 5) {
+</a><a href="#h13-2-8" id="h13-2-8" class="i">+                            // remove media upload hint when viewing snap
+</a><a href="#h13-2-9" id="h13-2-9" class="i">+                            edit(1) {
+</a><a href="#h13-2-10" id="h13-2-10" class="i">+                                edit(1) {
+</a><a href="#h13-2-11" id="h13-2-11" class="i">+                                    remove(27)
+</a><a href="#h13-2-12" id="h13-2-12" class="i">+                                    addBuffer(26, byteArrayOf())
+</a><a href="#h13-2-13" id="h13-2-13" class="i">+                                }
+</a><a href="#h13-2-14" id="h13-2-14" class="i">+                            }
+</a><a href="#h13-2-15" id="h13-2-15" class="i">+
+</a><a href="#h13-2-16" id="h13-2-16" class="i">+                            remove(2)
+</a><a href="#h13-2-17" id="h13-2-17" class="i">+                            snapDocPlayback.getByteArray(2)?.let {
+</a><a href="#h13-2-18" id="h13-2-18" class="i">+                                addBuffer(2, it)
+</a><a href="#h13-2-19" id="h13-2-19" class="i">+                            }
+</a><a href="#h13-2-20" id="h13-2-20" class="i">+                        }
+</a><a href="#h13-2-21" id="h13-2-21" class="i">+                    }.toByteArray()
+</a><a href="#h13-2-22" id="h13-2-22" class="i">+                }
+</a><a href="#h13-2-23" id="h13-2-23" class="i">+            }
+</a><a href="#h13-2-24" id="h13-2-24" class="i">+        }
+</a><a href="#h13-2-25" id="h13-2-25" class="i">+
+</a>         context.event.subscribe(NativeUnaryCallEvent::class) { event -&gt;
+             if (event.uri != &quot;/messagingcoreservice.MessagingCoreService/CreateContentMessage&quot;) return@subscribe
+<a href="#h13-2-28" id="h13-2-28" class="d">-            if (isLastSnapSavable) {
+</a><a href="#h13-2-29" id="h13-2-29" class="i">+            postSavePolicy?.let { savePolicy -&gt;
+</a><a href="#h13-2-30" id="h13-2-30" class="i">+                context.log.verbose(&quot;post save policy $savePolicy&quot;)
+</a>                 event.buffer = ProtoEditor(event.buffer).apply {
+                     edit {
+                         edit(4) {
+                             remove(7)
+<a href="#h13-2-35" id="h13-2-35" class="d">-                            addVarInt(7, 3) // savePolicy = VIEW_SESSION
+</a><a href="#h13-2-36" id="h13-2-36" class="i">+                            addVarInt(7, savePolicy)
+</a>                         }
+                         add(6) {
+                             from(9) {
+<a href="#h13-3" id="h13-3" class="h">@@ -96,7 +122,7 @@ class SendOverride : Feature(&quot;Send Override&quot;) {
+</a>         }
+ 
+         context.event.subscribe(SendMessageWithContentEvent::class) { event -&gt;
+<a href="#h13-3-3" id="h13-3-3" class="d">-            isLastSnapSavable = false
+</a><a href="#h13-3-4" id="h13-3-4" class="i">+            postSavePolicy = null
+</a>             if (event.destinations.stories?.isNotEmpty() == true &amp;&amp; event.destinations.conversations?.isEmpty() == true) return@subscribe
+             val localMessageContent = event.messageContent
+             if (localMessageContent.contentType != ContentType.EXTERNAL_MEDIA) return@subscribe
+<a href="#h13-4" id="h13-4" class="h">@@ -117,14 +143,31 @@ class SendOverride : Feature(&quot;Send Override&quot;) {
+</a>                 }
+ 
+                 when (overrideType) {
+<a href="#h13-4-3" id="h13-4-3" class="d">-                    &quot;SNAP&quot;, &quot;SAVABLE_SNAP&quot; -&gt; {
+</a><a href="#h13-4-4" id="h13-4-4" class="d">-                        val extras = messageProtoReader.followPath(3, 3, 13)?.getBuffer()
+</a><a href="#h13-4-5" id="h13-4-5" class="i">+                    &quot;SNAP&quot;, &quot;SAVEABLE_SNAP&quot; -&gt; {
+</a><a href="#h13-4-6" id="h13-4-6" class="i">+                        postSavePolicy = if (overrideType == &quot;SAVEABLE_SNAP&quot;) 3 /* VIEW_SESSION */ else 1 /* PROHIBITED */
+</a> 
+<a href="#h13-4-8" id="h13-4-8" class="i">+                        val extras = messageProtoReader.followPath(3, 3, 13)?.getBuffer()
+</a>                         localMessageContent.contentType = ContentType.SNAP
+<a href="#h13-4-10" id="h13-4-10" class="d">-                        localMessageContent.content = MessageSender.redSnapProto(extras)
+</a><a href="#h13-4-11" id="h13-4-11" class="d">-                        if (overrideType == &quot;SAVABLE_SNAP&quot;) {
+</a><a href="#h13-4-12" id="h13-4-12" class="d">-                            isLastSnapSavable = true
+</a><a href="#h13-4-13" id="h13-4-13" class="d">-                        }
+</a><a href="#h13-4-14" id="h13-4-14" class="i">+                        localMessageContent.content = ProtoWriter().apply {
+</a><a href="#h13-4-15" id="h13-4-15" class="i">+                            from(11) {
+</a><a href="#h13-4-16" id="h13-4-16" class="i">+                                from(5) {
+</a><a href="#h13-4-17" id="h13-4-17" class="i">+                                    from(1) {
+</a><a href="#h13-4-18" id="h13-4-18" class="i">+                                        from(1) {
+</a><a href="#h13-4-19" id="h13-4-19" class="i">+                                            addVarInt(2, 0)
+</a><a href="#h13-4-20" id="h13-4-20" class="i">+                                            addVarInt(12, 0)
+</a><a href="#h13-4-21" id="h13-4-21" class="i">+                                            addVarInt(15, 0)
+</a><a href="#h13-4-22" id="h13-4-22" class="i">+                                        }
+</a><a href="#h13-4-23" id="h13-4-23" class="i">+                                        addVarInt(6, 0)
+</a><a href="#h13-4-24" id="h13-4-24" class="i">+                                    }
+</a><a href="#h13-4-25" id="h13-4-25" class="i">+                                    messageProtoReader.getByteArray(3, 3, 5, 2)?.let {
+</a><a href="#h13-4-26" id="h13-4-26" class="i">+                                        addBuffer(2, it)
+</a><a href="#h13-4-27" id="h13-4-27" class="i">+                                    }
+</a><a href="#h13-4-28" id="h13-4-28" class="i">+                                }
+</a><a href="#h13-4-29" id="h13-4-29" class="i">+                                extras?.let {
+</a><a href="#h13-4-30" id="h13-4-30" class="i">+                                    addBuffer(13, it)
+</a><a href="#h13-4-31" id="h13-4-31" class="i">+                                }
+</a><a href="#h13-4-32" id="h13-4-32" class="i">+                            }
+</a><a href="#h13-4-33" id="h13-4-33" class="i">+                        }.toByteArray()
+</a>                     }
+                     &quot;NOTE&quot; -&gt; {
+                         localMessageContent.contentType = ContentType.NOTE
+<a href="#h13-5" id="h13-5" class="h">@@ -156,6 +199,7 @@ class SendOverride : Feature(&quot;Send Override&quot;) {
+</a>                             event.invokeOriginal()
+                         }
+                     }
+<a href="#h13-5-3" id="h13-5-3" class="i">+                    .setTitle(context.translation[&quot;send_override_dialog.title&quot;])
+</a>                     .setNegativeButton(context.translation[&quot;button.cancel&quot;], null)
+                     .show()
+             }
+<b>diff --git a/<a id="h14" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/tweaks/VoiceNoteAutoPlay.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/tweaks/VoiceNoteAutoPlay.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/tweaks/VoiceNoteAutoPlay.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/tweaks/VoiceNoteAutoPlay.kt</a></b>
+<a href="#h14-0" id="h14-0" class="h">@@ -0,0 +1,142 @@
+</a><a href="#h14-0-0" id="h14-0-0" class="i">+package me.rhunk.snapenhance.core.features.impl.tweaks
+</a><a href="#h14-0-1" id="h14-0-1" class="i">+
+</a><a href="#h14-0-2" id="h14-0-2" class="i">+import android.view.View
+</a><a href="#h14-0-3" id="h14-0-3" class="i">+import me.rhunk.snapenhance.core.event.events.impl.BindViewEvent
+</a><a href="#h14-0-4" id="h14-0-4" class="i">+import me.rhunk.snapenhance.core.features.Feature
+</a><a href="#h14-0-5" id="h14-0-5" class="i">+import me.rhunk.snapenhance.core.util.dataBuilder
+</a><a href="#h14-0-6" id="h14-0-6" class="i">+import me.rhunk.snapenhance.core.util.hook.HookStage
+</a><a href="#h14-0-7" id="h14-0-7" class="i">+import me.rhunk.snapenhance.core.util.hook.hook
+</a><a href="#h14-0-8" id="h14-0-8" class="i">+import me.rhunk.snapenhance.core.util.ktx.getObjectField
+</a><a href="#h14-0-9" id="h14-0-9" class="i">+import me.rhunk.snapenhance.mapper.impl.PlaybackViewContextMapper
+</a><a href="#h14-0-10" id="h14-0-10" class="i">+import java.lang.reflect.Proxy
+</a><a href="#h14-0-11" id="h14-0-11" class="i">+import java.util.WeakHashMap
+</a><a href="#h14-0-12" id="h14-0-12" class="i">+
+</a><a href="#h14-0-13" id="h14-0-13" class="i">+class VoiceNoteAutoPlay: Feature(&quot;Voice Note Auto Play&quot;) {
+</a><a href="#h14-0-14" id="h14-0-14" class="i">+    override fun init() {
+</a><a href="#h14-0-15" id="h14-0-15" class="i">+        if (!context.config.experimental.voiceNoteAutoPlay.get()) return
+</a><a href="#h14-0-16" id="h14-0-16" class="i">+
+</a><a href="#h14-0-17" id="h14-0-17" class="i">+        val views = WeakHashMap&lt;View, Any&gt;() // component context -&gt; view
+</a><a href="#h14-0-18" id="h14-0-18" class="i">+
+</a><a href="#h14-0-19" id="h14-0-19" class="i">+        fun setPlaybackState(componentContext: Any, state: String): Boolean {
+</a><a href="#h14-0-20" id="h14-0-20" class="i">+            val onPlayButtonTapped = componentContext.getObjectField(&quot;_onPlayButtonTapped&quot;) ?: return false
+</a><a href="#h14-0-21" id="h14-0-21" class="i">+            onPlayButtonTapped.javaClass.getMethod(&quot;invoke&quot;, Any::class.java).invoke(
+</a><a href="#h14-0-22" id="h14-0-22" class="i">+                onPlayButtonTapped,
+</a><a href="#h14-0-23" id="h14-0-23" class="i">+                findClass(&quot;com.snap.voicenotes.PlaybackState&quot;).enumConstants.first {
+</a><a href="#h14-0-24" id="h14-0-24" class="i">+                    it.toString() == state
+</a><a href="#h14-0-25" id="h14-0-25" class="i">+                }
+</a><a href="#h14-0-26" id="h14-0-26" class="i">+            )
+</a><a href="#h14-0-27" id="h14-0-27" class="i">+            return true
+</a><a href="#h14-0-28" id="h14-0-28" class="i">+        }
+</a><a href="#h14-0-29" id="h14-0-29" class="i">+
+</a><a href="#h14-0-30" id="h14-0-30" class="i">+        fun playNextVoiceNote(currentContext: Any): Boolean {
+</a><a href="#h14-0-31" id="h14-0-31" class="i">+            val currentContextView = views.entries.filter { it.key.isAttachedToWindow }.firstOrNull { it.value.hashCode() == currentContext.hashCode() }?.key ?: return false
+</a><a href="#h14-0-32" id="h14-0-32" class="i">+
+</a><a href="#h14-0-33" id="h14-0-33" class="i">+            val currentViewLocation = IntArray(2)
+</a><a href="#h14-0-34" id="h14-0-34" class="i">+            currentContextView.getLocationOnScreen(currentViewLocation)
+</a><a href="#h14-0-35" id="h14-0-35" class="i">+
+</a><a href="#h14-0-36" id="h14-0-36" class="i">+            context.log.verbose(&quot;currentView -&gt; $currentContextView&quot;)
+</a><a href="#h14-0-37" id="h14-0-37" class="i">+
+</a><a href="#h14-0-38" id="h14-0-38" class="i">+            // find a view under the current view
+</a><a href="#h14-0-39" id="h14-0-39" class="i">+            val nextView = views.entries.filter { it.key.isAttachedToWindow }.map { entry -&gt;
+</a><a href="#h14-0-40" id="h14-0-40" class="i">+                entry to IntArray(2).let {
+</a><a href="#h14-0-41" id="h14-0-41" class="i">+                    entry.key.getLocationOnScreen(it)
+</a><a href="#h14-0-42" id="h14-0-42" class="i">+                    it[1] - currentViewLocation[1]
+</a><a href="#h14-0-43" id="h14-0-43" class="i">+                }
+</a><a href="#h14-0-44" id="h14-0-44" class="i">+            }.filter { it.second &gt; 1 }.minByOrNull { it.second }?.first
+</a><a href="#h14-0-45" id="h14-0-45" class="i">+
+</a><a href="#h14-0-46" id="h14-0-46" class="i">+            if (nextView == null) {
+</a><a href="#h14-0-47" id="h14-0-47" class="i">+                context.log.verbose(&quot;No more voice notes to play&quot;)
+</a><a href="#h14-0-48" id="h14-0-48" class="i">+                return false
+</a><a href="#h14-0-49" id="h14-0-49" class="i">+            }
+</a><a href="#h14-0-50" id="h14-0-50" class="i">+
+</a><a href="#h14-0-51" id="h14-0-51" class="i">+            context.log.verbose(&quot;nextView -&gt; ${nextView.key}&quot;)
+</a><a href="#h14-0-52" id="h14-0-52" class="i">+
+</a><a href="#h14-0-53" id="h14-0-53" class="i">+            return setPlaybackState(nextView.value, &quot;PLAYING&quot;)
+</a><a href="#h14-0-54" id="h14-0-54" class="i">+        }
+</a><a href="#h14-0-55" id="h14-0-55" class="i">+
+</a><a href="#h14-0-56" id="h14-0-56" class="i">+        context.mappings.useMapper(PlaybackViewContextMapper::class) {
+</a><a href="#h14-0-57" id="h14-0-57" class="i">+            componentContextClass.getAsClass()?.hook(setOnPlayButtonTapedMethod.get() ?: return@useMapper, HookStage.AFTER) { param -&gt;
+</a><a href="#h14-0-58" id="h14-0-58" class="i">+                val instance = param.thisObject&lt;Any&gt;()
+</a><a href="#h14-0-59" id="h14-0-59" class="i">+                var lastPlayerState: String? = null
+</a><a href="#h14-0-60" id="h14-0-60" class="i">+
+</a><a href="#h14-0-61" id="h14-0-61" class="i">+                instance.dataBuilder {
+</a><a href="#h14-0-62" id="h14-0-62" class="i">+                    val onPlayButtonTapped = get(&quot;_onPlayButtonTapped&quot;) as? Any ?: return@dataBuilder
+</a><a href="#h14-0-63" id="h14-0-63" class="i">+
+</a><a href="#h14-0-64" id="h14-0-64" class="i">+                    set(&quot;_onPlayButtonTapped&quot;, Proxy.newProxyInstance(
+</a><a href="#h14-0-65" id="h14-0-65" class="i">+                        context.androidContext.classLoader,
+</a><a href="#h14-0-66" id="h14-0-66" class="i">+                        arrayOf(findClass(&quot;kotlin.jvm.functions.Function1&quot;))
+</a><a href="#h14-0-67" id="h14-0-67" class="i">+                    ) { _, _, args -&gt;
+</a><a href="#h14-0-68" id="h14-0-68" class="i">+                        lastPlayerState = null
+</a><a href="#h14-0-69" id="h14-0-69" class="i">+                        context.log.verbose(&quot;onPlayButtonTapped ${args.contentToString()}&quot;)
+</a><a href="#h14-0-70" id="h14-0-70" class="i">+                        onPlayButtonTapped.javaClass.getMethod(&quot;invoke&quot;, Any::class.java).invoke(onPlayButtonTapped, args[0])
+</a><a href="#h14-0-71" id="h14-0-71" class="i">+                    })
+</a><a href="#h14-0-72" id="h14-0-72" class="i">+
+</a><a href="#h14-0-73" id="h14-0-73" class="i">+                    from(&quot;_playbackStateObservable&quot;) {
+</a><a href="#h14-0-74" id="h14-0-74" class="i">+                        val oldSubscribe = get(&quot;_subscribe&quot;) as? Any ?: return@from
+</a><a href="#h14-0-75" id="h14-0-75" class="i">+
+</a><a href="#h14-0-76" id="h14-0-76" class="i">+                        fun subscribe(listener: Any): Any? {
+</a><a href="#h14-0-77" id="h14-0-77" class="i">+                            return oldSubscribe.javaClass.getMethod(&quot;invoke&quot;, Any::class.java).invoke(oldSubscribe, listener)
+</a><a href="#h14-0-78" id="h14-0-78" class="i">+                        }
+</a><a href="#h14-0-79" id="h14-0-79" class="i">+
+</a><a href="#h14-0-80" id="h14-0-80" class="i">+                        set(&quot;_subscribe&quot;, Proxy.newProxyInstance(
+</a><a href="#h14-0-81" id="h14-0-81" class="i">+                            context.androidContext.classLoader,
+</a><a href="#h14-0-82" id="h14-0-82" class="i">+                            arrayOf(findClass(&quot;kotlin.jvm.functions.Function1&quot;))
+</a><a href="#h14-0-83" id="h14-0-83" class="i">+                        ) proxy@{ _, _, args -&gt;
+</a><a href="#h14-0-84" id="h14-0-84" class="i">+                            val function4 = args[0]
+</a><a href="#h14-0-85" id="h14-0-85" class="i">+
+</a><a href="#h14-0-86" id="h14-0-86" class="i">+                            subscribe(
+</a><a href="#h14-0-87" id="h14-0-87" class="i">+                                Proxy.newProxyInstance(
+</a><a href="#h14-0-88" id="h14-0-88" class="i">+                                    context.androidContext.classLoader,
+</a><a href="#h14-0-89" id="h14-0-89" class="i">+                                    arrayOf(findClass(&quot;kotlin.jvm.functions.Function4&quot;))
+</a><a href="#h14-0-90" id="h14-0-90" class="i">+                                ) { _, _, listenerArgs -&gt;
+</a><a href="#h14-0-91" id="h14-0-91" class="i">+                                    val state = listenerArgs[2]?.toString()
+</a><a href="#h14-0-92" id="h14-0-92" class="i">+
+</a><a href="#h14-0-93" id="h14-0-93" class="i">+                                    if (state == &quot;PAUSED&quot; &amp;&amp; lastPlayerState == &quot;PLAYING&quot;) {
+</a><a href="#h14-0-94" id="h14-0-94" class="i">+                                        context.log.verbose(&quot;playback finished. playing next voice note&quot;)
+</a><a href="#h14-0-95" id="h14-0-95" class="i">+                                        runCatching {
+</a><a href="#h14-0-96" id="h14-0-96" class="i">+                                            if (!playNextVoiceNote(instance)) {
+</a><a href="#h14-0-97" id="h14-0-97" class="i">+                                                lastPlayerState = null
+</a><a href="#h14-0-98" id="h14-0-98" class="i">+                                            }
+</a><a href="#h14-0-99" id="h14-0-99" class="i">+                                        }.onFailure {
+</a><a href="#h14-0-100" id="h14-0-100" class="i">+                                            context.log.error(&quot;Failed to play next voice note&quot;, it)
+</a><a href="#h14-0-101" id="h14-0-101" class="i">+                                        }
+</a><a href="#h14-0-102" id="h14-0-102" class="i">+                                    }
+</a><a href="#h14-0-103" id="h14-0-103" class="i">+
+</a><a href="#h14-0-104" id="h14-0-104" class="i">+                                    lastPlayerState = state
+</a><a href="#h14-0-105" id="h14-0-105" class="i">+                                    function4.javaClass.methods.first { it.parameterCount == 4 }.invoke(function4, *listenerArgs)
+</a><a href="#h14-0-106" id="h14-0-106" class="i">+                                }
+</a><a href="#h14-0-107" id="h14-0-107" class="i">+                            )
+</a><a href="#h14-0-108" id="h14-0-108" class="i">+
+</a><a href="#h14-0-109" id="h14-0-109" class="i">+                        })
+</a><a href="#h14-0-110" id="h14-0-110" class="i">+                    }
+</a><a href="#h14-0-111" id="h14-0-111" class="i">+                }
+</a><a href="#h14-0-112" id="h14-0-112" class="i">+            }
+</a><a href="#h14-0-113" id="h14-0-113" class="i">+        }
+</a><a href="#h14-0-114" id="h14-0-114" class="i">+
+</a><a href="#h14-0-115" id="h14-0-115" class="i">+        onNextActivityCreate {
+</a><a href="#h14-0-116" id="h14-0-116" class="i">+            context.event.subscribe(BindViewEvent::class) { event -&gt;
+</a><a href="#h14-0-117" id="h14-0-117" class="i">+                if (!event.prevModel.toString().contains(&quot;audio_note&quot;)) return@subscribe
+</a><a href="#h14-0-118" id="h14-0-118" class="i">+
+</a><a href="#h14-0-119" id="h14-0-119" class="i">+                // find view model of the audio note
+</a><a href="#h14-0-120" id="h14-0-120" class="i">+                val viewModelField = event.prevModel.javaClass.fields.firstOrNull { field -&gt;
+</a><a href="#h14-0-121" id="h14-0-121" class="i">+                    field.type.constructors.firstOrNull()?.parameterTypes?.takeIf { it.size == 3 }?.let { args -&gt;
+</a><a href="#h14-0-122" id="h14-0-122" class="i">+                        args[1].interfaces.any { it.name == &quot;com.snap.composer.utils.ComposerMarshallable&quot; }
+</a><a href="#h14-0-123" id="h14-0-123" class="i">+                    } == true
+</a><a href="#h14-0-124" id="h14-0-124" class="i">+                } ?: return@subscribe
+</a><a href="#h14-0-125" id="h14-0-125" class="i">+
+</a><a href="#h14-0-126" id="h14-0-126" class="i">+                val viewModel = viewModelField.get(event.prevModel)
+</a><a href="#h14-0-127" id="h14-0-127" class="i">+                var playbackViewComponentContext: Any? = null
+</a><a href="#h14-0-128" id="h14-0-128" class="i">+
+</a><a href="#h14-0-129" id="h14-0-129" class="i">+                for (field in viewModel.javaClass.fields) {
+</a><a href="#h14-0-130" id="h14-0-130" class="i">+                    val fieldContent = runCatching { field.get(viewModel) }.getOrNull() ?: continue
+</a><a href="#h14-0-131" id="h14-0-131" class="i">+                    if (fieldContent.javaClass.declaredFields.any { it.name == &quot;_onPlayButtonTapped&quot; }) {
+</a><a href="#h14-0-132" id="h14-0-132" class="i">+                        playbackViewComponentContext = fieldContent
+</a><a href="#h14-0-133" id="h14-0-133" class="i">+                        break;
+</a><a href="#h14-0-134" id="h14-0-134" class="i">+                    }
+</a><a href="#h14-0-135" id="h14-0-135" class="i">+                }
+</a><a href="#h14-0-136" id="h14-0-136" class="i">+
+</a><a href="#h14-0-137" id="h14-0-137" class="i">+                views[event.view] = playbackViewComponentContext ?: return@subscribe
+</a><a href="#h14-0-138" id="h14-0-138" class="i">+            }
+</a><a href="#h14-0-139" id="h14-0-139" class="i">+        }
+</a><a href="#h14-0-140" id="h14-0-140" class="i">+    }
+</a><a href="#h14-0-141" id="h14-0-141" class="i">+}</a><a href="#h14-0-142" id="h14-0-142" class="i">+
+\ No newline at end of file
+</a><b>diff --git a/<a id="h15" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/messaging/MessageSender.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/messaging/MessageSender.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/messaging/MessageSender.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/messaging/MessageSender.kt</a></b>
+<a href="#h15-0" id="h15-0" class="h">@@ -14,30 +14,6 @@ class MessageSender(
+</a>     private val context: ModContext,
+ ) {
+     companion object {
+<a href="#h15-0-3" id="h15-0-3" class="d">-        val redSnapProto: (ByteArray?) -&gt; ByteArray = { extras -&gt;
+</a><a href="#h15-0-4" id="h15-0-4" class="d">-            ProtoWriter().apply {
+</a><a href="#h15-0-5" id="h15-0-5" class="d">-                from(11) {
+</a><a href="#h15-0-6" id="h15-0-6" class="d">-                    from(5) {
+</a><a href="#h15-0-7" id="h15-0-7" class="d">-                        from(1) {
+</a><a href="#h15-0-8" id="h15-0-8" class="d">-                            from(1) {
+</a><a href="#h15-0-9" id="h15-0-9" class="d">-                                addVarInt(2, 0)
+</a><a href="#h15-0-10" id="h15-0-10" class="d">-                                addVarInt(12, 0)
+</a><a href="#h15-0-11" id="h15-0-11" class="d">-                                addVarInt(15, 0)
+</a><a href="#h15-0-12" id="h15-0-12" class="d">-                            }
+</a><a href="#h15-0-13" id="h15-0-13" class="d">-                            addVarInt(6, 0)
+</a><a href="#h15-0-14" id="h15-0-14" class="d">-                        }
+</a><a href="#h15-0-15" id="h15-0-15" class="d">-                        from(2) {
+</a><a href="#h15-0-16" id="h15-0-16" class="d">-                            addVarInt(5, 1) // audio by default
+</a><a href="#h15-0-17" id="h15-0-17" class="d">-                            addBuffer(6, byteArrayOf())
+</a><a href="#h15-0-18" id="h15-0-18" class="d">-                        }
+</a><a href="#h15-0-19" id="h15-0-19" class="d">-                    }
+</a><a href="#h15-0-20" id="h15-0-20" class="d">-                    extras?.let {
+</a><a href="#h15-0-21" id="h15-0-21" class="d">-                        addBuffer(13, it)
+</a><a href="#h15-0-22" id="h15-0-22" class="d">-                    }
+</a><a href="#h15-0-23" id="h15-0-23" class="d">-                }
+</a><a href="#h15-0-24" id="h15-0-24" class="d">-            }.toByteArray()
+</a><a href="#h15-0-25" id="h15-0-25" class="d">-        }
+</a><a href="#h15-0-26" id="h15-0-26" class="d">-
+</a>         val audioNoteProto: (Long, String?) -&gt; ByteArray = { duration, userLocale -&gt;
+             ProtoWriter().apply {
+                 from(6, 1) {
+<b>diff --git a/<a id="h16" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/MenuViewInjector.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/MenuViewInjector.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/MenuViewInjector.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/MenuViewInjector.kt</a></b>
+<a href="#h16-0" id="h16-0" class="h">@@ -50,6 +50,7 @@ class MenuViewInjector : Feature(&quot;MenuViewInjector&quot;) {
+</a>             val actionMenu = context.resources.getIdentifier(&quot;action_menu&quot;, &quot;id&quot;)
+             val componentsHolder = context.resources.getIdentifier(&quot;components_holder&quot;, &quot;id&quot;)
+             val feedNewChat = context.resources.getIdentifier(&quot;feed_new_chat&quot;, &quot;id&quot;)
+<a href="#h16-0-3" id="h16-0-3" class="i">+            val hovaNavMapIcon = context.resources.getIdentifier(&quot;hova_header_search_icon&quot;, &quot;id&quot;)
+</a>             val contextMenuButtonIconView = context.resources.getIdentifier(&quot;context_menu_button_icon_view&quot;, &quot;id&quot;)
+             val chatActionMenu = context.resources.getIdentifier(&quot;chat_action_menu&quot;, &quot;id&quot;)
+ 
+<a href="#h16-1" id="h16-1" class="h">@@ -87,7 +88,7 @@ class MenuViewInjector : Feature(&quot;MenuViewInjector&quot;) {
+</a>                     menuMap[OperaViewerIcons::class]!!.inject(viewGroup, childView, originalAddView)
+                 }
+ 
+<a href="#h16-1-3" id="h16-1-3" class="d">-                if (event.parent.id == componentsHolder &amp;&amp; childView.id == feedNewChat) {
+</a><a href="#h16-1-4" id="h16-1-4" class="i">+                if (event.parent.id == componentsHolder &amp;&amp; (childView.id == feedNewChat || childView.id == hovaNavMapIcon)) {
+</a>                     menuMap[SettingsGearInjector::class]!!.inject(viewGroup, childView, originalAddView)
+                     return@subscribe
+                 }
+<b>diff --git a/<a id="h17" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/impl/SettingsGearInjector.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/impl/SettingsGearInjector.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/impl/SettingsGearInjector.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/ui/menu/impl/SettingsGearInjector.kt</a></b>
+<a href="#h17-0" id="h17-0" class="h">@@ -18,21 +18,22 @@ import me.rhunk.snapenhance.core.util.ktx.getStyledAttributes
+</a> class SettingsGearInjector : AbstractMenu() {
+     override fun inject(parent: ViewGroup, view: View, viewConsumer: (View) -&gt; Unit) {
+         if (context.config.userInterface.hideSettingsGear.get()) return
+<a href="#h17-0-3" id="h17-0-3" class="d">-        val firstView = (view as ViewGroup).getChildAt(0)
+</a><a href="#h17-0-4" id="h17-0-4" class="i">+        val hovaNavMapIcon = parent.findViewById&lt;View&gt;(context.resources.getId(&quot;hova_nav_map_icon&quot;))
+</a><a href="#h17-0-5" id="h17-0-5" class="i">+        val firstView = hovaNavMapIcon ?: (view as ViewGroup).getChildAt(0)
+</a> 
+         val ngsHovaHeaderSearchIconBackgroundMarginLeft = context.resources.getDimens(&quot;ngs_hova_header_search_icon_background_margin_left&quot;)
+ 
+<a href="#h17-0-9" id="h17-0-9" class="d">-        view.clipChildren = false
+</a><a href="#h17-0-10" id="h17-0-10" class="i">+        (view as ViewGroup).clipChildren = false
+</a>         view.addView(FrameLayout(parent.context).apply {
+             visibility = View.GONE
+             post {
+                 layoutParams = FrameLayout.LayoutParams(firstView.layoutParams.width, firstView.layoutParams.height).apply {
+                     y = 0f
+<a href="#h17-0-16" id="h17-0-16" class="d">-                    x = if (parent.findViewById&lt;View&gt;(context.resources.getId(&quot;hova_nav_map_icon&quot;)) != null) {
+</a><a href="#h17-0-17" id="h17-0-17" class="d">-                        parent.resources.displayMetrics.widthPixels - firstView.layoutParams.width - ngsHovaHeaderSearchIconBackgroundMarginLeft * 2 - (firstView.layoutParams.width).toFloat() * 2f
+</a><a href="#h17-0-18" id="h17-0-18" class="d">-                    } else {
+</a><a href="#h17-0-19" id="h17-0-19" class="d">-                        -(ngsHovaHeaderSearchIconBackgroundMarginLeft + firstView.layoutParams.width).toFloat()
+</a><a href="#h17-0-20" id="h17-0-20" class="d">-                    }
+</a><a href="#h17-0-21" id="h17-0-21" class="i">+                    // TODO: find a better way to calculate the x position with the correct padding when Simple Snapchat is active
+</a><a href="#h17-0-22" id="h17-0-22" class="i">+                    x = -(ngsHovaHeaderSearchIconBackgroundMarginLeft + firstView.layoutParams.width).toFloat() +
+</a><a href="#h17-0-23" id="h17-0-23" class="i">+                        (hovaNavMapIcon.takeIf { it != null }?.let {
+</a><a href="#h17-0-24" id="h17-0-24" class="i">+                            7 * context.resources.displayMetrics.density
+</a><a href="#h17-0-25" id="h17-0-25" class="i">+                        } ?: 0f)
+</a>                 }
+                 visibility = View.VISIBLE
+             }
+<a href="#h17-1" id="h17-1" class="h">@@ -66,6 +67,7 @@ class SettingsGearInjector : AbstractMenu() {
+</a>                     gravity = android.view.Gravity.CENTER
+                 }
+                 setImageDrawable(context.resources.getDrawable(&quot;svg_settings_32x32&quot;, context.theme))
+<a href="#h17-1-3" id="h17-1-3" class="i">+                // TODO: find a better way to tint the icon when Simple Snapchat is active
+</a>                 context.resources.getStyledAttributes(&quot;headerButtonOpaqueIconTint&quot;, context.theme).use {
+                     imageTintList = it.getColorStateList(0)
+                 }
+<b>diff --git a/<a id="h18" href="../file/mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/ClassMapper.kt.html">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/ClassMapper.kt</a> b/<a href="../file/mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/ClassMapper.kt.html">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/ClassMapper.kt</a></b>
+<a href="#h18-0" id="h18-0" class="h">@@ -37,6 +37,7 @@ class ClassMapper(
+</a>             MemoriesPresenterMapper(),
+             StreaksExpirationMapper(),
+             COFObservableMapper(),
+<a href="#h18-0-3" id="h18-0-3" class="i">+            PlaybackViewContextMapper(),
+</a>         )
+     }
+ 
+<b>diff --git a/<a id="h19" href="../file/mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/PlaybackViewContextMapper.kt.html">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/PlaybackViewContextMapper.kt</a> b/<a href="../file/mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/PlaybackViewContextMapper.kt.html">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/PlaybackViewContextMapper.kt</a></b>
+<a href="#h19-0" id="h19-0" class="h">@@ -0,0 +1,33 @@
+</a><a href="#h19-0-0" id="h19-0-0" class="i">+package me.rhunk.snapenhance.mapper.impl
+</a><a href="#h19-0-1" id="h19-0-1" class="i">+
+</a><a href="#h19-0-2" id="h19-0-2" class="i">+import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction22c
+</a><a href="#h19-0-3" id="h19-0-3" class="i">+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+</a><a href="#h19-0-4" id="h19-0-4" class="i">+import me.rhunk.snapenhance.mapper.AbstractClassMapper
+</a><a href="#h19-0-5" id="h19-0-5" class="i">+import me.rhunk.snapenhance.mapper.ext.getClassName
+</a><a href="#h19-0-6" id="h19-0-6" class="i">+
+</a><a href="#h19-0-7" id="h19-0-7" class="i">+class PlaybackViewContextMapper: AbstractClassMapper(&quot;Playback View Context Mapper&quot;) {
+</a><a href="#h19-0-8" id="h19-0-8" class="i">+    val componentContextClass = classReference(&quot;componentContextClass&quot;)
+</a><a href="#h19-0-9" id="h19-0-9" class="i">+    val setOnPlayButtonTapedMethod = string(&quot;setOnPlayButtonTapedMethod&quot;)
+</a><a href="#h19-0-10" id="h19-0-10" class="i">+
+</a><a href="#h19-0-11" id="h19-0-11" class="i">+    init {
+</a><a href="#h19-0-12" id="h19-0-12" class="i">+        mapper {
+</a><a href="#h19-0-13" id="h19-0-13" class="i">+            val playbackViewClass = getClass(&quot;Lcom/snap/voicenotes/PlaybackView;&quot;) ?: return@mapper
+</a><a href="#h19-0-14" id="h19-0-14" class="i">+
+</a><a href="#h19-0-15" id="h19-0-15" class="i">+            val componentContextDexClass = getClass(playbackViewClass.methods.firstOrNull {
+</a><a href="#h19-0-16" id="h19-0-16" class="i">+                it.name == &quot;create&quot; &amp;&amp; it.parameters.size &gt; 3
+</a><a href="#h19-0-17" id="h19-0-17" class="i">+            }?.parameterTypes?.get(2)) ?: return@mapper
+</a><a href="#h19-0-18" id="h19-0-18" class="i">+
+</a><a href="#h19-0-19" id="h19-0-19" class="i">+            componentContextClass.set(componentContextDexClass.getClassName())
+</a><a href="#h19-0-20" id="h19-0-20" class="i">+
+</a><a href="#h19-0-21" id="h19-0-21" class="i">+            val setOnPlayButtonTapedDexMethod = componentContextDexClass.methods.firstOrNull { method -&gt;
+</a><a href="#h19-0-22" id="h19-0-22" class="i">+                method.name != &quot;&lt;init&gt;&quot; &amp;&amp; method.implementation?.instructions?.any {
+</a><a href="#h19-0-23" id="h19-0-23" class="i">+                    if (it is Instruction22c &amp;&amp; it.reference is FieldReference) {
+</a><a href="#h19-0-24" id="h19-0-24" class="i">+                        (it.reference as FieldReference).name == &quot;_onPlayButtonTapped&quot;
+</a><a href="#h19-0-25" id="h19-0-25" class="i">+                    } else false
+</a><a href="#h19-0-26" id="h19-0-26" class="i">+                } == true
+</a><a href="#h19-0-27" id="h19-0-27" class="i">+            } ?: return@mapper
+</a><a href="#h19-0-28" id="h19-0-28" class="i">+
+</a><a href="#h19-0-29" id="h19-0-29" class="i">+            setOnPlayButtonTapedMethod.set(setOnPlayButtonTapedDexMethod.name)
+</a><a href="#h19-0-30" id="h19-0-30" class="i">+        }
+</a><a href="#h19-0-31" id="h19-0-31" class="i">+    }
+</a><a href="#h19-0-32" id="h19-0-32" class="i">+}</a><a href="#h19-0-33" id="h19-0-33" class="i">+
+\ No newline at end of file
+</a></pre>
+</div>
+</body>
+</html>

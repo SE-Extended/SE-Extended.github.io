@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LogManager.kt - SnapEnhance - An Xposed module offering an enhanced Snapchat experience
+<title>LogManager.kt - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </title>
 <link rel="icon" type="image/svg+xml" href="../../../../../../../../../logo.png"/>
 <link rel="alternate icon" href="../../../../../../../../../favicon.png"/>
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed" href="../../../../../../../../atom.xml" />
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed (tags)" href="../../../../../../../../tags.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../../../../../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../../../../../../../../tags.xml" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../style.css" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../fonts.css" />
 </head>
 <body>
-<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../"><img src="../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SnapEnhance</strong><span class="desc"> - An Xposed module offering an enhanced Snapchat experience
+<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../"><img src="../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </span>
 </td></tr></table>
 <p><a href="../../../../../../../../about.html">About</a> | <a href="../../../../../../../../log.html">Log</a> | <a href="../../../../../../../../files.html">Files</a> | <a href="../../../../../../../../refs.html">Refs</a> | <a href="../../../../../../../../file/.gitmodules.html">Submodules</a> | <a href="../../../../../../../../file/LICENSE.html">License</a></p>
@@ -202,7 +202,7 @@
 <a href="#l179" class="line" id="l179">    179</a> 
 <a href="#l180" class="line" id="l180">    180</a>     private fun newLogFile() {
 <a href="#l181" class="line" id="l181">    181</a>         val currentTime = System.currentTimeMillis()
-<a href="#l182" class="line" id="l182">    182</a>         logFile = File(logFolder, &quot;snapenhance_${getCurrentDateTime(pathSafe = true)}.log&quot;).also {
+<a href="#l182" class="line" id="l182">    182</a>         logFile = File(logFolder, &quot;SE Extended-${getCurrentDateTime(pathSafe = true)}.txt&quot;).also {
 <a href="#l183" class="line" id="l183">    183</a>             it.createNewFile()
 <a href="#l184" class="line" id="l184">    184</a>             remoteSideContext.sharedPreferences.edit().putString(&quot;log_file&quot;, it.absolutePath).putLong(&quot;last_created&quot;, currentTime).apply()
 <a href="#l185" class="line" id="l185">    185</a>         }
@@ -219,7 +219,7 @@
 <a href="#l196" class="line" id="l196">    196</a>         }
 <a href="#l197" class="line" id="l197">    197</a> 
 <a href="#l198" class="line" id="l198">    198</a>         // add device info to zip
-<a href="#l199" class="line" id="l199">    199</a>         zipOutputStream.putNextEntry(ZipEntry(&quot;device_info.json&quot;))
+<a href="#l199" class="line" id="l199">    199</a>         zipOutputStream.putNextEntry(ZipEntry(&quot;device-info.json&quot;))
 <a href="#l200" class="line" id="l200">    200</a>         val gson = GsonBuilder().setPrettyPrinting().create()
 <a href="#l201" class="line" id="l201">    201</a>         zipOutputStream.write(gson.toJson(remoteSideContext.installationSummary).toByteArray())
 <a href="#l202" class="line" id="l202">    202</a>         zipOutputStream.closeEntry()

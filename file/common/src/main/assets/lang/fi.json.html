@@ -3,24 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>fi.json - SnapEnhance - An Xposed module offering an enhanced Snapchat experience
+<title>fi.json - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </title>
 <link rel="icon" type="image/svg+xml" href="../../../../../../../logo.png"/>
 <link rel="alternate icon" href="../../../../../../../favicon.png"/>
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed" href="../../../../../../atom.xml" />
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed (tags)" href="../../../../../../tags.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../../../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../../../../../../tags.xml" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../style.css" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../fonts.css" />
 </head>
 <body>
-<div id="head"><table><tr><td><a class="logo" href="../../../../../../../"><img src="../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SnapEnhance</strong><span class="desc"> - An Xposed module offering an enhanced Snapchat experience
+<div id="head"><table><tr><td><a class="logo" href="../../../../../../../"><img src="../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </span>
 </td></tr></table>
 <p><a href="../../../../../../about.html">About</a> | <a href="../../../../../../log.html">Log</a> | <a href="../../../../../../files.html">Files</a> | <a href="../../../../../../refs.html">Refs</a> | <a href="../../../../../../file/.gitmodules.html">Submodules</a> | <a href="../../../../../../file/LICENSE.html">License</a></p>
 </div>
 <hr/>
 <div id="content">
-<p> fi.json (39264B) - <a href="../../../../../../raw/common/src/main/assets/lang/fi.json">raw</a></p><hr/><pre id="blob">
+<p> fi.json (39256B) - <a href="../../../../../../raw/common/src/main/assets/lang/fi.json">raw</a></p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> {
 <a href="#l2" class="line" id="l2">      2</a>     &quot;setup&quot;: {
 <a href="#l3" class="line" id="l3">      3</a>         &quot;dialogs&quot;: {
@@ -52,7 +52,7 @@
 <a href="#l29" class="line" id="l29">     29</a>             &quot;tasks&quot;: &quot;Tehtävät&quot;,
 <a href="#l30" class="line" id="l30">     30</a>             &quot;logger_history&quot;: &quot;Lokejen historia&quot;,
 <a href="#l31" class="line" id="l31">     31</a>             &quot;logged_stories&quot;: &quot;kirjattuja tarinoita&quot;,
-<a href="#l32" class="line" id="l32">     32</a>             &quot;manage_scope&quot;: &quot;Muokkaa  laajuutta&quot;,
+<a href="#l32" class="line" id="l32">     32</a>             &quot;manage_scope&quot;: &quot;Muokkaa laajuutta&quot;,
 <a href="#l33" class="line" id="l33">     33</a>             &quot;messaging_preview&quot;: &quot;Esikatsoa&quot;,
 <a href="#l34" class="line" id="l34">     34</a>             &quot;friend_tracker&quot;: &quot;Kavereiden Seuranta&quot;,
 <a href="#l35" class="line" id="l35">     35</a>             &quot;edit_rule&quot;: &quot;Muokkaa Sääntöä&quot;
@@ -94,7 +94,7 @@
 <a href="#l71" class="line" id="l71">     71</a>             },
 <a href="#l72" class="line" id="l72">     72</a>             &quot;home&quot;: {
 <a href="#l73" class="line" id="l73">     73</a>                 &quot;update_title&quot;: &quot;SnapEnchance päivitys&quot;,
-<a href="#l74" class="line" id="l74">     74</a>                 &quot;update_content&quot;: &quot;Versio on saatavilla&quot;,
+<a href="#l74" class="line" id="l74">     74</a>                 &quot;update_content&quot;: &quot;Versio {version} on saatavilla!&quot;,
 <a href="#l75" class="line" id="l75">     75</a>                 &quot;update_button&quot;: &quot;Lataa&quot;
 <a href="#l76" class="line" id="l76">     76</a>             },
 <a href="#l77" class="line" id="l77">     77</a>             &quot;tasks&quot;: {
@@ -188,7 +188,7 @@
 <a href="#l165" class="line" id="l165">    165</a>                 }
 <a href="#l166" class="line" id="l166">    166</a>             },
 <a href="#l167" class="line" id="l167">    167</a>             &quot;stealth&quot;: {
-<a href="#l168" class="line" id="l168">    168</a>                 &quot;name&quot;: &quot;Haamutila&quot;,
+<a href="#l168" class="line" id="l168">    168</a>                 &quot;name&quot;: &quot;&quot;,
 <a href="#l169" class="line" id="l169">    169</a>                 &quot;description&quot;: &quot;Estää ketään tietämästä, että olet avannut heidän snäpin tai chatin&quot;,
 <a href="#l170" class="line" id="l170">    170</a>                 &quot;options&quot;: {
 <a href="#l171" class="line" id="l171">    171</a>                     &quot;blacklist&quot;: &quot;Sulje pois haamutilasta&quot;,
@@ -693,7 +693,7 @@
 <a href="#l670" class="line" id="l670">    670</a>     },
 <a href="#l671" class="line" id="l671">    671</a>     &quot;friend_menu_option&quot;: {
 <a href="#l672" class="line" id="l672">    672</a>         &quot;preview&quot;: &quot;Esikatselu&quot;,
-<a href="#l673" class="line" id="l673">    673</a>         &quot;stealth_mode&quot;: &quot;Haamutila&quot;,
+<a href="#l673" class="line" id="l673">    673</a>         &quot;stealth_mode&quot;: &quot;&quot;,
 <a href="#l674" class="line" id="l674">    674</a>         &quot;auto_download_blacklist&quot;: &quot;Automaattisen latauksen esto lista&quot;,
 <a href="#l675" class="line" id="l675">    675</a>         &quot;anti_auto_save&quot;: &quot;Automaattisen tallennuksen esto&quot;
 <a href="#l676" class="line" id="l676">    676</a>     },

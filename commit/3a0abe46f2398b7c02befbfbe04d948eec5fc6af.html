@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revert &quot;[WIP] Update fstat_hook.h &quot; - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/3a0abe46f2398b7c02befbfbe04d948eec5fc6af.html">3a0abe46f2398b7c02befbfbe04d948eec5fc6af</a>
+<b>parent</b> <a href="../commit/e9d8258be810941e40760d9f5537323645e4359d.html">e9d8258be810941e40760d9f5537323645e4359d</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Thu, 20 Jun 2024 20:02:55 +0100
+
+Revert &quot;[WIP] Update fstat_hook.h &quot;
+
+This reverts commit 057c35a69d390ee00405c79bc4d13c0249bd4b87.
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">native/jni/src/hooks/fstat_hook.h</a></td><td> | </td><td class="num">79</td><td><span class="i">+++</span><span class="d">----------------------------------------------------------------------------</span></td></tr>
+</table></pre><pre>1 file changed, 3 insertions(+), 76 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/native/jni/src/hooks/fstat_hook.h.html">native/jni/src/hooks/fstat_hook.h</a> b/<a href="../file/native/jni/src/hooks/fstat_hook.h.html">native/jni/src/hooks/fstat_hook.h</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,60 +1,6 @@
+</a> #pragma once
+<a href="#h0-0-1" id="h0-0-1" class="d">-#include &lt;string&gt;
+</a><a href="#h0-0-2" id="h0-0-2" class="d">-#include &lt;cstring&gt;
+</a><a href="#h0-0-3" id="h0-0-3" class="d">-#include &lt;vector&gt;
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-#include &lt;algorithm&gt;
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-#include &lt;unistd.h&gt;
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-#include &lt;dobby.h&gt;
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-#include &lt;sys/stat.h&gt;
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-#include &lt;unordered_map&gt;
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-std::vector&lt;std::string&gt; fstatat64_ignore = {
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-        &quot;/xposed.prop&quot;, &quot;/system/bin/app_process.orig&quot;, &quot;/system/lib/libxposed_art.so&quot;,
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-        &quot;/system/lib64/libxposed_art.so&quot;, &quot;/system/bin/app_process32_xposed&quot;, &quot;/system/bin/app_process64_xposed&quot;,
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-        &quot;/data/data/com.keramidas.TitaniumBackup&quot;, &quot;/data/user/0/com.keramidas.TitaniumBackup&quot;,
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-        &quot;/data/user_de/0/com.keramidas.TitaniumBackup&quot;, &quot;/data/data/com.ljmu.andre.snaptools&quot;,
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-        &quot;/data/user/0/com.ljmu.andre.snaptools&quot;, &quot;/data/user_de/0/com.ljmu.andre.snaptools&quot;,
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-        &quot;/data/data/local.interceptmod&quot;, &quot;/data/user/0/local.interceptmod&quot;, &quot;/data/user_de/0/local.interceptmod&quot;,
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-        &quot;/data/data/local.snapintercept&quot;, &quot;/data/user/0/local.snapintercept&quot;, &quot;/data/user_de/0/local.snapintercept&quot;,
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-        &quot;/data/data/com.marz.snapprefs&quot;, &quot;/data/user/0/com.marz.snapprefs&quot;, &quot;/data/user_de/0/com.marz.snapprefs&quot;,
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-        &quot;/data/data/com.topjohnwu.magisk&quot;, &quot;/data/user/0/com.topjohnwu.magisk&quot;, &quot;/data/user_de/0/com.topjohnwu.magisk&quot;,
+</a><a href="#h0-0-20" id="h0-0-20" class="d">-        &quot;/sbin/magisk&quot;, &quot;/sbin/magiskhide&quot;, &quot;/init.magisk.rc&quot;, &quot;/dev/magisk/bin/busybox&quot;,
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-        &quot;/system/addon.d/99-magisk.sh&quot;, &quot;/data/user/0/magisk.db&quot;, &quot;/data/user_de/0/magisk.db&quot;,
+</a><a href="#h0-0-22" id="h0-0-22" class="d">-        &quot;/system/addon.d/99-magisk.sh&quot;, &quot;/root/magisk&quot;, &quot;/magisk&quot;, &quot;/sbin_orig&quot;, &quot;/data/magisk&quot;, &quot;/sbin/.core&quot;,
+</a><a href="#h0-0-23" id="h0-0-23" class="d">-        &quot;/dev/socket/bstfolderd&quot;, &quot;/boot/bstmods&quot;, &quot;/mnt/prebundledapps&quot;, &quot;/fstab.nox&quot;, &quot;/system/bin/noxd&quot;,
+</a><a href="#h0-0-24" id="h0-0-24" class="d">-        &quot;/ueventd.nox.rc&quot;, &quot;/system/bin/noxscreen&quot;, &quot;/etc/init.nox.sh&quot;, &quot;/dev/socket/genyd&quot;, &quot;/dev/socket/baseband_genyd&quot;,
+</a><a href="#h0-0-25" id="h0-0-25" class="d">-        &quot;/data/data/com.genymotion.superuser&quot;, &quot;/data/user/0/com.genymotion.superuser&quot;,
+</a><a href="#h0-0-26" id="h0-0-26" class="d">-        &quot;/data/user_de/0/com.genymotion.superuser&quot;, &quot;/system/genymotion&quot;, &quot;/data/youwave_id&quot;,
+</a><a href="#h0-0-27" id="h0-0-27" class="d">-        &quot;/system/bin/androVM-prop&quot;, &quot;/dev/vboxuser&quot;, &quot;/sys/module/vboxguest&quot;, &quot;/sys/bus/pci/drivers/vboxguest&quot;,
+</a><a href="#h0-0-28" id="h0-0-28" class="d">-        &quot;/system/app/Superuser.apk&quot;, &quot;/system/app/Superuser/Superuser.apk&quot;, &quot;/init.supersu.rc&quot;, &quot;/system/.supersu&quot;,
+</a><a href="#h0-0-29" id="h0-0-29" class="d">-        &quot;/data/.supersu&quot;, &quot;/dev/block/supersu/su&quot;, &quot;/sbin/daemonsu&quot;, &quot;/dev/__properties__/u:object_r:supersu_prop:s0&quot;,
+</a><a href="#h0-0-30" id="h0-0-30" class="d">-        &quot;/dev/__properties__/u:object_r:supersu_prop:s0&quot;, &quot;/data/data/eu.chainfire.supersu&quot;,
+</a><a href="#h0-0-31" id="h0-0-31" class="d">-        &quot;/data/user/0/eu.chainfire.supersu&quot;, &quot;/data/user_de/0/eu.chainfire.supersu&quot;, &quot;/data/data/eu.chainfire.suhide&quot;,
+</a><a href="#h0-0-32" id="h0-0-32" class="d">-        &quot;/data/user/0/eu.chainfire.suhide&quot;, &quot;/data/user_de/0/eu.chainfire.suhide&quot;, &quot;/sbin/su&quot;, &quot;/system/bin/su&quot;,
+</a><a href="#h0-0-33" id="h0-0-33" class="d">-        &quot;/system/xbin/su&quot;, &quot;/system/xbin/nu&quot;, &quot;/data/local/xbin/su&quot;, &quot;/data/local/bin/su&quot;, &quot;/system/sd/xbin/su&quot;,
+</a><a href="#h0-0-34" id="h0-0-34" class="d">-        &quot;/system/bin/failsafe/su&quot;, &quot;/data/local/su&quot;, &quot;/su/bin/su&quot;, &quot;/sbin/su&quot;, &quot;/system/sbin/su&quot;, &quot;/system/bin/su&quot;,
+</a><a href="#h0-0-35" id="h0-0-35" class="d">-        &quot;/system/xbin/su&quot;, &quot;/vendor/bin/su&quot;, &quot;/vendor/xbin/su&quot;, &quot;/sbin/magisk&quot;, &quot;/system/sbin/magisk&quot;, &quot;/system/bin/magisk&quot;,
+</a><a href="#h0-0-36" id="h0-0-36" class="d">-        &quot;/system/xbin/magisk&quot;, &quot;/vendor/bin/magisk&quot;, &quot;/vendor/xbin/magisk&quot;, &quot;/su&quot;, &quot;/nu&quot;,
+</a><a href="#h0-0-37" id="h0-0-37" class="d">-        &quot;/data/data/de.robv.android.xposed.installer&quot;, &quot;/data/user/0/de.robv.android.xposed.installer&quot;,
+</a><a href="#h0-0-38" id="h0-0-38" class="d">-        &quot;/data/user_de/0/de.robv.android.xposed.installer&quot;, &quot;/data/data/com.zachspong.temprootremovejb&quot;,
+</a><a href="#h0-0-39" id="h0-0-39" class="d">-        &quot;/system/bin/app_process_init&quot;, &quot;/data/data/com.chelpus.lackypatch&quot;, &quot;/data/app-lib/net.snclab.RootKeepSurvival-1&quot;,
+</a><a href="#h0-0-40" id="h0-0-40" class="d">-        &quot;/system/lib/libsubstrate-dvm.so&quot;, &quot;/dev/.su.d&quot;, &quot;/system/xbin/supolicy&quot;, &quot;/data/data/com.formyhm.hiderootPremium&quot;,
+</a><a href="#h0-0-41" id="h0-0-41" class="d">-        &quot;/sbin/magiskpolicy&quot;, &quot;/system/xbin/sugote-mksh&quot;, &quot;/data/app-lib/org.projectvoodoo.otarootkeeper-1&quot;,
+</a><a href="#h0-0-42" id="h0-0-42" class="d">-        &quot;/system/lib64/libsupol.so&quot;, &quot;/system/etc/init.d/99SuperSUDaemon&quot;, &quot;/data/data/com.amphoras.hidemyroot&quot;,
+</a><a href="#h0-0-43" id="h0-0-43" class="d">-        &quot;/data/data/com.saurik.substrate/lib/libAndroidLoader.so&quot;, &quot;/system/xbin/sugote&quot;, &quot;/data/data/com.ramdroid.appquarantinepro&quot;,
+</a><a href="#h0-0-44" id="h0-0-44" class="d">-        &quot;/data/data/com.noshufou.android.su.elite&quot;, &quot;/data/app-lib/sa.root.toolkit-1&quot;, &quot;/data/app-lib/com.troy1103.hideyourroot-1&quot;,
+</a><a href="#h0-0-45" id="h0-0-45" class="d">-        &quot;/data/app-lib/com.formyhm.hideroot-1&quot;, &quot;/data/data/com.devadvance.rootcloakplus&quot;, &quot;/data/data/jp.co.cyberagent.stf&quot;,
+</a><a href="#h0-0-46" id="h0-0-46" class="d">-        &quot;/data/user/0/jp.co.cyberagent.stf&quot;, &quot;/data/user_de/0/jp.co.cyberagent.stf&quot;
+</a><a href="#h0-0-47" id="h0-0-47" class="d">-};
+</a><a href="#h0-0-48" id="h0-0-48" class="d">-
+</a><a href="#h0-0-49" id="h0-0-49" class="d">-std::vector&lt;std::string&gt; openIgnore = {
+</a><a href="#h0-0-50" id="h0-0-50" class="d">-        &quot;/data/user_de/0/de.robv.android.xposed.installer/conf/modules.list&quot;,
+</a><a href="#h0-0-51" id="h0-0-51" class="d">-        &quot;/data/user/0/de.robv.android.xposed.installer/conf/modules.list&quot;,
+</a><a href="#h0-0-52" id="h0-0-52" class="d">-        &quot;/data/data/de.robv.android.xposed.installer/conf/modules.list&quot;
+</a><a href="#h0-0-53" id="h0-0-53" class="d">-};
+</a> 
+ namespace FstatHook {
+<a href="#h0-0-56" id="h0-0-56" class="d">-    // Custom fstat hook function
+</a>     HOOK_DEF(int, fstat_hook, int fd, struct stat *buf) {
+         char name[256];
+         memset(name, 0, sizeof(name));
+<a href="#h0-1" id="h0-1" class="h">@@ -71,31 +17,11 @@ namespace FstatHook {
+</a>         if (common::native_config-&gt;disable_bitmoji &amp;&amp; fileName.find(&quot;com.snap.file_manager_4_SCContent&quot;) != std::string::npos) {
+             return -1;
+         }
+<a href="#h0-1-3" id="h0-1-3" class="d">-        return fstat_hook_original(fd, buf);
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-    }
+</a> 
+<a href="#h0-1-6" id="h0-1-6" class="d">-    HOOK_DEF(int, fstatat64_hook, int dirfd, const char *pathname, struct stat *buf, int flags) {
+</a><a href="#h0-1-7" id="h0-1-7" class="d">-        std::string fileName(pathname);
+</a><a href="#h0-1-8" id="h0-1-8" class="d">-        if (std::find(fstatat64_ignore.begin(), fstatat64_ignore.end(), fileName) != fstatat64_ignore.end()) {
+</a><a href="#h0-1-9" id="h0-1-9" class="d">-            return -1;
+</a><a href="#h0-1-10" id="h0-1-10" class="d">-        }
+</a><a href="#h0-1-11" id="h0-1-11" class="d">-        return fstatat64_hook_original(dirfd, pathname, buf, flags);
+</a><a href="#h0-1-12" id="h0-1-12" class="d">-    }
+</a><a href="#h0-1-13" id="h0-1-13" class="d">-    
+</a><a href="#h0-1-14" id="h0-1-14" class="d">-    HOOK_DEF(int, open_hook, const char *pathname, int flags) {
+</a><a href="#h0-1-15" id="h0-1-15" class="d">-        std::string fileName(pathname);
+</a><a href="#h0-1-16" id="h0-1-16" class="d">-
+</a><a href="#h0-1-17" id="h0-1-17" class="d">-        if (std::find(openIgnore.begin(), openIgnore.end(), fileName) != openIgnore.end()) {
+</a><a href="#h0-1-18" id="h0-1-18" class="d">-            return -1;
+</a><a href="#h0-1-19" id="h0-1-19" class="d">-        }
+</a><a href="#h0-1-20" id="h0-1-20" class="d">-
+</a><a href="#h0-1-21" id="h0-1-21" class="d">-        return open_hook_original(pathname, flags);
+</a><a href="#h0-1-22" id="h0-1-22" class="i">+        return fstat_hook_original(fd, buf);
+</a>     }
+ 
+<a href="#h0-1-25" id="h0-1-25" class="d">-
+</a>     void init() {
+         SafeHook((void *)DobbySymbolResolver(&quot;libc.so&quot;, &quot;fstat&quot;), (void *)fstat_hook, (void **)&amp;fstat_hook_original);
+<a href="#h0-1-28" id="h0-1-28" class="d">-        SafeHook((void *)DobbySymbolResolver(&quot;libc.so&quot;, &quot;fstatat64&quot;), (void *)fstatat64_hook, (void **)&amp;fstatat64_hook_original);
+</a><a href="#h0-1-29" id="h0-1-29" class="d">-        SafeHook((void *)DobbySymbolResolver(&quot;libc.so&quot;, &quot;open&quot;), (void *)open_hook, (void **)&amp;open_hook_original);
+</a>     }
+<a href="#h0-1-31" id="h0-1-31" class="d">-}
+</a><a href="#h0-1-32" id="h0-1-32" class="i">+}</a><a href="#h0-1-33" id="h0-1-33" class="i">+
+\ No newline at end of file
+</a></pre>
+</div>
+</body>
+</html>

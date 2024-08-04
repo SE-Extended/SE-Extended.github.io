@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor: remove Experimental colors - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/792a4a8e33ad0a41eda7e878307b80a457510dcf.html">792a4a8e33ad0a41eda7e878307b80a457510dcf</a>
+<b>parent</b> <a href="../commit/cff31dd8bc5d1b49833b1bc23fa2c43aec14921e.html">cff31dd8bc5d1b49833b1bc23fa2c43aec14921e</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Fri, 19 Jul 2024 23:40:21 +0100
+
+refactor: remove Experimental colors
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a></td><td> | </td><td class="num">30</td><td><span class="i"></span><span class="d">------------------------------</span></td></tr>
+</table></pre><pre>1 file changed, 0 insertions(+), 30 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -54,38 +54,8 @@ class Experimental : ConfigContainer() {
+</a>     class AppLockConfig: ConfigContainer(hasGlobalState = true) {
+         val lockOnResume = boolean(&quot;lock_on_resume&quot;, defaultValue = true)
+     }
+<a href="#h0-0-3" id="h0-0-3" class="d">-
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-    class ExperimentalColors: ConfigContainer() {
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-        val ringColor = color(&quot;ring_color&quot;)
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-        val sigColorIconSecondary = color(&quot;sig_color_icon_secondary&quot;)
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-        val itemShapeFillColor = color(&quot;item_shape_fill_color&quot;)
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-        val ringStartColor = color(&quot;ring_start_color&quot;)
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-        val sigColorLayoutPlaceholder = color(&quot;sig_color_layout_place_holder&quot;)
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-        val scButtonColor = color(&quot;sc_button_color&quot;)
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-        val recipientPillBackgroundDrawable = color(&quot;recipient_pill_background_drawable&quot;)
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-        val boxBackgroundColor = color(&quot;box_background_color&quot;)
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-        val editTextColor = color(&quot;edit_text_color&quot;)
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-        val chipBackgroundColor = color(&quot;chip_background_color&quot;)
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-        val recipientInputStyle = color(&quot;recipient_input_style&quot;)
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-        val rangeFillColor = color(&quot;range_fill_color&quot;)
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-        val pstsIndicatorColor = color(&quot;psts_indicator_color&quot;)
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-        val pstsTabBackground = color(&quot;psts_tab_background&quot;)
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-        val pstsDividerColor = color(&quot;psts_divider_color&quot;)
+</a><a href="#h0-0-20" id="h0-0-20" class="d">-        val tabTextColor = color(&quot;tab_text_color&quot;)
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-        val statusBarForeground = color(&quot;status_bar_foreground&quot;)
+</a><a href="#h0-0-22" id="h0-0-22" class="d">-        val statusBarBackground = color(&quot;status_bar_background&quot;)
+</a><a href="#h0-0-23" id="h0-0-23" class="d">-        val strokeColor = color(&quot;stroke_color&quot;)
+</a><a href="#h0-0-24" id="h0-0-24" class="d">-        val storyReplayViewRingColor = color(&quot;story_replay_view_ring_color&quot;)
+</a><a href="#h0-0-25" id="h0-0-25" class="d">-        val sigColorButtonPrimary = color(&quot;sig_color_button_primary&quot;)
+</a><a href="#h0-0-26" id="h0-0-26" class="d">-        val sigColorBaseAppYellow = color(&quot;sig_color_base_app_yellow&quot;)
+</a><a href="#h0-0-27" id="h0-0-27" class="d">-        val sigColorBackgroundSurfaceTranslucent = color(&quot;sig_color_background_surface_translucent&quot;)
+</a><a href="#h0-0-28" id="h0-0-28" class="d">-        val sigColorStoryRingFriendsFeedStoryRing = color(&quot;sig_color_story_ring_friends_feed_story_ring&quot;)
+</a><a href="#h0-0-29" id="h0-0-29" class="d">-        val sigColorStoryRingDiscoverTabThumbnailStoryRing = color(&quot;sig_color_story_ring_discover_tab_thumbnail_story_ring&quot;)
+</a><a href="#h0-0-30" id="h0-0-30" class="d">-    }
+</a><a href="#h0-0-31" id="h0-0-31" class="d">-
+</a>     val nativeHooks = container(&quot;native_hooks&quot;, NativeHooks()) { icon = Icons.Default.Memory; requireRestart() }
+     val spoof = container(&quot;spoof&quot;, Spoof()) { icon = Icons.Default.Fingerprint ; addNotices(FeatureNotice.BAN_RISK); requireRestart() }
+<a href="#h0-0-34" id="h0-0-34" class="d">-    val experimentalColors = container(&quot;experimental_colors&quot;, ExperimentalColors()) { addNotices(FeatureNotice.UNSTABLE); requireRestart() }
+</a>     val convertMessageLocally = boolean(&quot;convert_message_locally&quot;) { requireRestart() }
+     val mediaFilePicker = boolean(&quot;media_file_picker&quot;) { requireRestart(); addNotices(FeatureNotice.UNSTABLE) }
+     val storyLogger = boolean(&quot;story_logger&quot;) { requireRestart(); addNotices(FeatureNotice.UNSTABLE); }
+</pre>
+</div>
+</body>
+</html>

@@ -3,24 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RemoteScriptManager.kt - SnapEnhance - An Xposed module offering an enhanced Snapchat experience
+<title>RemoteScriptManager.kt - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </title>
 <link rel="icon" type="image/svg+xml" href="../../../../../../../../../../logo.png"/>
 <link rel="alternate icon" href="../../../../../../../../../../favicon.png"/>
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed" href="../../../../../../../../../atom.xml" />
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed (tags)" href="../../../../../../../../../tags.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../../../../../../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../../../../../../../../../tags.xml" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../../style.css" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../../fonts.css" />
 </head>
 <body>
-<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../../"><img src="../../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SnapEnhance</strong><span class="desc"> - An Xposed module offering an enhanced Snapchat experience
+<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../../"><img src="../../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </span>
 </td></tr></table>
 <p><a href="../../../../../../../../../about.html">About</a> | <a href="../../../../../../../../../log.html">Log</a> | <a href="../../../../../../../../../files.html">Files</a> | <a href="../../../../../../../../../refs.html">Refs</a> | <a href="../../../../../../../../../file/.gitmodules.html">Submodules</a> | <a href="../../../../../../../../../file/LICENSE.html">License</a></p>
 </div>
 <hr/>
 <div id="content">
-<p> RemoteScriptManager.kt (9628B) - <a href="../../../../../../../../../raw/app/src/main/kotlin/me/rhunk/snapenhance/scripting/RemoteScriptManager.kt">raw</a></p><hr/><pre id="blob">
+<p> RemoteScriptManager.kt (9636B) - <a href="../../../../../../../../../raw/app/src/main/kotlin/me/rhunk/snapenhance/scripting/RemoteScriptManager.kt">raw</a></p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> package me.rhunk.snapenhance.scripting
 <a href="#l2" class="line" id="l2">      2</a> 
 <a href="#l3" class="line" id="l3">      3</a> import android.annotation.SuppressLint
@@ -172,7 +172,7 @@
 <a href="#l149" class="line" id="l149">    149</a> 
 <a href="#l150" class="line" id="l150">    150</a>             val scriptPath = filepath ?: (moduleInfo.name + &quot;.js&quot;)
 <a href="#l151" class="line" id="l151">    151</a>             val scriptFile = getScriptsFolder()?.findFile(scriptPath) ?: getScriptsFolder()?.createFile(&quot;text/javascript&quot;, scriptPath)
-<a href="#l152" class="line" id="l152">    152</a>                 ?: throw Exception(&quot;Failed to create script file&quot;)
+<a href="#l152" class="line" id="l152">    152</a>             ?: throw Exception(&quot;Failed to create script file&quot;)
 <a href="#l153" class="line" id="l153">    153</a> 
 <a href="#l154" class="line" id="l154">    154</a>             context.androidContext.contentResolver.openOutputStream(scriptFile.uri, &quot;wt&quot;)?.use { output -&gt;
 <a href="#l155" class="line" id="l155">    155</a>                 bufferedInputStream.copyTo(output)
@@ -196,19 +196,19 @@
 <a href="#l173" class="line" id="l173">    173</a>                 val reader = inputStream.buffered().bufferedReader()
 <a href="#l174" class="line" id="l174">    174</a>                 val moduleInfo = reader.readModuleInfo()
 <a href="#l175" class="line" id="l175">    175</a>                 moduleInfo.takeIf {
-<a href="#l176" class="line" id="l176">    176</a>                    it.version != inputModuleInfo.version
+<a href="#l176" class="line" id="l176">    176</a>                     it.version != inputModuleInfo.version
 <a href="#l177" class="line" id="l177">    177</a>                 }
 <a href="#l178" class="line" id="l178">    178</a>             }
-<a href="#l179" class="line" id="l179">    179</a>        }.onFailure {
-<a href="#l180" class="line" id="l180">    180</a>            context.log.error(&quot;Failed to check for updates&quot;, it)
-<a href="#l181" class="line" id="l181">    181</a>        }.getOrNull()
+<a href="#l179" class="line" id="l179">    179</a>         }.onFailure {
+<a href="#l180" class="line" id="l180">    180</a>             context.log.error(&quot;Failed to check for updates&quot;, it)
+<a href="#l181" class="line" id="l181">    181</a>         }.getOrNull()
 <a href="#l182" class="line" id="l182">    182</a>     }
 <a href="#l183" class="line" id="l183">    183</a> 
 <a href="#l184" class="line" id="l184">    184</a>     private fun getEnabledScripts(sides: List&lt;String&gt;): List&lt;String&gt; {
 <a href="#l185" class="line" id="l185">    185</a>         return runCatching {
 <a href="#l186" class="line" id="l186">    186</a>             getScriptFileNames().filter { name -&gt;
 <a href="#l187" class="line" id="l187">    187</a>                 cachedModuleInfo[name]?.executionSides?.any { it in sides } ?: true &amp;&amp;
-<a href="#l188" class="line" id="l188">    188</a>                 context.database.isScriptEnabled(cachedModuleInfo[name]?.name ?: return@filter false)
+<a href="#l188" class="line" id="l188">    188</a>                         context.database.isScriptEnabled(cachedModuleInfo[name]?.name ?: return@filter false)
 <a href="#l189" class="line" id="l189">    189</a>             }
 <a href="#l190" class="line" id="l190">    190</a>         }.onFailure {
 <a href="#l191" class="line" id="l191">    191</a>             context.log.error(&quot;Failed to get enabled scripts&quot;, it)

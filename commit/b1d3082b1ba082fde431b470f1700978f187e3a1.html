@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>feat(experimental): more color options - ringStartColor - sigColorLayoutPlaceholder - scButtonColor - recipientPillBackgroundDrawable - boxBackgroundColor - editTextColor - chipBackgroundColor - recipientInputStyle - rangeFillColor - pstsIndicatorColor - pstsTabBackground - pstsDividerColor - tabTextColor - statusBarForeground - statusBarBackground - strokeColor - storyReplayViewRingColor - sigColorButtonPrimary - sigColorBaseAppYellow - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/b1d3082b1ba082fde431b470f1700978f187e3a1.html">b1d3082b1ba082fde431b470f1700978f187e3a1</a>
+<b>parent</b> <a href="../commit/35d7ec030873a5fa31f8503df797801db0bb43e7.html">35d7ec030873a5fa31f8503df797801db0bb43e7</a>
+<b>Author:</b> bocajthomas &lt;<a href="mailto:bocajthomas274@gmail.com">bocajthomas274@gmail.com</a>&gt;
+<b>Date:</b>   Fri,  7 Jun 2024 01:34:53 +0100
+
+feat(experimental): more color options
+- ringStartColor
+- sigColorLayoutPlaceholder
+- scButtonColor
+- recipientPillBackgroundDrawable
+- boxBackgroundColor
+- editTextColor
+- chipBackgroundColor
+- recipientInputStyle
+- rangeFillColor
+- pstsIndicatorColor
+- pstsTabBackground
+- pstsDividerColor
+- tabTextColor
+- statusBarForeground
+- statusBarBackground
+- strokeColor
+- storyReplayViewRingColor
+- sigColorButtonPrimary
+- sigColorBaseAppYellow
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">76</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a></td><td> | </td><td class="num">19</td><td><span class="i">+++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a></td><td> | </td><td class="num">19</td><td><span class="i">+++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>3 files changed, 114 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1044,6 +1044,82 @@
+</a>                             &quot;item_shape_fill_color&quot;: {
+                                 &quot;name&quot;: &quot;Item Shape Fill Color&quot;,
+                                 &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+<a href="#h0-0-3" id="h0-0-3" class="i">+                            },
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+                            &quot;ring_start_color&quot;: {
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+                                &quot;name&quot;: &quot;Ring Start Color&quot;,
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+                            },
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+                            &quot;sig_color_layout_place_holder&quot;: {
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+                                &quot;name&quot;: &quot;Sig Color Layout Place Holder&quot;,
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+                            },
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+                            &quot;sc_button_color&quot;: {
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+                                &quot;name&quot;: &quot;Sc Button Color&quot;,
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+                            },
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+                            &quot;recipient_pill_background_drawable&quot;: {
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+                                &quot;name&quot;: &quot;Recipient Pill Background Drawable&quot;,
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+                            },
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+                            &quot;box_background_color&quot;: {
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+                                &quot;name&quot;: &quot;Box Background Color&quot;,
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+                            },
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+                            &quot;edit_text_color&quot;: {
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+                                &quot;name&quot;: &quot;Edit Text Color&quot;,
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+                            },
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+                            &quot;chip_background_color&quot;: {
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+                                &quot;name&quot;: &quot;Chip Background Color&quot;,
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+                            },
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+                            &quot;recipient_input_style&quot;: {
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+                                &quot;name&quot;: &quot;Recipient Input Style&quot;,
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+                            },
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+                            &quot;range_fill_color&quot;: {
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+                                &quot;name&quot;: &quot;Range Fill Color&quot;,
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+                            },
+</a><a href="#h0-0-40" id="h0-0-40" class="i">+                            &quot;psts_indicator_color&quot;: {
+</a><a href="#h0-0-41" id="h0-0-41" class="i">+                                &quot;name&quot;: &quot;Psts Indicator Color&quot;,
+</a><a href="#h0-0-42" id="h0-0-42" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-43" id="h0-0-43" class="i">+                            },
+</a><a href="#h0-0-44" id="h0-0-44" class="i">+                            &quot;psts_tab_background&quot;: {
+</a><a href="#h0-0-45" id="h0-0-45" class="i">+                                &quot;name&quot;: &quot;Psts Tab Background&quot;,
+</a><a href="#h0-0-46" id="h0-0-46" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-47" id="h0-0-47" class="i">+                            },
+</a><a href="#h0-0-48" id="h0-0-48" class="i">+                            &quot;psts_divider_color&quot;: {
+</a><a href="#h0-0-49" id="h0-0-49" class="i">+                                &quot;name&quot;: &quot;Psts Divider Color&quot;,
+</a><a href="#h0-0-50" id="h0-0-50" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-51" id="h0-0-51" class="i">+                            },
+</a><a href="#h0-0-52" id="h0-0-52" class="i">+                            &quot;tab_text_color&quot;: {
+</a><a href="#h0-0-53" id="h0-0-53" class="i">+                                &quot;name&quot;: &quot;Tab Text Color&quot;,
+</a><a href="#h0-0-54" id="h0-0-54" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-55" id="h0-0-55" class="i">+                            },
+</a><a href="#h0-0-56" id="h0-0-56" class="i">+                            &quot;status_bar_foreground&quot;: {
+</a><a href="#h0-0-57" id="h0-0-57" class="i">+                                &quot;name&quot;: &quot;Status Bar Foreground&quot;,
+</a><a href="#h0-0-58" id="h0-0-58" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-59" id="h0-0-59" class="i">+                            },
+</a><a href="#h0-0-60" id="h0-0-60" class="i">+                            &quot;status_bar_background&quot;: {
+</a><a href="#h0-0-61" id="h0-0-61" class="i">+                                &quot;name&quot;: &quot;Status Bar Background&quot;,
+</a><a href="#h0-0-62" id="h0-0-62" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-63" id="h0-0-63" class="i">+                            },
+</a><a href="#h0-0-64" id="h0-0-64" class="i">+                            &quot;stroke_color&quot;: {
+</a><a href="#h0-0-65" id="h0-0-65" class="i">+                                &quot;name&quot;: &quot;Stroke Color&quot;,
+</a><a href="#h0-0-66" id="h0-0-66" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-67" id="h0-0-67" class="i">+                            },
+</a><a href="#h0-0-68" id="h0-0-68" class="i">+                            &quot;story_replay_view_ring_color&quot;: {
+</a><a href="#h0-0-69" id="h0-0-69" class="i">+                                &quot;name&quot;: &quot;Story Replay View Ring Color&quot;,
+</a><a href="#h0-0-70" id="h0-0-70" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-71" id="h0-0-71" class="i">+                            },
+</a><a href="#h0-0-72" id="h0-0-72" class="i">+                            &quot;sig_color_button_primary&quot;: {
+</a><a href="#h0-0-73" id="h0-0-73" class="i">+                                &quot;name&quot;: &quot;Sig Color Button Primary&quot;,
+</a><a href="#h0-0-74" id="h0-0-74" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a><a href="#h0-0-75" id="h0-0-75" class="i">+                            },
+</a><a href="#h0-0-76" id="h0-0-76" class="i">+                            &quot;sig_color_base_app_yellow&quot;: {
+</a><a href="#h0-0-77" id="h0-0-77" class="i">+                                &quot;name&quot;: &quot;Sig Color Base App Yellow&quot;,
+</a><a href="#h0-0-78" id="h0-0-78" class="i">+                                &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+</a>                             }
+                         }
+                     },
+<b>diff --git a/<a id="h1" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -55,6 +55,25 @@ class Experimental : ConfigContainer() {
+</a>         val ringColor = color(&quot;ring_color&quot;)
+         val sigColorIconSecondary = color(&quot;sig_color_icon_secondary&quot;)
+         val itemShapeFillColor = color(&quot;item_shape_fill_color&quot;)
+<a href="#h1-0-3" id="h1-0-3" class="i">+        val ringStartColor = color(&quot;ring_start_color&quot;)
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+        val sigColorLayoutPlaceholder = color(&quot;sig_color_layout_place_holder&quot;)
+</a><a href="#h1-0-5" id="h1-0-5" class="i">+        val scButtonColor = color(&quot;sc_button_color&quot;)
+</a><a href="#h1-0-6" id="h1-0-6" class="i">+        val recipientPillBackgroundDrawable = color(&quot;recipient_pill_background_drawable&quot;)
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+        val boxBackgroundColor = color(&quot;box_background_color&quot;)
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+        val editTextColor = color(&quot;edit_text_color&quot;)
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+        val chipBackgroundColor = color(&quot;chip_background_color&quot;)
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+        val recipientInputStyle = color(&quot;recipient_input_style&quot;)
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+        val rangeFillColor = color(&quot;range_fill_color&quot;)
+</a><a href="#h1-0-12" id="h1-0-12" class="i">+        val pstsIndicatorColor = color(&quot;psts_indicator_color&quot;)
+</a><a href="#h1-0-13" id="h1-0-13" class="i">+        val pstsTabBackground = color(&quot;psts_tab_background&quot;)
+</a><a href="#h1-0-14" id="h1-0-14" class="i">+        val pstsDividerColor = color(&quot;psts_divider_color&quot;)
+</a><a href="#h1-0-15" id="h1-0-15" class="i">+        val tabTextColor = color(&quot;tab_text_color&quot;)
+</a><a href="#h1-0-16" id="h1-0-16" class="i">+        val statusBarForeground = color(&quot;status_bar_foreground&quot;)
+</a><a href="#h1-0-17" id="h1-0-17" class="i">+        val statusBarBackground = color(&quot;status_bar_background&quot;)
+</a><a href="#h1-0-18" id="h1-0-18" class="i">+        val strokeColor = color(&quot;stroke_color&quot;)
+</a><a href="#h1-0-19" id="h1-0-19" class="i">+        val storyReplayViewRingColor = color(&quot;story_replay_view_ring_color&quot;)
+</a><a href="#h1-0-20" id="h1-0-20" class="i">+        val sigColorButtonPrimary = color(&quot;sig_color_button_primary&quot;)
+</a><a href="#h1-0-21" id="h1-0-21" class="i">+        val sigColorBaseAppYellow = color(&quot;sig_color_base_app_yellow&quot;)
+</a>     }
+ 
+     val nativeHooks = container(&quot;native_hooks&quot;, NativeHooks()) { icon = Icons.Default.Memory; requireRestart() }
+<b>diff --git a/<a id="h2" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -44,6 +44,25 @@ class CustomizeUI: Feature(&quot;Customize UI&quot;, loadParams = FeatureLoadParams.ACTIVI
+</a>                 &quot;ringColor&quot; to experimentalColors.ringColor.getNullable(),
+                 &quot;sigColorIconSecondary&quot; to experimentalColors.sigColorIconSecondary.getNullable(),
+                 &quot;itemShapeFillColor&quot; to experimentalColors.itemShapeFillColor.getNullable(),
+<a href="#h2-0-3" id="h2-0-3" class="i">+                &quot;ringStartColor&quot; to experimentalColors.ringStartColor.getNullable(),
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+                &quot;sigColorLayoutPlaceholder&quot; to experimentalColors.sigColorLayoutPlaceholder.getNullable(),
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+                &quot;scButtonColor&quot; to experimentalColors.scButtonColor.getNullable(),
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+                &quot;recipientPillBackgroundDrawable&quot; to experimentalColors.recipientPillBackgroundDrawable.getNullable(),
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+                &quot;boxBackgroundColor&quot; to experimentalColors.boxBackgroundColor.getNullable(),
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+                &quot;editTextColor&quot; to experimentalColors.editTextColor.getNullable(),
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+                &quot;chipBackgroundColor&quot; to experimentalColors.chipBackgroundColor.getNullable(),
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+                &quot;recipientInputStyle&quot; to experimentalColors.recipientInputStyle.getNullable(),
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+                &quot;rangeFillColor&quot; to experimentalColors.rangeFillColor.getNullable(),
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+                &quot;pstsIndicatorColor&quot; to experimentalColors.pstsIndicatorColor.getNullable(),
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+                &quot;pstsTabBackground&quot; to experimentalColors.pstsTabBackground.getNullable(),
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+                &quot;pstsDividerColor&quot; to experimentalColors.pstsDividerColor.getNullable(),
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+                &quot;tabTextColor&quot; to experimentalColors.tabTextColor.getNullable(),
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+                &quot;statusBarForeground&quot; to experimentalColors.statusBarForeground.getNullable(),
+</a><a href="#h2-0-17" id="h2-0-17" class="i">+                &quot;statusBarBackground&quot; to experimentalColors.statusBarBackground.getNullable(),
+</a><a href="#h2-0-18" id="h2-0-18" class="i">+                &quot;strokeColor&quot; to experimentalColors.strokeColor.getNullable(),
+</a><a href="#h2-0-19" id="h2-0-19" class="i">+                &quot;storyReplayViewRingColor&quot; to experimentalColors.storyReplayViewRingColor.getNullable(),
+</a><a href="#h2-0-20" id="h2-0-20" class="i">+                &quot;sigColorButtonPrimary&quot; to experimentalColors.sigColorButtonPrimary.getNullable(),
+</a><a href="#h2-0-21" id="h2-0-21" class="i">+                &quot;sigColorBaseAppYellow&quot; to experimentalColors.sigColorBaseAppYellow.getNullable(),
+</a>             ).filterValues { it != null }.map { (key, value) -&gt;
+                 getAttribute(key) to value!!
+             }.toMap()
+</pre>
+</div>
+</body>
+</html>

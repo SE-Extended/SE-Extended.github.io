@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/3c33d68191280bdd5bb60e999204120c36dbca73.html">3c33d68191280bdd5bb60e999204120c36dbca73</a>
+<b>parent</b> <a href="../commit/2dda06cee4bcdd01824e77dec3504e6711801e5f.html">2dda06cee4bcdd01824e77dec3504e6711801e5f</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Fri, 31 May 2024 19:56:53 +0100
+
+refactor 
+
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">README.md</a></td><td> | </td><td class="num">3</td><td><span class="i"></span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt</a></td><td> | </td><td class="num">18</td><td><span class="i">+++++++++</span><span class="d">---------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">app/src/main/res/mipmap-hdpi/launcher_icon_foreground.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">app/src/main/res/mipmap-mdpi/launcher_icon_foreground.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">app/src/main/res/mipmap-xhdpi/launcher_icon_foreground.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">app/src/main/res/mipmap-xxhdpi/launcher_icon_foreground.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h6">app/src/main/res/mipmap-xxxhdpi/launcher_icon_foreground.png</a></td><td> | </td><td class="num">0</td><td><span class="i"></span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h7">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/BetterLocation.kt</a></td><td> | </td><td class="num">134</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++</span><span class="d">----------------------------------------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h8">core/src/main/kotlin/me/rhunk/snapenhance/core/util/RandomWalking.kt</a></td><td> | </td><td class="num">66</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h9">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/CallbackMapper.kt</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table></pre><pre>10 files changed, 143 insertions(+), 80 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/README.md.html">README.md</a> b/<a href="../file/README.md.html">README.md</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,8 +1,6 @@
+</a> &lt;div align=&quot;center&quot;&gt;
+   &lt;img src=&quot;https://raw.githubusercontent.com/bocajthomas/SnapEnhance/v2.1.0/app/src/main/res/mipmap-xxxhdpi/launcher_icon_foreground.png&quot; height=&quot;250&quot; /&gt;
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-  [![Build](https://img.shields.io/github/actions/workflow/status/rhunk/SnapEnhance/debug.yml?branch=dev&amp;logo=github&amp;label=Build)](https://github.com/rhunk/SnapEnhance/actions/workflows/android.yml?query=branch%3Amain+event%3Apush+is%3Acompleted) [![Total](https://shields.io/github/downloads/bocajthomas/SE-Extended/total?logo=Bookmeter&amp;label=Downloads&amp;logoColor=Green&amp;color=Green)](https://github.com/rhunk/snapenhance/releases) [![Translation status](https://hosted.weblate.org/widget/snapenhance/app/svg-badge.svg)](https://hosted.weblate.org/engage/snapenhance/)
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-  
+</a> # SE Extended 
+ SE Extended is a fork from the [SnapEnhance app](https://github.com/rhunk/SnapEnhance) that uses the Xposed Framework to enhance your Snapchat experience.&lt;br/&gt;&lt;br/&gt;
+ Please note that this project is currently in development, so bugs and crashes may occur. If you encounter any issues, we encourage you to report them. To do this simply visit our [issues](https://github.com/bocajthomas/SE-Extended/issues/new?assignees=&amp;labels=bug&amp;projects=&amp;template=bug_report.yml&amp;title=...) page and create an issue, make sure to follow the guidelines.
+<a href="#h0-1" id="h0-1" class="h">@@ -144,7 +142,6 @@ To Download the latest stable release, please visit the [Releases](https://githu
+</a> You can also download the latest debug build from the [Actions](https://github.com/bocajthomas/SE-Extended/actions/workflows/debug.yml) section.&lt;br/&gt;
+ We no longer offer official `LSPatch` binaries for obvious reasons. However, you&#39;re welcome to patch them yourself, as they should theoretically work without any issues.
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-
+</a> ## FAQ
+ You can view the FAQ [here](https://github.com/bocajthomas/SE-Extended/wiki/FAQ)
+ 
+<b>diff --git a/<a id="h1" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -146,7 +146,7 @@ class HomeRoot : Routes.Route() {
+</a>             )
+ 
+             Text(
+<a href="#h1-0-3" id="h1-0-3" class="d">-                text = &quot;v&quot; + BuildConfig.VERSION_NAME + &quot; \u00b7 by rhunk&quot;,
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+                text = &quot;v&quot; + BuildConfig.VERSION_NAME + &quot; \u00b7 Forked By Jacob&quot;,
+</a>                 fontSize = 12.sp,
+                 fontFamily = avenirNextFontFamily,
+                 modifier = Modifier.align(Alignment.CenterHorizontally),
+<a href="#h1-1" id="h1-1" class="h">@@ -162,17 +162,17 @@ class HomeRoot : Routes.Route() {
+</a>                 LinkIcon(
+                     imageVector = ImageVector.vectorResource(id = R.drawable.ic_github),
+                     dataArray = intArrayOf(
+<a href="#h1-1-3" id="h1-1-3" class="d">-                        101, 99, 110, 97, 104, 110, 69, 112, 97, 110, 83, 47, 107, 110,
+</a><a href="#h1-1-4" id="h1-1-4" class="d">-                        117, 104, 114, 47, 109, 111, 99, 46, 98, 117, 104, 116, 105,
+</a><a href="#h1-1-5" id="h1-1-5" class="d">-                        103, 47, 58, 115, 112, 116, 116, 104
+</a><a href="#h1-1-6" id="h1-1-6" class="i">+                        101, 99, 110, 97, 104, 110, 69, 112, 97, 110, 83, 47, 115, 97, 109, 111, 104, 
+</a><a href="#h1-1-7" id="h1-1-7" class="i">+                        116, 106, 97, 99, 111, 98, 47, 109, 111, 99, 46, 98, 117, 104, 116, 105, 
+</a><a href="#h1-1-8" id="h1-1-8" class="i">+                        103, 43, 47, 58, 115, 112, 116, 116, 104
+</a>                     )
+                 )
+ 
+                 LinkIcon(
+                     imageVector = ImageVector.vectorResource(id = R.drawable.ic_telegram),
+                     dataArray = intArrayOf(
+<a href="#h1-1-15" id="h1-1-15" class="d">-                        101, 99, 110, 97, 104, 110, 101, 112, 97, 110, 115, 47, 101,
+</a><a href="#h1-1-16" id="h1-1-16" class="d">-                        109, 46, 116, 47, 47, 58, 115, 112, 116, 116, 104
+</a><a href="#h1-1-17" id="h1-1-17" class="i">+                        48, 48, 115, 100, 100, 117, 104, 95, 98, 99,
+</a><a href="#h1-1-18" id="h1-1-18" class="i">+                        97, 74, 47, 101, 109, 46, 116
+</a>                     )
+                 )
+ 
+<a href="#h1-2" id="h1-2" class="h">@@ -181,9 +181,9 @@ class HomeRoot : Routes.Route() {
+</a>                     modifier = Modifier.offset(y = (-2).dp),
+                     imageVector = Icons.AutoMirrored.Default.Help,
+                     dataArray = intArrayOf(
+<a href="#h1-2-3" id="h1-2-3" class="d">-                        105, 107, 105, 119, 47, 101, 99, 110, 97, 104, 110, 69, 112, 97,
+</a><a href="#h1-2-4" id="h1-2-4" class="d">-                        110, 83, 47, 107, 110, 117, 104, 114, 47, 109, 111, 99, 46, 98,
+</a><a href="#h1-2-5" id="h1-2-5" class="d">-                        117, 104, 116, 105, 103, 47, 47, 58, 115, 112, 116, 116, 104
+</a><a href="#h1-2-6" id="h1-2-6" class="i">+                        105, 107, 105, 119, 47, 100, 97, 110, 101, 104, 116, 109, 
+</a><a href="#h1-2-7" id="h1-2-7" class="i">+                        97, 99, 101, 98, 47, 109, 99, 46, 98, 117, 111, 104, 110, 
+</a><a href="#h1-2-8" id="h1-2-8" class="i">+                        105, 103, 47, 47, 58, 112, 104, 116, 101, 72
+</a>                     )
+                 )
+             }
+<b>diff --git a/<a id="h2" href="../file/app/src/main/res/mipmap-hdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-hdpi/launcher_icon_foreground.png</a> b/<a href="../file/app/src/main/res/mipmap-hdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-hdpi/launcher_icon_foreground.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h3" href="../file/app/src/main/res/mipmap-mdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-mdpi/launcher_icon_foreground.png</a> b/<a href="../file/app/src/main/res/mipmap-mdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-mdpi/launcher_icon_foreground.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h4" href="../file/app/src/main/res/mipmap-xhdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-xhdpi/launcher_icon_foreground.png</a> b/<a href="../file/app/src/main/res/mipmap-xhdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-xhdpi/launcher_icon_foreground.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h5" href="../file/app/src/main/res/mipmap-xxhdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-xxhdpi/launcher_icon_foreground.png</a> b/<a href="../file/app/src/main/res/mipmap-xxhdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-xxhdpi/launcher_icon_foreground.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h6" href="../file/app/src/main/res/mipmap-xxxhdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-xxxhdpi/launcher_icon_foreground.png</a> b/<a href="../file/app/src/main/res/mipmap-xxxhdpi/launcher_icon_foreground.png.html">app/src/main/res/mipmap-xxxhdpi/launcher_icon_foreground.png</a></b>
+Binary files differ.
+<b>diff --git a/<a id="h7" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/BetterLocation.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/BetterLocation.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/BetterLocation.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/BetterLocation.kt</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -4,93 +4,63 @@ import android.location.Location
+</a> import android.location.LocationManager
+ import me.rhunk.snapenhance.common.util.protobuf.EditorContext
+ import me.rhunk.snapenhance.common.util.protobuf.ProtoEditor
+<a href="#h7-0-3" id="h7-0-3" class="i">+import me.rhunk.snapenhance.common.util.protobuf.ProtoReader
+</a> import me.rhunk.snapenhance.core.event.events.impl.UnaryCallEvent
+ import me.rhunk.snapenhance.core.features.Feature
+ import me.rhunk.snapenhance.core.features.FeatureLoadParams
+ import me.rhunk.snapenhance.core.features.impl.global.SuspendLocationUpdates
+<a href="#h7-0-8" id="h7-0-8" class="i">+import me.rhunk.snapenhance.core.util.RandomWalking
+</a> import me.rhunk.snapenhance.core.util.hook.HookStage
+ import me.rhunk.snapenhance.core.util.hook.hook
+<a href="#h7-0-11" id="h7-0-11" class="i">+import me.rhunk.snapenhance.mapper.impl.CallbackMapper
+</a> import java.nio.ByteBuffer
+<a href="#h7-0-13" id="h7-0-13" class="d">-import kotlin.math.cos
+</a><a href="#h7-0-14" id="h7-0-14" class="d">-import kotlin.math.hypot
+</a><a href="#h7-0-15" id="h7-0-15" class="d">-import kotlin.math.pow
+</a><a href="#h7-0-16" id="h7-0-16" class="d">-import kotlin.math.sin
+</a><a href="#h7-0-17" id="h7-0-17" class="d">-import kotlin.math.sqrt
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+import java.util.UUID
+</a> import kotlin.time.Duration.Companion.days
+ 
+<a href="#h7-0-21" id="h7-0-21" class="i">+data class FriendLocation(
+</a><a href="#h7-0-22" id="h7-0-22" class="i">+    val userId: String,
+</a><a href="#h7-0-23" id="h7-0-23" class="i">+    val latitude: Float,
+</a><a href="#h7-0-24" id="h7-0-24" class="i">+    val longitude: Float,
+</a><a href="#h7-0-25" id="h7-0-25" class="i">+    val lastUpdated: Long,
+</a><a href="#h7-0-26" id="h7-0-26" class="i">+    val locality: String?,
+</a><a href="#h7-0-27" id="h7-0-27" class="i">+    val localityPieces: List&lt;String&gt;
+</a><a href="#h7-0-28" id="h7-0-28" class="i">+)
+</a><a href="#h7-0-29" id="h7-0-29" class="i">+
+</a> class BetterLocation : Feature(&quot;Better Location&quot;, loadParams = FeatureLoadParams.INIT_SYNC) {
+<a href="#h7-0-31" id="h7-0-31" class="d">-    //Latitude ft / deg /Longitude ft /deg = 1.26301179736
+</a><a href="#h7-0-32" id="h7-0-32" class="d">-    // 4ft/s * 1 degree/364000ft (latitude) * 1s/1000ms = .000000010989011 degrees/ms
+</a><a href="#h7-0-33" id="h7-0-33" class="d">-    val max_speed = 4.0 / 364000.0 / 1000.0
+</a><a href="#h7-0-34" id="h7-0-34" class="d">-    val pause_chance = .0023 // .23% chance to pause every second = after 5 minutes 50% chance of pause
+</a><a href="#h7-0-35" id="h7-0-35" class="d">-    val pause_duration = 60000L //ms
+</a><a href="#h7-0-36" id="h7-0-36" class="d">-    val pause_random = 30000L //ms
+</a><a href="#h7-0-37" id="h7-0-37" class="d">-
+</a><a href="#h7-0-38" id="h7-0-38" class="d">-    var pause_expire = 0L
+</a><a href="#h7-0-39" id="h7-0-39" class="d">-    var current_x = 0.0
+</a><a href="#h7-0-40" id="h7-0-40" class="d">-    var current_y = 0.0
+</a><a href="#h7-0-41" id="h7-0-41" class="d">-    var target_x = 0.0
+</a><a href="#h7-0-42" id="h7-0-42" class="d">-    var target_y = 0.0
+</a><a href="#h7-0-43" id="h7-0-43" class="d">-    var last_update_time = 0L
+</a><a href="#h7-0-44" id="h7-0-44" class="d">-    private fun updatePosition(){
+</a><a href="#h7-0-45" id="h7-0-45" class="d">-        val now = System.currentTimeMillis()
+</a><a href="#h7-0-46" id="h7-0-46" class="d">-
+</a><a href="#h7-0-47" id="h7-0-47" class="d">-        if(current_x == target_x &amp;&amp; current_y == target_y) {
+</a><a href="#h7-0-48" id="h7-0-48" class="d">-            val config = context.config.global.betterLocation
+</a><a href="#h7-0-49" id="h7-0-49" class="d">-            val walk_rad = if (config.walkRadius.get()
+</a><a href="#h7-0-50" id="h7-0-50" class="d">-                    .toDoubleOrNull() == null
+</a><a href="#h7-0-51" id="h7-0-51" class="d">-            ) 0.0 else (config.walkRadius.get().toDouble() / 364000.0) //Lat deg
+</a><a href="#h7-0-52" id="h7-0-52" class="d">-
+</a><a href="#h7-0-53" id="h7-0-53" class="d">-            if(last_update_time == 0L){ //Start at random position
+</a><a href="#h7-0-54" id="h7-0-54" class="d">-                val radius1 = sqrt(Math.random()) * walk_rad
+</a><a href="#h7-0-55" id="h7-0-55" class="d">-                val theta1 = Math.PI * 2.0 * Math.random()
+</a><a href="#h7-0-56" id="h7-0-56" class="d">-                current_x = cos(theta1) * radius1 * 1.26301179736
+</a><a href="#h7-0-57" id="h7-0-57" class="d">-                current_y = sin(theta1) * radius1
+</a><a href="#h7-0-58" id="h7-0-58" class="d">-            }
+</a><a href="#h7-0-59" id="h7-0-59" class="i">+    private val locationHistory = mutableMapOf&lt;String, FriendLocation&gt;()
+</a> 
+<a href="#h7-0-61" id="h7-0-61" class="d">-            val radius2 = sqrt(Math.random()) * walk_rad
+</a><a href="#h7-0-62" id="h7-0-62" class="d">-            val theta2 = Math.PI * 2.0 * Math.random()
+</a><a href="#h7-0-63" id="h7-0-63" class="d">-            target_x = cos(theta2) * radius2 * 1.26301179736
+</a><a href="#h7-0-64" id="h7-0-64" class="d">-            target_y = sin(theta2) * radius2
+</a><a href="#h7-0-65" id="h7-0-65" class="d">-        } else if (pause_expire &lt; now) {
+</a><a href="#h7-0-66" id="h7-0-66" class="d">-            val deltat = now - last_update_time
+</a><a href="#h7-0-67" id="h7-0-67" class="d">-            if(Math.random() &gt; (1.0 - pause_chance).pow(deltat / 1000.0)){
+</a><a href="#h7-0-68" id="h7-0-68" class="d">-                pause_expire = now + pause_duration + (pause_random * Math.random()).toLong()
+</a><a href="#h7-0-69" id="h7-0-69" class="d">-            } else {
+</a><a href="#h7-0-70" id="h7-0-70" class="d">-                val max_dist = max_speed * deltat
+</a><a href="#h7-0-71" id="h7-0-71" class="d">-                val dist = hypot(target_x - current_x, target_y - current_y)
+</a><a href="#h7-0-72" id="h7-0-72" class="d">-
+</a><a href="#h7-0-73" id="h7-0-73" class="d">-                if (dist &lt;= max_dist) {
+</a><a href="#h7-0-74" id="h7-0-74" class="d">-                    current_x = target_x
+</a><a href="#h7-0-75" id="h7-0-75" class="d">-                    current_y = target_y
+</a><a href="#h7-0-76" id="h7-0-76" class="d">-                } else {
+</a><a href="#h7-0-77" id="h7-0-77" class="d">-                    val norm_x = (target_x - current_x) / dist * max_dist
+</a><a href="#h7-0-78" id="h7-0-78" class="d">-                    val norm_y = (target_y - current_y) / dist * max_dist
+</a><a href="#h7-0-79" id="h7-0-79" class="d">-                    current_x += norm_x
+</a><a href="#h7-0-80" id="h7-0-80" class="d">-                    current_y += norm_y
+</a><a href="#h7-0-81" id="h7-0-81" class="d">-                }
+</a><a href="#h7-0-82" id="h7-0-82" class="d">-            }
+</a><a href="#h7-0-83" id="h7-0-83" class="d">-        }
+</a><a href="#h7-0-84" id="h7-0-84" class="d">-        last_update_time = now
+</a><a href="#h7-0-85" id="h7-0-85" class="i">+    private val walkRadius by lazy {
+</a><a href="#h7-0-86" id="h7-0-86" class="i">+        context.config.global.betterLocation.walkRadius.getNullable()
+</a><a href="#h7-0-87" id="h7-0-87" class="i">+    }
+</a><a href="#h7-0-88" id="h7-0-88" class="i">+
+</a><a href="#h7-0-89" id="h7-0-89" class="i">+    private val randomWalking by lazy {
+</a><a href="#h7-0-90" id="h7-0-90" class="i">+        RandomWalking(walkRadius?.toDoubleOrNull())
+</a>     }
+ 
+     private fun getLat() : Double {
+<a href="#h7-0-94" id="h7-0-94" class="d">-        updatePosition()
+</a><a href="#h7-0-95" id="h7-0-95" class="d">-        return (context.config.global.betterLocation.coordinates.get().first + current_x)
+</a><a href="#h7-0-96" id="h7-0-96" class="i">+        var spoofedLatitude = context.config.global.betterLocation.coordinates.get().first
+</a><a href="#h7-0-97" id="h7-0-97" class="i">+        walkRadius?.let {
+</a><a href="#h7-0-98" id="h7-0-98" class="i">+            spoofedLatitude += randomWalking.current_x
+</a><a href="#h7-0-99" id="h7-0-99" class="i">+        }
+</a><a href="#h7-0-100" id="h7-0-100" class="i">+        return spoofedLatitude
+</a>     }
+ 
+     private fun getLong() : Double {
+<a href="#h7-0-104" id="h7-0-104" class="d">-        updatePosition()
+</a><a href="#h7-0-105" id="h7-0-105" class="d">-        return (context.config.global.betterLocation.coordinates.get().second + current_y)
+</a><a href="#h7-0-106" id="h7-0-106" class="i">+        var spoofedLongitude = context.config.global.betterLocation.coordinates.get().second
+</a><a href="#h7-0-107" id="h7-0-107" class="i">+        walkRadius?.let {
+</a><a href="#h7-0-108" id="h7-0-108" class="i">+            spoofedLongitude += randomWalking.current_y
+</a><a href="#h7-0-109" id="h7-0-109" class="i">+        }
+</a><a href="#h7-0-110" id="h7-0-110" class="i">+        return spoofedLongitude
+</a>     }
+<a href="#h7-0-112" id="h7-0-112" class="i">+
+</a>     private fun editClientUpdate(editor: EditorContext) {
+         val config = context.config.global.betterLocation
+ 
+         editor.apply {
+             // SCVSLocationUpdate
+             edit(1) {
+<a href="#h7-0-119" id="h7-0-119" class="d">-                context.log.verbose(&quot;SCVSLocationUpdate ${this@apply}&quot;)
+</a>                 if (config.spoofLocation.get()) {
+<a href="#h7-0-121" id="h7-0-121" class="i">+                    randomWalking.updatePosition()
+</a>                     remove(1)
+                     remove(2)
+                     addFixed32(1, getLat().toFloat()) // lat
+<a href="#h7-1" id="h7-1" class="h">@@ -137,6 +107,29 @@ class BetterLocation : Feature(&quot;Better Location&quot;, loadParams = FeatureLoadParams
+</a>         }
+     }
+ 
+<a href="#h7-1-3" id="h7-1-3" class="i">+    private fun onLocationEvent(protoReader: ProtoReader) {
+</a><a href="#h7-1-4" id="h7-1-4" class="i">+        protoReader.eachBuffer(3, 1) {
+</a><a href="#h7-1-5" id="h7-1-5" class="i">+            val userId = UUID(getFixed64(1, 1) ?: return@eachBuffer, getFixed64(1, 2) ?: return@eachBuffer).toString()
+</a><a href="#h7-1-6" id="h7-1-6" class="i">+            val friendCluster = FriendLocation(
+</a><a href="#h7-1-7" id="h7-1-7" class="i">+                userId = userId,
+</a><a href="#h7-1-8" id="h7-1-8" class="i">+                latitude = Float.fromBits(getFixed32(4)),
+</a><a href="#h7-1-9" id="h7-1-9" class="i">+                longitude = Float.fromBits(getFixed32(5)),
+</a><a href="#h7-1-10" id="h7-1-10" class="i">+                lastUpdated = getVarInt(7, 2) ?: -1L,
+</a><a href="#h7-1-11" id="h7-1-11" class="i">+                locality = getString(10),
+</a><a href="#h7-1-12" id="h7-1-12" class="i">+                localityPieces = mutableListOf&lt;String&gt;().also {
+</a><a href="#h7-1-13" id="h7-1-13" class="i">+                    forEach { index, wire -&gt;
+</a><a href="#h7-1-14" id="h7-1-14" class="i">+                        if (index != 11) return@forEach
+</a><a href="#h7-1-15" id="h7-1-15" class="i">+                        it.add((wire.value as ByteArray).toString(Charsets.UTF_8) )
+</a><a href="#h7-1-16" id="h7-1-16" class="i">+                    }
+</a><a href="#h7-1-17" id="h7-1-17" class="i">+                }
+</a><a href="#h7-1-18" id="h7-1-18" class="i">+            )
+</a><a href="#h7-1-19" id="h7-1-19" class="i">+
+</a><a href="#h7-1-20" id="h7-1-20" class="i">+            locationHistory[userId]?.let { }
+</a><a href="#h7-1-21" id="h7-1-21" class="i">+
+</a><a href="#h7-1-22" id="h7-1-22" class="i">+            locationHistory[userId] = friendCluster
+</a><a href="#h7-1-23" id="h7-1-23" class="i">+        }
+</a><a href="#h7-1-24" id="h7-1-24" class="i">+    }
+</a><a href="#h7-1-25" id="h7-1-25" class="i">+
+</a>     override fun init() {
+         if (context.config.global.betterLocation.globalState != true) return
+ 
+<a href="#h7-2" id="h7-2" class="h">@@ -146,11 +139,8 @@ class BetterLocation : Feature(&quot;Better Location&quot;, loadParams = FeatureLoadParams
+</a>                 hook(&quot;isProviderEnabledForUser&quot;, HookStage.BEFORE) { it.setResult(true) }
+             }
+             Location::class.java.apply {
+<a href="#h7-2-3" id="h7-2-3" class="d">-                hook(&quot;getLatitude&quot;, HookStage.BEFORE) {
+</a><a href="#h7-2-4" id="h7-2-4" class="d">-                    it.setResult(getLat()) }
+</a><a href="#h7-2-5" id="h7-2-5" class="d">-                hook(&quot;getLongitude&quot;, HookStage.BEFORE) {
+</a><a href="#h7-2-6" id="h7-2-6" class="d">-                    it.setResult(getLong())
+</a><a href="#h7-2-7" id="h7-2-7" class="d">-                }
+</a><a href="#h7-2-8" id="h7-2-8" class="i">+                hook(&quot;getLatitude&quot;, HookStage.BEFORE) { it.setResult(getLat()) }
+</a><a href="#h7-2-9" id="h7-2-9" class="i">+                hook(&quot;getLongitude&quot;, HookStage.BEFORE) { it.setResult(getLong()) }
+</a>             }
+         }
+ 
+<a href="#h7-3" id="h7-3" class="h">@@ -166,6 +156,16 @@ class BetterLocation : Feature(&quot;Better Location&quot;, loadParams = FeatureLoadParams
+</a>             }
+         }
+ 
+<a href="#h7-3-3" id="h7-3-3" class="i">+        context.mappings.useMapper(CallbackMapper::class) {
+</a><a href="#h7-3-4" id="h7-3-4" class="i">+            callbacks.getClass(&quot;ServerStreamingEventHandler&quot;)?.hook(&quot;onEvent&quot;, HookStage.BEFORE) { param -&gt;
+</a><a href="#h7-3-5" id="h7-3-5" class="i">+                val buffer = param.arg&lt;ByteBuffer&gt;(1).let {
+</a><a href="#h7-3-6" id="h7-3-6" class="i">+                    it.position(0)
+</a><a href="#h7-3-7" id="h7-3-7" class="i">+                    ByteArray(it.capacity()).also { buffer -&gt; it.get(buffer); it.position(0) }
+</a><a href="#h7-3-8" id="h7-3-8" class="i">+                }
+</a><a href="#h7-3-9" id="h7-3-9" class="i">+                onLocationEvent(ProtoReader(buffer))
+</a><a href="#h7-3-10" id="h7-3-10" class="i">+            }
+</a><a href="#h7-3-11" id="h7-3-11" class="i">+        }
+</a><a href="#h7-3-12" id="h7-3-12" class="i">+
+</a>         findClass(&quot;com.snapchat.client.grpc.ClientStreamSendHandler\$CppProxy&quot;).hook(&quot;send&quot;, HookStage.BEFORE) { param -&gt;
+             val array = param.arg&lt;ByteBuffer&gt;(0).let {
+                 it.position(0)
+<b>diff --git a/<a id="h8" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/util/RandomWalking.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/util/RandomWalking.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/util/RandomWalking.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/util/RandomWalking.kt</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -0,0 +1,65 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="i">+package me.rhunk.snapenhance.core.util
+</a><a href="#h8-0-1" id="h8-0-1" class="i">+
+</a><a href="#h8-0-2" id="h8-0-2" class="i">+import kotlin.math.cos
+</a><a href="#h8-0-3" id="h8-0-3" class="i">+import kotlin.math.hypot
+</a><a href="#h8-0-4" id="h8-0-4" class="i">+import kotlin.math.pow
+</a><a href="#h8-0-5" id="h8-0-5" class="i">+import kotlin.math.sin
+</a><a href="#h8-0-6" id="h8-0-6" class="i">+import kotlin.math.sqrt
+</a><a href="#h8-0-7" id="h8-0-7" class="i">+
+</a><a href="#h8-0-8" id="h8-0-8" class="i">+class RandomWalking(
+</a><a href="#h8-0-9" id="h8-0-9" class="i">+    private var walkRadius: Double?,
+</a><a href="#h8-0-10" id="h8-0-10" class="i">+) {
+</a><a href="#h8-0-11" id="h8-0-11" class="i">+    var current_x = 0.0
+</a><a href="#h8-0-12" id="h8-0-12" class="i">+        private set
+</a><a href="#h8-0-13" id="h8-0-13" class="i">+    var current_y = 0.0
+</a><a href="#h8-0-14" id="h8-0-14" class="i">+        private set
+</a><a href="#h8-0-15" id="h8-0-15" class="i">+    private var last_update_time = 0L
+</a><a href="#h8-0-16" id="h8-0-16" class="i">+    private var pause_expire = 0L
+</a><a href="#h8-0-17" id="h8-0-17" class="i">+    private var target_x = 0.0
+</a><a href="#h8-0-18" id="h8-0-18" class="i">+    private var target_y = 0.0
+</a><a href="#h8-0-19" id="h8-0-19" class="i">+
+</a><a href="#h8-0-20" id="h8-0-20" class="i">+    fun updatePosition() {
+</a><a href="#h8-0-21" id="h8-0-21" class="i">+        //Latitude ft / deg /Longitude ft /deg = 1.26301179736
+</a><a href="#h8-0-22" id="h8-0-22" class="i">+        // 4ft/s * 1 degree/364000ft (latitude) * 1s/1000ms = .000000010989011 degrees/ms
+</a><a href="#h8-0-23" id="h8-0-23" class="i">+        val max_speed = 4.0 / 364000.0 / 1000.0
+</a><a href="#h8-0-24" id="h8-0-24" class="i">+        val pause_chance = .0023 // .23% chance to pause every second = after 5 minutes 50% chance of pause
+</a><a href="#h8-0-25" id="h8-0-25" class="i">+        val pause_duration = 60000L //ms
+</a><a href="#h8-0-26" id="h8-0-26" class="i">+        val pause_random = 30000L //ms
+</a><a href="#h8-0-27" id="h8-0-27" class="i">+
+</a><a href="#h8-0-28" id="h8-0-28" class="i">+        val now = System.currentTimeMillis()
+</a><a href="#h8-0-29" id="h8-0-29" class="i">+
+</a><a href="#h8-0-30" id="h8-0-30" class="i">+        if(current_x == target_x &amp;&amp; current_y == target_y) {
+</a><a href="#h8-0-31" id="h8-0-31" class="i">+            val walk_rad = if (walkRadius == null
+</a><a href="#h8-0-32" id="h8-0-32" class="i">+            ) 0.0 else (walkRadius!! / 364000.0) //Lat deg
+</a><a href="#h8-0-33" id="h8-0-33" class="i">+
+</a><a href="#h8-0-34" id="h8-0-34" class="i">+            if(last_update_time == 0L){ //Start at random position
+</a><a href="#h8-0-35" id="h8-0-35" class="i">+                val radius1 = sqrt(Math.random()) * walk_rad
+</a><a href="#h8-0-36" id="h8-0-36" class="i">+                val theta1 = Math.PI * 2.0 * Math.random()
+</a><a href="#h8-0-37" id="h8-0-37" class="i">+                current_x = cos(theta1) * radius1 * 1.26301179736
+</a><a href="#h8-0-38" id="h8-0-38" class="i">+                current_y = sin(theta1) * radius1
+</a><a href="#h8-0-39" id="h8-0-39" class="i">+            }
+</a><a href="#h8-0-40" id="h8-0-40" class="i">+
+</a><a href="#h8-0-41" id="h8-0-41" class="i">+            val radius2 = sqrt(Math.random()) * walk_rad
+</a><a href="#h8-0-42" id="h8-0-42" class="i">+            val theta2 = Math.PI * 2.0 * Math.random()
+</a><a href="#h8-0-43" id="h8-0-43" class="i">+            target_x = cos(theta2) * radius2 * 1.26301179736
+</a><a href="#h8-0-44" id="h8-0-44" class="i">+            target_y = sin(theta2) * radius2
+</a><a href="#h8-0-45" id="h8-0-45" class="i">+        } else if (pause_expire &lt; now) {
+</a><a href="#h8-0-46" id="h8-0-46" class="i">+            val deltat = now - last_update_time
+</a><a href="#h8-0-47" id="h8-0-47" class="i">+            if(Math.random() &gt; (1.0 - pause_chance).pow(deltat / 1000.0)){
+</a><a href="#h8-0-48" id="h8-0-48" class="i">+                pause_expire = now + pause_duration + (pause_random * Math.random()).toLong()
+</a><a href="#h8-0-49" id="h8-0-49" class="i">+            } else {
+</a><a href="#h8-0-50" id="h8-0-50" class="i">+                val max_dist = max_speed * deltat
+</a><a href="#h8-0-51" id="h8-0-51" class="i">+                val dist = hypot(target_x - current_x, target_y - current_y)
+</a><a href="#h8-0-52" id="h8-0-52" class="i">+
+</a><a href="#h8-0-53" id="h8-0-53" class="i">+                if (dist &lt;= max_dist) {
+</a><a href="#h8-0-54" id="h8-0-54" class="i">+                    current_x = target_x
+</a><a href="#h8-0-55" id="h8-0-55" class="i">+                    current_y = target_y
+</a><a href="#h8-0-56" id="h8-0-56" class="i">+                } else {
+</a><a href="#h8-0-57" id="h8-0-57" class="i">+                    current_x += (target_x - current_x) / dist * max_dist
+</a><a href="#h8-0-58" id="h8-0-58" class="i">+                    current_y += (target_y - current_y) / dist * max_dist
+</a><a href="#h8-0-59" id="h8-0-59" class="i">+                }
+</a><a href="#h8-0-60" id="h8-0-60" class="i">+            }
+</a><a href="#h8-0-61" id="h8-0-61" class="i">+        }
+</a><a href="#h8-0-62" id="h8-0-62" class="i">+        last_update_time = now
+</a><a href="#h8-0-63" id="h8-0-63" class="i">+    }
+</a><a href="#h8-0-64" id="h8-0-64" class="i">+}</a><a href="#h8-0-65" id="h8-0-65" class="i">+
+\ No newline at end of file
+</a><b>diff --git a/<a id="h9" href="../file/mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/CallbackMapper.kt.html">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/CallbackMapper.kt</a> b/<a href="../file/mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/CallbackMapper.kt.html">mapper/src/main/kotlin/me/rhunk/snapenhance/mapper/impl/CallbackMapper.kt</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -16,7 +16,7 @@ class CallbackMapper : AbstractClassMapper(&quot;Callbacks&quot;) {
+</a>                 if (clazz.superclass == null) return@filter false
+ 
+                 val superclassName = clazz.getSuperClassName()!!
+<a href="#h9-0-3" id="h9-0-3" class="d">-                if ((!superclassName.endsWith(&quot;Callback&quot;) &amp;&amp; !superclassName.endsWith(&quot;Delegate&quot;))
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+                if ((!superclassName.endsWith(&quot;Callback&quot;) &amp;&amp; !superclassName.endsWith(&quot;Delegate&quot;) &amp;&amp; !superclassName.endsWith(&quot;EventHandler&quot;))
+</a>                     || superclassName.endsWith(&quot;\$Callback&quot;)) return@filter false
+ 
+                 if (clazz.getClassName().endsWith(&quot;\$CppProxy&quot;)) return@filter false
+</pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>feat(core/ui_tweaks): multiple hide ui components (#106) - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/a121fa96fea578d879a8908beab91c19abbb7d86.html">a121fa96fea578d879a8908beab91c19abbb7d86</a>
+<b>parent</b> <a href="../commit/5552da0c9975c00dcab74bf4fb093dc76de35f14.html">5552da0c9975c00dcab74bf4fb093dc76de35f14</a>
+<b>Author:</b> Suryadip Sarkar &lt;<a href="mailto:137927782+suryadip2008@users.noreply.github.com">137927782+suryadip2008@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Wed, 17 Jul 2024 04:32:16 +0530
+
+feat(core/ui_tweaks): multiple hide ui components (#106)
+
+eat(ui): Hide below_header_message_banner_text by default
+
+Added default hiding for below_header_message_banner_text
+
+* feat(ui): Hide below_header_message_banner_text and below_header_message by default
+
+* refactor(core/ui_tweaks): hide reminders by default
+
+* feat(core/ui_tweaks): hide reminders by default
+
+* refactor(core/ui_tweaks): hide reminders by default
+
+* fix(core/ui_tweaks): accidental removal
+
+* feat: Multiple hide ui components
+
+* feat(core/ui_tweaks): Multiple hide ui components
+
+* feat: Multiple hide ui components
+
+* refactor(lang/en_US.json): hide_ui_components
+
+* refactor(core/ui_tweaks): multiple hide ui components
+
+* fix: missing code
+
+* refactor: spaces
+
+* feat: hide create group shortcut
+
+* feat: hide create group shortcut
+
+* feat(core/ui_tweaks): hide create group shortcut
+
+* feat(core/ui_tweaks): Hide Spotlight Icon &amp; Tokens Icon
+
+* feat: Hide Spotlight Icon &amp; Tokens Icon
+
+* feat: Hide Spotlight Icon &amp; Tokens Icon
+
+* remove(core/ui_tweaks): hide billboard prompt
+
+* remove: hide billboard-prompt
+
+* remove: hide billboard-prompt
+
+* remove(core/ui_tweaks): hide spotlight icon
+
+* remove: hide spotlight icon
+
+* remove: hide spotlight icon
+
+* fix(core/ui_tweaks): accidental removal
+
+* refactor: multiple hide ui components
+
+---------
+
+Co-authored-by: Jacob Thomas &lt;41988041+bocajthomas@users.noreply.github.com&gt;
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">7</td><td><span class="i">++++++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></td><td> | </td><td class="num">6</td><td><span class="i">+++++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/UITweaks.kt</a></td><td> | </td><td class="num">15</td><td><span class="i">++++++++++</span><span class="d">-----</span></td></tr>
+</table></pre><pre>3 files changed, 21 insertions(+), 7 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1428,12 +1428,17 @@
+</a>             },
+             &quot;hide_ui_components&quot;: {
+                 &quot;hide_profile_call_buttons&quot;: &quot;Remove Profile Call Buttons&quot;,
+<a href="#h0-0-3" id="h0-0-3" class="i">+                &quot;hide_snap_create_group_buttons&quot;: &quot;Remove Snap Create Group Buttons&quot;,
+</a>                 &quot;hide_chat_call_buttons&quot;: &quot;Remove Chat Call Buttons&quot;,
+<a href="#h0-0-5" id="h0-0-5" class="i">+                &quot;hide_chat_camera_button&quot;: &quot;Remove Chat Camera Button&quot;,
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+                &quot;hide_chat_gallery_button&quot;: &quot;Remove Chat Gallery Button&quot;,
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+                &quot;hide_explorer_token_button&quot;: &quot;Remove Explorer Token Button&quot;,
+</a>                 &quot;hide_live_location_share_button&quot;: &quot;Remove Live Location Share Button&quot;,
+                 &quot;hide_stickers_button&quot;: &quot;Remove Stickers Button&quot;,
+                 &quot;hide_voice_record_button&quot;: &quot;Remove Voice Record Button&quot;,
+                 &quot;hide_unread_chat_hint&quot;: &quot;Remove Unread Chat Hint&quot;,
+<a href="#h0-0-12" id="h0-0-12" class="d">-                &quot;hide_post_to_story_buttons&quot;: &quot;Remove Post to Story buttons before sending a Snap&quot;
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+                &quot;hide_post_to_story_buttons&quot;: &quot;Remove Post to Story Buttons&quot;,
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+                &quot;hide_gift_snapchat_plus_reminders&quot;: &quot;Remove Gift Snapchat Plus Reminders&quot;
+</a>             },
+             &quot;hide_story_suggestions&quot;: {
+                 &quot;hide_friend_suggestions&quot;: &quot;Hide friend suggestions&quot;,
+<b>diff --git a/<a id="h1" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -18,7 +18,6 @@ class UserInterfaceTweaks : ConfigContainer() {
+</a>         val amount = integer(&quot;amount&quot;, defaultValue = 1)
+     }
+ 
+<a href="#h1-0-3" id="h1-0-3" class="d">-
+</a>     class ColorsConfig : ConfigContainer() {
+         val textColor = color(&quot;text_color&quot;)
+         val chatChatTextColor = color(&quot;chat_chat_text_color&quot;)
+<a href="#h1-1" id="h1-1" class="h">@@ -103,9 +102,14 @@ class UserInterfaceTweaks : ConfigContainer() {
+</a>         &quot;hide_stickers_button&quot;,
+         &quot;hide_live_location_share_button&quot;,
+         &quot;hide_chat_call_buttons&quot;,
+<a href="#h1-1-3" id="h1-1-3" class="i">+        &quot;hide_chat_camera_button&quot;,
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+        &quot;hide_chat_gallery_button&quot;,
+</a>         &quot;hide_profile_call_buttons&quot;,
+         &quot;hide_unread_chat_hint&quot;,
+         &quot;hide_post_to_story_buttons&quot;,
+<a href="#h1-1-8" id="h1-1-8" class="i">+        &quot;hide_snap_create_group_buttons&quot;,
+</a><a href="#h1-1-9" id="h1-1-9" class="i">+        &quot;hide_explorer_token_button&quot;,
+</a><a href="#h1-1-10" id="h1-1-10" class="i">+        &quot;hide_gift_snapchat_plus_reminders&quot;
+</a>     ) { requireRestart() }
+     val operaMediaQuickInfo = boolean(&quot;opera_media_quick_info&quot;) { requireRestart() }
+     val oldBitmojiSelfie = unique(&quot;old_bitmoji_selfie&quot;, &quot;2d&quot;, &quot;3d&quot;) { requireCleanCache() }
+<b>diff --git a/<a id="h2" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/UITweaks.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/UITweaks.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/UITweaks.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/UITweaks.kt</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -78,7 +78,7 @@ class UITweaks : Feature(&quot;UITweaks&quot;, loadParams = FeatureLoadParams.ACTIVITY_CRE
+</a>             }
+         }
+ 
+<a href="#h2-0-3" id="h2-0-3" class="d">-        Resources::class.java.methods.first { it.name == &quot;getDimensionPixelSize&quot;}.hook(
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+        Resources::class.java.methods.first { it.name == &quot;getDimensionPixelSize&quot; }.hook(
+</a>             HookStage.AFTER,
+             { isImmersiveCamera }
+         ) { param -&gt;
+<a href="#h2-1" id="h2-1" class="h">@@ -99,7 +99,7 @@ class UITweaks : Feature(&quot;UITweaks&quot;, loadParams = FeatureLoadParams.ACTIVITY_CRE
+</a>             if (event.view is FrameLayout) {
+                 val viewModelString = event.prevModel.toString()
+                 val isSuggestedFriend by lazy { viewModelString.startsWith(&quot;DFFriendSuggestionCardViewModel&quot;) }
+<a href="#h2-1-3" id="h2-1-3" class="d">-                val isMyStory by lazy { viewModelString.let { it.startsWith(&quot;CircularItemViewModel&quot;) &amp;&amp; it.contains(&quot;storyId=&quot;)} }
+</a><a href="#h2-1-4" id="h2-1-4" class="i">+                val isMyStory by lazy { viewModelString.let { it.startsWith(&quot;CircularItemViewModel&quot;) &amp;&amp; it.contains(&quot;storyId=&quot;) }}
+</a> 
+                 if ((hideStorySuggestions.contains(&quot;hide_friend_suggestions&quot;) &amp;&amp; isSuggestedFriend) ||
+                     (hideStorySuggestions.contains(&quot;hide_my_stories&quot;) &amp;&amp; isMyStory)) {
+<a href="#h2-2" id="h2-2" class="h">@@ -160,16 +160,22 @@ class UITweaks : Feature(&quot;UITweaks&quot;, loadParams = FeatureLoadParams.ACTIVITY_CRE
+</a> 
+             if (
+                 ((viewId == getId(&quot;post_tool&quot;, &quot;id&quot;) || viewId == getId(&quot;story_button&quot;, &quot;id&quot;)) &amp;&amp; hiddenElements.contains(&quot;hide_post_to_story_buttons&quot;)) ||
+<a href="#h2-2-3" id="h2-2-3" class="d">-                (viewId == chatNoteRecordButton &amp;&amp; hiddenElements.contains(&quot;hide_voice_record_button&quot;)) ||
+</a><a href="#h2-2-4" id="h2-2-4" class="i">+                ((viewId == getId(&quot;below_header_message_banner_text&quot;, &quot;id&quot;) || viewId == getId(&quot;below_header_message_banner&quot;, &quot;id&quot;)) &amp;&amp; hiddenElements.contains(&quot;hide_gift_snapchat_plus_reminders&quot;)) ||
+</a><a href="#h2-2-5" id="h2-2-5" class="i">+                ((viewId == getId(&quot;explorer_action_icon&quot;, &quot;id&quot;) || viewId == getId(&quot;explorer_action_text&quot;, &quot;id&quot;)) &amp;&amp; hiddenElements.contains(&quot;hide_explorer_token_button&quot;)) ||
+</a>                 (viewId == getId(&quot;chat_input_bar_sticker&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_stickers_button&quot;)) ||
+                 (viewId == getId(&quot;chat_input_bar_sharing_drawer_button&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_live_location_share_button&quot;)) ||
+<a href="#h2-2-8" id="h2-2-8" class="i">+                (viewId == getId(&quot;chat_input_bar_camera&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_chat_camera_button&quot;)) ||
+</a><a href="#h2-2-9" id="h2-2-9" class="i">+                (viewId == getId(&quot;chat_input_bar_gallery&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_chat_gallery_button&quot;)) ||
+</a><a href="#h2-2-10" id="h2-2-10" class="i">+                (viewId == getId(&quot;send_to_recipient_bar_new_group_button&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_snap_create_group_buttons&quot;)) ||
+</a><a href="#h2-2-11" id="h2-2-11" class="i">+                (viewId == chatNoteRecordButton &amp;&amp; hiddenElements.contains(&quot;hide_voice_record_button&quot;)) ||
+</a>                 (viewId == callButtonsStub &amp;&amp; hiddenElements.contains(&quot;hide_chat_call_buttons&quot;))
+             ) {
+                 hideView(view)
+             }
+<a href="#h2-2-16" id="h2-2-16" class="i">+
+</a>             if (viewId == unreadHintButton &amp;&amp; hiddenElements.contains(&quot;hide_unread_chat_hint&quot;)) {
+                 event.canceled = true
+             }
+         }
+     }
+<a href="#h2-2-22" id="h2-2-22" class="d">-}</a><a href="#h2-2-23" id="h2-2-23" class="d">-
+\ No newline at end of file
+</a><a href="#h2-2-24" id="h2-2-24" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

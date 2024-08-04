@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FeaturesRootSection.kt - SnapEnhance - An Xposed module offering an enhanced Snapchat experience
+<title>FeaturesRootSection.kt - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </title>
 <link rel="icon" type="image/svg+xml" href="../../../../../../../../../../../../../logo.png"/>
 <link rel="alternate icon" href="../../../../../../../../../../../../../favicon.png"/>
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed" href="../../../../../../../../../../../../atom.xml" />
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed (tags)" href="../../../../../../../../../../../../tags.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../../../../../../../../../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../../../../../../../../../../../../tags.xml" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../style.css" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../fonts.css" />
 </head>
 <body>
-<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../../../../../"><img src="../../../../../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SnapEnhance</strong><span class="desc"> - An Xposed module offering an enhanced Snapchat experience
+<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../../../../../"><img src="../../../../../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </span>
 </td></tr></table>
 <p><a href="../../../../../../../../../../../../about.html">About</a> | <a href="../../../../../../../../../../../../log.html">Log</a> | <a href="../../../../../../../../../../../../files.html">Files</a> | <a href="../../../../../../../../../../../../refs.html">Refs</a> | <a href="../../../../../../../../../../../../file/.gitmodules.html">Submodules</a> | <a href="../../../../../../../../../../../../file/LICENSE.html">License</a></p>
@@ -492,7 +492,7 @@
 <a href="#l469" class="line" id="l469">    469</a>                     }
 <a href="#l470" class="line" id="l470">    470</a>                     currentSearchJob?.cancel()
 <a href="#l471" class="line" id="l471">    471</a>                     scope.launch {
-<a href="#l472" class="line" id="l472">    472</a>                         delay(300)
+<a href="#l472" class="line" id="l472">    472</a>                         delay(150)
 <a href="#l473" class="line" id="l473">    473</a>                         routes.navController.navigate(SEARCH_FEATURE_ROUTE.replace(&quot;{keyword}&quot;, keyword), NavOptions.Builder()
 <a href="#l474" class="line" id="l474">    474</a>                             .setLaunchSingleTop(true)
 <a href="#l475" class="line" id="l475">    475</a>                             .setPopUpTo(routeInfo.id, false)

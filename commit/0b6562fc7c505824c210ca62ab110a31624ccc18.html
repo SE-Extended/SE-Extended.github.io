@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>feat(theme_picker): midnight slate - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/0b6562fc7c505824c210ca62ab110a31624ccc18.html">0b6562fc7c505824c210ca62ab110a31624ccc18</a>
+<b>parent</b> <a href="../commit/c84dc26d86d3e5af68dd5895dd143036492f3ee0.html">c84dc26d86d3e5af68dd5895dd143036492f3ee0</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Sat, 22 Jun 2024 00:16:07 +0100
+
+feat(theme_picker): midnight slate
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>3 files changed, 16 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1326,6 +1326,7 @@
+</a>                 &quot;material_you_dark&quot;: &quot;Material You Dark (Android 12+)&quot;,
+                 &quot;light_blue&quot;: &quot;Light Blue&quot;,
+                 &quot;dark_blue&quot;: &quot;Dark Blue&quot;,
+<a href="#h0-0-3" id="h0-0-3" class="i">+                &quot;midnight_slate&quot;: &quot;Midnight Slate&quot;,
+</a>                 &quot;earthy_autumn&quot;: &quot;Earthy Autumn&quot;,
+                 &quot;mint_chocolate&quot;: &quot;Mint Chocolate&quot;,
+                 &quot;ginger_snap&quot;: &quot;Ginger Snap&quot;,
+<b>diff --git a/<a id="h1" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -44,6 +44,7 @@ class UserInterfaceTweaks : ConfigContainer() {
+</a>             &quot;material_you_dark&quot;,
+             &quot;light_blue&quot;,
+             &quot;dark_blue&quot;,
+<a href="#h1-0-3" id="h1-0-3" class="i">+            &quot;midnight_slate&quot;,
+</a>             &quot;earthy_autumn&quot;,
+             &quot;mint_chocolate&quot;,
+             &quot;ginger_snap&quot;,
+<b>diff --git a/<a id="h2" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -159,6 +159,20 @@ class CustomizeUI: Feature(&quot;Customize UI&quot;, loadParams = FeatureLoadParams.ACTIVI
+</a>                &quot;sigColorChatSnapWithoutSound&quot; to 0xFF98C2FD,
+                &quot;sigExceptionColorCameraGridLines&quot; to 0xFF192744
+            ),
+<a href="#h2-0-3" id="h2-0-3" class="i">+           &quot;midnight_slate&quot; to mapOf(
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+               &quot;sigColorTextPrimary&quot; to 0xFFFFFFFF,
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+               &quot;sigColorBackgroundMain&quot; to 0xFF1F2833,
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+               &quot;sigColorBackgroundSurface&quot; to 0xFF1F2833,
+</a><a href="#h2-0-7" id="h2-0-7" class="i">+               &quot;actionSheetBackgroundDrawable&quot; to 0xFF2C3E50,
+</a><a href="#h2-0-8" id="h2-0-8" class="i">+               &quot;actionSheetRoundedBackgroundDrawable&quot; to 0xFF34495E,
+</a><a href="#h2-0-9" id="h2-0-9" class="i">+               &quot;listDivider&quot; to 0xFF1F2833,
+</a><a href="#h2-0-10" id="h2-0-10" class="i">+               &quot;sigColorChatChat&quot; to 0xFFFFFF00,
+</a><a href="#h2-0-11" id="h2-0-11" class="i">+               &quot;sigColorChatPendingSending&quot; to 0xFF00FFFF,
+</a><a href="#h2-0-12" id="h2-0-12" class="i">+               &quot;sigColorChatSnapWithSound&quot; to 0xFFFF9800,
+</a><a href="#h2-0-13" id="h2-0-13" class="i">+               &quot;sigColorChatSnapWithoutSound&quot; to 0xFF00E676,
+</a><a href="#h2-0-14" id="h2-0-14" class="i">+               &quot;sigExceptionColorCameraGridLines&quot; to 0xFFFFFFFF,
+</a><a href="#h2-0-15" id="h2-0-15" class="i">+               &quot;sigColorIconPrimary&quot; to 0xFFFFFF00
+</a><a href="#h2-0-16" id="h2-0-16" class="i">+           ),
+</a>            &quot;earthy_autumn&quot; to mapOf(
+                &quot;sigColorTextPrimary&quot; to 0xFFF7CAC9,
+                &quot;sigColorBackgroundMain&quot; to 0xFF800000,
+</pre>
+</div>
+</body>
+</html>

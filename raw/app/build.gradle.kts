@@ -96,7 +96,7 @@ android {
     applicationVariants.all {
         outputs.map { it as BaseVariantOutputImpl }.forEach { outputVariant ->
             outputVariant.outputFileName = when {
-                name.startsWith("core") -> "core.apk"
+                name.startsWith("core") -> "Core.apk"
                 else -> "snapenhance_${rootProject.ext["appVersionName"]}-${outputVariant.name}.apk"
             }
         }
@@ -179,5 +179,10 @@ afterEvaluate {
                 }
             }
         }
+    }
+}
+properties["debug_flavor"]?.let {
+    configurations.all {
+        exclude(group = "androidx.profileinstaller", "profileinstaller")
     }
 }

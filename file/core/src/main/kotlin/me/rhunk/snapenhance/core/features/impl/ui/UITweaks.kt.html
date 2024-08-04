@@ -3,24 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UITweaks.kt - SnapEnhance - An Xposed module offering an enhanced Snapchat experience
+<title>UITweaks.kt - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </title>
 <link rel="icon" type="image/svg+xml" href="../../../../../../../../../../../../../logo.png"/>
 <link rel="alternate icon" href="../../../../../../../../../../../../../favicon.png"/>
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed" href="../../../../../../../../../../../../atom.xml" />
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed (tags)" href="../../../../../../../../../../../../tags.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../../../../../../../../../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../../../../../../../../../../../../tags.xml" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../style.css" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../fonts.css" />
 </head>
 <body>
-<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../../../../../"><img src="../../../../../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SnapEnhance</strong><span class="desc"> - An Xposed module offering an enhanced Snapchat experience
+<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../../../../../"><img src="../../../../../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </span>
 </td></tr></table>
 <p><a href="../../../../../../../../../../../../about.html">About</a> | <a href="../../../../../../../../../../../../log.html">Log</a> | <a href="../../../../../../../../../../../../files.html">Files</a> | <a href="../../../../../../../../../../../../refs.html">Refs</a> | <a href="../../../../../../../../../../../../file/.gitmodules.html">Submodules</a> | <a href="../../../../../../../../../../../../file/LICENSE.html">License</a></p>
 </div>
 <hr/>
 <div id="content">
-<p> UITweaks.kt (7860B) - <a href="../../../../../../../../../../../../raw/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/UITweaks.kt">raw</a></p><hr/><pre id="blob">
+<p> UITweaks.kt (8631B) - <a href="../../../../../../../../../../../../raw/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/UITweaks.kt">raw</a></p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> package me.rhunk.snapenhance.core.features.impl.ui
 <a href="#l2" class="line" id="l2">      2</a> 
 <a href="#l3" class="line" id="l3">      3</a> import android.content.res.Resources
@@ -100,7 +100,7 @@
 <a href="#l77" class="line" id="l77">     77</a>             }
 <a href="#l78" class="line" id="l78">     78</a>         }
 <a href="#l79" class="line" id="l79">     79</a> 
-<a href="#l80" class="line" id="l80">     80</a>         Resources::class.java.methods.first { it.name == &quot;getDimensionPixelSize&quot;}.hook(
+<a href="#l80" class="line" id="l80">     80</a>         Resources::class.java.methods.first { it.name == &quot;getDimensionPixelSize&quot; }.hook(
 <a href="#l81" class="line" id="l81">     81</a>             HookStage.AFTER,
 <a href="#l82" class="line" id="l82">     82</a>             { isImmersiveCamera }
 <a href="#l83" class="line" id="l83">     83</a>         ) { param -&gt;
@@ -121,7 +121,7 @@
 <a href="#l98" class="line" id="l98">     98</a>             if (event.view is FrameLayout) {
 <a href="#l99" class="line" id="l99">     99</a>                 val viewModelString = event.prevModel.toString()
 <a href="#l100" class="line" id="l100">    100</a>                 val isSuggestedFriend by lazy { viewModelString.startsWith(&quot;DFFriendSuggestionCardViewModel&quot;) }
-<a href="#l101" class="line" id="l101">    101</a>                 val isMyStory by lazy { viewModelString.let { it.startsWith(&quot;CircularItemViewModel&quot;) &amp;&amp; it.contains(&quot;storyId=&quot;)} }
+<a href="#l101" class="line" id="l101">    101</a>                 val isMyStory by lazy { viewModelString.let { it.startsWith(&quot;CircularItemViewModel&quot;) &amp;&amp; it.contains(&quot;storyId=&quot;) }}
 <a href="#l102" class="line" id="l102">    102</a> 
 <a href="#l103" class="line" id="l103">    103</a>                 if ((hideStorySuggestions.contains(&quot;hide_friend_suggestions&quot;) &amp;&amp; isSuggestedFriend) ||
 <a href="#l104" class="line" id="l104">    104</a>                     (hideStorySuggestions.contains(&quot;hide_my_stories&quot;) &amp;&amp; isMyStory)) {
@@ -182,25 +182,32 @@
 <a href="#l159" class="line" id="l159">    159</a> 
 <a href="#l160" class="line" id="l160">    160</a>             if (
 <a href="#l161" class="line" id="l161">    161</a>                 ((viewId == getId(&quot;post_tool&quot;, &quot;id&quot;) || viewId == getId(&quot;story_button&quot;, &quot;id&quot;)) &amp;&amp; hiddenElements.contains(&quot;hide_post_to_story_buttons&quot;)) ||
-<a href="#l162" class="line" id="l162">    162</a>                 (viewId == chatNoteRecordButton &amp;&amp; hiddenElements.contains(&quot;hide_voice_record_button&quot;)) ||
-<a href="#l163" class="line" id="l163">    163</a>                 (viewId == getId(&quot;chat_input_bar_sticker&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_stickers_button&quot;)) ||
-<a href="#l164" class="line" id="l164">    164</a>                 (viewId == getId(&quot;chat_input_bar_sharing_drawer_button&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_live_location_share_button&quot;)) ||
-<a href="#l165" class="line" id="l165">    165</a>                 (viewId == callButtonsStub &amp;&amp; hiddenElements.contains(&quot;hide_chat_call_buttons&quot;))
-<a href="#l166" class="line" id="l166">    166</a>             ) {
-<a href="#l167" class="line" id="l167">    167</a>                 hideView(view)
-<a href="#l168" class="line" id="l168">    168</a>             }
-<a href="#l169" class="line" id="l169">    169</a>             if (viewId == unreadHintButton &amp;&amp; hiddenElements.contains(&quot;hide_unread_chat_hint&quot;)) {
-<a href="#l170" class="line" id="l170">    170</a>                 event.canceled = true
-<a href="#l171" class="line" id="l171">    171</a>             }
-<a href="#l172" class="line" id="l172">    172</a>         }
-<a href="#l173" class="line" id="l173">    173</a>     }
+<a href="#l162" class="line" id="l162">    162</a>                 ((viewId == getId(&quot;below_header_message_banner_text&quot;, &quot;id&quot;) || viewId == getId(&quot;below_header_message_banner&quot;, &quot;id&quot;)) &amp;&amp; hiddenElements.contains(&quot;hide_gift_snapchat_plus_reminders&quot;)) ||
+<a href="#l163" class="line" id="l163">    163</a>                 ((viewId == getId(&quot;explorer_action_icon&quot;, &quot;id&quot;) || viewId == getId(&quot;explorer_action_text&quot;, &quot;id&quot;)) &amp;&amp; hiddenElements.contains(&quot;hide_explorer_token_button&quot;)) ||
+<a href="#l164" class="line" id="l164">    164</a>                 (viewId == getId(&quot;chat_input_bar_sticker&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_stickers_button&quot;)) ||
+<a href="#l165" class="line" id="l165">    165</a>                 (viewId == getId(&quot;chat_input_bar_sharing_drawer_button&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_live_location_share_button&quot;)) ||
+<a href="#l166" class="line" id="l166">    166</a>                 (viewId == getId(&quot;chat_input_bar_camera&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_chat_camera_button&quot;)) ||
+<a href="#l167" class="line" id="l167">    167</a>                 (viewId == getId(&quot;chat_input_bar_gallery&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_chat_gallery_button&quot;)) ||
+<a href="#l168" class="line" id="l168">    168</a>                 (viewId == getId(&quot;send_to_recipient_bar_new_group_button&quot;, &quot;id&quot;) &amp;&amp; hiddenElements.contains(&quot;hide_snap_create_group_buttons&quot;)) ||
+<a href="#l169" class="line" id="l169">    169</a>                 (viewId == chatNoteRecordButton &amp;&amp; hiddenElements.contains(&quot;hide_voice_record_button&quot;)) ||
+<a href="#l170" class="line" id="l170">    170</a>                 (viewId == callButtonsStub &amp;&amp; hiddenElements.contains(&quot;hide_chat_call_buttons&quot;))
+<a href="#l171" class="line" id="l171">    171</a>             ) {
+<a href="#l172" class="line" id="l172">    172</a>                 hideView(view)
+<a href="#l173" class="line" id="l173">    173</a>             }
 <a href="#l174" class="line" id="l174">    174</a> 
-<a href="#l175" class="line" id="l175">    175</a>     override fun init() {
-<a href="#l176" class="line" id="l176">    176</a>         onNextActivityCreate {
-<a href="#l177" class="line" id="l177">    177</a>             onActivityCreate()
+<a href="#l175" class="line" id="l175">    175</a>             if (viewId == unreadHintButton &amp;&amp; hiddenElements.contains(&quot;hide_unread_chat_hint&quot;)) {
+<a href="#l176" class="line" id="l176">    176</a>                 event.canceled = true
+<a href="#l177" class="line" id="l177">    177</a>             }
 <a href="#l178" class="line" id="l178">    178</a>         }
 <a href="#l179" class="line" id="l179">    179</a>     }
-<a href="#l180" class="line" id="l180">    180</a> }</pre>
+<a href="#l180" class="line" id="l180">    180</a> 
+<a href="#l181" class="line" id="l181">    181</a>     override fun init() {
+<a href="#l182" class="line" id="l182">    182</a>         onNextActivityCreate {
+<a href="#l183" class="line" id="l183">    183</a>             onActivityCreate()
+<a href="#l184" class="line" id="l184">    184</a>         }
+<a href="#l185" class="line" id="l185">    185</a>     }
+<a href="#l186" class="line" id="l186">    186</a> }
+</pre>
 </div>
 </body>
 </html>

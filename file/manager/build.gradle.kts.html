@@ -3,24 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>build.gradle.kts - SnapEnhance - An Xposed module offering an enhanced Snapchat experience
+<title>build.gradle.kts - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </title>
 <link rel="icon" type="image/svg+xml" href="../../../logo.png"/>
 <link rel="alternate icon" href="../../../favicon.png"/>
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed" href="../../atom.xml" />
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed (tags)" href="../../tags.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../../tags.xml" />
 <link rel="stylesheet" type="text/css" href="../../../style.css" />
 <link rel="stylesheet" type="text/css" href="../../../fonts.css" />
 </head>
 <body>
-<div id="head"><table><tr><td><a class="logo" href="../../../"><img src="../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SnapEnhance</strong><span class="desc"> - An Xposed module offering an enhanced Snapchat experience
+<div id="head"><table><tr><td><a class="logo" href="../../../"><img src="../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </span>
 </td></tr></table>
 <p><a href="../../about.html">About</a> | <a href="../../log.html">Log</a> | <a href="../../files.html">Files</a> | <a href="../../refs.html">Refs</a> | <a href="../../file/.gitmodules.html">Submodules</a> | <a href="../../file/LICENSE.html">License</a></p>
 </div>
 <hr/>
 <div id="content">
-<p> build.gradle.kts (2411B) - <a href="../../raw/manager/build.gradle.kts">raw</a></p><hr/><pre id="blob">
+<p> build.gradle.kts (2412B) - <a href="../../raw/manager/build.gradle.kts">raw</a></p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 <a href="#l2" class="line" id="l2">      2</a> 
 <a href="#l3" class="line" id="l3">      3</a> plugins {
@@ -70,7 +70,7 @@
 <a href="#l47" class="line" id="l47">     47</a> 
 <a href="#l48" class="line" id="l48">     48</a>     applicationVariants.all {
 <a href="#l49" class="line" id="l49">     49</a>         outputs.map { it as BaseVariantOutputImpl }.forEach { outputVariant -&gt;
-<a href="#l50" class="line" id="l50">     50</a>             outputVariant.outputFileName = &quot;manager.apk&quot;
+<a href="#l50" class="line" id="l50">     50</a>             outputVariant.outputFileName = &quot;Manager.apk&quot;
 <a href="#l51" class="line" id="l51">     51</a>         }
 <a href="#l52" class="line" id="l52">     52</a>     }
 <a href="#l53" class="line" id="l53">     53</a> 
@@ -108,7 +108,8 @@
 <a href="#l85" class="line" id="l85">     85</a>     implementation(libs.androidx.material.icons.core)
 <a href="#l86" class="line" id="l86">     86</a>     implementation(libs.androidx.material.ripple)
 <a href="#l87" class="line" id="l87">     87</a>     implementation(libs.androidx.material.icons.extended)
-<a href="#l88" class="line" id="l88">     88</a> }</pre>
+<a href="#l88" class="line" id="l88">     88</a> }
+</pre>
 </div>
 </body>
 </html>

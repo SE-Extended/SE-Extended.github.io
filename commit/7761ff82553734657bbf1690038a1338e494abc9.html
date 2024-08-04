@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Migrate to Kotlin 2 and Update Deps - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/7761ff82553734657bbf1690038a1338e494abc9.html">7761ff82553734657bbf1690038a1338e494abc9</a>
+<b>parent</b> <a href="../commit/2442a2407ce1512e7422599d13f18d1dc8880da0.html">2442a2407ce1512e7422599d13f18d1dc8880da0</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Fri, 31 May 2024 19:50:03 +0100
+
+Migrate to Kotlin 2 and Update Deps
+
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/build.gradle.kts</a></td><td> | </td><td class="num">5</td><td><span class="i">+</span><span class="d">----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">build.gradle.kts</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">common/build.gradle.kts</a></td><td> | </td><td class="num">5</td><td><span class="i">+</span><span class="d">----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">core/build.gradle.kts</a></td><td> | </td><td class="num">5</td><td><span class="i">+</span><span class="d">----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">gradle/libs.versions.toml</a></td><td> | </td><td class="num">18</td><td><span class="i">+++++++++</span><span class="d">---------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">manager/build.gradle.kts</a></td><td> | </td><td class="num">5</td><td><span class="i">+</span><span class="d">----</span></td></tr>
+</table></pre><pre>6 files changed, 14 insertions(+), 25 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/build.gradle.kts.html">app/build.gradle.kts</a> b/<a href="../file/app/build.gradle.kts.html">app/build.gradle.kts</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream
+</a> plugins {
+     alias(libs.plugins.androidApplication)
+     alias(libs.plugins.kotlinAndroid)
+<a href="#h0-0-3" id="h0-0-3" class="i">+    alias(libs.plugins.compose.compiler)
+</a>     id(&quot;kotlin-parcelize&quot;)
+ }
+ 
+<a href="#h0-1" id="h0-1" class="h">@@ -20,10 +21,6 @@ android {
+</a>         compose = true
+     }
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-    composeOptions {
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-    }
+</a><a href="#h0-1-6" id="h0-1-6" class="d">-
+</a>     defaultConfig {
+         applicationId = rootProject.ext[&quot;applicationId&quot;].toString()
+         versionCode = rootProject.ext[&quot;appVersionCode&quot;].toString().toInt()
+<b>diff --git a/<a id="h1" href="../file/build.gradle.kts.html">build.gradle.kts</a> b/<a href="../file/build.gradle.kts.html">build.gradle.kts</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -3,6 +3,7 @@ plugins {
+</a>     alias(libs.plugins.androidApplication) apply false
+     alias(libs.plugins.androidLibrary) apply false
+     alias(libs.plugins.kotlinAndroid) apply false
+<a href="#h1-0-3" id="h1-0-3" class="i">+    alias(libs.plugins.compose.compiler) apply false
+</a> }
+ 
+ var versionName = &quot;2.1.0&quot;
+<b>diff --git a/<a id="h2" href="../file/common/build.gradle.kts.html">common/build.gradle.kts</a> b/<a href="../file/common/build.gradle.kts.html">common/build.gradle.kts</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -1,6 +1,7 @@
+</a> plugins {
+     alias(libs.plugins.androidLibrary)
+     alias(libs.plugins.kotlinAndroid)
+<a href="#h2-0-3" id="h2-0-3" class="i">+    alias(libs.plugins.compose.compiler)
+</a>     id(&quot;kotlin-parcelize&quot;)
+ }
+ 
+<a href="#h2-1" id="h2-1" class="h">@@ -14,10 +15,6 @@ android {
+</a>         compose = true
+     }
+ 
+<a href="#h2-1-3" id="h2-1-3" class="d">-    composeOptions {
+</a><a href="#h2-1-4" id="h2-1-4" class="d">-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+</a><a href="#h2-1-5" id="h2-1-5" class="d">-    }
+</a><a href="#h2-1-6" id="h2-1-6" class="d">-
+</a>     defaultConfig {
+         minSdk = 28
+         buildConfigField(&quot;String&quot;, &quot;VERSION_NAME&quot;, &quot;\&quot;${rootProject.ext[&quot;appVersionName&quot;]}\&quot;&quot;)
+<b>diff --git a/<a id="h3" href="../file/core/build.gradle.kts.html">core/build.gradle.kts</a> b/<a href="../file/core/build.gradle.kts.html">core/build.gradle.kts</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -1,6 +1,7 @@
+</a> plugins {
+     alias(libs.plugins.androidLibrary)
+     alias(libs.plugins.kotlinAndroid)
+<a href="#h3-0-3" id="h3-0-3" class="i">+    alias(libs.plugins.compose.compiler)
+</a> }
+ 
+ android {
+<a href="#h3-1" id="h3-1" class="h">@@ -15,10 +16,6 @@ android {
+</a>         compose = true
+     }
+ 
+<a href="#h3-1-3" id="h3-1-3" class="d">-    composeOptions {
+</a><a href="#h3-1-4" id="h3-1-4" class="d">-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+</a><a href="#h3-1-5" id="h3-1-5" class="d">-    }
+</a><a href="#h3-1-6" id="h3-1-6" class="d">-
+</a>     compileOptions {
+         sourceCompatibility = JavaVersion.VERSION_17
+         targetCompatibility = JavaVersion.VERSION_17
+<b>diff --git a/<a id="h4" href="../file/gradle/libs.versions.toml.html">gradle/libs.versions.toml</a> b/<a href="../file/gradle/libs.versions.toml.html">gradle/libs.versions.toml</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -1,12 +1,11 @@
+</a> [versions]
+<a href="#h4-0-1" id="h4-0-1" class="d">-agp = &quot;8.2.2&quot;
+</a><a href="#h4-0-2" id="h4-0-2" class="d">-colorpicker-compose = &quot;1.0.7&quot;
+</a><a href="#h4-0-3" id="h4-0-3" class="i">+agp = &quot;8.4.1&quot;
+</a><a href="#h4-0-4" id="h4-0-4" class="i">+colorpicker-compose = &quot;1.0.8&quot;
+</a> libsu = &quot;5.2.2&quot;
+ guava = &quot;33.2.0-jre&quot;
+ jsoup = &quot;1.17.2&quot;
+<a href="#h4-0-8" id="h4-0-8" class="d">-kotlin = &quot;1.9.23&quot;
+</a><a href="#h4-0-9" id="h4-0-9" class="d">-kotlinx-coroutines-android = &quot;1.8.0&quot;
+</a><a href="#h4-0-10" id="h4-0-10" class="d">-compose-compiler = &quot;1.5.13&quot;
+</a><a href="#h4-0-11" id="h4-0-11" class="i">+kotlin = &quot;2.0.0&quot;
+</a><a href="#h4-0-12" id="h4-0-12" class="i">+kotlinx-coroutines-android = &quot;1.8.1&quot;
+</a> activity-ktx = &quot;1.9.0&quot;
+ androidx-documentfile = &quot;1.1.0-alpha01&quot;
+ coil-compose = &quot;2.6.0&quot;
+<a href="#h4-1" id="h4-1" class="h">@@ -15,9 +14,9 @@ osmdroid-android = &quot;6.1.18&quot;
+</a> recyclerview = &quot;1.3.2&quot;
+ compose-bom = &quot;2024.05.00&quot; # make sure all ui components are fully working after updating this
+ bcprov-jdk18on = &quot;1.78.1&quot;
+<a href="#h4-1-3" id="h4-1-3" class="d">-dexlib2 = &quot;3.0.5&quot;
+</a><a href="#h4-1-4" id="h4-1-4" class="i">+dexlib2 = &quot;3.0.7&quot;
+</a> ffmpeg-kit = &quot;6.0-2.LTS&quot;
+<a href="#h4-1-6" id="h4-1-6" class="d">-gson = &quot;2.10.1&quot;
+</a><a href="#h4-1-7" id="h4-1-7" class="i">+gson = &quot;2.11.0&quot;
+</a> junit = &quot;5.10.2&quot;
+ material3 = &quot;1.2.1&quot;
+ okhttp = &quot;5.0.0-alpha.14&quot;
+<a href="#h4-2" id="h4-2" class="h">@@ -58,6 +57,6 @@ rhino-android = { group = &quot;com.faendir.rhino&quot;, name = &quot;rhino-android&quot;, version.r
+</a> androidApplication = { id = &quot;com.android.application&quot;, version.ref = &quot;agp&quot; }
+ androidLibrary = { id = &quot;com.android.library&quot;, version.ref = &quot;agp&quot; }
+ kotlinAndroid = { id = &quot;org.jetbrains.kotlin.android&quot;, version.ref = &quot;kotlin&quot; }
+<a href="#h4-2-3" id="h4-2-3" class="i">+compose-compiler = { id = &quot;org.jetbrains.kotlin.plugin.compose&quot;, version.ref = &quot;kotlin&quot; }
+</a> 
+<a href="#h4-2-5" id="h4-2-5" class="d">-
+</a><a href="#h4-2-6" id="h4-2-6" class="d">-[bundles]
+</a><a href="#h4-2-7" id="h4-2-7" class="i">+[bundles]</a><a href="#h4-2-8" id="h4-2-8" class="i">+
+\ No newline at end of file
+</a><b>diff --git a/<a id="h5" href="../file/manager/build.gradle.kts.html">manager/build.gradle.kts</a> b/<a href="../file/manager/build.gradle.kts.html">manager/build.gradle.kts</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -3,6 +3,7 @@ import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+</a> plugins {
+     alias(libs.plugins.androidApplication)
+     alias(libs.plugins.kotlinAndroid)
+<a href="#h5-0-3" id="h5-0-3" class="i">+    alias(libs.plugins.compose.compiler)
+</a>     id(&quot;kotlin-parcelize&quot;)
+ }
+ 
+<a href="#h5-1" id="h5-1" class="h">@@ -29,10 +30,6 @@ android {
+</a>         multiDexEnabled = true
+     }
+ 
+<a href="#h5-1-3" id="h5-1-3" class="d">-    composeOptions {
+</a><a href="#h5-1-4" id="h5-1-4" class="d">-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+</a><a href="#h5-1-5" id="h5-1-5" class="d">-    }
+</a><a href="#h5-1-6" id="h5-1-6" class="d">-
+</a>     buildTypes {
+         release {
+             isMinifyEnabled = true
+</pre>
+</div>
+</body>
+</html>

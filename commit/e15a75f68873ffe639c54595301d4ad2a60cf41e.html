@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>chore: refactor workflows - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/e15a75f68873ffe639c54595301d4ad2a60cf41e.html">e15a75f68873ffe639c54595301d4ad2a60cf41e</a>
+<b>parent</b> <a href="../commit/753245c18d43035fa316251404ebf22dd99a0b06.html">753245c18d43035fa316251404ebf22dd99a0b06</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Sat, 13 Jul 2024 23:13:56 +0100
+
+chore: refactor workflows
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">.github/workflows/pull_request.yml</a></td><td> | </td><td class="num">16</td><td><span class="i">++++++++</span><span class="d">--------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">.github/workflows/release.yml</a></td><td> | </td><td class="num">16</td><td><span class="i">++++++++</span><span class="d">--------</span></td></tr>
+</table></pre><pre>2 files changed, 16 insertions(+), 16 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.github/workflows/pull_request.yml.html">.github/workflows/pull_request.yml</a> b/<a href="../file/.github/workflows/pull_request.yml.html">.github/workflows/pull_request.yml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -36,12 +36,12 @@ jobs:
+</a> 
+       - name: Rename APK file
+         run: |
+<a href="#h0-0-3" id="h0-0-3" class="d">-          mv app/build/outputs/apk/armv8/debug/*.apk app/build/outputs/apk/armv8/debug/snapenhance-${{ env.version }}-armv8-${GITHUB_SHA::7}.apk
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+          mv app/build/outputs/apk/armv8/debug/*.apk app/build/outputs/apk/armv8/debug/SE-Extended-${{ env.version }}-ARMV8-${GITHUB_SHA::7}.apk
+</a> 
+       - name: Upload artifact
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h0-0-9" id="h0-0-9" class="d">-          name: snapenhance-armv8-debug
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+          name: SE-Extended-ARMV8-PR
+</a>           path: app/build/outputs/apk/armv8/debug/*.apk
+           
+   job_armv7:
+<a href="#h0-1" id="h0-1" class="h">@@ -76,12 +76,12 @@ jobs:
+</a> 
+       - name: Rename APK file
+         run: |
+<a href="#h0-1-3" id="h0-1-3" class="d">-          mv app/build/outputs/apk/armv7/debug/*.apk app/build/outputs/apk/armv7/debug/snapenhance-${{ env.version }}-armv7-${GITHUB_SHA::7}.apk
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+          mv app/build/outputs/apk/armv7/debug/*.apk app/build/outputs/apk/armv7/debug/SE-Extended-${{ env.version }}-ARMV7-${GITHUB_SHA::7}.apk
+</a> 
+       - name: Upload artifact
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h0-1-9" id="h0-1-9" class="d">-          name: snapenhance-armv7-debug
+</a><a href="#h0-1-10" id="h0-1-10" class="i">+          name: SE-Extended-ARMV7-PR
+</a>           path: app/build/outputs/apk/armv7/debug/*.apk
+ 
+   job_universal:
+<a href="#h0-2" id="h0-2" class="h">@@ -116,12 +116,12 @@ jobs:
+</a> 
+       - name: Rename APK file
+         run: |
+<a href="#h0-2-3" id="h0-2-3" class="d">-          mv app/build/outputs/apk/all/debug/*.apk app/build/outputs/apk/all/debug/snapenhance-${{ env.version }}-universal-${GITHUB_SHA::7}.apk
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+          mv app/build/outputs/apk/all/debug/*.apk app/build/outputs/apk/all/debug/SE-Extended-${{ env.version }}-UNIVERSAL-${GITHUB_SHA::7}.apk
+</a> 
+       - name: Upload universal
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h0-2-9" id="h0-2-9" class="d">-          name: snapenhance-universal-debug
+</a><a href="#h0-2-10" id="h0-2-10" class="i">+          name: SE-Extended-UNIVERSAL-PR
+</a>           path: app/build/outputs/apk/all/debug/*.apk
+ 
+   job_manager:
+<a href="#h0-3" id="h0-3" class="h">@@ -148,7 +148,7 @@ jobs:
+</a>       - name: Upload artifact
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h0-3-3" id="h0-3-3" class="d">-          name: manager
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+          name: Manager
+</a>           path: manager/build/outputs/apk/debug/*.apk
+ 
+   job_core:
+<a href="#h0-4" id="h0-4" class="h">@@ -175,5 +175,5 @@ jobs:
+</a>       - name: Upload artifact
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h0-4-3" id="h0-4-3" class="d">-          name: core
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+          name: Core
+</a>           path: app/build/outputs/apk/core/debug/*.apk
+<b>diff --git a/<a id="h1" href="../file/.github/workflows/release.yml.html">.github/workflows/release.yml</a> b/<a href="../file/.github/workflows/release.yml.html">.github/workflows/release.yml</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -42,7 +42,7 @@ jobs:
+</a>         
+       - name: Sign APK
+         id: sign_app
+<a href="#h1-0-3" id="h1-0-3" class="d">-        uses: SnapEnhance/sign-android-release@master
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+        uses: SE-Extended/sign-android-release@master
+</a>         with:
+           releaseDirectory: app/build/outputs/apk/armv8/release/
+           signingKeyBase64: ${{ secrets.JAVA_KEYSTORE_DATA }}
+<a href="#h1-1" id="h1-1" class="h">@@ -55,7 +55,7 @@ jobs:
+</a>       - name: Upload artifact
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h1-1-3" id="h1-1-3" class="d">-          name: snapenhance-armv8-release
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+          name: SE-Extended-ARMV8-Release
+</a>           path: ${{steps.sign_app.outputs.signedReleaseFile}}
+           
+   job_armv7:
+<a href="#h1-2" id="h1-2" class="h">@@ -88,7 +88,7 @@ jobs:
+</a> 
+       - name: Sign APK
+         id: sign_app
+<a href="#h1-2-3" id="h1-2-3" class="d">-        uses: SnapEnhance/sign-android-release@master
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+        uses: SE-Extended/sign-android-release@master
+</a>         with:
+           releaseDirectory: app/build/outputs/apk/armv7/release/
+           signingKeyBase64: ${{ secrets.JAVA_KEYSTORE_DATA }}
+<a href="#h1-3" id="h1-3" class="h">@@ -101,7 +101,7 @@ jobs:
+</a>       - name: Upload artifact
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h1-3-3" id="h1-3-3" class="d">-          name: snapenhance-armv7-release
+</a><a href="#h1-3-4" id="h1-3-4" class="i">+          name: SE-Extended-ARMV7-Release
+</a>           path: ${{steps.sign_app.outputs.signedReleaseFile}}
+ 
+   job_universal:
+<a href="#h1-4" id="h1-4" class="h">@@ -134,7 +134,7 @@ jobs:
+</a> 
+       - name: Sign APK
+         id: sign_app
+<a href="#h1-4-3" id="h1-4-3" class="d">-        uses: SnapEnhance/sign-android-release@master
+</a><a href="#h1-4-4" id="h1-4-4" class="i">+        uses: SE-Extended/sign-android-release@master
+</a>         with:
+           releaseDirectory: app/build/outputs/apk/all/release/
+           signingKeyBase64: ${{ secrets.JAVA_KEYSTORE_DATA }}
+<a href="#h1-5" id="h1-5" class="h">@@ -147,7 +147,7 @@ jobs:
+</a>       - name: Upload universal
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h1-5-3" id="h1-5-3" class="d">-          name: snapenhance-universal-release
+</a><a href="#h1-5-4" id="h1-5-4" class="i">+          name: SE-Extended-UNIVERSAL-Release
+</a>           path: ${{steps.sign_app.outputs.signedReleaseFile}}
+ 
+   job_manager:
+<a href="#h1-6" id="h1-6" class="h">@@ -177,7 +177,7 @@ jobs:
+</a> 
+       - name: Sign APK
+         id: sign_app
+<a href="#h1-6-3" id="h1-6-3" class="d">-        uses: SnapEnhance/sign-android-release@master
+</a><a href="#h1-6-4" id="h1-6-4" class="i">+        uses: SE-Extended/sign-android-release@master
+</a>         with:
+           releaseDirectory: manager/build/outputs/apk/release/
+           signingKeyBase64: ${{ secrets.JAVA_KEYSTORE_DATA }}
+<a href="#h1-7" id="h1-7" class="h">@@ -190,7 +190,7 @@ jobs:
+</a>       - name: Upload artifact
+         uses: actions/upload-artifact@v4
+         with:
+<a href="#h1-7-3" id="h1-7-3" class="d">-          name: manager
+</a><a href="#h1-7-4" id="h1-7-4" class="i">+          name: Manager
+</a>           path: ${{steps.sign_app.outputs.signedReleaseFile}}
+ 
+   job_release:
+</pre>
+</div>
+</body>
+</html>

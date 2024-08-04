@@ -3,24 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>pull_request.yml - SnapEnhance - An Xposed module offering an enhanced Snapchat experience
+<title>pull_request.yml - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </title>
 <link rel="icon" type="image/svg+xml" href="../../../../logo.png"/>
 <link rel="alternate icon" href="../../../../favicon.png"/>
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed" href="../../../atom.xml" />
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed (tags)" href="../../../tags.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../../../tags.xml" />
 <link rel="stylesheet" type="text/css" href="../../../../style.css" />
 <link rel="stylesheet" type="text/css" href="../../../../fonts.css" />
 </head>
 <body>
-<div id="head"><table><tr><td><a class="logo" href="../../../../"><img src="../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SnapEnhance</strong><span class="desc"> - An Xposed module offering an enhanced Snapchat experience
+<div id="head"><table><tr><td><a class="logo" href="../../../../"><img src="../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </span>
 </td></tr></table>
 <p><a href="../../../about.html">About</a> | <a href="../../../log.html">Log</a> | <a href="../../../files.html">Files</a> | <a href="../../../refs.html">Refs</a> | <a href="../../../file/.gitmodules.html">Submodules</a> | <a href="../../../file/LICENSE.html">License</a></p>
 </div>
 <hr/>
 <div id="content">
-<p> pull_request.yml (4674B) - <a href="../../../raw/.github/workflows/pull_request.yml">raw</a></p><hr/><pre id="blob">
+<p> pull_request.yml (4665B) - <a href="../../../raw/.github/workflows/pull_request.yml">raw</a></p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> name: Pull Request CI
 <a href="#l2" class="line" id="l2">      2</a> on:
 <a href="#l3" class="line" id="l3">      3</a>   pull_request:
@@ -59,12 +59,12 @@
 <a href="#l36" class="line" id="l36">     36</a> 
 <a href="#l37" class="line" id="l37">     37</a>       - name: Rename APK file
 <a href="#l38" class="line" id="l38">     38</a>         run: |
-<a href="#l39" class="line" id="l39">     39</a>           mv app/build/outputs/apk/armv8/debug/*.apk app/build/outputs/apk/armv8/debug/snapenhance-${{ env.version }}-armv8-${GITHUB_SHA::7}.apk
+<a href="#l39" class="line" id="l39">     39</a>           mv app/build/outputs/apk/armv8/debug/*.apk app/build/outputs/apk/armv8/debug/SE-Extended-${{ env.version }}-ARMV8-${GITHUB_SHA::7}.apk
 <a href="#l40" class="line" id="l40">     40</a> 
 <a href="#l41" class="line" id="l41">     41</a>       - name: Upload artifact
 <a href="#l42" class="line" id="l42">     42</a>         uses: actions/upload-artifact@v4
 <a href="#l43" class="line" id="l43">     43</a>         with:
-<a href="#l44" class="line" id="l44">     44</a>           name: snapenhance-armv8-debug
+<a href="#l44" class="line" id="l44">     44</a>           name: SE-Extended-ARMV8-PR
 <a href="#l45" class="line" id="l45">     45</a>           path: app/build/outputs/apk/armv8/debug/*.apk
 <a href="#l46" class="line" id="l46">     46</a>           
 <a href="#l47" class="line" id="l47">     47</a>   job_armv7:
@@ -99,12 +99,12 @@
 <a href="#l76" class="line" id="l76">     76</a> 
 <a href="#l77" class="line" id="l77">     77</a>       - name: Rename APK file
 <a href="#l78" class="line" id="l78">     78</a>         run: |
-<a href="#l79" class="line" id="l79">     79</a>           mv app/build/outputs/apk/armv7/debug/*.apk app/build/outputs/apk/armv7/debug/snapenhance-${{ env.version }}-armv7-${GITHUB_SHA::7}.apk
+<a href="#l79" class="line" id="l79">     79</a>           mv app/build/outputs/apk/armv7/debug/*.apk app/build/outputs/apk/armv7/debug/SE-Extended-${{ env.version }}-ARMV7-${GITHUB_SHA::7}.apk
 <a href="#l80" class="line" id="l80">     80</a> 
 <a href="#l81" class="line" id="l81">     81</a>       - name: Upload artifact
 <a href="#l82" class="line" id="l82">     82</a>         uses: actions/upload-artifact@v4
 <a href="#l83" class="line" id="l83">     83</a>         with:
-<a href="#l84" class="line" id="l84">     84</a>           name: snapenhance-armv7-debug
+<a href="#l84" class="line" id="l84">     84</a>           name: SE-Extended-ARMV7-PR
 <a href="#l85" class="line" id="l85">     85</a>           path: app/build/outputs/apk/armv7/debug/*.apk
 <a href="#l86" class="line" id="l86">     86</a> 
 <a href="#l87" class="line" id="l87">     87</a>   job_universal:
@@ -139,12 +139,12 @@
 <a href="#l116" class="line" id="l116">    116</a> 
 <a href="#l117" class="line" id="l117">    117</a>       - name: Rename APK file
 <a href="#l118" class="line" id="l118">    118</a>         run: |
-<a href="#l119" class="line" id="l119">    119</a>           mv app/build/outputs/apk/all/debug/*.apk app/build/outputs/apk/all/debug/snapenhance-${{ env.version }}-universal-${GITHUB_SHA::7}.apk
+<a href="#l119" class="line" id="l119">    119</a>           mv app/build/outputs/apk/all/debug/*.apk app/build/outputs/apk/all/debug/SE-Extended-${{ env.version }}-UNIVERSAL-${GITHUB_SHA::7}.apk
 <a href="#l120" class="line" id="l120">    120</a> 
 <a href="#l121" class="line" id="l121">    121</a>       - name: Upload universal
 <a href="#l122" class="line" id="l122">    122</a>         uses: actions/upload-artifact@v4
 <a href="#l123" class="line" id="l123">    123</a>         with:
-<a href="#l124" class="line" id="l124">    124</a>           name: snapenhance-universal-debug
+<a href="#l124" class="line" id="l124">    124</a>           name: SE-Extended-UNIVERSAL-PR
 <a href="#l125" class="line" id="l125">    125</a>           path: app/build/outputs/apk/all/debug/*.apk
 <a href="#l126" class="line" id="l126">    126</a> 
 <a href="#l127" class="line" id="l127">    127</a>   job_manager:
@@ -171,7 +171,7 @@
 <a href="#l148" class="line" id="l148">    148</a>       - name: Upload artifact
 <a href="#l149" class="line" id="l149">    149</a>         uses: actions/upload-artifact@v4
 <a href="#l150" class="line" id="l150">    150</a>         with:
-<a href="#l151" class="line" id="l151">    151</a>           name: manager
+<a href="#l151" class="line" id="l151">    151</a>           name: Manager
 <a href="#l152" class="line" id="l152">    152</a>           path: manager/build/outputs/apk/debug/*.apk
 <a href="#l153" class="line" id="l153">    153</a> 
 <a href="#l154" class="line" id="l154">    154</a>   job_core:
@@ -198,7 +198,7 @@
 <a href="#l175" class="line" id="l175">    175</a>       - name: Upload artifact
 <a href="#l176" class="line" id="l176">    176</a>         uses: actions/upload-artifact@v4
 <a href="#l177" class="line" id="l177">    177</a>         with:
-<a href="#l178" class="line" id="l178">    178</a>           name: core
+<a href="#l178" class="line" id="l178">    178</a>           name: Core
 <a href="#l179" class="line" id="l179">    179</a>           path: app/build/outputs/apk/core/debug/*.apk
 </pre>
 </div>

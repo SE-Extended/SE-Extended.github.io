@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>revert &quot;fix: export properties&quot; - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/bc467eabfd386a535803960f54f812cc6d880422.html">bc467eabfd386a535803960f54f812cc6d880422</a>
+<b>parent</b> <a href="../commit/ee15e3e414e9706c53104e8395afe90a360119e9.html">ee15e3e414e9706c53104e8395afe90a360119e9</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Sun, 23 Jun 2024 14:56:20 +0100
+
+revert &quot;fix: export properties&quot;
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></td><td> | </td><td class="num">20</td><td><span class="i"></span><span class="d">--------------------</span></td></tr>
+</table></pre><pre>1 file changed, 0 insertions(+), 20 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -20,26 +20,6 @@ class UserInterfaceTweaks : ConfigContainer() {
+</a> 
+ 
+     class ColorsConfig : ConfigContainer() {
+<a href="#h0-0-3" id="h0-0-3" class="d">-        private val colorMap = hashMapOf&lt;String, Int&gt;( 
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-            &quot;text_color&quot; to color(&quot;text_color&quot;), 
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-            &quot;chat_chat_text_color&quot; to color(&quot;chat_chat_text_color&quot;),
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-            &quot;pending_sending_text_color&quot; to color(&quot;pending_sending_text_color&quot;),
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-            &quot;snap_with_sound_text_color&quot; to color(&quot;snap_with_sound_text_color&quot;),
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-            &quot;snap_without_sound_text_color&quot; to color(&quot;snap_without_sound_text_color&quot;),
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-            &quot;action_sheet_description_text_color&quot; to color(&quot;action_sheet_description_text_color&quot;),
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-            &quot;background_color&quot; to color(&quot;background_color&quot;),
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-            &quot;background_color_surface&quot; to color(&quot;background_color_surface&quot;),
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-            &quot;list_background_drawable&quot; to color(&quot;list_background_drawable&quot;),
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-            &quot;friend_feed_conversations_line_color&quot; to color(&quot;friend_feed_conversations_line_color&quot;),
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-            &quot;action_menu_background_color&quot; to color(&quot;action_menu_background_color&quot;),
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-            &quot;action_menu_round_background_color&quot; to color(&quot;action_menu_round_background_color&quot;),
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-            &quot;sig_color_icon_primary&quot; to color(&quot;sig_color_icon_primary&quot;),
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-            &quot;camera_grid_lines&quot; to color(&quot;camera_grid_lines&quot;),
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-            
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-        fun getColor(propertyName: String): Int { 
+</a><a href="#h0-0-20" id="h0-0-20" class="d">-            return colorMap[propertyName] ?: -1
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-        }
+</a><a href="#h0-0-22" id="h0-0-22" class="d">-            
+</a>         val textColor = color(&quot;text_color&quot;)
+         val chatChatTextColor = color(&quot;chat_chat_text_color&quot;)
+         val pendingSendingTextColor = color(&quot;pending_sending_text_color&quot;)
+</pre>
+</div>
+</body>
+</html>

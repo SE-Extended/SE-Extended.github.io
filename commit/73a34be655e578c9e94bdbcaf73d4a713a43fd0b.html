@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor(issues): remove theme - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/73a34be655e578c9e94bdbcaf73d4a713a43fd0b.html">73a34be655e578c9e94bdbcaf73d4a713a43fd0b</a>
+<b>parent</b> <a href="../commit/e008d58a1dd8bc34b30c5a8a5d4a9c0389d18c3d.html">e008d58a1dd8bc34b30c5a8a5d4a9c0389d18c3d</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Fri, 26 Jul 2024 02:49:45 +0100
+
+refactor(issues): remove theme
+<b>Diffstat:</b>
+<table><tr><td class="D">D</td><td><a href="#h0">.github/ISSUE_TEMPLATE/theme_picker_theme.yml</a></td><td> | </td><td class="num">35</td><td><span class="i"></span><span class="d">-----------------------------------</span></td></tr>
+</table></pre><pre>1 file changed, 0 insertions(+), 35 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.github/ISSUE_TEMPLATE/theme_picker_theme.yml.html">.github/ISSUE_TEMPLATE/theme_picker_theme.yml</a> b/<a href="../file/.github/ISSUE_TEMPLATE/theme_picker_theme.yml.html">.github/ISSUE_TEMPLATE/theme_picker_theme.yml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -1,35 +0,0 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="d">-name: &quot;Theme Picker Theme&quot;
+</a><a href="#h0-0-1" id="h0-0-1" class="d">-description: Summit a Theme For the Theme Picker
+</a><a href="#h0-0-2" id="h0-0-2" class="d">-title: &quot;Name of theme&quot;
+</a><a href="#h0-0-3" id="h0-0-3" class="d">-labels: [
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-  &quot;Theme&quot;
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-]
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-body:
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-  - type: textarea
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-    id: description
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-    attributes:
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-      label: &quot;Description&quot;
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-      description: Please input your theme, Include the hex color code, Change the Info below. 
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-      value: |
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-        Name: Magical Green
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-        Main Text Color: #FF17FF00 
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-        Main Friend Feed Text Color: #000000 
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-        Secondary Friend Feed Text Color: #FF17FF00 
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-        Snaps With Sound Text Color: #FF17FF00 
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-        Snaps Without Sound Text Color: #FF17FF00 
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-        Background Color: #FF17FF00 
+</a><a href="#h0-0-20" id="h0-0-20" class="d">-        Background Surface Color: #FF17FF00 
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-        Conversations Line Color: #000000 
+</a><a href="#h0-0-22" id="h0-0-22" class="d">-        Action Menu Background Color: #FF17FF00 
+</a><a href="#h0-0-23" id="h0-0-23" class="d">-        Action Menu Round Background Color: #FF17FF00 
+</a><a href="#h0-0-24" id="h0-0-24" class="d">-        Camera Gridlines Color: #000000  
+</a><a href="#h0-0-25" id="h0-0-25" class="d">-    validations:
+</a><a href="#h0-0-26" id="h0-0-26" class="d">-      required: true
+</a><a href="#h0-0-27" id="h0-0-27" class="d">-  - type: checkboxes
+</a><a href="#h0-0-28" id="h0-0-28" class="d">-    id: terms
+</a><a href="#h0-0-29" id="h0-0-29" class="d">-    attributes:
+</a><a href="#h0-0-30" id="h0-0-30" class="d">-      label: Agreement
+</a><a href="#h0-0-31" id="h0-0-31" class="d">-      description: Make sure you tick, If it applies to you.
+</a><a href="#h0-0-32" id="h0-0-32" class="d">-      options:
+</a><a href="#h0-0-33" id="h0-0-33" class="d">-        - label: Have you submitted This Theme correctly?
+</a><a href="#h0-0-34" id="h0-0-34" class="d">-          required: true
+</a></pre>
+</div>
+</body>
+</html>

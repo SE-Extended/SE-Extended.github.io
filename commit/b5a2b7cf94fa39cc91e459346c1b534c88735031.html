@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor(manager): home - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/b5a2b7cf94fa39cc91e459346c1b534c88735031.html">b5a2b7cf94fa39cc91e459346c1b534c88735031</a>
+<b>parent</b> <a href="../commit/e05e7533b04674b2b03d49ac7eb43b2d1d6183fa.html">e05e7533b04674b2b03d49ac7eb43b2d1d6183fa</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Thu, 20 Jun 2024 23:25:22 +0100
+
+refactor(manager): home
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">manager/src/main/kotlin/me/rhunk/snapenhance/manager/ui/tab/impl/HomeTab.kt</a></td><td> | </td><td class="num">5</td><td><span class="i">++</span><span class="d">---</span></td></tr>
+</table></pre><pre>1 file changed, 2 insertions(+), 3 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/manager/src/main/kotlin/me/rhunk/snapenhance/manager/ui/tab/impl/HomeTab.kt.html">manager/src/main/kotlin/me/rhunk/snapenhance/manager/ui/tab/impl/HomeTab.kt</a> b/<a href="../file/manager/src/main/kotlin/me/rhunk/snapenhance/manager/ui/tab/impl/HomeTab.kt.html">manager/src/main/kotlin/me/rhunk/snapenhance/manager/ui/tab/impl/HomeTab.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -63,7 +63,7 @@ class HomeTab : Tab(&quot;home&quot;, true, icon = Icons.Default.Home) {
+</a>                     verticalAlignment = Alignment.CenterVertically
+                 ) {
+                     Column {
+<a href="#h0-0-3" id="h0-0-3" class="d">-                        Text(text = &quot;SnapEnhance&quot;, fontSize = 24.sp, color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold)
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+                        Text(text = &quot;SE Extended&quot;, fontSize = 24.sp, color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold)
+</a>                         snapEnhanceInfo?.let {
+                             Text(text = &quot;${it.versionName} (${it.longVersionCode}) - ${if ((it.applicationInfo.flags and FLAG_DEBUGGABLE) != 0) &quot;Debug&quot; else &quot;Release&quot;}&quot;, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                             Text(it.packageName, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+<a href="#h0-1" id="h0-1" class="h">@@ -144,4 +144,4 @@ class HomeTab : Tab(&quot;home&quot;, true, icon = Icons.Default.Home) {
+</a>             }
+         }
+     }
+<a href="#h0-1-3" id="h0-1-3" class="d">-}</a><a href="#h0-1-4" id="h0-1-4" class="d">-
+\ No newline at end of file
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor(home): icons - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/18f5cad18fd079dfdfa4a6b6a6e16def511d34af.html">18f5cad18fd079dfdfa4a6b6a6e16def511d34af</a>
+<b>parent</b> <a href="../commit/298c31bb585bf73fd5445fe43e9ee37c30dfc9c3.html">298c31bb585bf73fd5445fe43e9ee37c30dfc9c3</a>
+<b>Author:</b> bocajthomas &lt;<a href="mailto:bocajthomas274@gmail.com">bocajthomas274@gmail.com</a>&gt;
+<b>Date:</b>   Mon,  3 Jun 2024 19:58:10 +0100
+
+refactor(home): icons
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt</a></td><td> | </td><td class="num">231</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-----------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">27</td><td><span class="i">++++++++++++++++++++++</span><span class="d">-----</span></td></tr>
+</table></pre><pre>2 files changed, 152 insertions(+), 106 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -9,7 +9,9 @@ import androidx.compose.foundation.text.ClickableText
+</a> import androidx.compose.foundation.verticalScroll
+ import androidx.compose.material.icons.Icons
+ import androidx.compose.material.icons.automirrored.filled.Help
+<a href="#h0-0-3" id="h0-0-3" class="d">-import androidx.compose.material.icons.filled.*
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+import androidx.compose.material.icons.filled.BugReport
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+import androidx.compose.material.icons.filled.MoreVert
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+import androidx.compose.material.icons.filled.Settings
+</a> import androidx.compose.material3.*
+ import androidx.compose.runtime.*
+ import androidx.compose.ui.Alignment
+<a href="#h0-1" id="h0-1" class="h">@@ -31,6 +33,7 @@ import androidx.compose.ui.unit.sp
+</a> import androidx.navigation.NavBackStackEntry
+ import kotlinx.coroutines.launch
+ import me.rhunk.snapenhance.R
+<a href="#h0-1-3" id="h0-1-3" class="i">+import me.rhunk.snapenhance.action.EnumQuickActions
+</a> import me.rhunk.snapenhance.common.BuildConfig
+ import me.rhunk.snapenhance.common.Constants
+ import me.rhunk.snapenhance.common.action.EnumAction
+<a href="#h0-2" id="h0-2" class="h">@@ -43,7 +46,7 @@ import me.rhunk.snapenhance.ui.manager.data.Updater
+</a> import me.rhunk.snapenhance.ui.util.ActivityLauncherHelper
+ import java.text.DateFormat
+ 
+<a href="#h0-2-3" id="h0-2-3" class="d">-class HomeRoot : Routes.Route() {
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+class HomeRootSection : Routes.Route() {
+</a>     companion object {
+         val cardMargin = 10.dp
+     }
+<a href="#h0-3" id="h0-3" class="h">@@ -51,23 +54,19 @@ class HomeRoot : Routes.Route() {
+</a>     private lateinit var activityLauncherHelper: ActivityLauncherHelper
+ 
+     private fun launchActionIntent(action: EnumAction) {
+<a href="#h0-3-3" id="h0-3-3" class="d">-        val intent = context.androidContext.packageManager.getLaunchIntentForPackage(Constants.SNAPCHAT_PACKAGE_NAME)
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+        val intent = context.androidContext.packageManager.getLaunchIntentForPackage(
+</a><a href="#h0-3-5" id="h0-3-5" class="i">+            Constants.SNAPCHAT_PACKAGE_NAME
+</a><a href="#h0-3-6" id="h0-3-6" class="i">+        )
+</a>         intent?.putExtra(EnumAction.ACTION_PARAMETER, action.key)
+         context.androidContext.startActivity(intent)
+     }
+ 
+     private val cards by lazy {
+<a href="#h0-3-12" id="h0-3-12" class="d">-        mapOf(
+</a><a href="#h0-3-13" id="h0-3-13" class="d">-            (&quot;File Imports&quot; to Icons.Default.FolderOpen) to {
+</a><a href="#h0-3-14" id="h0-3-14" class="d">-                routes.fileImports.navigateReset()
+</a><a href="#h0-3-15" id="h0-3-15" class="d">-            },
+</a><a href="#h0-3-16" id="h0-3-16" class="d">-            (&quot;Friend Tracker&quot; to Icons.Default.PersonSearch) to {
+</a><a href="#h0-3-17" id="h0-3-17" class="d">-                routes.friendTracker.navigateReset()
+</a><a href="#h0-3-18" id="h0-3-18" class="d">-            },
+</a><a href="#h0-3-19" id="h0-3-19" class="d">-            (&quot;Logger History&quot; to Icons.Default.History) to {
+</a><a href="#h0-3-20" id="h0-3-20" class="d">-                routes.loggerHistory.navigateReset()
+</a><a href="#h0-3-21" id="h0-3-21" class="d">-            },
+</a><a href="#h0-3-22" id="h0-3-22" class="d">-        ).toMutableMap().apply {
+</a><a href="#h0-3-23" id="h0-3-23" class="i">+        EnumQuickActions.entries.map {
+</a><a href="#h0-3-24" id="h0-3-24" class="i">+            (context.translation[&quot;actions.${it.key}.name&quot;] to it.icon) to it.action
+</a><a href="#h0-3-25" id="h0-3-25" class="i">+        }.associate {
+</a><a href="#h0-3-26" id="h0-3-26" class="i">+            it.first to it.second
+</a><a href="#h0-3-27" id="h0-3-27" class="i">+        }.toMutableMap().apply {
+</a>             EnumAction.entries.forEach { action -&gt;
+                 this[context.translation[&quot;actions.${action.key}.name&quot;] to action.icon] = {
+                     launchActionIntent(action)
+<a href="#h0-4" id="h0-4" class="h">@@ -76,51 +75,6 @@ class HomeRoot : Routes.Route() {
+</a>         }
+     }
+ 
+<a href="#h0-4-3" id="h0-4-3" class="d">-    override val init: () -&gt; Unit = {
+</a><a href="#h0-4-4" id="h0-4-4" class="d">-        activityLauncherHelper = ActivityLauncherHelper(context.activity !!)
+</a><a href="#h0-4-5" id="h0-4-5" class="d">-    }
+</a><a href="#h0-4-6" id="h0-4-6" class="d">-
+</a><a href="#h0-4-7" id="h0-4-7" class="d">-    override val topBarActions: @Composable (RowScope.() -&gt; Unit) = {
+</a><a href="#h0-4-8" id="h0-4-8" class="d">-        IconButton(onClick = {
+</a><a href="#h0-4-9" id="h0-4-9" class="d">-            routes.homeLogs.navigate()
+</a><a href="#h0-4-10" id="h0-4-10" class="d">-        }) {
+</a><a href="#h0-4-11" id="h0-4-11" class="d">-            Icon(Icons.Filled.BugReport, contentDescription = null)
+</a><a href="#h0-4-12" id="h0-4-12" class="d">-        }
+</a><a href="#h0-4-13" id="h0-4-13" class="d">-        IconButton(onClick = {
+</a><a href="#h0-4-14" id="h0-4-14" class="d">-            routes.settings.navigate()
+</a><a href="#h0-4-15" id="h0-4-15" class="d">-        }) {
+</a><a href="#h0-4-16" id="h0-4-16" class="d">-            Icon(Icons.Filled.Settings, contentDescription = null)
+</a><a href="#h0-4-17" id="h0-4-17" class="d">-        }
+</a><a href="#h0-4-18" id="h0-4-18" class="d">-    }
+</a><a href="#h0-4-19" id="h0-4-19" class="d">-
+</a><a href="#h0-4-20" id="h0-4-20" class="d">-    @Composable
+</a><a href="#h0-4-21" id="h0-4-21" class="d">-    fun LinkIcon(
+</a><a href="#h0-4-22" id="h0-4-22" class="d">-        modifier: Modifier = Modifier,
+</a><a href="#h0-4-23" id="h0-4-23" class="d">-        size: Dp = 32.dp,
+</a><a href="#h0-4-24" id="h0-4-24" class="d">-        imageVector: ImageVector,
+</a><a href="#h0-4-25" id="h0-4-25" class="d">-        dataArray: IntArray
+</a><a href="#h0-4-26" id="h0-4-26" class="d">-    ) {
+</a><a href="#h0-4-27" id="h0-4-27" class="d">-        Icon(
+</a><a href="#h0-4-28" id="h0-4-28" class="d">-            imageVector = imageVector,
+</a><a href="#h0-4-29" id="h0-4-29" class="d">-            contentDescription = null,
+</a><a href="#h0-4-30" id="h0-4-30" class="d">-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+</a><a href="#h0-4-31" id="h0-4-31" class="d">-            modifier = Modifier
+</a><a href="#h0-4-32" id="h0-4-32" class="d">-                .size(size)
+</a><a href="#h0-4-33" id="h0-4-33" class="d">-                .then(modifier)
+</a><a href="#h0-4-34" id="h0-4-34" class="d">-                .clickable {
+</a><a href="#h0-4-35" id="h0-4-35" class="d">-                    context.activity?.startActivity(Intent(Intent.ACTION_VIEW).apply {
+</a><a href="#h0-4-36" id="h0-4-36" class="d">-                        data = Uri.parse(
+</a><a href="#h0-4-37" id="h0-4-37" class="d">-                            dataArray
+</a><a href="#h0-4-38" id="h0-4-38" class="d">-                                .map { it.toChar() }
+</a><a href="#h0-4-39" id="h0-4-39" class="d">-                                .joinToString(&quot;&quot;)
+</a><a href="#h0-4-40" id="h0-4-40" class="d">-                                .reversed()
+</a><a href="#h0-4-41" id="h0-4-41" class="d">-                        )
+</a><a href="#h0-4-42" id="h0-4-42" class="d">-                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+</a><a href="#h0-4-43" id="h0-4-43" class="d">-                    })
+</a><a href="#h0-4-44" id="h0-4-44" class="d">-                }
+</a><a href="#h0-4-45" id="h0-4-45" class="d">-        )
+</a><a href="#h0-4-46" id="h0-4-46" class="d">-    }
+</a><a href="#h0-4-47" id="h0-4-47" class="d">-
+</a>     @Composable
+     private fun InfoCard(
+         content: @Composable ColumnScope.() -&gt; Unit,
+<a href="#h0-5" id="h0-5" class="h">@@ -144,8 +98,55 @@ class HomeRoot : Routes.Route() {
+</a>         }
+     }
+ 
+<a href="#h0-5-3" id="h0-5-3" class="i">+    private fun openLink(link: String) {
+</a><a href="#h0-5-4" id="h0-5-4" class="i">+        kotlin.runCatching {
+</a><a href="#h0-5-5" id="h0-5-5" class="i">+            context.activity?.startActivity(Intent(Intent.ACTION_VIEW).apply {
+</a><a href="#h0-5-6" id="h0-5-6" class="i">+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+</a><a href="#h0-5-7" id="h0-5-7" class="i">+                data = Uri.parse(link)
+</a><a href="#h0-5-8" id="h0-5-8" class="i">+            })
+</a><a href="#h0-5-9" id="h0-5-9" class="i">+        }.onFailure {
+</a><a href="#h0-5-10" id="h0-5-10" class="i">+            context.log.error(&quot;Couldn&#39;t open link&quot;, it)
+</a><a href="#h0-5-11" id="h0-5-11" class="i">+            context.shortToast(&quot;Couldn&#39;t open link. Check SE Extended logs for more details.&quot;)
+</a><a href="#h0-5-12" id="h0-5-12" class="i">+        }
+</a><a href="#h0-5-13" id="h0-5-13" class="i">+    }
+</a><a href="#h0-5-14" id="h0-5-14" class="i">+
+</a><a href="#h0-5-15" id="h0-5-15" class="i">+    @Composable
+</a><a href="#h0-5-16" id="h0-5-16" class="i">+    fun ExternalLinkIcon(
+</a><a href="#h0-5-17" id="h0-5-17" class="i">+        modifier: Modifier = Modifier,
+</a><a href="#h0-5-18" id="h0-5-18" class="i">+        size: Dp = 32.dp,
+</a><a href="#h0-5-19" id="h0-5-19" class="i">+        imageVector: ImageVector,
+</a><a href="#h0-5-20" id="h0-5-20" class="i">+        link: String
+</a><a href="#h0-5-21" id="h0-5-21" class="i">+    ) {
+</a><a href="#h0-5-22" id="h0-5-22" class="i">+        Icon(
+</a><a href="#h0-5-23" id="h0-5-23" class="i">+            imageVector = imageVector,
+</a><a href="#h0-5-24" id="h0-5-24" class="i">+            contentDescription = null,
+</a><a href="#h0-5-25" id="h0-5-25" class="i">+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+</a><a href="#h0-5-26" id="h0-5-26" class="i">+            modifier = Modifier
+</a><a href="#h0-5-27" id="h0-5-27" class="i">+                .size(size)
+</a><a href="#h0-5-28" id="h0-5-28" class="i">+                .then(modifier)
+</a><a href="#h0-5-29" id="h0-5-29" class="i">+                .clickable { openLink(link) }
+</a><a href="#h0-5-30" id="h0-5-30" class="i">+        )
+</a><a href="#h0-5-31" id="h0-5-31" class="i">+    }
+</a><a href="#h0-5-32" id="h0-5-32" class="i">+
+</a><a href="#h0-5-33" id="h0-5-33" class="i">+    override val init: () -&gt; Unit = {
+</a><a href="#h0-5-34" id="h0-5-34" class="i">+        activityLauncherHelper = ActivityLauncherHelper(context.activity!!)
+</a><a href="#h0-5-35" id="h0-5-35" class="i">+    }
+</a><a href="#h0-5-36" id="h0-5-36" class="i">+
+</a><a href="#h0-5-37" id="h0-5-37" class="i">+    override val topBarActions: @Composable (RowScope.() -&gt; Unit) = {
+</a><a href="#h0-5-38" id="h0-5-38" class="i">+        IconButton(onClick = {
+</a><a href="#h0-5-39" id="h0-5-39" class="i">+            routes.homeLogs.navigate()
+</a><a href="#h0-5-40" id="h0-5-40" class="i">+        }) {
+</a><a href="#h0-5-41" id="h0-5-41" class="i">+            Icon(Icons.Filled.BugReport, contentDescription = null)
+</a><a href="#h0-5-42" id="h0-5-42" class="i">+        }
+</a><a href="#h0-5-43" id="h0-5-43" class="i">+        IconButton(onClick = {
+</a><a href="#h0-5-44" id="h0-5-44" class="i">+            routes.settings.navigate()
+</a><a href="#h0-5-45" id="h0-5-45" class="i">+        }) {
+</a><a href="#h0-5-46" id="h0-5-46" class="i">+            Icon(Icons.Filled.Settings, contentDescription = null)
+</a><a href="#h0-5-47" id="h0-5-47" class="i">+        }
+</a><a href="#h0-5-48" id="h0-5-48" class="i">+    }
+</a><a href="#h0-5-49" id="h0-5-49" class="i">+
+</a> 
+<a href="#h0-5-51" id="h0-5-51" class="d">-    @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+</a><a href="#h0-5-52" id="h0-5-52" class="i">+    @OptIn(ExperimentalLayoutApi::class)
+</a>     override val content: @Composable (NavBackStackEntry) -&gt; Unit = {
+         val avenirNextFontFamily = remember {
+             FontFamily(
+<a href="#h0-6" id="h0-6" class="h">@@ -161,7 +162,7 @@ class HomeRoot : Routes.Route() {
+</a>             Text(
+                 text = remember {
+                     intArrayOf(
+<a href="#h0-6-3" id="h0-6-3" class="d">-                        101, 99, 110, 97, 104, 110, 69, 112, 97, 110, 83
+</a><a href="#h0-6-4" id="h0-6-4" class="i">+                        100, 101, 100, 110, 101, 116, 120, 69, 32, 69, 83
+</a>                     ).map { it.toChar() }.joinToString(&quot;&quot;).reversed()
+                 },
+                 fontSize = 30.sp,
+<a href="#h0-7" id="h0-7" class="h">@@ -170,9 +171,16 @@ class HomeRoot : Routes.Route() {
+</a>             )
+ 
+             Text(
+<a href="#h0-7-3" id="h0-7-3" class="d">-                text = &quot;v&quot; + BuildConfig.VERSION_NAME + &quot; \u00b7 by rhunk&quot;,
+</a><a href="#h0-7-4" id="h0-7-4" class="i">+                text = translation.format(
+</a><a href="#h0-7-5" id="h0-7-5" class="i">+                    &quot;version_title&quot;,
+</a><a href="#h0-7-6" id="h0-7-6" class="i">+                    &quot;versionName&quot; to BuildConfig.VERSION_NAME
+</a><a href="#h0-7-7" id="h0-7-7" class="i">+                ),
+</a>                 fontSize = 12.sp,
+<a href="#h0-7-9" id="h0-7-9" class="d">-                fontFamily = avenirNextFontFamily,
+</a><a href="#h0-7-10" id="h0-7-10" class="i">+                fontFamily = remember {
+</a><a href="#h0-7-11" id="h0-7-11" class="i">+                    FontFamily(
+</a><a href="#h0-7-12" id="h0-7-12" class="i">+                        Font(R.font.avenir_next_medium, FontWeight.Medium)
+</a><a href="#h0-7-13" id="h0-7-13" class="i">+                    )
+</a><a href="#h0-7-14" id="h0-7-14" class="i">+                },
+</a>                 modifier = Modifier.align(Alignment.CenterHorizontally),
+             )
+ 
+<a href="#h0-8" id="h0-8" class="h">@@ -183,32 +191,21 @@ class HomeRoot : Routes.Route() {
+</a>                     .fillMaxWidth()
+                     .padding(all = 10.dp)
+             ) {
+<a href="#h0-8-3" id="h0-8-3" class="d">-                LinkIcon(
+</a><a href="#h0-8-4" id="h0-8-4" class="d">-                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_github),
+</a><a href="#h0-8-5" id="h0-8-5" class="d">-                    dataArray = intArrayOf(
+</a><a href="#h0-8-6" id="h0-8-6" class="d">-                        101, 99, 110, 97, 104, 110, 69, 112, 97, 110, 83, 47, 107, 110,
+</a><a href="#h0-8-7" id="h0-8-7" class="d">-                        117, 104, 114, 47, 109, 111, 99, 46, 98, 117, 104, 116, 105,
+</a><a href="#h0-8-8" id="h0-8-8" class="d">-                        103, 47, 58, 115, 112, 116, 116, 104
+</a><a href="#h0-8-9" id="h0-8-9" class="d">-                    )
+</a><a href="#h0-8-10" id="h0-8-10" class="i">+                ExternalLinkIcon(
+</a><a href="#h0-8-11" id="h0-8-11" class="i">+                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_telegram),
+</a><a href="#h0-8-12" id="h0-8-12" class="i">+                    link = &quot;https://t.me/SE_Extended&quot;
+</a>                 )
+ 
+<a href="#h0-8-15" id="h0-8-15" class="d">-                LinkIcon(
+</a><a href="#h0-8-16" id="h0-8-16" class="d">-                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_telegram),
+</a><a href="#h0-8-17" id="h0-8-17" class="d">-                    dataArray = intArrayOf(
+</a><a href="#h0-8-18" id="h0-8-18" class="d">-                        101, 99, 110, 97, 104, 110, 101, 112, 97, 110, 115, 47, 101,
+</a><a href="#h0-8-19" id="h0-8-19" class="d">-                        109, 46, 116, 47, 47, 58, 115, 112, 116, 116, 104
+</a><a href="#h0-8-20" id="h0-8-20" class="d">-                    )
+</a><a href="#h0-8-21" id="h0-8-21" class="i">+                ExternalLinkIcon(
+</a><a href="#h0-8-22" id="h0-8-22" class="i">+                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_github),
+</a><a href="#h0-8-23" id="h0-8-23" class="i">+                    link = &quot;https://github.com/bocajthomas/SE-Extended&quot;
+</a>                 )
+ 
+<a href="#h0-8-26" id="h0-8-26" class="d">-                LinkIcon(
+</a><a href="#h0-8-27" id="h0-8-27" class="i">+                ExternalLinkIcon(
+</a>                     size = 36.dp,
+                     modifier = Modifier.offset(y = (-2).dp),
+                     imageVector = Icons.AutoMirrored.Default.Help,
+<a href="#h0-8-31" id="h0-8-31" class="d">-                    dataArray = intArrayOf(
+</a><a href="#h0-8-32" id="h0-8-32" class="d">-                        105, 107, 105, 119, 47, 101, 99, 110, 97, 104, 110, 69, 112, 97,
+</a><a href="#h0-8-33" id="h0-8-33" class="d">-                        110, 83, 47, 107, 110, 117, 104, 114, 47, 109, 111, 99, 46, 98,
+</a><a href="#h0-8-34" id="h0-8-34" class="d">-                        117, 104, 116, 105, 103, 47, 47, 58, 115, 112, 116, 116, 104
+</a><a href="#h0-8-35" id="h0-8-35" class="d">-                    )
+</a><a href="#h0-8-36" id="h0-8-36" class="i">+                    link = &quot;https://github.com/bocajthomas/SE-Extended/wiki&quot;
+</a>                 )
+             }
+ 
+<a href="#h0-9" id="h0-9" class="h">@@ -256,23 +253,39 @@ class HomeRoot : Routes.Route() {
+</a>                 Spacer(modifier = Modifier.height(10.dp))
+                 InfoCard {
+                     Text(
+<a href="#h0-9-3" id="h0-9-3" class="d">-                        text = &quot;You are running a debug build of SnapEnhance&quot;,
+</a><a href="#h0-9-4" id="h0-9-4" class="i">+                        text = translation[&quot;debug_build_summary_title&quot;],
+</a>                         fontSize = 14.sp,
+                         fontWeight = FontWeight.Bold,
+                     )
+                     val buildSummary = buildAnnotatedString {
+<a href="#h0-9-9" id="h0-9-9" class="d">-                        withStyle(style = SpanStyle(fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.Light)) {
+</a><a href="#h0-9-10" id="h0-9-10" class="d">-                            append(&quot;Version &quot;)
+</a><a href="#h0-9-11" id="h0-9-11" class="d">-                            append(BuildConfig.VERSION_NAME)
+</a><a href="#h0-9-12" id="h0-9-12" class="d">-                            append(&quot; (&quot;)
+</a><a href="#h0-9-13" id="h0-9-13" class="d">-                            append(BuildConfig.VERSION_CODE.toString())
+</a><a href="#h0-9-14" id="h0-9-14" class="d">-                            append(&quot;) - &quot;)
+</a><a href="#h0-9-15" id="h0-9-15" class="i">+                        withStyle(
+</a><a href="#h0-9-16" id="h0-9-16" class="i">+                            style = SpanStyle(
+</a><a href="#h0-9-17" id="h0-9-17" class="i">+                                fontSize = 13.sp,
+</a><a href="#h0-9-18" id="h0-9-18" class="i">+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+</a><a href="#h0-9-19" id="h0-9-19" class="i">+                                fontWeight = FontWeight.Light
+</a><a href="#h0-9-20" id="h0-9-20" class="i">+                            )
+</a><a href="#h0-9-21" id="h0-9-21" class="i">+                        ) {
+</a><a href="#h0-9-22" id="h0-9-22" class="i">+                            append(
+</a><a href="#h0-9-23" id="h0-9-23" class="i">+                                remember {
+</a><a href="#h0-9-24" id="h0-9-24" class="i">+                                    translation.format(
+</a><a href="#h0-9-25" id="h0-9-25" class="i">+                                        &quot;debug_build_summary_content&quot;,
+</a><a href="#h0-9-26" id="h0-9-26" class="i">+                                        &quot;versionName&quot; to BuildConfig.VERSION_NAME,
+</a><a href="#h0-9-27" id="h0-9-27" class="i">+                                        &quot;versionCode&quot; to BuildConfig.VERSION_CODE.toString(),
+</a><a href="#h0-9-28" id="h0-9-28" class="i">+                                    )
+</a><a href="#h0-9-29" id="h0-9-29" class="i">+                                }
+</a><a href="#h0-9-30" id="h0-9-30" class="i">+                            )
+</a><a href="#h0-9-31" id="h0-9-31" class="i">+                            append(&quot; - &quot;)
+</a>                         }
+                         pushStringAnnotation(
+                             tag = &quot;git_hash&quot;,
+                             annotation = BuildConfig.GIT_HASH
+                         )
+<a href="#h0-9-37" id="h0-9-37" class="d">-                        withStyle(style = SpanStyle(fontSize = 13.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)) {
+</a><a href="#h0-9-38" id="h0-9-38" class="i">+                        withStyle(
+</a><a href="#h0-9-39" id="h0-9-39" class="i">+                            style = SpanStyle(
+</a><a href="#h0-9-40" id="h0-9-40" class="i">+                                fontSize = 13.sp, fontWeight = FontWeight.Bold,
+</a><a href="#h0-9-41" id="h0-9-41" class="i">+                                color = MaterialTheme.colorScheme.primary
+</a><a href="#h0-9-42" id="h0-9-42" class="i">+                            )
+</a><a href="#h0-9-43" id="h0-9-43" class="i">+                        ) {
+</a>                             append(BuildConfig.GIT_HASH.substring(0, 7))
+                         }
+                         pop()
+<a href="#h0-10" id="h0-10" class="h">@@ -280,18 +293,29 @@ class HomeRoot : Routes.Route() {
+</a>                     ClickableText(
+                         text = buildSummary,
+                         onClick = { offset -&gt;
+<a href="#h0-10-3" id="h0-10-3" class="d">-                            buildSummary.getStringAnnotations(tag = &quot;git_hash&quot;, start = offset, end = offset)
+</a><a href="#h0-10-4" id="h0-10-4" class="i">+                            buildSummary.getStringAnnotations(
+</a><a href="#h0-10-5" id="h0-10-5" class="i">+                                tag = &quot;git_hash&quot;, start = offset, end = offset
+</a><a href="#h0-10-6" id="h0-10-6" class="i">+                            )
+</a>                                 .firstOrNull()?.let {
+<a href="#h0-10-8" id="h0-10-8" class="d">-                                    context.activity?.startActivity(Intent(Intent.ACTION_VIEW).apply {
+</a><a href="#h0-10-9" id="h0-10-9" class="d">-                                        data = Uri.parse(&quot;https://github.com/rhunk/SnapEnhance/commit/${it.item}&quot;)
+</a><a href="#h0-10-10" id="h0-10-10" class="d">-                                    })
+</a><a href="#h0-10-11" id="h0-10-11" class="i">+                                    context.activity?.startActivity(
+</a><a href="#h0-10-12" id="h0-10-12" class="i">+                                        Intent(Intent.ACTION_VIEW).apply {
+</a><a href="#h0-10-13" id="h0-10-13" class="i">+                                            data = Uri.parse(
+</a><a href="#h0-10-14" id="h0-10-14" class="i">+                                                &quot;https://github.com/bocajthomas/SE-Extended/commit/${it.item}&quot;
+</a><a href="#h0-10-15" id="h0-10-15" class="i">+                                            )
+</a><a href="#h0-10-16" id="h0-10-16" class="i">+                                        })
+</a>                                 }
+                         }
+                     )
+                     Text(
+                         fontSize = 12.sp,
+                         text = remember {
+<a href="#h0-10-23" id="h0-10-23" class="d">-                            &quot;Build date: &quot; + DateFormat.getDateTimeInstance().format(BuildConfig.BUILD_TIMESTAMP) + &quot; (${((System.currentTimeMillis() - BuildConfig.BUILD_TIMESTAMP) / 86400000).toInt()} days ago)&quot;
+</a><a href="#h0-10-24" id="h0-10-24" class="i">+                            translation.format(
+</a><a href="#h0-10-25" id="h0-10-25" class="i">+                                &quot;debug_build_summary_date&quot;,
+</a><a href="#h0-10-26" id="h0-10-26" class="i">+                                &quot;date&quot; to DateFormat.getDateTimeInstance()
+</a><a href="#h0-10-27" id="h0-10-27" class="i">+                                    .format(BuildConfig.BUILD_TIMESTAMP),
+</a><a href="#h0-10-28" id="h0-10-28" class="i">+                                &quot;days&quot; to ((System.currentTimeMillis() - BuildConfig.BUILD_TIMESTAMP) / 86400000).toInt()
+</a><a href="#h0-10-29" id="h0-10-29" class="i">+                                    .toString()
+</a><a href="#h0-10-30" id="h0-10-30" class="i">+                            )
+</a>                         },
+                         lineHeight = 20.sp,
+                         fontWeight = FontWeight.Light
+<a href="#h0-11" id="h0-11" class="h">@@ -307,7 +331,10 @@ class HomeRoot : Routes.Route() {
+</a>                     .padding(start = 20.dp, end = 10.dp, top = 20.dp),
+                 verticalAlignment = Alignment.CenterVertically
+             ) {
+<a href="#h0-11-3" id="h0-11-3" class="d">-                Text(&quot;Quick Actions&quot;, fontSize = 20.sp, modifier = Modifier.weight(1f))
+</a><a href="#h0-11-4" id="h0-11-4" class="i">+                Text(
+</a><a href="#h0-11-5" id="h0-11-5" class="i">+                    translation[&quot;quick_actions_title&quot;], fontSize = 20.sp,
+</a><a href="#h0-11-6" id="h0-11-6" class="i">+                    modifier = Modifier.weight(1f)
+</a><a href="#h0-11-7" id="h0-11-7" class="i">+                )
+</a>                 Box {
+                     IconButton(
+                         onClick = { showQuickActionsMenu = !showQuickActionsMenu },
+<a href="#h0-12" id="h0-12" class="h">@@ -360,14 +387,16 @@ class HomeRoot : Routes.Route() {
+</a>                     remember { (context.androidContext.resources.displayMetrics.widthPixels / 3).toDp() - cardMargin / 2 }
+                 }
+ 
+<a href="#h0-12-3" id="h0-12-3" class="d">-                remember(selectedTiles.size, context.translation.loadedLocale) { selectedTiles.mapNotNull {
+</a><a href="#h0-12-4" id="h0-12-4" class="d">-                    cards.entries.find { entry -&gt; entry.key.first == it }
+</a><a href="#h0-12-5" id="h0-12-5" class="d">-                } }.forEach { (card, action) -&gt;
+</a><a href="#h0-12-6" id="h0-12-6" class="i">+                remember(selectedTiles.size, context.translation.loadedLocale) {
+</a><a href="#h0-12-7" id="h0-12-7" class="i">+                    selectedTiles.mapNotNull {
+</a><a href="#h0-12-8" id="h0-12-8" class="i">+                        cards.entries.find { entry -&gt; entry.key.first == it }
+</a><a href="#h0-12-9" id="h0-12-9" class="i">+                    }
+</a><a href="#h0-12-10" id="h0-12-10" class="i">+                }.forEach { (card, action) -&gt;
+</a>                     ElevatedCard(
+                         modifier = Modifier
+                             .height(tileHeight)
+                             .weight(1f)
+<a href="#h0-12-15" id="h0-12-15" class="d">-                            .clickable { action() }
+</a><a href="#h0-12-16" id="h0-12-16" class="i">+                            .clickable { action(routes) }
+</a>                             .padding(all = 6.dp),
+                     ) {
+                         Column(
+<a href="#h0-13" id="h0-13" class="h">@@ -385,7 +414,7 @@ class HomeRoot : Routes.Route() {
+</a>                             Text(
+                                 text = card.first,
+                                 lineHeight = 16.sp,
+<a href="#h0-13-3" id="h0-13-3" class="d">-                                fontSize = 11.sp,
+</a><a href="#h0-13-4" id="h0-13-4" class="i">+                                fontSize = 14.sp,
+</a>                                 fontWeight = FontWeight.Bold,
+                                 textAlign = TextAlign.Center,
+                                 overflow = TextOverflow.Ellipsis,
+<b>diff --git a/<a id="h1" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -44,9 +44,14 @@
+</a>         },
+         &quot;sections&quot;: {
+             &quot;home&quot;: {
+<a href="#h1-0-3" id="h1-0-3" class="i">+                &quot;version_title&quot;: &quot;V{versionName} · Forked by Jacob&quot;,
+</a>                 &quot;update_title&quot;: &quot;SE Extended Update&quot;,
+                 &quot;update_content&quot;: &quot;Version {version} is available!&quot;,
+<a href="#h1-0-6" id="h1-0-6" class="d">-                &quot;update_button&quot;: &quot;Download&quot;
+</a><a href="#h1-0-7" id="h1-0-7" class="i">+                &quot;update_button&quot;: &quot;Download&quot;,
+</a><a href="#h1-0-8" id="h1-0-8" class="i">+                &quot;debug_build_summary_title&quot;: &quot;You are running a debug build of SE Extended&quot;,
+</a><a href="#h1-0-9" id="h1-0-9" class="i">+                &quot;debug_build_summary_content&quot;: &quot;Version {versionName} ({versionCode})&quot;,
+</a><a href="#h1-0-10" id="h1-0-10" class="i">+                &quot;debug_build_summary_date&quot;: &quot;Build date: {date} ({days} days ago)&quot;,
+</a><a href="#h1-0-11" id="h1-0-11" class="i">+                &quot;quick_actions_title&quot;: &quot;Quick Actions&quot;
+</a>             },
+             &quot;home_logs&quot;: {
+                 &quot;no_logs_hint&quot;: &quot;No logs available&quot;,
+<a href="#h1-1" id="h1-1" class="h">@@ -283,6 +288,18 @@
+</a>         &quot;change_language&quot;: {
+             &quot;name&quot;: &quot;Change Language&quot;,
+             &quot;description&quot;: &quot;Change the language of SE Extended&quot;
+<a href="#h1-1-3" id="h1-1-3" class="i">+        },
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+        &quot;file_imports&quot;: {
+</a><a href="#h1-1-5" id="h1-1-5" class="i">+            &quot;name&quot;: &quot;File Imports&quot;,
+</a><a href="#h1-1-6" id="h1-1-6" class="i">+            &quot;description&quot;: &quot;Import files for use in Snapchat&quot;
+</a><a href="#h1-1-7" id="h1-1-7" class="i">+        },
+</a><a href="#h1-1-8" id="h1-1-8" class="i">+        &quot;friend_tracker&quot;: {
+</a><a href="#h1-1-9" id="h1-1-9" class="i">+            &quot;name&quot;: &quot;Friend Tracker&quot;,
+</a><a href="#h1-1-10" id="h1-1-10" class="i">+            &quot;description&quot;: &quot;Track your friends on Snapchat&quot;
+</a><a href="#h1-1-11" id="h1-1-11" class="i">+        },
+</a><a href="#h1-1-12" id="h1-1-12" class="i">+        &quot;logger_history&quot;: {
+</a><a href="#h1-1-13" id="h1-1-13" class="i">+            &quot;name&quot;: &quot;Logger History&quot;,
+</a><a href="#h1-1-14" id="h1-1-14" class="i">+            &quot;description&quot;: &quot;View the history of logged messages&quot;
+</a>         }
+     },
+ 
+<a href="#h1-2" id="h1-2" class="h">@@ -528,7 +545,7 @@
+</a>                     },
+                     &quot;hide_settings_gear&quot;: {
+                         &quot;name&quot;: &quot;Hide Settings Gear&quot;,
+<a href="#h1-2-3" id="h1-2-3" class="d">-                        &quot;description&quot;: &quot;Hides the SE Extended Settings Gear in friend feed&quot;
+</a><a href="#h1-2-4" id="h1-2-4" class="i">+                        &quot;description&quot;: &quot;Hides the SnapEnhance Settings Gear in friend feed&quot;
+</a>                     },
+                     &quot;friend_feed_menu_buttons&quot;: {
+                         &quot;name&quot;: &quot;Friend Feed Menu Buttons&quot;,
+<a href="#h1-3" id="h1-3" class="h">@@ -822,7 +839,7 @@
+</a>                     },
+                     &quot;spotlight_comments_username&quot;: {
+                         &quot;name&quot;: &quot;Spotlight Comments Username&quot;,
+<a href="#h1-3-3" id="h1-3-3" class="d">-                        &quot;description&quot;: &quot;Shows authors username in Spotlight comments&quot;
+</a><a href="#h1-3-4" id="h1-3-4" class="i">+                        &quot;description&quot;: &quot;Shows author username in Spotlight comments&quot;
+</a>                     },
+                     &quot;bypass_video_length_restriction&quot;: {
+                         &quot;name&quot;: &quot;Bypass Video Length Restrictions&quot;,
+<a href="#h1-4" id="h1-4" class="h">@@ -944,11 +961,11 @@
+</a>                                     },
+                                     &quot;composer_console&quot;: {
+                                         &quot;name&quot;: &quot;Composer Console&quot;,
+<a href="#h1-4-3" id="h1-4-3" class="d">-                                        &quot;description&quot;: &quot;Allows you to execute JavaScript code in Composer (arm64 only)&quot;
+</a><a href="#h1-4-4" id="h1-4-4" class="i">+                                        &quot;description&quot;: &quot;Allows you to execute JavaScript code in Composer (ARM64 only)&quot;
+</a>                                     },
+                                     &quot;composer_logs&quot;: {
+                                         &quot;name&quot;: &quot;Composer Logs&quot;,
+<a href="#h1-4-8" id="h1-4-8" class="d">-                                        &quot;description&quot;: &quot;Redirects console logs of Composer to SnapEnhance&quot;
+</a><a href="#h1-4-9" id="h1-4-9" class="i">+                                        &quot;description&quot;: &quot;Redirects console logs of Composer to SE Extended&quot;
+</a>                                     }
+                                 }
+                             },
+</pre>
+</div>
+</body>
+</html>

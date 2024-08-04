@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revert &quot;Reapply &quot;fix: native build&quot;&quot; - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/6d0f70ad3a2c0837ba94e646d891d1418a62c357.html">6d0f70ad3a2c0837ba94e646d891d1418a62c357</a>
+<b>parent</b> <a href="../commit/6741b72b3012f4940c4d51540b27b5e915c8b350.html">6741b72b3012f4940c4d51540b27b5e915c8b350</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Fri, 26 Jul 2024 18:26:17 +0100
+
+Revert &quot;Reapply &quot;fix: native build&quot;&quot;
+
+This reverts commit e008d58a1dd8bc34b30c5a8a5d4a9c0389d18c3d.
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">native/build.gradle.kts</a></td><td> | </td><td class="num">2</td><td><span class="i"></span><span class="d">--</span></td></tr>
+</table></pre><pre>1 file changed, 0 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/native/build.gradle.kts.html">native/build.gradle.kts</a> b/<a href="../file/native/build.gradle.kts.html">native/build.gradle.kts</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -9,8 +9,6 @@ val nativeName = rootProject.ext.get(&quot;buildHash&quot;)
+</a> android {
+     namespace = rootProject.ext[&quot;applicationId&quot;].toString() + &quot;.nativelib&quot;
+     compileSdk = 34
+<a href="#h0-0-3" id="h0-0-3" class="d">-    buildToolsVersion = &quot;34.0.0&quot;
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-    ndkVersion = &quot;26.3.11579264&quot;
+</a> 
+     buildFeatures {
+         buildConfig = true
+</pre>
+</div>
+</body>
+</html>

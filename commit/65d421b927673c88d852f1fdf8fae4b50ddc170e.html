@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge branch &#39;rhunk:dev&#39; into dev - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/65d421b927673c88d852f1fdf8fae4b50ddc170e.html">65d421b927673c88d852f1fdf8fae4b50ddc170e</a>
+<b>parent</b> <a href="../commit/56a55f71bf381b4a7e6b3388ba00711d712ad2cb.html">56a55f71bf381b4a7e6b3388ba00711d712ad2cb</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Thu, 13 Jun 2024 00:21:03 +0100
+
+Merge branch &#39;rhunk:dev&#39; into dev
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt</a></td><td> | </td><td class="num">12</td><td><span class="i">++++++</span><span class="d">------</span></td></tr>
+</table></pre><pre>1 file changed, 6 insertions(+), 6 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -4,10 +4,10 @@ import me.rhunk.snapenhance.common.config.ConfigContainer
+</a> import me.rhunk.snapenhance.common.config.ConfigFlag
+ 
+ class Spoof : ConfigContainer(hasGlobalState = true) {
+<a href="#h0-0-3" id="h0-0-3" class="d">-    val overridePlayStoreInstallerPackageName = boolean(&quot;play_store_installer_package_name&quot;)
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-    val fingerprint = string(&quot;fingerprint&quot;) { addFlags(ConfigFlag.SENSITIVE) }
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-    val androidId = string(&quot;android_id&quot;) { addFlags(ConfigFlag.SENSITIVE) }
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-    val removeVpnTransportFlag = boolean(&quot;remove_vpn_transport_flag&quot;)
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-    val removeMockLocationFlag = boolean(&quot;remove_mock_location_flag&quot;)
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-    val randomizePersistentDeviceToken = boolean(&quot;randomize_persistent_device_token&quot;)
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+    val overridePlayStoreInstallerPackageName = boolean(&quot;play_store_installer_package_name&quot;) { requireRestart() }
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+    val fingerprint = string(&quot;fingerprint&quot;) { addFlags(ConfigFlag.SENSITIVE); requireRestart() }
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+    val androidId = string(&quot;android_id&quot;) { addFlags(ConfigFlag.SENSITIVE); requireRestart() }
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+    val removeVpnTransportFlag = boolean(&quot;remove_vpn_transport_flag&quot;) { requireRestart() }
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+    val removeMockLocationFlag = boolean(&quot;remove_mock_location_flag&quot;) { requireRestart() }
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+    val randomizePersistentDeviceToken = boolean(&quot;randomize_persistent_device_token&quot;) { requireRestart() }
+</a> } 
+\ No newline at end of file
+</pre>
+</div>
+</body>
+</html>

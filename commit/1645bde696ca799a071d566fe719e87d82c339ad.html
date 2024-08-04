@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge branch &#39;rhunk:dev&#39; into dev - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/1645bde696ca799a071d566fe719e87d82c339ad.html">1645bde696ca799a071d566fe719e87d82c339ad</a>
+<b>parent</b> <a href="../commit/92a0687fb9f347950e4effc739d162d52a59950e.html">92a0687fb9f347950e4effc739d162d52a59950e</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Sat,  8 Jun 2024 16:22:52 +0100
+
+Merge branch &#39;rhunk:dev&#39; into dev
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a></td><td> | </td><td class="num">14</td><td><span class="i">++++++++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt</a></td><td> | </td><td class="num">9</td><td><span class="i">+</span><span class="d">--------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeSettings.kt</a></td><td> | </td><td class="num">8</td><td><span class="i">+</span><span class="d">-------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h6">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/MixerStories.kt</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h7">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/ComposerHooks.kt</a></td><td> | </td><td class="num">14</td><td><span class="i">+++</span><span class="d">-----------</span></td></tr>
+<tr><td class="A">A</td><td><a href="#h8">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/global/DisableTelecomFramework.kt</a></td><td> | </td><td class="num">18</td><td><span class="i">++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>9 files changed, 46 insertions(+), 26 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -23,6 +23,8 @@ import kotlinx.coroutines.launch
+</a> import kotlinx.coroutines.runBlocking
+ import me.rhunk.snapenhance.bridge.BridgeService
+ import me.rhunk.snapenhance.common.BuildConfig
+<a href="#h0-0-3" id="h0-0-3" class="i">+import me.rhunk.snapenhance.common.Constants
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+import me.rhunk.snapenhance.common.action.EnumAction
+</a> import me.rhunk.snapenhance.common.bridge.wrapper.LocaleWrapper
+ import me.rhunk.snapenhance.common.bridge.wrapper.LoggerWrapper
+ import me.rhunk.snapenhance.common.bridge.wrapper.MappingsWrapper
+<a href="#h0-1" id="h0-1" class="h">@@ -223,4 +225,16 @@ class RemoteSideContext(
+</a>             return true
+         }
+     }
+<a href="#h0-1-3" id="h0-1-3" class="i">+
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+    fun launchActionIntent(action: EnumAction) {
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+        val intent = androidContext.packageManager.getLaunchIntentForPackage(
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+            Constants.SNAPCHAT_PACKAGE_NAME
+</a><a href="#h0-1-7" id="h0-1-7" class="i">+        )
+</a><a href="#h0-1-8" id="h0-1-8" class="i">+        if (intent == null) {
+</a><a href="#h0-1-9" id="h0-1-9" class="i">+            shortToast(&quot;Can&#39;t execute action: Snapchat is not installed&quot;)
+</a><a href="#h0-1-10" id="h0-1-10" class="i">+            return
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+        }
+</a><a href="#h0-1-12" id="h0-1-12" class="i">+        intent.putExtra(EnumAction.ACTION_PARAMETER, action.key)
+</a><a href="#h0-1-13" id="h0-1-13" class="i">+        androidContext.startActivity(intent)
+</a><a href="#h0-1-14" id="h0-1-14" class="i">+    }
+</a> }
+<b>diff --git a/<a id="h1" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRootSection.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -53,13 +53,6 @@ class HomeRootSection : Routes.Route() {
+</a> 
+     private lateinit var activityLauncherHelper: ActivityLauncherHelper
+ 
+<a href="#h1-0-3" id="h1-0-3" class="d">-    private fun launchActionIntent(action: EnumAction) {
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-        val intent = context.androidContext.packageManager.getLaunchIntentForPackage(
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-            Constants.SNAPCHAT_PACKAGE_NAME
+</a><a href="#h1-0-6" id="h1-0-6" class="d">-        )
+</a><a href="#h1-0-7" id="h1-0-7" class="d">-        intent?.putExtra(EnumAction.ACTION_PARAMETER, action.key)
+</a><a href="#h1-0-8" id="h1-0-8" class="d">-        context.androidContext.startActivity(intent)
+</a><a href="#h1-0-9" id="h1-0-9" class="d">-    }
+</a> 
+     private val cards by lazy {
+         EnumQuickActions.entries.map {
+<a href="#h1-1" id="h1-1" class="h">@@ -69,7 +62,7 @@ class HomeRootSection : Routes.Route() {
+</a>         }.toMutableMap().apply {
+             EnumAction.entries.forEach { action -&gt;
+                 this[context.translation[&quot;actions.${action.key}.name&quot;] to action.icon] = {
+<a href="#h1-1-3" id="h1-1-3" class="d">-                    launchActionIntent(action)
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+                    context.launchActionIntent(action)
+</a>                 }
+             }
+         }
+<b>diff --git a/<a id="h2" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeSettings.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeSettings.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeSettings.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeSettings.kt</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -121,12 +121,6 @@ class HomeSettings : Routes.Route() {
+</a>         }
+     }
+ 
+<a href="#h2-0-3" id="h2-0-3" class="d">-    private fun launchActionIntent(action: EnumAction) {
+</a><a href="#h2-0-4" id="h2-0-4" class="d">-        val intent = context.androidContext.packageManager.getLaunchIntentForPackage(Constants.SNAPCHAT_PACKAGE_NAME)
+</a><a href="#h2-0-5" id="h2-0-5" class="d">-        intent?.putExtra(EnumAction.ACTION_PARAMETER, action.key)
+</a><a href="#h2-0-6" id="h2-0-6" class="d">-        context.androidContext.startActivity(intent)
+</a><a href="#h2-0-7" id="h2-0-7" class="d">-    }
+</a><a href="#h2-0-8" id="h2-0-8" class="d">-
+</a>     @Composable
+     private fun ShiftedRow(
+         modifier: Modifier = Modifier,
+<a href="#h2-1" id="h2-1" class="h">@@ -151,7 +145,7 @@ class HomeSettings : Routes.Route() {
+</a>             RowTitle(title = translation[&quot;actions_title&quot;])
+             EnumAction.entries.forEach { enumAction -&gt;
+                 RowAction(key = enumAction.key) {
+<a href="#h2-1-3" id="h2-1-3" class="d">-                    launchActionIntent(enumAction)
+</a><a href="#h2-1-4" id="h2-1-4" class="i">+                    context.launchActionIntent(enumAction)
+</a>                 }
+             }
+             RowAction(key = &quot;regen_mappings&quot;) {
+<b>diff --git a/<a id="h3" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -869,6 +869,10 @@
+</a>                         &quot;name&quot;: &quot;Default Volume Controls&quot;,
+                         &quot;description&quot;: &quot;Forces Snapchat to use system volume controls&quot;
+                     },
+<a href="#h3-0-3" id="h3-0-3" class="i">+                    &quot;disable_telecom_framework&quot;: {
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+                        &quot;name&quot;: &quot;Disable Telecom Framework&quot;,
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+                        &quot;description&quot;: &quot;Prevents Snapchat from using the Android Telecom framework\nThis allows you to listen to music while on a call&quot;
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+                    },
+</a>                     &quot;hide_active_music&quot;: {
+                         &quot;name&quot;: &quot;Hide Active Music&quot;,
+                         &quot;description&quot;: &quot;Prevents Snapchat from knowing you&#39;re listening to music\nThis will allow you to take snaps using control volume buttons while listening to music&quot;
+<b>diff --git a/<a id="h4" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -52,6 +52,7 @@ class Global : ConfigContainer() {
+</a>     val videoPlaybackRateSlider = boolean(&quot;video_playback_rate_slider&quot;) { requireRestart() }
+     val disableGooglePlayDialogs = boolean(&quot;disable_google_play_dialogs&quot;) { requireRestart() }
+     val defaultVolumeControls = boolean(&quot;default_volume_controls&quot;) { requireRestart() }
+<a href="#h4-0-3" id="h4-0-3" class="i">+    val disableTelecomFramework = boolean(&quot;disable_telecom_framework&quot;) { requireRestart() }
+</a>     val hideActiveMusic = boolean(&quot;hide_active_music&quot;) { requireRestart() }
+     val disableSnapSplitting = boolean(&quot;disable_snap_splitting&quot;) { addNotices(FeatureNotice.INTERNAL_BEHAVIOR) }
+ } 
+\ No newline at end of file
+<b>diff --git a/<a id="h5" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/FeatureManager.kt</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -129,6 +129,7 @@ class FeatureManager(
+</a>             DisableCustomTabs(),
+             BestFriendPinning(),
+             ContextMenuFix(),
+<a href="#h5-0-3" id="h5-0-3" class="i">+            DisableTelecomFramework(),
+</a>         )
+         initializeFeatures()
+     }
+<b>diff --git a/<a id="h6" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/MixerStories.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/MixerStories.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/MixerStories.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/MixerStories.kt</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -73,6 +73,9 @@ class MixerStories : Feature(&quot;MixerStories&quot;, loadParams = FeatureLoadParams.INIT
+</a>                                 val storyMap = mutableMapOf&lt;String, MutableList&lt;StoryData&gt;&gt;()
+ 
+                                 firstOrNull(3)?.toReader()?.eachBuffer(3) {
+<a href="#h6-0-3" id="h6-0-3" class="i">+                                    val storySubType = getVarInt(23)
+</a><a href="#h6-0-4" id="h6-0-4" class="i">+                                    // ignore friends of friends stories
+</a><a href="#h6-0-5" id="h6-0-5" class="i">+                                    if (storySubType == 39L) return@eachBuffer
+</a>                                     followPath(36) {
+                                         eachBuffer(1) data@{
+                                             val userId = getString(8, 1) ?: return@data
+<b>diff --git a/<a id="h7" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/ComposerHooks.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/ComposerHooks.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/ComposerHooks.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/ComposerHooks.kt</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -3,20 +3,12 @@ package me.rhunk.snapenhance.core.features.impl.experiments
+</a> import android.os.ParcelFileDescriptor
+ import android.view.View
+ import android.widget.FrameLayout
+<a href="#h7-0-3" id="h7-0-3" class="d">-import androidx.compose.foundation.layout.Arrangement
+</a><a href="#h7-0-4" id="h7-0-4" class="d">-import androidx.compose.foundation.layout.Column
+</a><a href="#h7-0-5" id="h7-0-5" class="d">-import androidx.compose.foundation.layout.fillMaxSize
+</a><a href="#h7-0-6" id="h7-0-6" class="d">-import androidx.compose.foundation.layout.fillMaxWidth
+</a><a href="#h7-0-7" id="h7-0-7" class="d">-import androidx.compose.foundation.layout.padding
+</a><a href="#h7-0-8" id="h7-0-8" class="i">+import androidx.compose.foundation.layout.*
+</a> import androidx.compose.foundation.rememberScrollState
+ import androidx.compose.foundation.verticalScroll
+ import androidx.compose.material.icons.Icons
+ import androidx.compose.material.icons.filled.BugReport
+<a href="#h7-0-13" id="h7-0-13" class="d">-import androidx.compose.material3.Button
+</a><a href="#h7-0-14" id="h7-0-14" class="d">-import androidx.compose.material3.FilledIconButton
+</a><a href="#h7-0-15" id="h7-0-15" class="d">-import androidx.compose.material3.Icon
+</a><a href="#h7-0-16" id="h7-0-16" class="d">-import androidx.compose.material3.Text
+</a><a href="#h7-0-17" id="h7-0-17" class="d">-import androidx.compose.material3.TextField
+</a><a href="#h7-0-18" id="h7-0-18" class="i">+import androidx.compose.material3.*
+</a> import androidx.compose.runtime.getValue
+ import androidx.compose.runtime.mutableStateOf
+ import androidx.compose.runtime.remember
+<a href="#h7-1" id="h7-1" class="h">@@ -219,7 +211,6 @@ class ComposerHooks: Feature(&quot;ComposerHooks&quot;, loadParams = FeatureLoadParams.INI
+</a>         }
+ 
+         findClass(&quot;com.snapchat.client.composer.NativeBridge&quot;).apply {
+<a href="#h7-1-3" id="h7-1-3" class="d">-            hook(&quot;createViewLoaderManager&quot;, HookStage.AFTER) { loadHooks() }
+</a>             hook(&quot;registerNativeModuleFactory&quot;, HookStage.BEFORE) { param -&gt;
+                 val moduleFactory = param.argNullable&lt;Any&gt;(1) ?: return@hook
+                 if (moduleFactory.javaClass.getMethod(&quot;getModulePath&quot;).invoke(moduleFactory)?.toString() != &quot;DeviceBridge&quot;) return@hook
+<a href="#h7-2" id="h7-2" class="h">@@ -230,6 +221,7 @@ class ComposerHooks: Feature(&quot;ComposerHooks&quot;, loadParams = FeatureLoadParams.INI
+</a>                         true
+                     }
+                 }
+<a href="#h7-2-3" id="h7-2-3" class="i">+                loadHooks()
+</a>             }
+         }
+     }
+<b>diff --git a/<a id="h8" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/global/DisableTelecomFramework.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/global/DisableTelecomFramework.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/global/DisableTelecomFramework.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/global/DisableTelecomFramework.kt</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -0,0 +1,17 @@
+</a><a href="#h8-0-0" id="h8-0-0" class="i">+package me.rhunk.snapenhance.core.features.impl.global
+</a><a href="#h8-0-1" id="h8-0-1" class="i">+
+</a><a href="#h8-0-2" id="h8-0-2" class="i">+import android.content.ContextWrapper
+</a><a href="#h8-0-3" id="h8-0-3" class="i">+import me.rhunk.snapenhance.core.features.Feature
+</a><a href="#h8-0-4" id="h8-0-4" class="i">+import me.rhunk.snapenhance.core.features.FeatureLoadParams
+</a><a href="#h8-0-5" id="h8-0-5" class="i">+import me.rhunk.snapenhance.core.util.hook.HookStage
+</a><a href="#h8-0-6" id="h8-0-6" class="i">+import me.rhunk.snapenhance.core.util.hook.hook
+</a><a href="#h8-0-7" id="h8-0-7" class="i">+
+</a><a href="#h8-0-8" id="h8-0-8" class="i">+class DisableTelecomFramework: Feature(&quot;Disable Telecom Framework&quot;, loadParams = FeatureLoadParams.INIT_SYNC) {
+</a><a href="#h8-0-9" id="h8-0-9" class="i">+    override fun init() {
+</a><a href="#h8-0-10" id="h8-0-10" class="i">+        if (!context.config.global.disableTelecomFramework.get()) return
+</a><a href="#h8-0-11" id="h8-0-11" class="i">+
+</a><a href="#h8-0-12" id="h8-0-12" class="i">+        ContextWrapper::class.java.hook(&quot;getSystemService&quot;, HookStage.BEFORE) { param -&gt;
+</a><a href="#h8-0-13" id="h8-0-13" class="i">+            if (param.arg&lt;Any&gt;(0).toString() == &quot;telecom&quot;) param.setResult(null)
+</a><a href="#h8-0-14" id="h8-0-14" class="i">+        }
+</a><a href="#h8-0-15" id="h8-0-15" class="i">+    }
+</a><a href="#h8-0-16" id="h8-0-16" class="i">+}</a><a href="#h8-0-17" id="h8-0-17" class="i">+
+\ No newline at end of file
+</a></pre>
+</div>
+</body>
+</html>

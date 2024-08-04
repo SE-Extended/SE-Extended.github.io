@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revert &quot;refactor(loader): name change&quot; - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/6b009b3f071ecf59af95977a521dbedcbb6a4f89.html">6b009b3f071ecf59af95977a521dbedcbb6a4f89</a>
+<b>parent</b> <a href="../commit/02360ea07294527a3fd49e2b4b27f920a568f3e0.html">02360ea07294527a3fd49e2b4b27f920a568f3e0</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Fri, 28 Jun 2024 04:41:00 +0100
+
+Revert &quot;refactor(loader): name change&quot;
+
+This reverts commit 638b4f0411dbe96c92c34067227004ca4e32f1e0.
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">core/src/main/kotlin/me/rhunk/snapenhance/core/XposedLoader.kt</a></td><td> | </td><td class="num">5</td><td><span class="i">+++</span><span class="d">--</span></td></tr>
+</table></pre><pre>1 file changed, 3 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/XposedLoader.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/XposedLoader.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/XposedLoader.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/XposedLoader.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -14,9 +14,9 @@ class XposedLoader : IXposedHookLoadPackage {
+</a>         if (p0.packageName != Constants.SNAPCHAT_PACKAGE_NAME) return
+         // prevent loading in sub-processes
+         if (p0.processName.contains(&quot;:&quot;)) return
+<a href="#h0-0-3" id="h0-0-3" class="d">-        XposedBridge.log(&quot;Loading SE Extended v${BuildConfig.VERSION_NAME}#${BuildConfig.GIT_HASH} (package: ${BuildConfig.APPLICATION_ID})&quot;)
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+        XposedBridge.log(&quot;Loading SnapEnhance v${BuildConfig.VERSION_NAME}#${BuildConfig.GIT_HASH} (package: ${BuildConfig.APPLICATION_ID})&quot;)
+</a>         Application::class.java.hook(&quot;attach&quot;, HookStage.BEFORE) { param -&gt;
+             SnapEnhance().init(param.arg(0))
+         }
+     }
+<a href="#h0-0-9" id="h0-0-9" class="d">-}
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+}</a><a href="#h0-0-11" id="h0-0-11" class="i">+
+\ No newline at end of file
+</a></pre>
+</div>
+</body>
+</html>

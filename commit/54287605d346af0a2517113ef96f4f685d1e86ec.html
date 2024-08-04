@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor: language - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/54287605d346af0a2517113ef96f4f685d1e86ec.html">54287605d346af0a2517113ef96f4f685d1e86ec</a>
+<b>parent</b> <a href="../commit/605626a1707bcfab7ac471295d15f7d8e1f14cec.html">605626a1707bcfab7ac471295d15f7d8e1f14cec</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Sun,  2 Jun 2024 01:21:09 +0100
+
+refactor: language
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">18</td><td><span class="i">+++++++++</span><span class="d">---------</span></td></tr>
+</table></pre><pre>1 file changed, 9 insertions(+), 9 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -2,12 +2,12 @@
+</a>     &quot;setup&quot;: {
+         &quot;dialogs&quot;: {
+             &quot;select_language&quot;: &quot;Select Language&quot;,
+<a href="#h0-0-3" id="h0-0-3" class="d">-            &quot;save_folder&quot;: &quot;SnapEnhance requires Storage permissions to download and Save Media from Snapchat.\nPlease choose the location where media should be downloaded to.&quot;,
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+            &quot;save_folder&quot;: &quot;SE Extended requires Storage permissions to download and Save Media from Snapchat.\nPlease choose the location where media should be downloaded to.&quot;,
+</a>             &quot;select_save_folder_button&quot;: &quot;Select Folder&quot;
+         },
+         &quot;mappings&quot;: {
+             &quot;dialog&quot;: &quot;Generating Mappings, this may take a while ...&quot;,
+<a href="#h0-0-9" id="h0-0-9" class="d">-            &quot;generate_failure_no_snapchat&quot;: &quot;SnapEnhance was unable to detect Snapchat, please try reinstalling Snapchat.&quot;,
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+            &quot;generate_failure_no_snapchat&quot;: &quot;SE Extended was unable to detect Snapchat, please try reinstalling Snapchat.&quot;,
+</a>             &quot;generate_failure&quot;: &quot;An error occurred while trying to generate mappings, please try again.&quot;
+         },
+         &quot;permissions&quot;: {
+<a href="#h0-1" id="h0-1" class="h">@@ -43,7 +43,7 @@
+</a>         },
+         &quot;sections&quot;: {
+             &quot;home&quot;: {
+<a href="#h0-1-3" id="h0-1-3" class="d">-                &quot;update_title&quot;: &quot;SnapEnhance Update&quot;,
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+                &quot;update_title&quot;: &quot;SE Extended Update&quot;,
+</a>                 &quot;update_content&quot;: &quot;Version {version} is available!&quot;,
+                 &quot;update_button&quot;: &quot;Download&quot;
+             },
+<a href="#h0-2" id="h0-2" class="h">@@ -153,7 +153,7 @@
+</a>             },
+             &quot;scripting_warning&quot;: {
+                 &quot;title&quot;: &quot;Warning&quot;,
+<a href="#h0-2-3" id="h0-2-3" class="d">-                &quot;content&quot;: &quot;SnapEnhance includes a scripting tool, allowing the execution of user-defined code on your device. Use extreme caution and only install modules from known, reliable sources. Unauthorized or unverified modules may pose security risks to your system.&quot;
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+                &quot;content&quot;: &quot;SE Extended includes a scripting tool, allowing the execution of user-defined code on your device. Use extreme caution and only install modules from known, reliable sources. Unauthorized or unverified modules may pose security risks to your system.&quot;
+</a>             },
+             &quot;reset_config&quot;: {
+                 &quot;title&quot;: &quot;Reset config&quot;,
+<a href="#h0-3" id="h0-3" class="h">@@ -264,7 +264,7 @@
+</a>         },
+         &quot;change_language&quot;: {
+             &quot;name&quot;: &quot;Change Language&quot;,
+<a href="#h0-3-3" id="h0-3-3" class="d">-            &quot;description&quot;: &quot;Change the language of SnapEnhance&quot;
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+            &quot;description&quot;: &quot;Change the language of SE Extended&quot;
+</a>         }
+     },
+ 
+<a href="#h0-4" id="h0-4" class="h">@@ -510,7 +510,7 @@
+</a>                     },
+                     &quot;hide_settings_gear&quot;: {
+                         &quot;name&quot;: &quot;Hide Settings Gear&quot;,
+<a href="#h0-4-3" id="h0-4-3" class="d">-                        &quot;description&quot;: &quot;Hides the SnapEnhance Settings Gear in friend feed&quot;
+</a><a href="#h0-4-4" id="h0-4-4" class="i">+                        &quot;description&quot;: &quot;Hides the SE Extended Settings Gear in friend feed&quot;
+</a>                     },
+                     &quot;friend_feed_menu_buttons&quot;: {
+                         &quot;name&quot;: &quot;Friend Feed Menu Buttons&quot;,
+<a href="#h0-5" id="h0-5" class="h">@@ -804,7 +804,7 @@
+</a>                     },
+                     &quot;spotlight_comments_username&quot;: {
+                         &quot;name&quot;: &quot;Spotlight Comments Username&quot;,
+<a href="#h0-5-3" id="h0-5-3" class="d">-                        &quot;description&quot;: &quot;Shows author username in Spotlight comments&quot;
+</a><a href="#h0-5-4" id="h0-5-4" class="i">+                        &quot;description&quot;: &quot;Shows authors username in Spotlight comments&quot;
+</a>                     },
+                     &quot;bypass_video_length_restriction&quot;: {
+                         &quot;name&quot;: &quot;Bypass Video Length Restrictions&quot;,
+<a href="#h0-6" id="h0-6" class="h">@@ -1068,7 +1068,7 @@
+</a>             },
+             &quot;scripting&quot;: {
+                 &quot;name&quot;: &quot;Scripting&quot;,
+<a href="#h0-6-3" id="h0-6-3" class="d">-                &quot;description&quot;: &quot;Run custom scripts to extend SnapEnhance&quot;,
+</a><a href="#h0-6-4" id="h0-6-4" class="i">+                &quot;description&quot;: &quot;Run custom scripts to extend SE Extended&quot;,
+</a>                 &quot;properties&quot;: {
+                     &quot;developer_mode&quot;: {
+                         &quot;name&quot;: &quot;Developer Mode&quot;,
+<a href="#h0-7" id="h0-7" class="h">@@ -1241,7 +1241,7 @@
+</a>             },
+             &quot;auto_reload&quot;: {
+                 &quot;snapchat_only&quot;: &quot;Snapchat Only&quot;,
+<a href="#h0-7-3" id="h0-7-3" class="d">-                &quot;all&quot;: &quot;All (Snapchat + SnapEnhance)&quot;
+</a><a href="#h0-7-4" id="h0-7-4" class="i">+                &quot;all&quot;: &quot;All (Snapchat + SE Extended)&quot;
+</a>             },
+             &quot;edit_text_override&quot;: {
+                 &quot;multi_line_chat_input&quot;: &quot;Multi Line Chat Input&quot;,
+</pre>
+</div>
+</body>
+</html>

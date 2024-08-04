@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>chore: sync fork - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/e9d7ea1c9b6d870f042113dfbe0dc7415d6e390c.html">e9d7ea1c9b6d870f042113dfbe0dc7415d6e390c</a>
+<b>parent</b> <a href="../commit/f820ebe2db8b3d53d73722602cc16bc87753ca89.html">f820ebe2db8b3d53d73722602cc16bc87753ca89</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Sat,  1 Jun 2024 19:38:20 +0100
+
+chore: sync fork 
+
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt</a></td><td> | </td><td class="num">22</td><td><span class="i">+++++++++++++++</span><span class="d">-------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">app/src/main/kotlin/me/rhunk/snapenhance/bridge/BridgeService.kt</a></td><td> | </td><td class="num">4</td><td><span class="i">++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/Routes.kt</a></td><td> | </td><td class="num">6</td><td><span class="i">++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h4">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/data/InstallationSummary.kt</a></td><td> | </td><td class="num">1</td><td><span class="i">+</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h5">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/features/FeaturesRoot.kt</a></td><td> | </td><td class="num">61</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-----------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h6">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt</a></td><td> | </td><td class="num">4</td><td><span class="i">+</span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h7">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt</a></td><td> | </td><td class="num">100</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">---------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h8">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/social/MessagingPreview.kt</a></td><td> | </td><td class="num">32</td><td><span class="i">++++++++++++++++++++++</span><span class="d">----------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h9">app/src/main/kotlin/me/rhunk/snapenhance/ui/util/AlertDialogs.kt</a></td><td> | </td><td class="num">41</td><td><span class="i">++++++++++++++++++++++++++++++++++++</span><span class="d">-----</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h10">common/build.gradle.kts</a></td><td> | </td><td class="num">8</td><td><span class="i">++++++++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h11">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">9</td><td><span class="i">+++++++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h12">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigContainer.kt</a></td><td> | </td><td class="num">5</td><td><span class="i">+++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h13">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigObjects.kt</a></td><td> | </td><td class="num">3</td><td><span class="i">++</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h14">common/src/main/kotlin/me/rhunk/snapenhance/common/config/DataProcessors.kt</a></td><td> | </td><td class="num">28</td><td><span class="i">++++++++++++++</span><span class="d">--------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h15">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ModConfig.kt</a></td><td> | </td><td class="num">8</td><td><span class="i">+++++</span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h16">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/DownloaderConfig.kt</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h17">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt</a></td><td> | </td><td class="num">6</td><td><span class="i">+++</span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h18">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Scripting.kt</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h19">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt</a></td><td> | </td><td class="num">5</td><td><span class="i">+++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h20">core/src/main/kotlin/me/rhunk/snapenhance/core/ModContext.kt</a></td><td> | </td><td class="num">2</td><td><span class="i">++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h21">core/src/main/kotlin/me/rhunk/snapenhance/core/SnapEnhance.kt</a></td><td> | </td><td class="num">105</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++</span><span class="d">--------------------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h22">core/src/main/kotlin/me/rhunk/snapenhance/core/bridge/BridgeClient.kt</a></td><td> | </td><td class="num">163</td><td><span class="i">++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d">-------------------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h23">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/CustomEmojiFont.kt</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h24">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/Messaging.kt</a></td><td> | </td><td class="num">10</td><td><span class="i">++++++++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h25">core/src/main/kotlin/me/rhunk/snapenhance/core/util/LSPatchUpdater.kt</a></td><td> | </td><td class="num">5</td><td><span class="i">++</span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h26">gradle/libs.versions.toml</a></td><td> | </td><td class="num">5</td><td><span class="i">+++</span><span class="d">--</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h27">gradle/wrapper/gradle-wrapper.properties</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h28">gradlew</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table></pre><pre>29 files changed, 450 insertions(+), 196 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -191,7 +191,21 @@ class LogManager(
+</a>     }
+ 
+     fun exportLogsToZip(outputStream: OutputStream) {
+<a href="#h0-0-3" id="h0-0-3" class="d">-        val zipOutputStream = ZipOutputStream(outputStream)
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+        val zipOutputStream = ZipOutputStream(outputStream).apply {
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+            setMethod(ZipOutputStream.DEFLATED)
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+        }
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+        // add device info to zip
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+        zipOutputStream.putNextEntry(ZipEntry(&quot;device_info.json&quot;))
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+        val gson = GsonBuilder().setPrettyPrinting().create()
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+        zipOutputStream.write(gson.toJson(remoteSideContext.installationSummary).toByteArray())
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+        zipOutputStream.closeEntry()
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+        // add config
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+        zipOutputStream.putNextEntry(ZipEntry(&quot;config.json&quot;))
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+        zipOutputStream.write(remoteSideContext.config.exportToString(exportSensitiveData = false).toByteArray())
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+        zipOutputStream.closeEntry()
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+
+</a>         //add logFolder to zip
+         logFolder.walk().forEach {
+             if (it.isFile) {
+<a href="#h0-1" id="h0-1" class="h">@@ -201,12 +215,6 @@ class LogManager(
+</a>             }
+         }
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-        //add device info to zip
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-        zipOutputStream.putNextEntry(ZipEntry(&quot;device_info.json&quot;))
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-        val gson = GsonBuilder().setPrettyPrinting().create()
+</a><a href="#h0-1-6" id="h0-1-6" class="d">-        zipOutputStream.write(gson.toJson(remoteSideContext.installationSummary).toByteArray())
+</a><a href="#h0-1-7" id="h0-1-7" class="d">-        zipOutputStream.closeEntry()
+</a><a href="#h0-1-8" id="h0-1-8" class="d">-
+</a>         zipOutputStream.close()
+     }
+ 
+<b>diff --git a/<a id="h1" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/RemoteSideContext.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -160,6 +160,7 @@ class RemoteSideContext(
+</a>                         val cert = certFactory.generateCertificate(ByteArrayInputStream(it.toByteArray())) as X509Certificate
+                         cert.issuerDN.toString()
+                     } ?: throw Exception(&quot;Failed to get certificate info&quot;),
+<a href="#h1-0-3" id="h1-0-3" class="i">+                gitHash = BuildConfig.GIT_HASH,
+</a>                 isDebugBuild = BuildConfig.DEBUG,
+                 mappingVersion = mappings.getGeneratedBuildNumber(),
+                 mappingsOutdated = mappings.isMappingsOutdated()
+<a href="#h1-1" id="h1-1" class="h">@@ -186,7 +187,7 @@ class RemoteSideContext(
+</a>         log.debug(message.toString())
+     }
+ 
+<a href="#h1-1-3" id="h1-1-3" class="d">-    fun hasMessagingBridge() = bridgeService != null &amp;&amp; bridgeService?.messagingBridge != null
+</a><a href="#h1-1-4" id="h1-1-4" class="i">+    fun hasMessagingBridge() = bridgeService != null &amp;&amp; bridgeService?.messagingBridge != null &amp;&amp; bridgeService?.messagingBridge?.asBinder()?.pingBinder() == true
+</a> 
+     fun checkForRequirements(overrideRequirements: Int? = null): Boolean {
+         var requirements = overrideRequirements ?: 0
+<b>diff --git a/<a id="h2" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/bridge/BridgeService.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/bridge/BridgeService.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/bridge/BridgeService.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/bridge/BridgeService.kt</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -45,6 +45,10 @@ class BridgeService : Service() {
+</a> 
+     fun triggerScopeSync(scope: SocialScope, id: String, updateOnly: Boolean = false) {
+         runCatching {
+<a href="#h2-0-3" id="h2-0-3" class="i">+            if (!syncCallback.asBinder().pingBinder()) {
+</a><a href="#h2-0-4" id="h2-0-4" class="i">+                remoteSideContext.log.warn(&quot;Failed to sync $scope $id: Callback is dead&quot;)
+</a><a href="#h2-0-5" id="h2-0-5" class="i">+                return
+</a><a href="#h2-0-6" id="h2-0-6" class="i">+            }
+</a>             val modDatabase = remoteSideContext.database
+             val syncedObject = when (scope) {
+                 SocialScope.FRIEND -&gt; {
+<b>diff --git a/<a id="h3" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/Routes.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/Routes.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/Routes.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/Routes.kt</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -94,6 +94,12 @@ class Routes(
+</a>             routes.navController.navigate(replaceArguments(routeInfo.id, HashMap&lt;String, String&gt;().apply { args() }))
+         }
+ 
+<a href="#h3-0-3" id="h3-0-3" class="i">+        fun navigateReload() {
+</a><a href="#h3-0-4" id="h3-0-4" class="i">+            routes.navController.navigate(routeInfo.id) {
+</a><a href="#h3-0-5" id="h3-0-5" class="i">+                popUpTo(routeInfo.id) { inclusive = true }
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+            }
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+        }
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+
+</a>         fun navigateReset(args: MutableMap&lt;String, String&gt;.() -&gt; Unit = {}) {
+             routes.navController.navigate(replaceArguments(routeInfo.id, HashMap&lt;String, String&gt;().apply { args() })) {
+                 popUpTo(routes.navController.graph.findStartDestination().id) {
+<b>diff --git a/<a id="h4" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/data/InstallationSummary.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/data/InstallationSummary.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/data/InstallationSummary.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/data/InstallationSummary.kt</a></b>
+<a href="#h4-0" id="h4-0" class="h">@@ -15,6 +15,7 @@ data class ModInfo(
+</a>     val buildVersion: String,
+     val buildVersionCode: Long,
+     val buildIssuer: String,
+<a href="#h4-0-3" id="h4-0-3" class="i">+    val gitHash: String,
+</a>     val isDebugBuild: Boolean,
+     val mappingVersion: Long?,
+     val mappingsOutdated: Boolean?,
+<b>diff --git a/<a id="h5" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/features/FeaturesRoot.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/features/FeaturesRoot.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/features/FeaturesRoot.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/features/FeaturesRoot.kt</a></b>
+<a href="#h5-0" id="h5-0" class="h">@@ -19,6 +19,7 @@ import androidx.compose.material3.*
+</a> import androidx.compose.runtime.*
+ import androidx.compose.ui.Alignment
+ import androidx.compose.ui.Modifier
+<a href="#h5-0-3" id="h5-0-3" class="i">+import androidx.compose.ui.draw.clip
+</a> import androidx.compose.ui.focus.FocusRequester
+ import androidx.compose.ui.focus.focusRequester
+ import androidx.compose.ui.graphics.Color
+<a href="#h5-1" id="h5-1" class="h">@@ -32,6 +33,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
+</a> import androidx.navigation.NavGraphBuilder
+ import androidx.navigation.NavOptions
+ import androidx.navigation.compose.composable
+<a href="#h5-1-3" id="h5-1-3" class="i">+import com.github.skydoves.colorpicker.compose.AlphaTile
+</a> import kotlinx.coroutines.Dispatchers
+ import kotlinx.coroutines.Job
+ import kotlinx.coroutines.delay
+<a href="#h5-2" id="h5-2" class="h">@@ -325,14 +327,16 @@ class FeaturesRoot : Routes.Route() {
+</a>                 }
+ 
+                 registerDialogOnClickCallback().let { { it.invoke(true) } }.also {
+<a href="#h5-2-3" id="h5-2-3" class="d">-                    Box(
+</a><a href="#h5-2-4" id="h5-2-4" class="i">+                    val selectedColor = (propertyValue.getNullable() as? Int)?.let { Color(it) }
+</a><a href="#h5-2-5" id="h5-2-5" class="i">+                    AlphaTile(
+</a>                         modifier = Modifier
+                             .size(30.dp)
+                             .border(2.dp, Color.White, shape = RoundedCornerShape(15.dp))
+<a href="#h5-2-9" id="h5-2-9" class="d">-                            .background(
+</a><a href="#h5-2-10" id="h5-2-10" class="d">-                                color = (propertyValue.getNullable() as? Int)?.let { Color(it) } ?: Color.Transparent,
+</a><a href="#h5-2-11" id="h5-2-11" class="d">-                                shape = RoundedCornerShape(15.dp)
+</a><a href="#h5-2-12" id="h5-2-12" class="d">-                            )
+</a><a href="#h5-2-13" id="h5-2-13" class="i">+                            .clip(RoundedCornerShape(15.dp)),
+</a><a href="#h5-2-14" id="h5-2-14" class="i">+                        selectedColor = selectedColor ?: Color.Transparent,
+</a><a href="#h5-2-15" id="h5-2-15" class="i">+                        tileEvenColor = selectedColor?.let { Color(0xFFCBCBCB) } ?: Color.Transparent,
+</a><a href="#h5-2-16" id="h5-2-16" class="i">+                        tileOddColor = selectedColor?.let { Color.White } ?: Color.Transparent,
+</a><a href="#h5-2-17" id="h5-2-17" class="i">+                        tileSize = 8.dp,
+</a>                     )
+                 }
+             }
+<a href="#h5-3" id="h5-3" class="h">@@ -525,6 +529,7 @@ class FeaturesRoot : Routes.Route() {
+</a> 
+         var showExportDropdownMenu by remember { mutableStateOf(false) }
+         var showResetConfirmationDialog by remember { mutableStateOf(false) }
+<a href="#h5-3-3" id="h5-3-3" class="i">+        var showExportDialog by remember { mutableStateOf(false) }
+</a> 
+         if (showResetConfirmationDialog) {
+             AlertDialog(
+<a href="#h5-4" id="h5-4" class="h">@@ -554,19 +559,50 @@ class FeaturesRoot : Routes.Route() {
+</a>             )
+         }
+ 
+<a href="#h5-4-3" id="h5-4-3" class="d">-        val actions = remember {
+</a><a href="#h5-4-4" id="h5-4-4" class="d">-            mapOf(
+</a><a href="#h5-4-5" id="h5-4-5" class="d">-                translation[&quot;export_option&quot;] to {
+</a><a href="#h5-4-6" id="h5-4-6" class="d">-                    activityLauncher {
+</a><a href="#h5-4-7" id="h5-4-7" class="d">-                        saveFile(&quot;config.json&quot;, &quot;application/json&quot;) { uri -&gt;
+</a><a href="#h5-4-8" id="h5-4-8" class="i">+        if (showExportDialog) {
+</a><a href="#h5-4-9" id="h5-4-9" class="i">+            fun exportConfig(
+</a><a href="#h5-4-10" id="h5-4-10" class="i">+                exportSensitiveData: Boolean
+</a><a href="#h5-4-11" id="h5-4-11" class="i">+            ) {
+</a><a href="#h5-4-12" id="h5-4-12" class="i">+                showExportDialog = false
+</a><a href="#h5-4-13" id="h5-4-13" class="i">+                activityLauncher {
+</a><a href="#h5-4-14" id="h5-4-14" class="i">+                    saveFile(&quot;config.json&quot;, &quot;application/json&quot;) { uri -&gt;
+</a><a href="#h5-4-15" id="h5-4-15" class="i">+                        runCatching {
+</a>                             context.androidContext.contentResolver.openOutputStream(Uri.parse(uri))?.use {
+                                 context.config.writeConfig()
+<a href="#h5-4-18" id="h5-4-18" class="d">-                                context.config.exportToString().byteInputStream().copyTo(it)
+</a><a href="#h5-4-19" id="h5-4-19" class="i">+                                context.config.exportToString(exportSensitiveData).byteInputStream().copyTo(it)
+</a>                                 context.shortToast(translation[&quot;config_export_success_toast&quot;])
+                             }
+<a href="#h5-4-22" id="h5-4-22" class="i">+                        }.onFailure {
+</a><a href="#h5-4-23" id="h5-4-23" class="i">+                            context.longToast(translation.format(&quot;config_export_failure_toast&quot;, &quot;error&quot; to it.message.toString()))
+</a>                         }
+                     }
+<a href="#h5-4-26" id="h5-4-26" class="i">+                }
+</a><a href="#h5-4-27" id="h5-4-27" class="i">+            }
+</a><a href="#h5-4-28" id="h5-4-28" class="i">+
+</a><a href="#h5-4-29" id="h5-4-29" class="i">+            AlertDialog(
+</a><a href="#h5-4-30" id="h5-4-30" class="i">+                title = { Text(text = context.translation[&quot;manager.dialogs.export_config.title&quot;]) },
+</a><a href="#h5-4-31" id="h5-4-31" class="i">+                text = { Text(text = context.translation[&quot;manager.dialogs.export_config.content&quot;]) },
+</a><a href="#h5-4-32" id="h5-4-32" class="i">+                onDismissRequest = { showExportDialog = false },
+</a><a href="#h5-4-33" id="h5-4-33" class="i">+                confirmButton = {
+</a><a href="#h5-4-34" id="h5-4-34" class="i">+                    Button(
+</a><a href="#h5-4-35" id="h5-4-35" class="i">+                        onClick = { exportConfig(true) }
+</a><a href="#h5-4-36" id="h5-4-36" class="i">+                    ) {
+</a><a href="#h5-4-37" id="h5-4-37" class="i">+                        Text(text = context.translation[&quot;button.positive&quot;])
+</a><a href="#h5-4-38" id="h5-4-38" class="i">+                    }
+</a>                 },
+<a href="#h5-4-40" id="h5-4-40" class="i">+                dismissButton = {
+</a><a href="#h5-4-41" id="h5-4-41" class="i">+                    Button(
+</a><a href="#h5-4-42" id="h5-4-42" class="i">+                        onClick = { exportConfig(false) }
+</a><a href="#h5-4-43" id="h5-4-43" class="i">+                    ) {
+</a><a href="#h5-4-44" id="h5-4-44" class="i">+                        Text(text = context.translation[&quot;button.negative&quot;])
+</a><a href="#h5-4-45" id="h5-4-45" class="i">+                    }
+</a><a href="#h5-4-46" id="h5-4-46" class="i">+                }
+</a><a href="#h5-4-47" id="h5-4-47" class="i">+            )
+</a><a href="#h5-4-48" id="h5-4-48" class="i">+        }
+</a><a href="#h5-4-49" id="h5-4-49" class="i">+
+</a><a href="#h5-4-50" id="h5-4-50" class="i">+        val actions = remember {
+</a><a href="#h5-4-51" id="h5-4-51" class="i">+            mapOf(
+</a><a href="#h5-4-52" id="h5-4-52" class="i">+                translation[&quot;export_option&quot;] to { showExportDialog = true },
+</a>                 translation[&quot;import_option&quot;] to {
+                     activityLauncher {
+                         openFile(&quot;application/json&quot;) { uri -&gt;
+<a href="#h5-5" id="h5-5" class="h">@@ -578,6 +614,9 @@ class FeaturesRoot : Routes.Route() {
+</a>                                     return@use
+                                 }
+                                 context.shortToast(translation[&quot;config_import_success_toast&quot;])
+<a href="#h5-5-3" id="h5-5-3" class="i">+                                context.coroutineScope.launch(Dispatchers.Main) {
+</a><a href="#h5-5-4" id="h5-5-4" class="i">+                                    navigateReload()
+</a><a href="#h5-5-5" id="h5-5-5" class="i">+                                }
+</a>                             }
+                         }
+                     }
+<b>diff --git a/<a id="h6" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt</a></b>
+<a href="#h6-0" id="h6-0" class="h">@@ -68,9 +68,7 @@ class HomeLogs : Routes.Route() {
+</a>                 context.coroutineScope.launch {
+                     context.log.clearLogs()
+                 }
+<a href="#h6-0-3" id="h6-0-3" class="d">-                routes.navController.navigate(routeInfo.id) {
+</a><a href="#h6-0-4" id="h6-0-4" class="d">-                    popUpTo(routeInfo.id) { inclusive = true }
+</a><a href="#h6-0-5" id="h6-0-5" class="d">-                }
+</a><a href="#h6-0-6" id="h6-0-6" class="i">+                navigateReload()
+</a>                 showDropDown = false
+             }, text = {
+                 Text(translation[&quot;clear_logs_button&quot;])
+<b>diff --git a/<a id="h7" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeRoot.kt</a></b>
+<a href="#h7-0" id="h7-0" class="h">@@ -5,26 +5,26 @@ import android.net.Uri
+</a> import androidx.compose.foundation.ScrollState
+ import androidx.compose.foundation.clickable
+ import androidx.compose.foundation.layout.*
+<a href="#h7-0-3" id="h7-0-3" class="i">+import androidx.compose.foundation.text.ClickableText
+</a> import androidx.compose.foundation.verticalScroll
+ import androidx.compose.material.icons.Icons
+ import androidx.compose.material.icons.automirrored.filled.Help
+ import androidx.compose.material.icons.filled.*
+ import androidx.compose.material3.*
+<a href="#h7-0-9" id="h7-0-9" class="d">-import androidx.compose.runtime.Composable
+</a><a href="#h7-0-10" id="h7-0-10" class="d">-import androidx.compose.runtime.getValue
+</a><a href="#h7-0-11" id="h7-0-11" class="d">-import androidx.compose.runtime.mutableStateOf
+</a><a href="#h7-0-12" id="h7-0-12" class="d">-import androidx.compose.runtime.remember
+</a><a href="#h7-0-13" id="h7-0-13" class="d">-import androidx.compose.runtime.setValue
+</a><a href="#h7-0-14" id="h7-0-14" class="i">+import androidx.compose.runtime.*
+</a> import androidx.compose.ui.Alignment
+ import androidx.compose.ui.Modifier
+ import androidx.compose.ui.graphics.vector.ImageVector
+ import androidx.compose.ui.platform.LocalDensity
+ import androidx.compose.ui.res.vectorResource
+<a href="#h7-0-20" id="h7-0-20" class="i">+import androidx.compose.ui.text.SpanStyle
+</a><a href="#h7-0-21" id="h7-0-21" class="i">+import androidx.compose.ui.text.buildAnnotatedString
+</a> import androidx.compose.ui.text.font.Font
+ import androidx.compose.ui.text.font.FontFamily
+ import androidx.compose.ui.text.font.FontWeight
+ import androidx.compose.ui.text.style.TextAlign
+ import androidx.compose.ui.text.style.TextOverflow
+<a href="#h7-0-27" id="h7-0-27" class="i">+import androidx.compose.ui.text.withStyle
+</a> import androidx.compose.ui.unit.Dp
+ import androidx.compose.ui.unit.dp
+ import androidx.compose.ui.unit.sp
+<a href="#h7-1" id="h7-1" class="h">@@ -41,6 +41,7 @@ import me.rhunk.snapenhance.storage.setQuickTiles
+</a> import me.rhunk.snapenhance.ui.manager.Routes
+ import me.rhunk.snapenhance.ui.manager.data.Updater
+ import me.rhunk.snapenhance.ui.util.ActivityLauncherHelper
+<a href="#h7-1-3" id="h7-1-3" class="i">+import java.text.DateFormat
+</a> 
+ class HomeRoot : Routes.Route() {
+     companion object {
+<a href="#h7-2" id="h7-2" class="h">@@ -120,6 +121,29 @@ class HomeRoot : Routes.Route() {
+</a>         )
+     }
+ 
+<a href="#h7-2-3" id="h7-2-3" class="i">+    @Composable
+</a><a href="#h7-2-4" id="h7-2-4" class="i">+    private fun InfoCard(
+</a><a href="#h7-2-5" id="h7-2-5" class="i">+        content: @Composable ColumnScope.() -&gt; Unit,
+</a><a href="#h7-2-6" id="h7-2-6" class="i">+    ) {
+</a><a href="#h7-2-7" id="h7-2-7" class="i">+        OutlinedCard(
+</a><a href="#h7-2-8" id="h7-2-8" class="i">+            modifier = Modifier
+</a><a href="#h7-2-9" id="h7-2-9" class="i">+                .padding(all = cardMargin)
+</a><a href="#h7-2-10" id="h7-2-10" class="i">+                .fillMaxWidth(),
+</a><a href="#h7-2-11" id="h7-2-11" class="i">+            colors = CardDefaults.cardColors(
+</a><a href="#h7-2-12" id="h7-2-12" class="i">+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+</a><a href="#h7-2-13" id="h7-2-13" class="i">+                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+</a><a href="#h7-2-14" id="h7-2-14" class="i">+            )
+</a><a href="#h7-2-15" id="h7-2-15" class="i">+        ) {
+</a><a href="#h7-2-16" id="h7-2-16" class="i">+            Column(
+</a><a href="#h7-2-17" id="h7-2-17" class="i">+                modifier = Modifier
+</a><a href="#h7-2-18" id="h7-2-18" class="i">+                    .fillMaxWidth()
+</a><a href="#h7-2-19" id="h7-2-19" class="i">+                    .padding(all = 15.dp)
+</a><a href="#h7-2-20" id="h7-2-20" class="i">+            ) {
+</a><a href="#h7-2-21" id="h7-2-21" class="i">+                content()
+</a><a href="#h7-2-22" id="h7-2-22" class="i">+            }
+</a><a href="#h7-2-23" id="h7-2-23" class="i">+        }
+</a><a href="#h7-2-24" id="h7-2-24" class="i">+    }
+</a><a href="#h7-2-25" id="h7-2-25" class="i">+
+</a> 
+     @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+     override val content: @Composable (NavBackStackEntry) -&gt; Unit = {
+<a href="#h7-3" id="h7-3" class="h">@@ -197,21 +221,12 @@ class HomeRoot : Routes.Route() {
+</a>             }
+ 
+             if (latestUpdate != null) {
+<a href="#h7-3-3" id="h7-3-3" class="d">-                Spacer(modifier = Modifier.height(20.dp))
+</a><a href="#h7-3-4" id="h7-3-4" class="d">-                OutlinedCard(
+</a><a href="#h7-3-5" id="h7-3-5" class="d">-                    modifier = Modifier
+</a><a href="#h7-3-6" id="h7-3-6" class="d">-                        .padding(all = cardMargin)
+</a><a href="#h7-3-7" id="h7-3-7" class="d">-                        .fillMaxWidth(),
+</a><a href="#h7-3-8" id="h7-3-8" class="d">-                    colors = CardDefaults.cardColors(
+</a><a href="#h7-3-9" id="h7-3-9" class="d">-                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+</a><a href="#h7-3-10" id="h7-3-10" class="d">-                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+</a><a href="#h7-3-11" id="h7-3-11" class="d">-                    )
+</a><a href="#h7-3-12" id="h7-3-12" class="d">-                ) {
+</a><a href="#h7-3-13" id="h7-3-13" class="i">+                Spacer(modifier = Modifier.height(10.dp))
+</a><a href="#h7-3-14" id="h7-3-14" class="i">+                InfoCard {
+</a>                     Row(
+<a href="#h7-3-16" id="h7-3-16" class="d">-                        modifier = Modifier
+</a><a href="#h7-3-17" id="h7-3-17" class="d">-                            .fillMaxWidth()
+</a><a href="#h7-3-18" id="h7-3-18" class="d">-                            .padding(all = 15.dp),
+</a><a href="#h7-3-19" id="h7-3-19" class="d">-                        horizontalArrangement = Arrangement.SpaceBetween
+</a><a href="#h7-3-20" id="h7-3-20" class="i">+                        modifier = Modifier.fillMaxWidth(),
+</a><a href="#h7-3-21" id="h7-3-21" class="i">+                        horizontalArrangement = Arrangement.SpaceBetween,
+</a><a href="#h7-3-22" id="h7-3-22" class="i">+                        verticalAlignment = Alignment.CenterVertically
+</a>                     ) {
+                         Column {
+                             Text(
+<a href="#h7-4" id="h7-4" class="h">@@ -237,6 +252,53 @@ class HomeRoot : Routes.Route() {
+</a>                 }
+             }
+ 
+<a href="#h7-4-3" id="h7-4-3" class="i">+            if (BuildConfig.DEBUG) {
+</a><a href="#h7-4-4" id="h7-4-4" class="i">+                Spacer(modifier = Modifier.height(10.dp))
+</a><a href="#h7-4-5" id="h7-4-5" class="i">+                InfoCard {
+</a><a href="#h7-4-6" id="h7-4-6" class="i">+                    Text(
+</a><a href="#h7-4-7" id="h7-4-7" class="i">+                        text = &quot;You are running a debug build of SnapEnhance&quot;,
+</a><a href="#h7-4-8" id="h7-4-8" class="i">+                        fontSize = 14.sp,
+</a><a href="#h7-4-9" id="h7-4-9" class="i">+                        fontWeight = FontWeight.Bold,
+</a><a href="#h7-4-10" id="h7-4-10" class="i">+                    )
+</a><a href="#h7-4-11" id="h7-4-11" class="i">+                    val buildSummary = buildAnnotatedString {
+</a><a href="#h7-4-12" id="h7-4-12" class="i">+                        withStyle(style = SpanStyle(fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant, fontWeight = FontWeight.Light)) {
+</a><a href="#h7-4-13" id="h7-4-13" class="i">+                            append(&quot;Version &quot;)
+</a><a href="#h7-4-14" id="h7-4-14" class="i">+                            append(BuildConfig.VERSION_NAME)
+</a><a href="#h7-4-15" id="h7-4-15" class="i">+                            append(&quot; (&quot;)
+</a><a href="#h7-4-16" id="h7-4-16" class="i">+                            append(BuildConfig.VERSION_CODE.toString())
+</a><a href="#h7-4-17" id="h7-4-17" class="i">+                            append(&quot;) - &quot;)
+</a><a href="#h7-4-18" id="h7-4-18" class="i">+                        }
+</a><a href="#h7-4-19" id="h7-4-19" class="i">+                        pushStringAnnotation(
+</a><a href="#h7-4-20" id="h7-4-20" class="i">+                            tag = &quot;git_hash&quot;,
+</a><a href="#h7-4-21" id="h7-4-21" class="i">+                            annotation = BuildConfig.GIT_HASH
+</a><a href="#h7-4-22" id="h7-4-22" class="i">+                        )
+</a><a href="#h7-4-23" id="h7-4-23" class="i">+                        withStyle(style = SpanStyle(fontSize = 13.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)) {
+</a><a href="#h7-4-24" id="h7-4-24" class="i">+                            append(BuildConfig.GIT_HASH.substring(0, 7))
+</a><a href="#h7-4-25" id="h7-4-25" class="i">+                        }
+</a><a href="#h7-4-26" id="h7-4-26" class="i">+                        pop()
+</a><a href="#h7-4-27" id="h7-4-27" class="i">+                    }
+</a><a href="#h7-4-28" id="h7-4-28" class="i">+                    ClickableText(
+</a><a href="#h7-4-29" id="h7-4-29" class="i">+                        text = buildSummary,
+</a><a href="#h7-4-30" id="h7-4-30" class="i">+                        onClick = { offset -&gt;
+</a><a href="#h7-4-31" id="h7-4-31" class="i">+                            buildSummary.getStringAnnotations(tag = &quot;git_hash&quot;, start = offset, end = offset)
+</a><a href="#h7-4-32" id="h7-4-32" class="i">+                                .firstOrNull()?.let {
+</a><a href="#h7-4-33" id="h7-4-33" class="i">+                                    context.activity?.startActivity(Intent(Intent.ACTION_VIEW).apply {
+</a><a href="#h7-4-34" id="h7-4-34" class="i">+                                        data = Uri.parse(&quot;https://github.com/rhunk/SnapEnhance/commit/${it.item}&quot;)
+</a><a href="#h7-4-35" id="h7-4-35" class="i">+                                    })
+</a><a href="#h7-4-36" id="h7-4-36" class="i">+                                }
+</a><a href="#h7-4-37" id="h7-4-37" class="i">+                        }
+</a><a href="#h7-4-38" id="h7-4-38" class="i">+                    )
+</a><a href="#h7-4-39" id="h7-4-39" class="i">+                    Text(
+</a><a href="#h7-4-40" id="h7-4-40" class="i">+                        fontSize = 12.sp,
+</a><a href="#h7-4-41" id="h7-4-41" class="i">+                        text = remember {
+</a><a href="#h7-4-42" id="h7-4-42" class="i">+                            &quot;Build date: &quot; + DateFormat.getDateTimeInstance().format(BuildConfig.BUILD_TIMESTAMP) + &quot; (${((System.currentTimeMillis() - BuildConfig.BUILD_TIMESTAMP) / 86400000).toInt()} days ago)&quot;
+</a><a href="#h7-4-43" id="h7-4-43" class="i">+                        },
+</a><a href="#h7-4-44" id="h7-4-44" class="i">+                        lineHeight = 20.sp,
+</a><a href="#h7-4-45" id="h7-4-45" class="i">+                        fontWeight = FontWeight.Light
+</a><a href="#h7-4-46" id="h7-4-46" class="i">+                    )
+</a><a href="#h7-4-47" id="h7-4-47" class="i">+                }
+</a><a href="#h7-4-48" id="h7-4-48" class="i">+            }
+</a><a href="#h7-4-49" id="h7-4-49" class="i">+
+</a>             var showQuickActionsMenu by remember { mutableStateOf(false) }
+ 
+             Row(
+<b>diff --git a/<a id="h8" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/social/MessagingPreview.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/social/MessagingPreview.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/social/MessagingPreview.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/social/MessagingPreview.kt</a></b>
+<a href="#h8-0" id="h8-0" class="h">@@ -44,10 +44,10 @@ import me.rhunk.snapenhance.ui.util.Dialog
+</a> 
+ class MessagingPreview: Routes.Route() {
+     private lateinit var coroutineScope: CoroutineScope
+<a href="#h8-0-3" id="h8-0-3" class="d">-    private lateinit var messagingBridge: MessagingBridge
+</a>     private lateinit var previewScrollState: LazyListState
+ 
+     private val contentTypeTranslation by lazy { context.translation.getCategory(&quot;content_type&quot;) }
+<a href="#h8-0-7" id="h8-0-7" class="i">+    private val messagingBridge: MessagingBridge? get() = context.bridgeService?.messagingBridge
+</a> 
+     private var messages = mutableStateListOf&lt;Message&gt;()
+     private var conversationId by mutableStateOf&lt;String?&gt;(null)
+<a href="#h8-1" id="h8-1" class="h">@@ -194,10 +194,14 @@ class MessagingPreview: Routes.Route() {
+</a>         }
+ 
+         fun launchMessagingTask(taskType: MessagingTaskType, constraints: List&lt;MessagingTaskConstraint&gt; = listOf(), onSuccess: (Message) -&gt; Unit = {}) {
+<a href="#h8-1-3" id="h8-1-3" class="i">+            if (messagingBridge == null) {
+</a><a href="#h8-1-4" id="h8-1-4" class="i">+                context.longToast(translation[&quot;bridge_connection_failed&quot;])
+</a><a href="#h8-1-5" id="h8-1-5" class="i">+                return
+</a><a href="#h8-1-6" id="h8-1-6" class="i">+            }
+</a>             taskSelectionDropdown = false
+             processMessageCount.intValue = 0
+             activeTask = MessagingTask(
+<a href="#h8-1-10" id="h8-1-10" class="d">-                messagingBridge, conversationId!!, taskType, constraints,
+</a><a href="#h8-1-11" id="h8-1-11" class="i">+                messagingBridge!!, conversationId!!, taskType, constraints,
+</a>                 overrideClientMessageIds = selectedMessages.takeIf { it.isNotEmpty() }?.toList(),
+                 processedMessageCount = processMessageCount,
+                 onSuccess = onSuccess,
+<a href="#h8-2" id="h8-2" class="h">@@ -299,15 +303,23 @@ class MessagingPreview: Routes.Route() {
+</a>                     else selectConstraintsDialog = true
+                 }
+                 ActionButton(text = translation[if (hasSelection) &quot;mark_selection_as_seen_option&quot; else &quot;mark_all_as_seen_option&quot;], icon = Icons.Rounded.RemoveRedEye) {
+<a href="#h8-2-3" id="h8-2-3" class="i">+                    if (messagingBridge == null) {
+</a><a href="#h8-2-4" id="h8-2-4" class="i">+                        context.longToast(translation[&quot;bridge_connection_failed&quot;])
+</a><a href="#h8-2-5" id="h8-2-5" class="i">+                        return@ActionButton
+</a><a href="#h8-2-6" id="h8-2-6" class="i">+                    }
+</a>                     launchMessagingTask(
+                         MessagingTaskType.READ, listOf(
+<a href="#h8-2-9" id="h8-2-9" class="d">-                        MessagingConstraints.NO_USER_ID(messagingBridge.myUserId),
+</a><a href="#h8-2-10" id="h8-2-10" class="i">+                        MessagingConstraints.NO_USER_ID(messagingBridge!!.myUserId),
+</a>                         MessagingConstraints.CONTENT_TYPE(arrayOf(ContentType.SNAP))
+                     ))
+                     runCurrentTask()
+                 }
+                 ActionButton(text = translation[if (hasSelection) &quot;delete_selection_option&quot; else &quot;delete_all_option&quot;], icon = Icons.Rounded.DeleteForever) {
+<a href="#h8-2-16" id="h8-2-16" class="d">-                    launchMessagingTask(MessagingTaskType.DELETE, listOf(MessagingConstraints.USER_ID(messagingBridge.myUserId), {
+</a><a href="#h8-2-17" id="h8-2-17" class="i">+                    if (messagingBridge == null) {
+</a><a href="#h8-2-18" id="h8-2-18" class="i">+                        context.longToast(translation[&quot;bridge_connection_failed&quot;])
+</a><a href="#h8-2-19" id="h8-2-19" class="i">+                        return@ActionButton
+</a><a href="#h8-2-20" id="h8-2-20" class="i">+                    }
+</a><a href="#h8-2-21" id="h8-2-21" class="i">+                    launchMessagingTask(MessagingTaskType.DELETE, listOf(MessagingConstraints.USER_ID(messagingBridge!!.myUserId), {
+</a>                         contentType != ContentType.STATUS.id
+                     })) { message -&gt;
+                         coroutineScope.launch {
+<a href="#h8-3" id="h8-3" class="h">@@ -426,7 +438,7 @@ class MessagingPreview: Routes.Route() {
+</a>         fun fetchNewMessages() {
+             coroutineScope.launch(Dispatchers.IO) cs@{
+                 runCatching {
+<a href="#h8-3-3" id="h8-3-3" class="d">-                    val queriedMessages = messagingBridge.fetchConversationWithMessagesPaginated(
+</a><a href="#h8-3-4" id="h8-3-4" class="i">+                    val queriedMessages = messagingBridge!!.fetchConversationWithMessagesPaginated(
+</a>                         conversationId!!,
+                         20,
+                         lastMessageId
+<a href="#h8-4" id="h8-4" class="h">@@ -447,18 +459,18 @@ class MessagingPreview: Routes.Route() {
+</a>             context.log.verbose(&quot;onMessagingBridgeReady: $scope $scopeId&quot;)
+ 
+             runCatching {
+<a href="#h8-4-3" id="h8-4-3" class="d">-                messagingBridge = context.bridgeService!!.messagingBridge!!
+</a><a href="#h8-4-4" id="h8-4-4" class="d">-                conversationId = (if (scope == SocialScope.FRIEND) messagingBridge.getOneToOneConversationId(scopeId) else scopeId) ?: throw IllegalStateException(&quot;Failed to get conversation id&quot;)
+</a><a href="#h8-4-5" id="h8-4-5" class="d">-                if (runCatching { !messagingBridge.isSessionStarted }.getOrDefault(true)) {
+</a><a href="#h8-4-6" id="h8-4-6" class="i">+                conversationId = (if (scope == SocialScope.FRIEND) messagingBridge!!.getOneToOneConversationId(scopeId) else scopeId) ?: throw IllegalStateException(&quot;Failed to get conversation id&quot;)
+</a><a href="#h8-4-7" id="h8-4-7" class="i">+                if (runCatching { !messagingBridge!!.isSessionStarted }.getOrDefault(true)) {
+</a>                     context.androidContext.packageManager.getLaunchIntentForPackage(
+                         Constants.SNAPCHAT_PACKAGE_NAME
+                     )?.let {
+<a href="#h8-4-11" id="h8-4-11" class="d">-                        val mainIntent = Intent.makeRestartActivityTask(it.component).apply {
+</a><a href="#h8-4-12" id="h8-4-12" class="i">+                        val mainIntent = Intent.makeMainActivity(it.component).apply {
+</a>                             putExtra(ReceiversConfig.MESSAGING_PREVIEW_EXTRA, true)
+<a href="#h8-4-14" id="h8-4-14" class="i">+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+</a>                         }
+                         context.androidContext.startActivity(mainIntent)
+                     }
+<a href="#h8-4-18" id="h8-4-18" class="d">-                    messagingBridge.registerSessionStartListener(object: SessionStartListener.Stub() {
+</a><a href="#h8-4-19" id="h8-4-19" class="i">+                    messagingBridge!!.registerSessionStartListener(object: SessionStartListener.Stub() {
+</a>                         override fun onConnected() {
+                             fetchNewMessages()
+                         }
+<b>diff --git a/<a id="h9" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/util/AlertDialogs.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/util/AlertDialogs.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/util/AlertDialogs.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/util/AlertDialogs.kt</a></b>
+<a href="#h9-0" id="h9-0" class="h">@@ -5,7 +5,16 @@ import android.view.MotionEvent
+</a> import android.widget.Toast
+ import androidx.compose.foundation.ScrollState
+ import androidx.compose.foundation.clickable
+<a href="#h9-0-3" id="h9-0-3" class="d">-import androidx.compose.foundation.layout.*
+</a><a href="#h9-0-4" id="h9-0-4" class="i">+import androidx.compose.foundation.layout.Arrangement
+</a><a href="#h9-0-5" id="h9-0-5" class="i">+import androidx.compose.foundation.layout.Box
+</a><a href="#h9-0-6" id="h9-0-6" class="i">+import androidx.compose.foundation.layout.Column
+</a><a href="#h9-0-7" id="h9-0-7" class="i">+import androidx.compose.foundation.layout.ColumnScope
+</a><a href="#h9-0-8" id="h9-0-8" class="i">+import androidx.compose.foundation.layout.Row
+</a><a href="#h9-0-9" id="h9-0-9" class="i">+import androidx.compose.foundation.layout.fillMaxHeight
+</a><a href="#h9-0-10" id="h9-0-10" class="i">+import androidx.compose.foundation.layout.fillMaxWidth
+</a><a href="#h9-0-11" id="h9-0-11" class="i">+import androidx.compose.foundation.layout.height
+</a><a href="#h9-0-12" id="h9-0-12" class="i">+import androidx.compose.foundation.layout.padding
+</a><a href="#h9-0-13" id="h9-0-13" class="i">+import androidx.compose.foundation.layout.size
+</a> import androidx.compose.foundation.shape.RoundedCornerShape
+ import androidx.compose.foundation.text.KeyboardOptions
+ import androidx.compose.foundation.verticalScroll
+<a href="#h9-1" id="h9-1" class="h">@@ -13,8 +22,23 @@ import androidx.compose.material.icons.Icons
+</a> import androidx.compose.material.icons.filled.Check
+ import androidx.compose.material.icons.filled.DeleteOutline
+ import androidx.compose.material.icons.filled.Edit
+<a href="#h9-1-3" id="h9-1-3" class="d">-import androidx.compose.material3.*
+</a><a href="#h9-1-4" id="h9-1-4" class="d">-import androidx.compose.runtime.*
+</a><a href="#h9-1-5" id="h9-1-5" class="i">+import androidx.compose.material3.Button
+</a><a href="#h9-1-6" id="h9-1-6" class="i">+import androidx.compose.material3.Card
+</a><a href="#h9-1-7" id="h9-1-7" class="i">+import androidx.compose.material3.FilledIconButton
+</a><a href="#h9-1-8" id="h9-1-8" class="i">+import androidx.compose.material3.Icon
+</a><a href="#h9-1-9" id="h9-1-9" class="i">+import androidx.compose.material3.IconButton
+</a><a href="#h9-1-10" id="h9-1-10" class="i">+import androidx.compose.material3.MaterialTheme
+</a><a href="#h9-1-11" id="h9-1-11" class="i">+import androidx.compose.material3.RadioButton
+</a><a href="#h9-1-12" id="h9-1-12" class="i">+import androidx.compose.material3.Switch
+</a><a href="#h9-1-13" id="h9-1-13" class="i">+import androidx.compose.material3.Text
+</a><a href="#h9-1-14" id="h9-1-14" class="i">+import androidx.compose.material3.TextField
+</a><a href="#h9-1-15" id="h9-1-15" class="i">+import androidx.compose.material3.TextFieldDefaults
+</a><a href="#h9-1-16" id="h9-1-16" class="i">+import androidx.compose.runtime.Composable
+</a><a href="#h9-1-17" id="h9-1-17" class="i">+import androidx.compose.runtime.DisposableEffect
+</a><a href="#h9-1-18" id="h9-1-18" class="i">+import androidx.compose.runtime.getValue
+</a><a href="#h9-1-19" id="h9-1-19" class="i">+import androidx.compose.runtime.mutableStateOf
+</a><a href="#h9-1-20" id="h9-1-20" class="i">+import androidx.compose.runtime.remember
+</a><a href="#h9-1-21" id="h9-1-21" class="i">+import androidx.compose.runtime.setValue
+</a> import androidx.compose.ui.Alignment
+ import androidx.compose.ui.Modifier
+ import androidx.compose.ui.draw.clip
+<a href="#h9-2" id="h9-2" class="h">@@ -34,8 +58,8 @@ import androidx.compose.ui.viewinterop.AndroidView
+</a> import com.github.skydoves.colorpicker.compose.AlphaSlider
+ import com.github.skydoves.colorpicker.compose.AlphaTile
+ import com.github.skydoves.colorpicker.compose.BrightnessSlider
+<a href="#h9-2-3" id="h9-2-3" class="i">+import com.github.skydoves.colorpicker.compose.ColorPickerController
+</a> import com.github.skydoves.colorpicker.compose.HsvColorPicker
+<a href="#h9-2-5" id="h9-2-5" class="d">-import com.github.skydoves.colorpicker.compose.rememberColorPickerController
+</a> import me.rhunk.snapenhance.common.bridge.wrapper.LocaleWrapper
+ import me.rhunk.snapenhance.common.config.DataProcessors
+ import me.rhunk.snapenhance.common.config.PropertyPair
+<a href="#h9-3" id="h9-3" class="h">@@ -347,7 +371,12 @@ class AlertDialogs(
+</a>         }
+ 
+         DefaultDialogCard {
+<a href="#h9-3-3" id="h9-3-3" class="d">-            val controller = rememberColorPickerController()
+</a><a href="#h9-3-4" id="h9-3-4" class="i">+            val controller = remember { ColorPickerController().apply {
+</a><a href="#h9-3-5" id="h9-3-5" class="i">+                if (currentColor == null) {
+</a><a href="#h9-3-6" id="h9-3-6" class="i">+                    setWheelAlpha(1f)
+</a><a href="#h9-3-7" id="h9-3-7" class="i">+                    setBrightness(1f, false)
+</a><a href="#h9-3-8" id="h9-3-8" class="i">+                }
+</a><a href="#h9-3-9" id="h9-3-9" class="i">+            } }
+</a>             var colorHexValue by remember {
+                 mutableStateOf(currentColor?.toArgb()?.let { Integer.toHexString(it) } ?: &quot;&quot;)
+             }
+<a href="#h9-4" id="h9-4" class="h">@@ -399,6 +428,7 @@ class AlertDialogs(
+</a>                     .fillMaxWidth()
+                     .padding(10.dp)
+                     .height(35.dp),
+<a href="#h9-4-3" id="h9-4-3" class="i">+                initialColor = remember { currentColor },
+</a>                 controller = controller,
+             )
+             BrightnessSlider(
+<a href="#h9-5" id="h9-5" class="h">@@ -406,6 +436,7 @@ class AlertDialogs(
+</a>                     .fillMaxWidth()
+                     .padding(10.dp)
+                     .height(35.dp),
+<a href="#h9-5-3" id="h9-5-3" class="i">+                initialColor = remember { currentColor },
+</a>                 controller = controller,
+             )
+             Row(
+<b>diff --git a/<a id="h10" href="../file/common/build.gradle.kts.html">common/build.gradle.kts</a> b/<a href="../file/common/build.gradle.kts.html">common/build.gradle.kts</a></b>
+<a href="#h10-0" id="h10-0" class="h">@@ -1,3 +1,5 @@
+</a><a href="#h10-0-0" id="h10-0-0" class="i">+import java.io.ByteArrayOutputStream
+</a><a href="#h10-0-1" id="h10-0-1" class="i">+
+</a> plugins {
+     alias(libs.plugins.androidLibrary)
+     alias(libs.plugins.kotlinAndroid)
+<a href="#h10-1" id="h10-1" class="h">@@ -22,6 +24,12 @@ android {
+</a>         buildConfigField(&quot;String&quot;, &quot;APPLICATION_ID&quot;, &quot;\&quot;${rootProject.ext[&quot;applicationId&quot;]}\&quot;&quot;)
+         buildConfigField(&quot;long&quot;, &quot;BUILD_TIMESTAMP&quot;, &quot;${System.currentTimeMillis()}L&quot;)
+         buildConfigField(&quot;String&quot;, &quot;BUILD_HASH&quot;, &quot;\&quot;${rootProject.ext[&quot;buildHash&quot;]}\&quot;&quot;)
+<a href="#h10-1-3" id="h10-1-3" class="i">+        val gitHash = ByteArrayOutputStream()
+</a><a href="#h10-1-4" id="h10-1-4" class="i">+        exec {
+</a><a href="#h10-1-5" id="h10-1-5" class="i">+            commandLine(&quot;git&quot;, &quot;rev-parse&quot;, &quot;HEAD&quot;)
+</a><a href="#h10-1-6" id="h10-1-6" class="i">+            standardOutput = gitHash
+</a><a href="#h10-1-7" id="h10-1-7" class="i">+        }
+</a><a href="#h10-1-8" id="h10-1-8" class="i">+        buildConfigField(&quot;String&quot;, &quot;GIT_HASH&quot;, &quot;\&quot;${gitHash.toString(Charsets.UTF_8).trim()}\&quot;&quot;)
+</a>     }
+ 
+     compileOptions {
+<b>diff --git a/<a id="h11" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h11-0" id="h11-0" class="h">@@ -82,6 +82,7 @@
+</a>                 &quot;config_export_success_toast&quot;: &quot;Config exported successfully&quot;,
+                 &quot;config_import_success_toast&quot;: &quot;Config imported successfully&quot;,
+                 &quot;config_import_failure_toast&quot;: &quot;Failed to import config {error}&quot;,
+<a href="#h11-0-3" id="h11-0-3" class="i">+                &quot;config_export_failure_toast&quot;: &quot;Failed to export config {error}&quot;,
+</a>                 &quot;saved_config_snackbar&quot;: &quot;Config saved&quot;
+             },
+             &quot;social&quot;: {
+<a href="#h11-1" id="h11-1" class="h">@@ -109,8 +110,8 @@
+</a>                 &quot;save_from_cache_button&quot;: &quot;Save from Cache&quot;
+             },
+             &quot;messaging_preview&quot;: {
+<a href="#h11-1-3" id="h11-1-3" class="d">-                &quot;bridge_connection_failed&quot;: &quot;Failed to connect to Snapchat through bridge service&quot;,
+</a><a href="#h11-1-4" id="h11-1-4" class="d">-                &quot;bridge_init_failed&quot;: &quot;Failed to initialize messaging bridge&quot;,
+</a><a href="#h11-1-5" id="h11-1-5" class="i">+                &quot;bridge_connection_failed&quot;: &quot;Failed to connect to bridge. Make sure Snapchat is running in the background&quot;,
+</a><a href="#h11-1-6" id="h11-1-6" class="i">+                &quot;bridge_init_failed&quot;: &quot;Failed to initialize messaging bridge. Make sure Snapchat is running in the background&quot;,
+</a>                 &quot;message_fetch_failed&quot;: &quot;Failed to fetch messages&quot;,
+                 &quot;no_message_hint&quot;: &quot;No message&quot;,
+                 &quot;save_selection_option&quot;: &quot;Save Selection&quot;,
+<a href="#h11-2" id="h11-2" class="h">@@ -159,6 +160,10 @@
+</a>                 &quot;content&quot;: &quot;Are you sure you want to reset the config?&quot;,
+                 &quot;success_toast&quot;: &quot;Config reset successfully&quot;
+             },
+<a href="#h11-2-3" id="h11-2-3" class="i">+            &quot;export_config&quot;: {
+</a><a href="#h11-2-4" id="h11-2-4" class="i">+                &quot;title&quot;: &quot;Export Sensitive Data?&quot;,
+</a><a href="#h11-2-5" id="h11-2-5" class="i">+                &quot;content&quot;: &quot;Do you want to export the config with sensitive data? (Such as location coordinates, etc.)&quot;
+</a><a href="#h11-2-6" id="h11-2-6" class="i">+            },
+</a>             &quot;messaging_action&quot;: {
+                 &quot;title&quot;: &quot;Choose content types to process&quot;,
+                 &quot;select_all_button&quot;: &quot;Select All&quot;
+<b>diff --git a/<a id="h12" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigContainer.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigContainer.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigContainer.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigContainer.kt</a></b>
+<a href="#h12-0" id="h12-0" class="h">@@ -74,10 +74,11 @@ open class ConfigContainer(
+</a>         params: ConfigParamsBuilder = {}
+     ) = registerProperty(key, DataProcessors.INT_COLOR, PropertyValue(defaultValue), params)
+ 
+<a href="#h12-0-3" id="h12-0-3" class="d">-    fun toJson(): JsonObject {
+</a><a href="#h12-0-4" id="h12-0-4" class="i">+    fun toJson(exportSensitiveData: Boolean = true): JsonObject {
+</a>         val json = JsonObject()
+         properties.forEach { (propertyKey, propertyValue) -&gt;
+<a href="#h12-0-7" id="h12-0-7" class="d">-            val serializedValue = propertyValue.getNullable()?.let { propertyKey.dataType.serializeAny(it) }
+</a><a href="#h12-0-8" id="h12-0-8" class="i">+            if (!exportSensitiveData &amp;&amp; propertyKey.params.flags.contains(ConfigFlag.SENSITIVE)) return@forEach
+</a><a href="#h12-0-9" id="h12-0-9" class="i">+            val serializedValue = propertyValue.getNullable()?.let { propertyKey.dataType.serializeAny(it, exportSensitiveData) }
+</a>             json.add(propertyKey.name, serializedValue)
+         }
+         return json
+<b>diff --git a/<a id="h13" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigObjects.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigObjects.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigObjects.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ConfigObjects.kt</a></b>
+<a href="#h13-0" id="h13-0" class="h">@@ -29,7 +29,8 @@ enum class ConfigFlag {
+</a>     USER_IMPORT,
+     NO_DISABLE_KEY,
+     REQUIRE_RESTART,
+<a href="#h13-0-3" id="h13-0-3" class="d">-    REQUIRE_CLEAN_CACHE;
+</a><a href="#h13-0-4" id="h13-0-4" class="i">+    REQUIRE_CLEAN_CACHE,
+</a><a href="#h13-0-5" id="h13-0-5" class="i">+    SENSITIVE;
+</a> 
+     val id = 1 shl ordinal
+ }
+<b>diff --git a/<a id="h14" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/DataProcessors.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/DataProcessors.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/DataProcessors.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/DataProcessors.kt</a></b>
+<a href="#h14-0" id="h14-0" class="h">@@ -22,17 +22,17 @@ object DataProcessors {
+</a>     data class PropertyDataProcessor&lt;T&gt;
+     internal constructor(
+         val type: Type,
+<a href="#h14-0-3" id="h14-0-3" class="d">-        private val serialize: (T) -&gt; JsonElement,
+</a><a href="#h14-0-4" id="h14-0-4" class="i">+        private val serialize: (T, exportSensitiveData: Boolean) -&gt; JsonElement,
+</a>         private val deserialize: (JsonElement) -&gt; T
+     ) {
+         @Suppress(&quot;UNCHECKED_CAST&quot;)
+<a href="#h14-0-8" id="h14-0-8" class="d">-        fun serializeAny(value: Any) = serialize(value as T)
+</a><a href="#h14-0-9" id="h14-0-9" class="i">+        fun serializeAny(value: Any, exportSensitiveData: Boolean) = serialize(value as T, exportSensitiveData)
+</a>         fun deserializeAny(value: JsonElement) = deserialize(value)
+     }
+ 
+     val STRING = PropertyDataProcessor(
+         type = Type.STRING,
+<a href="#h14-0-15" id="h14-0-15" class="d">-        serialize = {
+</a><a href="#h14-0-16" id="h14-0-16" class="i">+        serialize = { it, _ -&gt;
+</a>             if (it != null) JsonPrimitive(it)
+             else JsonNull.INSTANCE
+         },
+<a href="#h14-1" id="h14-1" class="h">@@ -44,7 +44,7 @@ object DataProcessors {
+</a> 
+     val BOOLEAN = PropertyDataProcessor(
+         type = Type.BOOLEAN,
+<a href="#h14-1-3" id="h14-1-3" class="d">-        serialize = {
+</a><a href="#h14-1-4" id="h14-1-4" class="i">+        serialize = { it, _ -&gt;
+</a>             if (it) JsonPrimitive(true)
+             else JsonPrimitive(false)
+         },
+<a href="#h14-2" id="h14-2" class="h">@@ -53,19 +53,19 @@ object DataProcessors {
+</a> 
+     val INTEGER = PropertyDataProcessor(
+         type = Type.INTEGER,
+<a href="#h14-2-3" id="h14-2-3" class="d">-        serialize = { JsonPrimitive(it) },
+</a><a href="#h14-2-4" id="h14-2-4" class="i">+        serialize = { it, _ -&gt; JsonPrimitive(it) },
+</a>         deserialize = { it.asInt },
+     )
+ 
+     val FLOAT = PropertyDataProcessor(
+         type = Type.FLOAT,
+<a href="#h14-2-10" id="h14-2-10" class="d">-        serialize = { JsonPrimitive(it) },
+</a><a href="#h14-2-11" id="h14-2-11" class="i">+        serialize = { it, _ -&gt; JsonPrimitive(it) },
+</a>         deserialize = { it.asFloat },
+     )
+ 
+     val STRING_MULTIPLE_SELECTION = PropertyDataProcessor(
+         type = Type.STRING_MULTIPLE_SELECTION,
+<a href="#h14-2-17" id="h14-2-17" class="d">-        serialize = { JsonArray().apply { it.forEach { add(it) } } },
+</a><a href="#h14-2-18" id="h14-2-18" class="i">+        serialize = { it, _ -&gt; JsonArray().apply { it.forEach { add(it) } } },
+</a>         deserialize = { obj -&gt;
+             obj.asJsonArray.map { it.asString }.toMutableList()
+         },
+<a href="#h14-3" id="h14-3" class="h">@@ -73,13 +73,13 @@ object DataProcessors {
+</a> 
+     val STRING_UNIQUE_SELECTION = PropertyDataProcessor(
+         type = Type.STRING_UNIQUE_SELECTION,
+<a href="#h14-3-3" id="h14-3-3" class="d">-        serialize = { JsonPrimitive(it) },
+</a><a href="#h14-3-4" id="h14-3-4" class="i">+        serialize = { it, _ -&gt; JsonPrimitive(it) },
+</a>         deserialize = { obj -&gt; obj.takeIf { !it.isJsonNull }?.asString?.takeIf { it != &quot;false&quot; &amp;&amp; it != &quot;true&quot; } }
+     )
+ 
+     val MAP_COORDINATES = PropertyDataProcessor(
+         type = Type.MAP_COORDINATES,
+<a href="#h14-3-10" id="h14-3-10" class="d">-        serialize = {
+</a><a href="#h14-3-11" id="h14-3-11" class="i">+        serialize = { it, _ -&gt;
+</a>             JsonObject().apply {
+                 addProperty(&quot;lat&quot;, it.first.takeIf { it in -90.0..90.0 } ?: 0.0)
+                 addProperty(&quot;lng&quot;, it.second.takeIf { it in -180.0..180.0 } ?: 0.0)
+<a href="#h14-4" id="h14-4" class="h">@@ -94,7 +94,7 @@ object DataProcessors {
+</a> 
+     val INT_COLOR = PropertyDataProcessor(
+         type = Type.INT_COLOR,
+<a href="#h14-4-3" id="h14-4-3" class="d">-        serialize = {
+</a><a href="#h14-4-4" id="h14-4-4" class="i">+        serialize = { it, _ -&gt;
+</a>             it?.let { JsonPrimitive(it) } ?: JsonNull.INSTANCE
+         },
+         deserialize = { if (it.isJsonNull) null else it.asString.toIntOrNull() },
+<a href="#h14-5" id="h14-5" class="h">@@ -102,17 +102,17 @@ object DataProcessors {
+</a> 
+     fun &lt;T : ConfigContainer&gt; container(container: T) = PropertyDataProcessor(
+         type = Type.CONTAINER,
+<a href="#h14-5-3" id="h14-5-3" class="d">-        serialize = {
+</a><a href="#h14-5-4" id="h14-5-4" class="i">+        serialize = { it, exportSensitiveData -&gt;
+</a>             JsonObject().apply {
+                 addProperty(&quot;state&quot;, it.globalState)
+<a href="#h14-5-7" id="h14-5-7" class="d">-                add(&quot;properties&quot;, it.toJson())
+</a><a href="#h14-5-8" id="h14-5-8" class="i">+                add(&quot;properties&quot;, it.toJson(exportSensitiveData))
+</a>             }
+         },
+         deserialize = { obj -&gt;
+             val jsonObject = obj.asJsonObject
+             container.apply {
+<a href="#h14-5-14" id="h14-5-14" class="d">-                globalState = jsonObject[&quot;state&quot;].takeIf { !it.isJsonNull }?.asBoolean
+</a><a href="#h14-5-15" id="h14-5-15" class="d">-                fromJson(jsonObject[&quot;properties&quot;].asJsonObject)
+</a><a href="#h14-5-16" id="h14-5-16" class="i">+                globalState = jsonObject[&quot;state&quot;]?.takeIf { !it.isJsonNull }?.asBoolean
+</a><a href="#h14-5-17" id="h14-5-17" class="i">+                jsonObject[&quot;properties&quot;]?.asJsonObject?.let { fromJson(it) }
+</a>             }
+         },
+     )
+<b>diff --git a/<a id="h15" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/ModConfig.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ModConfig.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/ModConfig.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/ModConfig.kt</a></b>
+<a href="#h15-0" id="h15-0" class="h">@@ -54,10 +54,12 @@ class ModConfig(
+</a>         root.fromJson(configObject)
+     }
+ 
+<a href="#h15-0-3" id="h15-0-3" class="d">-    fun exportToString(): String {
+</a><a href="#h15-0-4" id="h15-0-4" class="d">-        val configObject = root.toJson()
+</a><a href="#h15-0-5" id="h15-0-5" class="i">+    fun exportToString(
+</a><a href="#h15-0-6" id="h15-0-6" class="i">+        exportSensitiveData: Boolean = true
+</a><a href="#h15-0-7" id="h15-0-7" class="i">+    ): String {
+</a><a href="#h15-0-8" id="h15-0-8" class="i">+        val configObject = root.toJson(exportSensitiveData)
+</a>         configObject.addProperty(&quot;_locale&quot;, locale)
+<a href="#h15-0-10" id="h15-0-10" class="d">-        return configObject.toString()
+</a><a href="#h15-0-11" id="h15-0-11" class="i">+        return gson.toJson(configObject)
+</a>     }
+ 
+     fun reset() {
+<b>diff --git a/<a id="h16" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/DownloaderConfig.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/DownloaderConfig.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/DownloaderConfig.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/DownloaderConfig.kt</a></b>
+<a href="#h16-0" id="h16-0" class="h">@@ -17,7 +17,7 @@ class DownloaderConfig : ConfigContainer() {
+</a>         val customAudioCodec = string(&quot;custom_audio_codec&quot;) { addFlags(ConfigFlag.NO_TRANSLATE) }
+     }
+ 
+<a href="#h16-0-3" id="h16-0-3" class="d">-    val saveFolder = string(&quot;save_folder&quot;) { addFlags(ConfigFlag.FOLDER); requireRestart() }
+</a><a href="#h16-0-4" id="h16-0-4" class="i">+    val saveFolder = string(&quot;save_folder&quot;) { addFlags(ConfigFlag.FOLDER, ConfigFlag.SENSITIVE); requireRestart() }
+</a>     val autoDownloadSources = multiple(&quot;auto_download_sources&quot;,
+         &quot;friend_snaps&quot;,
+         &quot;friend_stories&quot;,
+<b>diff --git a/<a id="h17" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Global.kt</a></b>
+<a href="#h17-0" id="h17-0" class="h">@@ -19,9 +19,9 @@ class Global : ConfigContainer() {
+</a>         )
+     }
+ 
+<a href="#h17-0-3" id="h17-0-3" class="d">-    inner class BetterLocation : ConfigContainer(hasGlobalState = true) {
+</a><a href="#h17-0-4" id="h17-0-4" class="i">+    inner class BetterLocationConfig : ConfigContainer(hasGlobalState = true) {
+</a>         val spoofLocation = boolean(&quot;spoof_location&quot;) { requireRestart() }
+<a href="#h17-0-6" id="h17-0-6" class="d">-        val coordinates = mapCoordinates(&quot;coordinates&quot;, 0.0 to 0.0) // lat, long
+</a><a href="#h17-0-7" id="h17-0-7" class="i">+        val coordinates = mapCoordinates(&quot;coordinates&quot;, 0.0 to 0.0) { addFlags(ConfigFlag.SENSITIVE) } // lat, long
+</a>         val walkRadius = string(&quot;walk_radius&quot;) { requireRestart(); inputCheck = { it.toDoubleOrNull()?.isFinite() == true &amp;&amp; it.toDouble() &gt;= 0.0 } }
+         val alwaysUpdateLocation = boolean(&quot;always_update_location&quot;) { requireRestart() }
+         val suspendLocationUpdates = boolean(&quot;suspend_location_updates&quot;) { requireRestart() }
+<a href="#h17-1" id="h17-1" class="h">@@ -35,7 +35,7 @@ class Global : ConfigContainer() {
+</a>         val customUploadImageFormat = unique(&quot;custom_image_upload_format&quot;, &quot;jpeg&quot;, &quot;png&quot;, &quot;webp&quot;) { requireRestart(); addFlags(ConfigFlag.NO_TRANSLATE) }
+     }
+ 
+<a href="#h17-1-3" id="h17-1-3" class="d">-    val betterLocation = container(&quot;better_location&quot;, BetterLocation())
+</a><a href="#h17-1-4" id="h17-1-4" class="i">+    val betterLocation = container(&quot;better_location&quot;, BetterLocationConfig())
+</a>     val snapchatPlus = boolean(&quot;snapchat_plus&quot;) { requireRestart() }
+     val mediaUploadQualityConfig = container(&quot;media_upload_quality&quot;, MediaUploadQualityConfig())
+     val disableConfirmationDialogs = multiple(&quot;disable_confirmation_dialogs&quot;, &quot;erase_message&quot;, &quot;remove_friend&quot;, &quot;block_friend&quot;, &quot;ignore_friend&quot;, &quot;hide_friend&quot;, &quot;hide_conversation&quot;, &quot;clear_conversation&quot;) { requireRestart() }
+<b>diff --git a/<a id="h18" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Scripting.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Scripting.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Scripting.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Scripting.kt</a></b>
+<a href="#h18-0" id="h18-0" class="h">@@ -5,7 +5,7 @@ import me.rhunk.snapenhance.common.config.ConfigFlag
+</a> 
+ class Scripting : ConfigContainer() {
+     val developerMode = boolean(&quot;developer_mode&quot;, false) { requireRestart() }
+<a href="#h18-0-3" id="h18-0-3" class="d">-    val moduleFolder = string(&quot;module_folder&quot;, &quot;modules&quot;) { addFlags(ConfigFlag.FOLDER); requireRestart()  }
+</a><a href="#h18-0-4" id="h18-0-4" class="i">+    val moduleFolder = string(&quot;module_folder&quot;, &quot;modules&quot;) { addFlags(ConfigFlag.FOLDER, ConfigFlag.SENSITIVE); requireRestart()  }
+</a>     val autoReload = unique(&quot;auto_reload&quot;, &quot;snapchat_only&quot;, &quot;all&quot;)
+     val integratedUI = boolean(&quot;integrated_ui&quot;, false) { requireRestart() }
+     val disableLogAnonymization = boolean(&quot;disable_log_anonymization&quot;, false) { requireRestart() }
+<b>diff --git a/<a id="h19" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Spoof.kt</a></b>
+<a href="#h19-0" id="h19-0" class="h">@@ -1,11 +1,12 @@
+</a> package me.rhunk.snapenhance.common.config.impl
+ 
+ import me.rhunk.snapenhance.common.config.ConfigContainer
+<a href="#h19-0-3" id="h19-0-3" class="i">+import me.rhunk.snapenhance.common.config.ConfigFlag
+</a> 
+ class Spoof : ConfigContainer(hasGlobalState = true) {
+     val overridePlayStoreInstallerPackageName = boolean(&quot;play_store_installer_package_name&quot;)
+<a href="#h19-0-7" id="h19-0-7" class="d">-    val fingerprint = string(&quot;fingerprint&quot;)
+</a><a href="#h19-0-8" id="h19-0-8" class="d">-    val androidId = string(&quot;android_id&quot;)
+</a><a href="#h19-0-9" id="h19-0-9" class="i">+    val fingerprint = string(&quot;fingerprint&quot;) { addFlags(ConfigFlag.SENSITIVE) }
+</a><a href="#h19-0-10" id="h19-0-10" class="i">+    val androidId = string(&quot;android_id&quot;) { addFlags(ConfigFlag.SENSITIVE) }
+</a>     val removeVpnTransportFlag = boolean(&quot;remove_vpn_transport_flag&quot;)
+     val removeMockLocationFlag = boolean(&quot;remove_mock_location_flag&quot;)
+     val randomizePersistentDeviceToken = boolean(&quot;randomize_persistent_device_token&quot;)
+<b>diff --git a/<a id="h20" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/ModContext.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/ModContext.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/ModContext.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/ModContext.kt</a></b>
+<a href="#h20-0" id="h20-0" class="h">@@ -163,4 +163,6 @@ class ModContext(
+</a>     fun getConfigLocale(): String {
+         return _config.locale
+     }
+<a href="#h20-0-3" id="h20-0-3" class="i">+
+</a><a href="#h20-0-4" id="h20-0-4" class="i">+    fun isLoggedIn() = androidContext.getSharedPreferences(&quot;user_session_shared_pref&quot;, 0).getString(&quot;key_user_id&quot;, null) != null
+</a> } 
+\ No newline at end of file
+<b>diff --git a/<a id="h21" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/SnapEnhance.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/SnapEnhance.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/SnapEnhance.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/SnapEnhance.kt</a></b>
+<a href="#h21-0" id="h21-0" class="h">@@ -27,6 +27,7 @@ import me.rhunk.snapenhance.core.util.LSPatchUpdater
+</a> import me.rhunk.snapenhance.core.util.hook.HookAdapter
+ import me.rhunk.snapenhance.core.util.hook.HookStage
+ import me.rhunk.snapenhance.core.util.hook.hook
+<a href="#h21-0-3" id="h21-0-3" class="i">+import kotlin.system.exitProcess
+</a> import kotlin.system.measureTimeMillis
+ 
+ 
+<a href="#h21-1" id="h21-1" class="h">@@ -56,44 +57,55 @@ class SnapEnhance {
+</a>             )
+             appContext.apply {
+                 bridgeClient = BridgeClient(this)
+<a href="#h21-1-3" id="h21-1-3" class="d">-                bridgeClient.apply {
+</a><a href="#h21-1-4" id="h21-1-4" class="d">-                    connect(
+</a><a href="#h21-1-5" id="h21-1-5" class="d">-                        onFailure = {
+</a><a href="#h21-1-6" id="h21-1-6" class="d">-                            InAppOverlay.showCrashOverlay(
+</a><a href="#h21-1-7" id="h21-1-7" class="d">-                                &quot;Snapchat can&#39;t connect to the SnapEnhance app. Make sure you have the latest version installed on your device. You can download the latest stable version on github.com/rhunk/SnapEnhance&quot;,
+</a><a href="#h21-1-8" id="h21-1-8" class="d">-                                throwable = it
+</a><a href="#h21-1-9" id="h21-1-9" class="d">-                            )
+</a><a href="#h21-1-10" id="h21-1-10" class="d">-                        }
+</a><a href="#h21-1-11" id="h21-1-11" class="d">-                    ) { bridgeResult -&gt;
+</a><a href="#h21-1-12" id="h21-1-12" class="d">-                        if (!bridgeResult) {
+</a><a href="#h21-1-13" id="h21-1-13" class="d">-                            InAppOverlay.showCrashOverlay(
+</a><a href="#h21-1-14" id="h21-1-14" class="d">-                                &quot;Snapchat timed out while trying to connect to the SnapEnhance app. Make sure you have disabled any battery optimizations for SnapEnhance.&quot;
+</a><a href="#h21-1-15" id="h21-1-15" class="d">-                            )
+</a><a href="#h21-1-16" id="h21-1-16" class="d">-                            logCritical(&quot;Cannot connect to the SnapEnhance app&quot;)
+</a><a href="#h21-1-17" id="h21-1-17" class="d">-                            return@connect
+</a><a href="#h21-1-18" id="h21-1-18" class="d">-                        }
+</a><a href="#h21-1-19" id="h21-1-19" class="i">+                initConfigListener()
+</a><a href="#h21-1-20" id="h21-1-20" class="i">+                bridgeClient.addOnConnectedCallback {
+</a><a href="#h21-1-21" id="h21-1-21" class="i">+                    bridgeClient.registerMessagingBridge(messagingBridge)
+</a><a href="#h21-1-22" id="h21-1-22" class="i">+                    coroutineScope.launch {
+</a>                         runCatching {
+<a href="#h21-1-24" id="h21-1-24" class="d">-                            LSPatchUpdater.onBridgeConnected(appContext, bridgeClient)
+</a><a href="#h21-1-25" id="h21-1-25" class="i">+                            syncRemote()
+</a>                         }.onFailure {
+<a href="#h21-1-27" id="h21-1-27" class="d">-                            log.error(&quot;Failed to init LSPatchUpdater&quot;, it)
+</a><a href="#h21-1-28" id="h21-1-28" class="d">-                        }
+</a><a href="#h21-1-29" id="h21-1-29" class="d">-                        runCatching {
+</a><a href="#h21-1-30" id="h21-1-30" class="d">-                            measureTimeMillis {
+</a><a href="#h21-1-31" id="h21-1-31" class="d">-                                runBlocking {
+</a><a href="#h21-1-32" id="h21-1-32" class="d">-                                    init(this)
+</a><a href="#h21-1-33" id="h21-1-33" class="d">-                                }
+</a><a href="#h21-1-34" id="h21-1-34" class="d">-                            }.also {
+</a><a href="#h21-1-35" id="h21-1-35" class="d">-                                appContext.log.verbose(&quot;init took ${it}ms&quot;)
+</a><a href="#h21-1-36" id="h21-1-36" class="d">-                            }
+</a><a href="#h21-1-37" id="h21-1-37" class="d">-                        }.onSuccess {
+</a><a href="#h21-1-38" id="h21-1-38" class="d">-                            isBridgeInitialized = true
+</a><a href="#h21-1-39" id="h21-1-39" class="d">-                        }.onFailure {
+</a><a href="#h21-1-40" id="h21-1-40" class="d">-                            logCritical(&quot;Failed to initialize bridge&quot;, it)
+</a><a href="#h21-1-41" id="h21-1-41" class="d">-                            InAppOverlay.showCrashOverlay(&quot;SnapEnhance failed to initialize. Please check logs for more details.&quot;, it)
+</a><a href="#h21-1-42" id="h21-1-42" class="i">+                            log.error(&quot;Failed to sync remote&quot;, it)
+</a>                         }
+                     }
+                 }
+             }
+<a href="#h21-1-47" id="h21-1-47" class="i">+
+</a><a href="#h21-1-48" id="h21-1-48" class="i">+            runBlocking {
+</a><a href="#h21-1-49" id="h21-1-49" class="i">+                var throwable: Throwable? = null
+</a><a href="#h21-1-50" id="h21-1-50" class="i">+                val canLoad = appContext.bridgeClient.connect { throwable = it }
+</a><a href="#h21-1-51" id="h21-1-51" class="i">+                if (canLoad == null) {
+</a><a href="#h21-1-52" id="h21-1-52" class="i">+                    InAppOverlay.showCrashOverlay(
+</a><a href="#h21-1-53" id="h21-1-53" class="i">+                        buildString {
+</a><a href="#h21-1-54" id="h21-1-54" class="i">+                            append(&quot;Snapchat timed out while trying to connect to SnapEnhance\n\n&quot;)
+</a><a href="#h21-1-55" id="h21-1-55" class="i">+                            append(&quot;Make sure you:\n&quot;)
+</a><a href="#h21-1-56" id="h21-1-56" class="i">+                            append(&quot; - Have installed the latest SnapEnhance version (https://github.com/rhunk/SnapEnhance)\n&quot;)
+</a><a href="#h21-1-57" id="h21-1-57" class="i">+                            append(&quot; - Disabled battery optimizations\n&quot;)
+</a><a href="#h21-1-58" id="h21-1-58" class="i">+                            append(&quot; - Excluded SnapEnhance and Snapchat in HideMyApplist&quot;)
+</a><a href="#h21-1-59" id="h21-1-59" class="i">+                        },
+</a><a href="#h21-1-60" id="h21-1-60" class="i">+                        throwable
+</a><a href="#h21-1-61" id="h21-1-61" class="i">+                    )
+</a><a href="#h21-1-62" id="h21-1-62" class="i">+                    appContext.logCritical(&quot;Cannot connect to the SnapEnhance app&quot;)
+</a><a href="#h21-1-63" id="h21-1-63" class="i">+                    return@runBlocking
+</a><a href="#h21-1-64" id="h21-1-64" class="i">+                }
+</a><a href="#h21-1-65" id="h21-1-65" class="i">+                if (!canLoad) exitProcess(1)
+</a><a href="#h21-1-66" id="h21-1-66" class="i">+                runCatching {
+</a><a href="#h21-1-67" id="h21-1-67" class="i">+                    LSPatchUpdater.onBridgeConnected(appContext)
+</a><a href="#h21-1-68" id="h21-1-68" class="i">+                }.onFailure {
+</a><a href="#h21-1-69" id="h21-1-69" class="i">+                    appContext.log.error(&quot;Failed to init LSPatchUpdater&quot;, it)
+</a><a href="#h21-1-70" id="h21-1-70" class="i">+                }
+</a><a href="#h21-1-71" id="h21-1-71" class="i">+                runCatching {
+</a><a href="#h21-1-72" id="h21-1-72" class="i">+                    measureTimeMillis {
+</a><a href="#h21-1-73" id="h21-1-73" class="i">+                        init(this)
+</a><a href="#h21-1-74" id="h21-1-74" class="i">+                    }.also {
+</a><a href="#h21-1-75" id="h21-1-75" class="i">+                        appContext.log.verbose(&quot;init took ${it}ms&quot;)
+</a><a href="#h21-1-76" id="h21-1-76" class="i">+                    }
+</a><a href="#h21-1-77" id="h21-1-77" class="i">+                }.onSuccess {
+</a><a href="#h21-1-78" id="h21-1-78" class="i">+                    isBridgeInitialized = true
+</a><a href="#h21-1-79" id="h21-1-79" class="i">+                }.onFailure {
+</a><a href="#h21-1-80" id="h21-1-80" class="i">+                    appContext.logCritical(&quot;Failed to initialize bridge&quot;, it)
+</a><a href="#h21-1-81" id="h21-1-81" class="i">+                    InAppOverlay.showCrashOverlay(&quot;SnapEnhance failed to initialize. Please check logs for more details.&quot;, it)
+</a><a href="#h21-1-82" id="h21-1-82" class="i">+                }
+</a><a href="#h21-1-83" id="h21-1-83" class="i">+            }
+</a>         }
+ 
+         hookMainActivity(&quot;onCreate&quot;) {
+<a href="#h21-2" id="h21-2" class="h">@@ -137,15 +149,9 @@ class SnapEnhance {
+</a>             }
+ 
+             reloadConfig()
+<a href="#h21-2-3" id="h21-2-3" class="d">-            initConfigListener()
+</a>             initWidgetListener()
+             initNative()
+             scope.launch(Dispatchers.IO) {
+<a href="#h21-2-7" id="h21-2-7" class="d">-                runCatching {
+</a><a href="#h21-2-8" id="h21-2-8" class="d">-                    syncRemote()
+</a><a href="#h21-2-9" id="h21-2-9" class="d">-                }.onFailure {
+</a><a href="#h21-2-10" id="h21-2-10" class="d">-                    log.error(&quot;Failed to sync remote&quot;, it)
+</a><a href="#h21-2-11" id="h21-2-11" class="d">-                }
+</a>                 translation.userLocale = getConfigLocale()
+                 translation.load()
+             }
+<a href="#h21-3" id="h21-3" class="h">@@ -155,7 +161,6 @@ class SnapEnhance {
+</a>             eventDispatcher.init()
+             //if mappings aren&#39;t loaded, we can&#39;t initialize features
+             if (!mappings.isMappingsLoaded) return
+<a href="#h21-3-3" id="h21-3-3" class="d">-            bridgeClient.registerMessagingBridge(messagingBridge)
+</a>             features.init()
+             scriptRuntime.connect(bridgeClient.getScriptingInterface())
+             scriptRuntime.eachModule { callFunction(&quot;module.onSnapApplicationLoad&quot;, androidContext) }
+<a href="#h21-4" id="h21-4" class="h">@@ -178,7 +183,7 @@ class SnapEnhance {
+</a>     private fun initNative() {
+         // don&#39;t initialize native when not logged in
+         if (
+<a href="#h21-4-3" id="h21-4-3" class="d">-            appContext.androidContext.getSharedPreferences(&quot;user_session_shared_pref&quot;, 0).getString(&quot;key_user_id&quot;, null) == null &amp;&amp;
+</a><a href="#h21-4-4" id="h21-4-4" class="i">+            !appContext.isLoggedIn() &amp;&amp;
+</a>             appContext.bridgeClient.getDebugProp(&quot;force_native_load&quot;, null) != &quot;true&quot;
+         ) return
+         if (appContext.config.experimental.nativeHooks.globalState != true) return
+<a href="#h21-5" id="h21-5" class="h">@@ -219,27 +224,27 @@ class SnapEnhance {
+</a>             }
+         }
+ 
+<a href="#h21-5-3" id="h21-5-3" class="d">-        appContext.executeAsync {
+</a><a href="#h21-5-4" id="h21-5-4" class="d">-            bridgeClient.registerConfigStateListener(object: ConfigStateListener.Stub() {
+</a><a href="#h21-5-5" id="h21-5-5" class="i">+        appContext.bridgeClient.addOnConnectedCallback {
+</a><a href="#h21-5-6" id="h21-5-6" class="i">+            appContext.bridgeClient.registerConfigStateListener(object: ConfigStateListener.Stub() {
+</a>                 override fun onConfigChanged() {
+<a href="#h21-5-8" id="h21-5-8" class="d">-                    log.verbose(&quot;onConfigChanged&quot;)
+</a><a href="#h21-5-9" id="h21-5-9" class="d">-                    reloadConfig()
+</a><a href="#h21-5-10" id="h21-5-10" class="i">+                    appContext.log.verbose(&quot;onConfigChanged&quot;)
+</a><a href="#h21-5-11" id="h21-5-11" class="i">+                    appContext.reloadConfig()
+</a>                 }
+ 
+                 override fun onRestartRequired() {
+<a href="#h21-5-15" id="h21-5-15" class="d">-                    log.verbose(&quot;onRestartRequired&quot;)
+</a><a href="#h21-5-16" id="h21-5-16" class="i">+                    appContext.log.verbose(&quot;onRestartRequired&quot;)
+</a>                     runLater {
+<a href="#h21-5-18" id="h21-5-18" class="d">-                        log.verbose(&quot;softRestart&quot;)
+</a><a href="#h21-5-19" id="h21-5-19" class="d">-                        softRestartApp(saveSettings = false)
+</a><a href="#h21-5-20" id="h21-5-20" class="i">+                        appContext.log.verbose(&quot;softRestart&quot;)
+</a><a href="#h21-5-21" id="h21-5-21" class="i">+                        appContext.softRestartApp(saveSettings = false)
+</a>                     }
+                 }
+ 
+                 override fun onCleanCacheRequired() {
+<a href="#h21-5-26" id="h21-5-26" class="d">-                    log.verbose(&quot;onCleanCacheRequired&quot;)
+</a><a href="#h21-5-27" id="h21-5-27" class="i">+                    appContext.log.verbose(&quot;onCleanCacheRequired&quot;)
+</a>                     tasks.clear()
+                     runLater {
+<a href="#h21-5-30" id="h21-5-30" class="d">-                        log.verbose(&quot;cleanCache&quot;)
+</a><a href="#h21-5-31" id="h21-5-31" class="d">-                        actionManager.execute(EnumAction.CLEAN_CACHE)
+</a><a href="#h21-5-32" id="h21-5-32" class="i">+                        appContext.log.verbose(&quot;cleanCache&quot;)
+</a><a href="#h21-5-33" id="h21-5-33" class="i">+                        appContext.actionManager.execute(EnumAction.CLEAN_CACHE)
+</a>                     }
+                 }
+             })
+<b>diff --git a/<a id="h22" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/bridge/BridgeClient.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/bridge/BridgeClient.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/bridge/BridgeClient.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/bridge/BridgeClient.kt</a></b>
+<a href="#h22-0" id="h22-0" class="h">@@ -5,9 +5,18 @@ import android.content.ComponentName
+</a> import android.content.Context
+ import android.content.Intent
+ import android.content.ServiceConnection
+<a href="#h22-0-3" id="h22-0-3" class="d">-import android.os.*
+</a><a href="#h22-0-4" id="h22-0-4" class="i">+import android.os.Build
+</a><a href="#h22-0-5" id="h22-0-5" class="i">+import android.os.DeadObjectException
+</a><a href="#h22-0-6" id="h22-0-6" class="i">+import android.os.Handler
+</a><a href="#h22-0-7" id="h22-0-7" class="i">+import android.os.HandlerThread
+</a><a href="#h22-0-8" id="h22-0-8" class="i">+import android.os.IBinder
+</a><a href="#h22-0-9" id="h22-0-9" class="i">+import android.os.ParcelFileDescriptor
+</a><a href="#h22-0-10" id="h22-0-10" class="i">+import android.os.Process
+</a> import android.util.Log
+ import de.robv.android.xposed.XposedHelpers
+<a href="#h22-0-13" id="h22-0-13" class="i">+import kotlinx.coroutines.runBlocking
+</a><a href="#h22-0-14" id="h22-0-14" class="i">+import kotlinx.coroutines.suspendCancellableCoroutine
+</a><a href="#h22-0-15" id="h22-0-15" class="i">+import kotlinx.coroutines.withTimeoutOrNull
+</a> import me.rhunk.snapenhance.bridge.AccountStorage
+ import me.rhunk.snapenhance.bridge.BridgeInterface
+ import me.rhunk.snapenhance.bridge.ConfigStateListener
+<a href="#h22-1" id="h22-1" class="h">@@ -26,83 +35,135 @@ import me.rhunk.snapenhance.common.data.MessagingRuleType
+</a> import me.rhunk.snapenhance.common.data.SocialScope
+ import me.rhunk.snapenhance.common.util.toSerialized
+ import me.rhunk.snapenhance.core.ModContext
+<a href="#h22-1-3" id="h22-1-3" class="d">-import java.util.concurrent.CompletableFuture
+</a> import java.util.concurrent.Executors
+<a href="#h22-1-5" id="h22-1-5" class="d">-import java.util.concurrent.TimeUnit
+</a><a href="#h22-1-6" id="h22-1-6" class="d">-import kotlin.system.exitProcess
+</a><a href="#h22-1-7" id="h22-1-7" class="i">+import kotlin.coroutines.Continuation
+</a><a href="#h22-1-8" id="h22-1-8" class="i">+import kotlin.coroutines.resume
+</a> 
+ class BridgeClient(
+     private val context: ModContext
+ ):  ServiceConnection {
+<a href="#h22-1-13" id="h22-1-13" class="d">-    private lateinit var future: CompletableFuture&lt;Boolean&gt;
+</a><a href="#h22-1-14" id="h22-1-14" class="i">+    private var continuation: Continuation&lt;Boolean&gt;? = null
+</a>     private lateinit var service: BridgeInterface
+ 
+<a href="#h22-1-17" id="h22-1-17" class="d">-    fun connect(onFailure: (Throwable) -&gt; Unit, onResult: (Boolean) -&gt; Unit) {
+</a><a href="#h22-1-18" id="h22-1-18" class="d">-        this.future = CompletableFuture()
+</a><a href="#h22-1-19" id="h22-1-19" class="i">+    private val onConnectedCallbacks = mutableListOf&lt;suspend () -&gt; Unit&gt;()
+</a> 
+<a href="#h22-1-21" id="h22-1-21" class="d">-        with(context.androidContext) {
+</a><a href="#h22-1-22" id="h22-1-22" class="d">-            runCatching {
+</a><a href="#h22-1-23" id="h22-1-23" class="d">-                startActivity(Intent()
+</a><a href="#h22-1-24" id="h22-1-24" class="d">-                    .setClassName(Constants.SE_PACKAGE_NAME, &quot;me.rhunk.snapenhance.bridge.ForceStartActivity&quot;)
+</a><a href="#h22-1-25" id="h22-1-25" class="d">-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+</a><a href="#h22-1-26" id="h22-1-26" class="d">-                )
+</a><a href="#h22-1-27" id="h22-1-27" class="d">-            }
+</a><a href="#h22-1-28" id="h22-1-28" class="i">+    fun addOnConnectedCallback(callback: suspend () -&gt; Unit) {
+</a><a href="#h22-1-29" id="h22-1-29" class="i">+        synchronized(onConnectedCallbacks) {
+</a><a href="#h22-1-30" id="h22-1-30" class="i">+            onConnectedCallbacks.add(callback)
+</a><a href="#h22-1-31" id="h22-1-31" class="i">+        }
+</a><a href="#h22-1-32" id="h22-1-32" class="i">+    }
+</a><a href="#h22-1-33" id="h22-1-33" class="i">+
+</a><a href="#h22-1-34" id="h22-1-34" class="i">+    suspend fun connect(onFailure: (Throwable) -&gt; Unit): Boolean? {
+</a><a href="#h22-1-35" id="h22-1-35" class="i">+        if (this::service.isInitialized &amp;&amp; service.asBinder().pingBinder()) {
+</a><a href="#h22-1-36" id="h22-1-36" class="i">+            return true
+</a><a href="#h22-1-37" id="h22-1-37" class="i">+        }
+</a> 
+<a href="#h22-1-39" id="h22-1-39" class="d">-            //ensure the remote process is running
+</a><a href="#h22-1-40" id="h22-1-40" class="d">-            runCatching {
+</a><a href="#h22-1-41" id="h22-1-41" class="d">-                val intent = Intent()
+</a><a href="#h22-1-42" id="h22-1-42" class="d">-                    .setClassName(Constants.SE_PACKAGE_NAME,&quot;me.rhunk.snapenhance.bridge.BridgeService&quot;)
+</a><a href="#h22-1-43" id="h22-1-43" class="d">-                if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.Q) {
+</a><a href="#h22-1-44" id="h22-1-44" class="d">-                    bindService(
+</a><a href="#h22-1-45" id="h22-1-45" class="d">-                        intent,
+</a><a href="#h22-1-46" id="h22-1-46" class="d">-                        Context.BIND_AUTO_CREATE,
+</a><a href="#h22-1-47" id="h22-1-47" class="d">-                        Executors.newSingleThreadExecutor(),
+</a><a href="#h22-1-48" id="h22-1-48" class="d">-                        this@BridgeClient
+</a><a href="#h22-1-49" id="h22-1-49" class="d">-                    )
+</a><a href="#h22-1-50" id="h22-1-50" class="d">-                } else {
+</a><a href="#h22-1-51" id="h22-1-51" class="d">-                    XposedHelpers.callMethod(
+</a><a href="#h22-1-52" id="h22-1-52" class="d">-                        this,
+</a><a href="#h22-1-53" id="h22-1-53" class="d">-                        &quot;bindServiceAsUser&quot;,
+</a><a href="#h22-1-54" id="h22-1-54" class="d">-                        intent,
+</a><a href="#h22-1-55" id="h22-1-55" class="d">-                        this@BridgeClient,
+</a><a href="#h22-1-56" id="h22-1-56" class="d">-                        Context.BIND_AUTO_CREATE,
+</a><a href="#h22-1-57" id="h22-1-57" class="d">-                        Handler(HandlerThread(&quot;BridgeClient&quot;).apply {
+</a><a href="#h22-1-58" id="h22-1-58" class="d">-                            start()
+</a><a href="#h22-1-59" id="h22-1-59" class="d">-                        }.looper),
+</a><a href="#h22-1-60" id="h22-1-60" class="d">-                        android.os.Process.myUserHandle()
+</a><a href="#h22-1-61" id="h22-1-61" class="d">-                    )
+</a><a href="#h22-1-62" id="h22-1-62" class="i">+        return withTimeoutOrNull(5000L) {
+</a><a href="#h22-1-63" id="h22-1-63" class="i">+            suspendCancellableCoroutine { cancellableContinuation -&gt;
+</a><a href="#h22-1-64" id="h22-1-64" class="i">+                continuation = cancellableContinuation
+</a><a href="#h22-1-65" id="h22-1-65" class="i">+                with(context.androidContext) {
+</a><a href="#h22-1-66" id="h22-1-66" class="i">+                    //ensure the remote process is running
+</a><a href="#h22-1-67" id="h22-1-67" class="i">+                    runCatching {
+</a><a href="#h22-1-68" id="h22-1-68" class="i">+                        startActivity(Intent()
+</a><a href="#h22-1-69" id="h22-1-69" class="i">+                            .setClassName(Constants.SE_PACKAGE_NAME, &quot;me.rhunk.snapenhance.bridge.ForceStartActivity&quot;)
+</a><a href="#h22-1-70" id="h22-1-70" class="i">+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+</a><a href="#h22-1-71" id="h22-1-71" class="i">+                        )
+</a><a href="#h22-1-72" id="h22-1-72" class="i">+                    }
+</a><a href="#h22-1-73" id="h22-1-73" class="i">+
+</a><a href="#h22-1-74" id="h22-1-74" class="i">+                    runCatching {
+</a><a href="#h22-1-75" id="h22-1-75" class="i">+                        val intent = Intent()
+</a><a href="#h22-1-76" id="h22-1-76" class="i">+                            .setClassName(Constants.SE_PACKAGE_NAME, &quot;me.rhunk.snapenhance.bridge.BridgeService&quot;)
+</a><a href="#h22-1-77" id="h22-1-77" class="i">+                        runCatching {
+</a><a href="#h22-1-78" id="h22-1-78" class="i">+                            if (this@BridgeClient::service.isInitialized) {
+</a><a href="#h22-1-79" id="h22-1-79" class="i">+                                unbindService(this@BridgeClient)
+</a><a href="#h22-1-80" id="h22-1-80" class="i">+                            }
+</a><a href="#h22-1-81" id="h22-1-81" class="i">+                        }
+</a><a href="#h22-1-82" id="h22-1-82" class="i">+                        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.Q) {
+</a><a href="#h22-1-83" id="h22-1-83" class="i">+                            bindService(
+</a><a href="#h22-1-84" id="h22-1-84" class="i">+                                intent,
+</a><a href="#h22-1-85" id="h22-1-85" class="i">+                                Context.BIND_AUTO_CREATE,
+</a><a href="#h22-1-86" id="h22-1-86" class="i">+                                Executors.newSingleThreadExecutor(),
+</a><a href="#h22-1-87" id="h22-1-87" class="i">+                                this@BridgeClient
+</a><a href="#h22-1-88" id="h22-1-88" class="i">+                            )
+</a><a href="#h22-1-89" id="h22-1-89" class="i">+                        } else {
+</a><a href="#h22-1-90" id="h22-1-90" class="i">+                            XposedHelpers.callMethod(
+</a><a href="#h22-1-91" id="h22-1-91" class="i">+                                this,
+</a><a href="#h22-1-92" id="h22-1-92" class="i">+                                &quot;bindServiceAsUser&quot;,
+</a><a href="#h22-1-93" id="h22-1-93" class="i">+                                intent,
+</a><a href="#h22-1-94" id="h22-1-94" class="i">+                                this@BridgeClient,
+</a><a href="#h22-1-95" id="h22-1-95" class="i">+                                Context.BIND_AUTO_CREATE,
+</a><a href="#h22-1-96" id="h22-1-96" class="i">+                                Handler(HandlerThread(&quot;BridgeClient&quot;).apply {
+</a><a href="#h22-1-97" id="h22-1-97" class="i">+                                    start()
+</a><a href="#h22-1-98" id="h22-1-98" class="i">+                                }.looper),
+</a><a href="#h22-1-99" id="h22-1-99" class="i">+                                Process.myUserHandle()
+</a><a href="#h22-1-100" id="h22-1-100" class="i">+                            )
+</a><a href="#h22-1-101" id="h22-1-101" class="i">+                        }
+</a><a href="#h22-1-102" id="h22-1-102" class="i">+                    }.onFailure {
+</a><a href="#h22-1-103" id="h22-1-103" class="i">+                        onFailure(it)
+</a><a href="#h22-1-104" id="h22-1-104" class="i">+                        continuation = null
+</a><a href="#h22-1-105" id="h22-1-105" class="i">+                        cancellableContinuation.resume(false)
+</a><a href="#h22-1-106" id="h22-1-106" class="i">+                    }
+</a>                 }
+<a href="#h22-1-108" id="h22-1-108" class="d">-                onResult(future.get(15, TimeUnit.SECONDS))
+</a><a href="#h22-1-109" id="h22-1-109" class="d">-            }.onFailure {
+</a><a href="#h22-1-110" id="h22-1-110" class="d">-                onFailure(it)
+</a>             }
+         }
+     }
+ 
+<a href="#h22-1-115" id="h22-1-115" class="d">-
+</a>     override fun onServiceConnected(name: ComponentName, service: IBinder) {
+         this.service = BridgeInterface.Stub.asInterface(service)
+<a href="#h22-1-118" id="h22-1-118" class="d">-        future.complete(true)
+</a><a href="#h22-1-119" id="h22-1-119" class="i">+        runBlocking {
+</a><a href="#h22-1-120" id="h22-1-120" class="i">+            onConnectedCallbacks.forEach {
+</a><a href="#h22-1-121" id="h22-1-121" class="i">+                runCatching {
+</a><a href="#h22-1-122" id="h22-1-122" class="i">+                    it()
+</a><a href="#h22-1-123" id="h22-1-123" class="i">+                }.onFailure {
+</a><a href="#h22-1-124" id="h22-1-124" class="i">+                    context.log.error(&quot;Failed to run onConnectedCallback&quot;, it)
+</a><a href="#h22-1-125" id="h22-1-125" class="i">+                }
+</a><a href="#h22-1-126" id="h22-1-126" class="i">+            }
+</a><a href="#h22-1-127" id="h22-1-127" class="i">+        }
+</a><a href="#h22-1-128" id="h22-1-128" class="i">+        continuation?.resume(true)
+</a><a href="#h22-1-129" id="h22-1-129" class="i">+        continuation = null
+</a>     }
+ 
+     override fun onNullBinding(name: ComponentName) {
+<a href="#h22-1-133" id="h22-1-133" class="d">-        context.log.error(&quot;BridgeClient&quot;, &quot;failed to connect to bridge service&quot;)
+</a><a href="#h22-1-134" id="h22-1-134" class="d">-        exitProcess(1)
+</a><a href="#h22-1-135" id="h22-1-135" class="i">+        Log.d(&quot;BridgeClient&quot;, &quot;bridge null binding&quot;)
+</a><a href="#h22-1-136" id="h22-1-136" class="i">+        continuation?.resume(false)
+</a><a href="#h22-1-137" id="h22-1-137" class="i">+        continuation = null
+</a>     }
+ 
+     override fun onServiceDisconnected(name: ComponentName) {
+<a href="#h22-1-141" id="h22-1-141" class="d">-        exitProcess(0)
+</a><a href="#h22-1-142" id="h22-1-142" class="i">+        continuation = null
+</a><a href="#h22-1-143" id="h22-1-143" class="i">+    }
+</a><a href="#h22-1-144" id="h22-1-144" class="i">+
+</a><a href="#h22-1-145" id="h22-1-145" class="i">+    private fun tryReconnect() {
+</a><a href="#h22-1-146" id="h22-1-146" class="i">+        runBlocking {
+</a><a href="#h22-1-147" id="h22-1-147" class="i">+            Log.d(&quot;BridgeClient&quot;, &quot;service is dead, restarting&quot;)
+</a><a href="#h22-1-148" id="h22-1-148" class="i">+            val canLoad = connect {
+</a><a href="#h22-1-149" id="h22-1-149" class="i">+                Log.e(&quot;BridgeClient&quot;, &quot;connection failed&quot;, it)
+</a><a href="#h22-1-150" id="h22-1-150" class="i">+                context.softRestartApp()
+</a><a href="#h22-1-151" id="h22-1-151" class="i">+            }
+</a><a href="#h22-1-152" id="h22-1-152" class="i">+            if (canLoad != true) {
+</a><a href="#h22-1-153" id="h22-1-153" class="i">+                Log.e(&quot;BridgeClient&quot;, &quot;failed to reconnect to service&quot;, Throwable())
+</a><a href="#h22-1-154" id="h22-1-154" class="i">+                context.softRestartApp()
+</a><a href="#h22-1-155" id="h22-1-155" class="i">+            }
+</a><a href="#h22-1-156" id="h22-1-156" class="i">+        }
+</a>     }
+ 
+     private fun &lt;T&gt; safeServiceCall(block: () -&gt; T): T {
+         return runCatching {
+             block()
+<a href="#h22-1-162" id="h22-1-162" class="d">-        }.getOrElse {
+</a><a href="#h22-1-163" id="h22-1-163" class="d">-            Log.e(&quot;SnapEnhance&quot;, &quot;service call failed&quot;, it)
+</a><a href="#h22-1-164" id="h22-1-164" class="d">-            if (it is DeadObjectException) {
+</a><a href="#h22-1-165" id="h22-1-165" class="d">-                context.softRestartApp()
+</a><a href="#h22-1-166" id="h22-1-166" class="i">+        }.getOrElse { throwable -&gt;
+</a><a href="#h22-1-167" id="h22-1-167" class="i">+            if (throwable is DeadObjectException) {
+</a><a href="#h22-1-168" id="h22-1-168" class="i">+                tryReconnect()
+</a><a href="#h22-1-169" id="h22-1-169" class="i">+                return@getOrElse runCatching {
+</a><a href="#h22-1-170" id="h22-1-170" class="i">+                    block()
+</a><a href="#h22-1-171" id="h22-1-171" class="i">+                }.getOrElse {
+</a><a href="#h22-1-172" id="h22-1-172" class="i">+                    Log.e(&quot;BridgeClient&quot;, &quot;service call failed&quot;, it)
+</a><a href="#h22-1-173" id="h22-1-173" class="i">+                    if (it is DeadObjectException) {
+</a><a href="#h22-1-174" id="h22-1-174" class="i">+                        context.softRestartApp()
+</a><a href="#h22-1-175" id="h22-1-175" class="i">+                    }
+</a><a href="#h22-1-176" id="h22-1-176" class="i">+                    throw it
+</a><a href="#h22-1-177" id="h22-1-177" class="i">+                }
+</a>             }
+<a href="#h22-1-179" id="h22-1-179" class="d">-            throw it
+</a><a href="#h22-1-180" id="h22-1-180" class="i">+            throw throwable
+</a>         }
+     }
+ 
+<a href="#h22-2" id="h22-2" class="h">@@ -180,5 +241,5 @@ class BridgeClient(
+</a> 
+     fun registerConfigStateListener(listener: ConfigStateListener) = safeServiceCall { service.registerConfigStateListener(listener) }
+ 
+<a href="#h22-2-3" id="h22-2-3" class="d">-    fun getDebugProp(name: String, defaultValue: String? = null) = safeServiceCall { service.getDebugProp(name, defaultValue) }
+</a><a href="#h22-2-4" id="h22-2-4" class="i">+    fun getDebugProp(name: String, defaultValue: String? = null): String? = safeServiceCall { service.getDebugProp(name, defaultValue) }
+</a> }
+<b>diff --git a/<a id="h23" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/CustomEmojiFont.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/CustomEmojiFont.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/CustomEmojiFont.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/experiments/CustomEmojiFont.kt</a></b>
+<a href="#h23-0" id="h23-0" class="h">@@ -10,7 +10,7 @@ private var cacheFontPath: String? = null
+</a> fun getCustomEmojiFontPath(
+     context: ModContext
+ ): String? {
+<a href="#h23-0-3" id="h23-0-3" class="d">-    val customFileName = context.config.experimental.nativeHooks.customEmojiFont.getNullable() ?: return null
+</a><a href="#h23-0-4" id="h23-0-4" class="i">+    val customFileName = context.config.experimental.nativeHooks.customEmojiFont.getNullable()?.takeIf { it.isNotBlank() } ?: return null
+</a>     if (cacheFontPath == null) {
+         cacheFontPath = runCatching {
+              context.bridgeClient.getFileHandlerManager().getFileHandleLocalPath(
+<b>diff --git a/<a id="h24" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/Messaging.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/Messaging.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/Messaging.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/messaging/Messaging.kt</a></b>
+<a href="#h24-0" id="h24-0" class="h">@@ -1,5 +1,8 @@
+</a> package me.rhunk.snapenhance.core.features.impl.messaging
+ 
+<a href="#h24-0-2" id="h24-0-2" class="i">+import android.content.ComponentName
+</a><a href="#h24-0-3" id="h24-0-3" class="i">+import android.content.Intent
+</a><a href="#h24-0-4" id="h24-0-4" class="i">+import me.rhunk.snapenhance.common.Constants
+</a> import me.rhunk.snapenhance.common.ReceiversConfig
+ import me.rhunk.snapenhance.core.event.events.impl.ConversationUpdateEvent
+ import me.rhunk.snapenhance.core.event.events.impl.OnSnapInteractionEvent
+<a href="#h24-1" id="h24-1" class="h">@@ -48,8 +51,11 @@ class Messaging : Feature(&quot;Messaging&quot;, loadParams = FeatureLoadParams.ACTIVITY_C
+</a>         context.classCache.conversationManager.hookConstructor(HookStage.BEFORE) { param -&gt;
+             conversationManager = ConversationManager(context, param.thisObject())
+             context.messagingBridge.triggerSessionStart()
+<a href="#h24-1-3" id="h24-1-3" class="d">-            context.mainActivity?.takeIf { it.intent.getBooleanExtra(ReceiversConfig.MESSAGING_PREVIEW_EXTRA,false) }?.run {
+</a><a href="#h24-1-4" id="h24-1-4" class="d">-                finishAndRemoveTask()
+</a><a href="#h24-1-5" id="h24-1-5" class="i">+            context.mainActivity?.takeIf { it.intent.getBooleanExtra(ReceiversConfig.MESSAGING_PREVIEW_EXTRA, false) }?.run {
+</a><a href="#h24-1-6" id="h24-1-6" class="i">+                startActivity(Intent().apply {
+</a><a href="#h24-1-7" id="h24-1-7" class="i">+                    setComponent(ComponentName(Constants.SE_PACKAGE_NAME, &quot;me.rhunk.snapenhance.ui.manager.MainActivity&quot;))
+</a><a href="#h24-1-8" id="h24-1-8" class="i">+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+</a><a href="#h24-1-9" id="h24-1-9" class="i">+                })
+</a>             }
+         }
+ 
+<b>diff --git a/<a id="h25" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/util/LSPatchUpdater.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/util/LSPatchUpdater.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/util/LSPatchUpdater.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/util/LSPatchUpdater.kt</a></b>
+<a href="#h25-0" id="h25-0" class="h">@@ -2,7 +2,6 @@ package me.rhunk.snapenhance.core.util
+</a> 
+ import me.rhunk.snapenhance.common.Constants
+ import me.rhunk.snapenhance.core.ModContext
+<a href="#h25-0-3" id="h25-0-3" class="d">-import me.rhunk.snapenhance.core.bridge.BridgeClient
+</a> import java.io.File
+ import java.util.zip.ZipFile
+ 
+<a href="#h25-1" id="h25-1" class="h">@@ -20,7 +19,7 @@ object LSPatchUpdater {
+</a>             .toString(16)
+     }
+ 
+<a href="#h25-1-3" id="h25-1-3" class="d">-    fun onBridgeConnected(context: ModContext, bridgeClient: BridgeClient) {
+</a><a href="#h25-1-4" id="h25-1-4" class="i">+    fun onBridgeConnected(context: ModContext) {
+</a>         val obfuscatedModulePath by lazy {
+             (runCatching {
+                 context::class.java.classLoader?.loadClass(&quot;org.lsposed.lspatch.share.Constants&quot;)
+<a href="#h25-2" id="h25-2" class="h">@@ -44,7 +43,7 @@ object LSPatchUpdater {
+</a>         HAS_LSPATCH = true
+         context.log.verbose(&quot;Found embedded SE at ${embeddedModule.absolutePath}&quot;, TAG)
+ 
+<a href="#h25-2-3" id="h25-2-3" class="d">-        val seAppApk = File(bridgeClient.getApplicationApkPath()).also {
+</a><a href="#h25-2-4" id="h25-2-4" class="i">+        val seAppApk = File(context.bridgeClient.getApplicationApkPath()).also {
+</a>             if (!it.canRead()) {
+                 throw IllegalStateException(&quot;Cannot read SnapEnhance apk&quot;)
+             }
+<b>diff --git a/<a id="h26" href="../file/gradle/libs.versions.toml.html">gradle/libs.versions.toml</a> b/<a href="../file/gradle/libs.versions.toml.html">gradle/libs.versions.toml</a></b>
+<a href="#h26-0" id="h26-0" class="h">@@ -2,9 +2,10 @@
+</a> agp = &quot;8.4.1&quot;
+ colorpicker-compose = &quot;1.0.8&quot;
+ libsu = &quot;5.2.2&quot;
+<a href="#h26-0-3" id="h26-0-3" class="d">-guava = &quot;33.2.0-jre&quot;
+</a><a href="#h26-0-4" id="h26-0-4" class="i">+guava = &quot;33.2.1-jre&quot;
+</a> jsoup = &quot;1.17.2&quot;
+ kotlin = &quot;2.0.0&quot;
+<a href="#h26-0-7" id="h26-0-7" class="i">+compose-compiler = &quot;2.0.0&quot;
+</a> kotlinx-coroutines-android = &quot;1.8.1&quot;
+ activity-ktx = &quot;1.9.0&quot;
+ androidx-documentfile = &quot;1.1.0-alpha01&quot;
+<a href="#h26-1" id="h26-1" class="h">@@ -57,6 +58,6 @@ rhino-android = { group = &quot;com.faendir.rhino&quot;, name = &quot;rhino-android&quot;, version.r
+</a> androidApplication = { id = &quot;com.android.application&quot;, version.ref = &quot;agp&quot; }
+ androidLibrary = { id = &quot;com.android.library&quot;, version.ref = &quot;agp&quot; }
+ kotlinAndroid = { id = &quot;org.jetbrains.kotlin.android&quot;, version.ref = &quot;kotlin&quot; }
+<a href="#h26-1-3" id="h26-1-3" class="d">-compose-compiler = { id = &quot;org.jetbrains.kotlin.plugin.compose&quot;, version.ref = &quot;kotlin&quot; }
+</a><a href="#h26-1-4" id="h26-1-4" class="i">+compose-compiler = { id = &quot;org.jetbrains.kotlin.plugin.compose&quot;, version.ref = &quot;compose-compiler&quot; }
+</a> 
+ [bundles] 
+\ No newline at end of file
+<b>diff --git a/<a id="h27" href="../file/gradle/wrapper/gradle-wrapper.properties.html">gradle/wrapper/gradle-wrapper.properties</a> b/<a href="../file/gradle/wrapper/gradle-wrapper.properties.html">gradle/wrapper/gradle-wrapper.properties</a></b>
+<a href="#h27-0" id="h27-0" class="h">@@ -1,6 +1,6 @@
+</a> distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+<a href="#h27-0-2" id="h27-0-2" class="d">-distributionUrl=https\://services.gradle.org/distributions/gradle-8.7-bin.zip
+</a><a href="#h27-0-3" id="h27-0-3" class="i">+distributionUrl=https\://services.gradle.org/distributions/gradle-8.8-bin.zip
+</a> networkTimeout=10000
+ validateDistributionUrl=true
+ zipStoreBase=GRADLE_USER_HOME
+<b>diff --git a/<a id="h28" href="../file/gradlew.html">gradlew</a> b/<a href="../file/gradlew.html">gradlew</a></b>
+<a href="#h28-0" id="h28-0" class="h">@@ -55,7 +55,7 @@
+</a> #       Darwin, MinGW, and NonStop.
+ #
+ #   (3) This script is generated from the Groovy template
+<a href="#h28-0-3" id="h28-0-3" class="d">-#       https://github.com/gradle/gradle/blob/HEAD/subprojects/plugins/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+</a><a href="#h28-0-4" id="h28-0-4" class="i">+#       https://github.com/gradle/gradle/blob/HEAD/platforms/jvm/plugins-application/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+</a> #       within the Gradle project.
+ #
+ #       You can find Gradle at https://github.com/gradle/gradle/.
+</pre>
+</div>
+</body>
+</html>

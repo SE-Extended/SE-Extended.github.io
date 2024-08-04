@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor: logs output - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/ec6b5207d6ce2a95d6273bfe5b7fcaa48f29ea9c.html">ec6b5207d6ce2a95d6273bfe5b7fcaa48f29ea9c</a>
+<b>parent</b> <a href="../commit/8e7c38f38c967cd5398cb2d6c48d0b1ade954b31.html">8e7c38f38c967cd5398cb2d6c48d0b1ade954b31</a>
+<b>Author:</b> bocajthomas &lt;<a href="mailto:bocajthomas274@gmail.com">bocajthomas274@gmail.com</a>&gt;
+<b>Date:</b>   Mon, 10 Jun 2024 18:17:04 +0100
+
+refactor: logs output
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt</a></td><td> | </td><td class="num">2</td><td><span class="i">+</span><span class="d">-</span></td></tr>
+</table></pre><pre>2 files changed, 2 insertions(+), 2 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/LogManager.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -179,7 +179,7 @@ class LogManager(
+</a> 
+     private fun newLogFile() {
+         val currentTime = System.currentTimeMillis()
+<a href="#h0-0-3" id="h0-0-3" class="d">-        logFile = File(logFolder, &quot;snapenhance_${getCurrentDateTime(pathSafe = true)}.log&quot;).also {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+        logFile = File(logFolder, &quot;SE Extended-${getCurrentDateTime(pathSafe = true)}.txt&quot;).also {
+</a>             it.createNewFile()
+             remoteSideContext.sharedPreferences.edit().putString(&quot;log_file&quot;, it.absolutePath).putLong(&quot;last_created&quot;, currentTime).apply()
+         }
+<b>diff --git a/<a id="h1" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/ui/manager/pages/home/HomeLogs.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -75,7 +75,7 @@ class HomeLogs : Routes.Route() {
+</a>             })
+ 
+             DropdownMenuItem(onClick = {
+<a href="#h1-0-3" id="h1-0-3" class="d">-                activityLauncherHelper.saveFile(&quot;snapenhance-logs-${System.currentTimeMillis()}.zip&quot;, &quot;application/zip&quot;) { uri -&gt;
+</a><a href="#h1-0-4" id="h1-0-4" class="i">+                activityLauncherHelper.saveFile(&quot;SE Extended-logs-${System.currentTimeMillis()}.zip&quot;, &quot;application/zip&quot;) { uri -&gt;
+</a>                     context.coroutineScope.launch {
+                         context.shortToast(translation[&quot;saving_logs_toast&quot;])
+                         context.androidContext.contentResolver.openOutputStream(Uri.parse(uri))?.use {
+</pre>
+</div>
+</body>
+</html>

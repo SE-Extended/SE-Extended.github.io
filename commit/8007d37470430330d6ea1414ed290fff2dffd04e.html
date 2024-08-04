@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fix - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/8007d37470430330d6ea1414ed290fff2dffd04e.html">8007d37470430330d6ea1414ed290fff2dffd04e</a>
+<b>parent</b> <a href="../commit/e06e96e1fb38c945c1c841bc7c1c54362a967166.html">e06e96e1fb38c945c1c841bc7c1c54362a967166</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Tue, 18 Jun 2024 01:54:11 +0100
+
+fix
+<b>Diffstat:</b>
+<table><tr><td class="A">A</td><td><a href="#h0">common/src/main/assets/lang/nb_NO.json</a></td><td> | </td><td class="num">443</td><td><span class="i">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="d"></span></td></tr>
+</table></pre><pre>1 file changed, 443 insertions(+), 0 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/assets/lang/nb_NO.json.html">common/src/main/assets/lang/nb_NO.json</a> b/<a href="../file/common/src/main/assets/lang/nb_NO.json.html">common/src/main/assets/lang/nb_NO.json</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -0,0 +1,443 @@
+</a><a href="#h0-0-0" id="h0-0-0" class="i">+{
+</a><a href="#h0-0-1" id="h0-0-1" class="i">+    &quot;manager&quot;: {
+</a><a href="#h0-0-2" id="h0-0-2" class="i">+        &quot;routes&quot;: {
+</a><a href="#h0-0-3" id="h0-0-3" class="i">+            &quot;home_logs&quot;: &quot;Loggføring&quot;,
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+            &quot;scripts&quot;: &quot;Skript&quot;,
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+            &quot;home_settings&quot;: &quot;Innstillinger&quot;,
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+            &quot;features&quot;: &quot;Funksjoner&quot;,
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+            &quot;home&quot;: &quot;Hjem&quot;,
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+            &quot;tasks&quot;: &quot;Gjøremål&quot;,
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+            &quot;logger_history&quot;: &quot;Loggføringshistorie&quot;,
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+            &quot;logged_stories&quot;: &quot;Loggede historier&quot;,
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+            &quot;messaging_preview&quot;: &quot;Forhåndsvisning&quot;,
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+            &quot;social&quot;: &quot;Sosialt&quot;,
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+            &quot;manage_scope&quot;: &quot;Administrer omfang&quot;,
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+            &quot;better_location&quot;: &quot;Bedre Posisjon&quot;,
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+            &quot;file_imports&quot;: &quot;Fil-importer&quot;,
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+            &quot;edit_rule&quot;: &quot;Rediger Regel&quot;,
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+            &quot;friend_tracker&quot;: &quot;Vennesporing&quot;
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+        },
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+        &quot;sections&quot;: {
+</a><a href="#h0-0-20" id="h0-0-20" class="i">+            &quot;social&quot;: {
+</a><a href="#h0-0-21" id="h0-0-21" class="i">+                &quot;streaks_expiration_short&quot;: &quot;{hours}t&quot;,
+</a><a href="#h0-0-22" id="h0-0-22" class="i">+                &quot;friends_tab&quot;: &quot;Venner&quot;,
+</a><a href="#h0-0-23" id="h0-0-23" class="i">+                &quot;groups_tab&quot;: &quot;Grupper&quot;,
+</a><a href="#h0-0-24" id="h0-0-24" class="i">+                &quot;empty_hint&quot;: &quot;(tom)&quot;
+</a><a href="#h0-0-25" id="h0-0-25" class="i">+            },
+</a><a href="#h0-0-26" id="h0-0-26" class="i">+            &quot;features&quot;: {
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+                &quot;disabled&quot;: &quot;Deaktivert&quot;,
+</a><a href="#h0-0-28" id="h0-0-28" class="i">+                &quot;config_import_success_toast&quot;: &quot;Importering av konfigurasjon vellykket&quot;,
+</a><a href="#h0-0-29" id="h0-0-29" class="i">+                &quot;config_export_success_toast&quot;: &quot;Eksportering av konfigurasjon vellykket&quot;,
+</a><a href="#h0-0-30" id="h0-0-30" class="i">+                &quot;export_option&quot;: &quot;Eksporter&quot;,
+</a><a href="#h0-0-31" id="h0-0-31" class="i">+                &quot;reset_option&quot;: &quot;Tilbakestill&quot;,
+</a><a href="#h0-0-32" id="h0-0-32" class="i">+                &quot;config_import_failure_toast&quot;: &quot;Feil under importering av konfigurasjon {error}&quot;,
+</a><a href="#h0-0-33" id="h0-0-33" class="i">+                &quot;config_export_failure_toast&quot;: &quot;Feil under eksportering av konfigurasjon {error}&quot;,
+</a><a href="#h0-0-34" id="h0-0-34" class="i">+                &quot;saved_config_snackbar&quot;: &quot;Konfigurasjon lagret&quot;,
+</a><a href="#h0-0-35" id="h0-0-35" class="i">+                &quot;import_option&quot;: &quot;Importer&quot;
+</a><a href="#h0-0-36" id="h0-0-36" class="i">+            },
+</a><a href="#h0-0-37" id="h0-0-37" class="i">+            &quot;tasks&quot;: {
+</a><a href="#h0-0-38" id="h0-0-38" class="i">+                &quot;no_tasks&quot;: &quot;Ingen gjøremål&quot;,
+</a><a href="#h0-0-39" id="h0-0-39" class="i">+                &quot;remove_all_tasks_title&quot;: &quot;Er du sikker på at du vil fjerne alle gjøremål?&quot;,
+</a><a href="#h0-0-40" id="h0-0-40" class="i">+                &quot;failed_to_open_file&quot;: &quot;Feil under åpning av fil&quot;,
+</a><a href="#h0-0-41" id="h0-0-41" class="i">+                &quot;merge_files_toast&quot;: &quot;Slår sammen {count} filer&quot;,
+</a><a href="#h0-0-42" id="h0-0-42" class="i">+                &quot;remove_selected_tasks_title&quot;: &quot;Er du sikker på at du vil fjerne valgte gjøremål?&quot;,
+</a><a href="#h0-0-43" id="h0-0-43" class="i">+                &quot;delete_files_option&quot;: &quot;Slett filer også&quot;,
+</a><a href="#h0-0-44" id="h0-0-44" class="i">+                &quot;remove_selected_tasks_confirm&quot;: &quot;Fjern {count} gjøremål?&quot;,
+</a><a href="#h0-0-45" id="h0-0-45" class="i">+                &quot;remove_all_tasks_confirm&quot;: &quot;Fjern alle gjøremål?&quot;
+</a><a href="#h0-0-46" id="h0-0-46" class="i">+            },
+</a><a href="#h0-0-47" id="h0-0-47" class="i">+            &quot;home&quot;: {
+</a><a href="#h0-0-48" id="h0-0-48" class="i">+                &quot;update_content&quot;: &quot;Versjon {versjon} er tilgjengelig!&quot;,
+</a><a href="#h0-0-49" id="h0-0-49" class="i">+                &quot;update_button&quot;: &quot;Last ned&quot;,
+</a><a href="#h0-0-50" id="h0-0-50" class="i">+                &quot;update_title&quot;: &quot;SnapEnhance Oppdatering&quot;,
+</a><a href="#h0-0-51" id="h0-0-51" class="i">+                &quot;debug_build_summary_title&quot;: &quot;Du kjører et feilsøkingsbyggversjon av SnapEnhance&quot;,
+</a><a href="#h0-0-52" id="h0-0-52" class="i">+                &quot;debug_build_summary_date&quot;: &quot;Byggversjonsdato: {date} ({days} dager siden)&quot;,
+</a><a href="#h0-0-53" id="h0-0-53" class="i">+                &quot;quick_actions_title&quot;: &quot;Kjappe Handlinger&quot;,
+</a><a href="#h0-0-54" id="h0-0-54" class="i">+                &quot;debug_build_summary_content&quot;: &quot;Versjon {versionName} ({versionCode})&quot;,
+</a><a href="#h0-0-55" id="h0-0-55" class="i">+                &quot;version_title&quot;: &quot;v{versionName} · av rhunk&quot;
+</a><a href="#h0-0-56" id="h0-0-56" class="i">+            },
+</a><a href="#h0-0-57" id="h0-0-57" class="i">+            &quot;home_logs&quot;: {
+</a><a href="#h0-0-58" id="h0-0-58" class="i">+                &quot;no_logs_hint&quot;: &quot;Ingen logger tilgjengelig&quot;,
+</a><a href="#h0-0-59" id="h0-0-59" class="i">+                &quot;clear_logs_button&quot;: &quot;Slett Logg&quot;,
+</a><a href="#h0-0-60" id="h0-0-60" class="i">+                &quot;export_logs_button&quot;: &quot;Eksporter Logg&quot;,
+</a><a href="#h0-0-61" id="h0-0-61" class="i">+                &quot;saving_logs_toast&quot;: &quot;Lagrer logg, dette kan ta en stund …&quot;,
+</a><a href="#h0-0-62" id="h0-0-62" class="i">+                &quot;saved_logs_success_toast&quot;: &quot;Logg lagret&quot;,
+</a><a href="#h0-0-63" id="h0-0-63" class="i">+                &quot;saved_logs_failure_toast&quot;: &quot;Feil under lagring av logg&quot;
+</a><a href="#h0-0-64" id="h0-0-64" class="i">+            },
+</a><a href="#h0-0-65" id="h0-0-65" class="i">+            &quot;home_settings&quot;: {
+</a><a href="#h0-0-66" id="h0-0-66" class="i">+                &quot;actions_title&quot;: &quot;Handlinger&quot;,
+</a><a href="#h0-0-67" id="h0-0-67" class="i">+                &quot;success_toast&quot;: &quot;Ferdig!&quot;,
+</a><a href="#h0-0-68" id="h0-0-68" class="i">+                &quot;message_logger_summary&quot;: &quot;{messageCount} meldinger\n{storyCount} historier&quot;,
+</a><a href="#h0-0-69" id="h0-0-69" class="i">+                &quot;message_logger_title&quot;: &quot;Meldingslogger&quot;,
+</a><a href="#h0-0-70" id="h0-0-70" class="i">+                &quot;export_button&quot;: &quot;Eksporter&quot;,
+</a><a href="#h0-0-71" id="h0-0-71" class="i">+                &quot;clear_button&quot;: &quot;Rensk&quot;,
+</a><a href="#h0-0-72" id="h0-0-72" class="i">+                &quot;view_logger_history_button&quot;: &quot;Se logghistorikk&quot;,
+</a><a href="#h0-0-73" id="h0-0-73" class="i">+                &quot;debug_title&quot;: &quot;Feilsøking&quot;
+</a><a href="#h0-0-74" id="h0-0-74" class="i">+            },
+</a><a href="#h0-0-75" id="h0-0-75" class="i">+            &quot;manage_scope&quot;: {
+</a><a href="#h0-0-76" id="h0-0-76" class="i">+                &quot;logged_stories_button&quot;: &quot;Vis loggede historier&quot;,
+</a><a href="#h0-0-77" id="h0-0-77" class="i">+                &quot;streaks_expiration_text_expired&quot;: &quot;Utgått&quot;,
+</a><a href="#h0-0-78" id="h0-0-78" class="i">+                &quot;e2ee_title&quot;: &quot;Ende-til-ende-kryptering&quot;,
+</a><a href="#h0-0-79" id="h0-0-79" class="i">+                &quot;streaks_length_text&quot;: &quot;Lengde: {length}&quot;,
+</a><a href="#h0-0-80" id="h0-0-80" class="i">+                &quot;streaks_expiration_text&quot;: &quot;Utgår om {eta}&quot;,
+</a><a href="#h0-0-81" id="h0-0-81" class="i">+                &quot;delete_scope_confirm_dialog_title&quot;: &quot;Er du sikker på at du vil slette en {scope}?&quot;,
+</a><a href="#h0-0-82" id="h0-0-82" class="i">+                &quot;rules_title&quot;: &quot;Regler&quot;,
+</a><a href="#h0-0-83" id="h0-0-83" class="i">+                &quot;streaks_title&quot;: &quot;Streaks&quot;,
+</a><a href="#h0-0-84" id="h0-0-84" class="i">+                &quot;reminder_button&quot;: &quot;Sett påminnelse&quot;,
+</a><a href="#h0-0-85" id="h0-0-85" class="i">+                &quot;participants_text&quot;: &quot;{count} deltakere&quot;,
+</a><a href="#h0-0-86" id="h0-0-86" class="i">+                &quot;not_found&quot;: &quot;Ikke funnet&quot;
+</a><a href="#h0-0-87" id="h0-0-87" class="i">+            },
+</a><a href="#h0-0-88" id="h0-0-88" class="i">+            &quot;logged_stories&quot;: {
+</a><a href="#h0-0-89" id="h0-0-89" class="i">+                &quot;story_failed_to_load&quot;: &quot;Feil under lasting&quot;,
+</a><a href="#h0-0-90" id="h0-0-90" class="i">+                &quot;no_stories&quot;: &quot;Ingen historier funnet&quot;
+</a><a href="#h0-0-91" id="h0-0-91" class="i">+            },
+</a><a href="#h0-0-92" id="h0-0-92" class="i">+            &quot;logger_history&quot;: {
+</a><a href="#h0-0-93" id="h0-0-93" class="i">+                &quot;list_friend_format&quot;: &quot;Venn {name}&quot;,
+</a><a href="#h0-0-94" id="h0-0-94" class="i">+                &quot;reverse_order_checkbox&quot;: &quot;Motsatt rekkefølge&quot;,
+</a><a href="#h0-0-95" id="h0-0-95" class="i">+                &quot;empty_message&quot;: &quot;Tom sludringsmelding&quot;,
+</a><a href="#h0-0-96" id="h0-0-96" class="i">+                &quot;unknown_sender&quot;: &quot;Ukjent avsender&quot;,
+</a><a href="#h0-0-97" id="h0-0-97" class="i">+                &quot;list_group_format&quot;: &quot;Gruppe {name}&quot;,
+</a><a href="#h0-0-98" id="h0-0-98" class="i">+                &quot;no_more_messages&quot;: &quot;Ingen flere meldinger&quot;,
+</a><a href="#h0-0-99" id="h0-0-99" class="i">+                &quot;message_parse_failed&quot;: &quot;Kunne ikke å tolke melding&quot;,
+</a><a href="#h0-0-100" id="h0-0-100" class="i">+                &quot;download_attachment_failed_toast&quot;: &quot;Klarte ikke å lagre vedlegg&quot;,
+</a><a href="#h0-0-101" id="h0-0-101" class="i">+                &quot;chat_attachment&quot;: &quot;Vedlegg {index}&quot;
+</a><a href="#h0-0-102" id="h0-0-102" class="i">+            },
+</a><a href="#h0-0-103" id="h0-0-103" class="i">+            &quot;file_imports&quot;: {
+</a><a href="#h0-0-104" id="h0-0-104" class="i">+                &quot;file_imported&quot;: &quot;Fil importert&quot;,
+</a><a href="#h0-0-105" id="h0-0-105" class="i">+                &quot;import_file_button&quot;: &quot;Importer fil&quot;,
+</a><a href="#h0-0-106" id="h0-0-106" class="i">+                &quot;file_not_found&quot;: &quot;Fant ikke filen&quot;,
+</a><a href="#h0-0-107" id="h0-0-107" class="i">+                &quot;file_delete_failed&quot;: &quot;Klarte ikke å slette fil&quot;,
+</a><a href="#h0-0-108" id="h0-0-108" class="i">+                &quot;file_import_failed&quot;: &quot;Klarte ikke å importere fil: {index}&quot;
+</a><a href="#h0-0-109" id="h0-0-109" class="i">+            },
+</a><a href="#h0-0-110" id="h0-0-110" class="i">+            &quot;better_location&quot;: {
+</a><a href="#h0-0-111" id="h0-0-111" class="i">+                &quot;save_coordinates_dialog_title&quot;: &quot;Lagre koordinater&quot;,
+</a><a href="#h0-0-112" id="h0-0-112" class="i">+                &quot;delete_dialog_title&quot;: &quot;Slett lagret koordinat&quot;,
+</a><a href="#h0-0-113" id="h0-0-113" class="i">+                &quot;save_dialog_button&quot;: &quot;Lagre&quot;,
+</a><a href="#h0-0-114" id="h0-0-114" class="i">+                &quot;search_bar&quot;: &quot;Søk&quot;,
+</a><a href="#h0-0-115" id="h0-0-115" class="i">+                &quot;no_friends_found&quot;: &quot;Fant ingen venner&quot;,
+</a><a href="#h0-0-116" id="h0-0-116" class="i">+                &quot;choose_location_button&quot;: &quot;Velg sted&quot;,
+</a><a href="#h0-0-117" id="h0-0-117" class="i">+                &quot;no_friends_map&quot;: &quot;Ingen venner på kartet&quot;,
+</a><a href="#h0-0-118" id="h0-0-118" class="i">+                &quot;longitude_dialog_hint&quot;: &quot;Lengdegrad&quot;,
+</a><a href="#h0-0-119" id="h0-0-119" class="i">+                &quot;saved_name_dialog_hint&quot;: &quot;Lagret navn&quot;,
+</a><a href="#h0-0-120" id="h0-0-120" class="i">+                &quot;latitude_dialog_hint&quot;: &quot;Breddegrad&quot;,
+</a><a href="#h0-0-121" id="h0-0-121" class="i">+                &quot;no_saved_coordinates_hint&quot;: &quot;Ingen lagrede koordinater&quot;
+</a><a href="#h0-0-122" id="h0-0-122" class="i">+            },
+</a><a href="#h0-0-123" id="h0-0-123" class="i">+            &quot;messaging_preview&quot;: {
+</a><a href="#h0-0-124" id="h0-0-124" class="i">+                &quot;delete_all_option&quot;: &quot;Slett alle&quot;,
+</a><a href="#h0-0-125" id="h0-0-125" class="i">+                &quot;no_message_hint&quot;: &quot;Ingen melding&quot;,
+</a><a href="#h0-0-126" id="h0-0-126" class="i">+                &quot;message_fetch_failed&quot;: &quot;Klarte ikke å hente meldinger&quot;,
+</a><a href="#h0-0-127" id="h0-0-127" class="i">+                &quot;save_all_option&quot;: &quot;Lagre alle&quot;,
+</a><a href="#h0-0-128" id="h0-0-128" class="i">+                &quot;unsave_all_option&quot;: &quot;Fjern alle&quot;
+</a><a href="#h0-0-129" id="h0-0-129" class="i">+            }
+</a><a href="#h0-0-130" id="h0-0-130" class="i">+        },
+</a><a href="#h0-0-131" id="h0-0-131" class="i">+        &quot;dialogs&quot;: {
+</a><a href="#h0-0-132" id="h0-0-132" class="i">+            &quot;add_friend&quot;: {
+</a><a href="#h0-0-133" id="h0-0-133" class="i">+                &quot;search_hint&quot;: &quot;Søk&quot;,
+</a><a href="#h0-0-134" id="h0-0-134" class="i">+                &quot;category_friends&quot;: &quot;Venner&quot;,
+</a><a href="#h0-0-135" id="h0-0-135" class="i">+                &quot;category_groups&quot;: &quot;Grupper&quot;,
+</a><a href="#h0-0-136" id="h0-0-136" class="i">+                &quot;title&quot;: &quot;Legg til venn eller gruppe&quot;,
+</a><a href="#h0-0-137" id="h0-0-137" class="i">+                &quot;fetch_error&quot;: &quot;Kunne ikke hente data&quot;
+</a><a href="#h0-0-138" id="h0-0-138" class="i">+            },
+</a><a href="#h0-0-139" id="h0-0-139" class="i">+            &quot;scripting_warning&quot;: {
+</a><a href="#h0-0-140" id="h0-0-140" class="i">+                &quot;title&quot;: &quot;Advarsel&quot;,
+</a><a href="#h0-0-141" id="h0-0-141" class="i">+                &quot;content&quot;: &quot;SnapEnhance inkluderer et skriptverktøy som tillater utføring av brukerdefinert kode på enheten din. Vær ekstremt forsiktig og installer kun moduler fra kjente, pålitelige kilder. Uautoriserte eller uverifiserte moduler kan utgjøre sikkerhetsrisikoer for systemet ditt.&quot;
+</a><a href="#h0-0-142" id="h0-0-142" class="i">+            },
+</a><a href="#h0-0-143" id="h0-0-143" class="i">+            &quot;reset_config&quot;: {
+</a><a href="#h0-0-144" id="h0-0-144" class="i">+                &quot;success_toast&quot;: &quot;Oppsett tilbakestilt&quot;,
+</a><a href="#h0-0-145" id="h0-0-145" class="i">+                &quot;title&quot;: &quot;Tilbakestill oppsett&quot;
+</a><a href="#h0-0-146" id="h0-0-146" class="i">+            },
+</a><a href="#h0-0-147" id="h0-0-147" class="i">+            &quot;export_config&quot;: {
+</a><a href="#h0-0-148" id="h0-0-148" class="i">+                &quot;title&quot;: &quot;Eksporter sensitive data?&quot;
+</a><a href="#h0-0-149" id="h0-0-149" class="i">+            },
+</a><a href="#h0-0-150" id="h0-0-150" class="i">+            &quot;messaging_action&quot;: {
+</a><a href="#h0-0-151" id="h0-0-151" class="i">+                &quot;select_all_button&quot;: &quot;Velg alle&quot;
+</a><a href="#h0-0-152" id="h0-0-152" class="i">+            },
+</a><a href="#h0-0-153" id="h0-0-153" class="i">+            &quot;file_imports&quot;: {
+</a><a href="#h0-0-154" id="h0-0-154" class="i">+                &quot;settings_select_file_hint&quot;: &quot;Velg en importert fil&quot;
+</a><a href="#h0-0-155" id="h0-0-155" class="i">+            }
+</a><a href="#h0-0-156" id="h0-0-156" class="i">+        }
+</a><a href="#h0-0-157" id="h0-0-157" class="i">+    },
+</a><a href="#h0-0-158" id="h0-0-158" class="i">+    &quot;setup&quot;: {
+</a><a href="#h0-0-159" id="h0-0-159" class="i">+        &quot;mappings&quot;: {
+</a><a href="#h0-0-160" id="h0-0-160" class="i">+            &quot;dialog&quot;: &quot;For å dynamisk støtte et bredt spekter av Snapchat-versjoner, er kartlegging nødvendig for at SnapEnhance skal fungere ordentlig, dette bør ikke ta mer enn 5 sekunder.&quot;,
+</a><a href="#h0-0-161" id="h0-0-161" class="i">+            &quot;generate_failure_no_snapchat&quot;: &quot;SnapEnhance kunne ikke oppdage Snapchat, prøv å installere Snapchat på nytt.&quot;,
+</a><a href="#h0-0-162" id="h0-0-162" class="i">+            &quot;generate_failure&quot;: &quot;Det oppstod en feil under forsøk på å generere kartlegginger. Prøv igjen.&quot;
+</a><a href="#h0-0-163" id="h0-0-163" class="i">+        },
+</a><a href="#h0-0-164" id="h0-0-164" class="i">+        &quot;dialogs&quot;: {
+</a><a href="#h0-0-165" id="h0-0-165" class="i">+            &quot;select_save_folder_button&quot;: &quot;Velg mappe&quot;,
+</a><a href="#h0-0-166" id="h0-0-166" class="i">+            &quot;select_language&quot;: &quot;Velg språk&quot;,
+</a><a href="#h0-0-167" id="h0-0-167" class="i">+            &quot;save_folder&quot;: &quot;SnapEnhance krever lagrings tillatelser for og laste ned og lagre media fra snapchaf. Vennligst velg hvor filene skal lagres&quot;
+</a><a href="#h0-0-168" id="h0-0-168" class="i">+        },
+</a><a href="#h0-0-169" id="h0-0-169" class="i">+        &quot;permissions&quot;: {
+</a><a href="#h0-0-170" id="h0-0-170" class="i">+            &quot;battery_optimization&quot;: &quot;Batterioptimalisering&quot;,
+</a><a href="#h0-0-171" id="h0-0-171" class="i">+            &quot;display_over_other_apps&quot;: &quot;Vis over andre apper&quot;,
+</a><a href="#h0-0-172" id="h0-0-172" class="i">+            &quot;notification_access&quot;: &quot;Varslingstilgang&quot;,
+</a><a href="#h0-0-173" id="h0-0-173" class="i">+            &quot;request_button&quot;: &quot;Forespør&quot;,
+</a><a href="#h0-0-174" id="h0-0-174" class="i">+            &quot;dialog&quot;: &quot;For å fortsette må du oppfylle følgende krav:&quot;
+</a><a href="#h0-0-175" id="h0-0-175" class="i">+        }
+</a><a href="#h0-0-176" id="h0-0-176" class="i">+    },
+</a><a href="#h0-0-177" id="h0-0-177" class="i">+    &quot;rules&quot;: {
+</a><a href="#h0-0-178" id="h0-0-178" class="i">+        &quot;modes&quot;: {
+</a><a href="#h0-0-179" id="h0-0-179" class="i">+            &quot;blacklist&quot;: &quot;Svartelistingsmodus&quot;,
+</a><a href="#h0-0-180" id="h0-0-180" class="i">+            &quot;whitelist&quot;: &quot;Hvitlistingsmodus&quot;
+</a><a href="#h0-0-181" id="h0-0-181" class="i">+        },
+</a><a href="#h0-0-182" id="h0-0-182" class="i">+        &quot;properties&quot;: {
+</a><a href="#h0-0-183" id="h0-0-183" class="i">+            &quot;auto_save&quot;: {
+</a><a href="#h0-0-184" id="h0-0-184" class="i">+                &quot;options&quot;: {
+</a><a href="#h0-0-185" id="h0-0-185" class="i">+                    &quot;whitelist&quot;: &quot;Automatisk lagring&quot;,
+</a><a href="#h0-0-186" id="h0-0-186" class="i">+                    &quot;blacklist&quot;: &quot;Ekskluder fra Automatisk lagring&quot;
+</a><a href="#h0-0-187" id="h0-0-187" class="i">+                },
+</a><a href="#h0-0-188" id="h0-0-188" class="i">+                &quot;name&quot;: &quot;Automatisk lagring&quot;,
+</a><a href="#h0-0-189" id="h0-0-189" class="i">+                &quot;description&quot;: &quot;Lagrer chatmeldinger når du ser dem&quot;
+</a><a href="#h0-0-190" id="h0-0-190" class="i">+            },
+</a><a href="#h0-0-191" id="h0-0-191" class="i">+            &quot;auto_download&quot;: {
+</a><a href="#h0-0-192" id="h0-0-192" class="i">+                &quot;name&quot;: &quot;Automatisk nedlasting&quot;,
+</a><a href="#h0-0-193" id="h0-0-193" class="i">+                &quot;options&quot;: {
+</a><a href="#h0-0-194" id="h0-0-194" class="i">+                    &quot;blacklist&quot;: &quot;Ekskluder fra Automatisk nedlasting&quot;,
+</a><a href="#h0-0-195" id="h0-0-195" class="i">+                    &quot;whitelist&quot;: &quot;Automatisk nedlasting&quot;
+</a><a href="#h0-0-196" id="h0-0-196" class="i">+                },
+</a><a href="#h0-0-197" id="h0-0-197" class="i">+                &quot;description&quot;: &quot;Automatisk last ned snapper når du ser dem&quot;
+</a><a href="#h0-0-198" id="h0-0-198" class="i">+            },
+</a><a href="#h0-0-199" id="h0-0-199" class="i">+            &quot;unsaveable_messages&quot;: {
+</a><a href="#h0-0-200" id="h0-0-200" class="i">+                &quot;name&quot;: &quot;Meldinger som ikke kan lagres&quot;,
+</a><a href="#h0-0-201" id="h0-0-201" class="i">+                &quot;description&quot;: &quot;Forhindrer meldinger fra å bli lagret i chat av andre personer&quot;,
+</a><a href="#h0-0-202" id="h0-0-202" class="i">+                &quot;options&quot;: {
+</a><a href="#h0-0-203" id="h0-0-203" class="i">+                    &quot;blacklist&quot;: &quot;Ekskluder fra Meldinger som ikke kan lagres&quot;,
+</a><a href="#h0-0-204" id="h0-0-204" class="i">+                    &quot;whitelist&quot;: &quot;Meldinger som ikke kan lagres&quot;
+</a><a href="#h0-0-205" id="h0-0-205" class="i">+                }
+</a><a href="#h0-0-206" id="h0-0-206" class="i">+            },
+</a><a href="#h0-0-207" id="h0-0-207" class="i">+            &quot;stealth&quot;: {
+</a><a href="#h0-0-208" id="h0-0-208" class="i">+                &quot;description&quot;: &quot;Forhindrer noen fra å vite at du har åpnet snappene/chattene og samtalene dems&quot;,
+</a><a href="#h0-0-209" id="h0-0-209" class="i">+                &quot;options&quot;: {
+</a><a href="#h0-0-210" id="h0-0-210" class="i">+                    &quot;whitelist&quot;: &quot;Smugmodus&quot;,
+</a><a href="#h0-0-211" id="h0-0-211" class="i">+                    &quot;blacklist&quot;: &quot;Ekskluder fra smugmodus&quot;
+</a><a href="#h0-0-212" id="h0-0-212" class="i">+                },
+</a><a href="#h0-0-213" id="h0-0-213" class="i">+                &quot;name&quot;: &quot;Smugmodus&quot;
+</a><a href="#h0-0-214" id="h0-0-214" class="i">+            },
+</a><a href="#h0-0-215" id="h0-0-215" class="i">+            &quot;e2e_encryption&quot;: {
+</a><a href="#h0-0-216" id="h0-0-216" class="i">+                &quot;name&quot;: &quot;Bruk E2E-kryptering&quot;
+</a><a href="#h0-0-217" id="h0-0-217" class="i">+            },
+</a><a href="#h0-0-218" id="h0-0-218" class="i">+            &quot;pin_conversation&quot;: {
+</a><a href="#h0-0-219" id="h0-0-219" class="i">+                &quot;name&quot;: &quot;Fest samtale&quot;
+</a><a href="#h0-0-220" id="h0-0-220" class="i">+            }
+</a><a href="#h0-0-221" id="h0-0-221" class="i">+        },
+</a><a href="#h0-0-222" id="h0-0-222" class="i">+        &quot;toasts&quot;: {
+</a><a href="#h0-0-223" id="h0-0-223" class="i">+            &quot;disabled&quot;: &quot;{ruleName} deaktivert&quot;,
+</a><a href="#h0-0-224" id="h0-0-224" class="i">+            &quot;enabled&quot;: &quot;{ruleName} aktivert&quot;
+</a><a href="#h0-0-225" id="h0-0-225" class="i">+        }
+</a><a href="#h0-0-226" id="h0-0-226" class="i">+    },
+</a><a href="#h0-0-227" id="h0-0-227" class="i">+    &quot;features&quot;: {
+</a><a href="#h0-0-228" id="h0-0-228" class="i">+        &quot;properties&quot;: {
+</a><a href="#h0-0-229" id="h0-0-229" class="i">+            &quot;downloader&quot;: {
+</a><a href="#h0-0-230" id="h0-0-230" class="i">+                &quot;properties&quot;: {
+</a><a href="#h0-0-231" id="h0-0-231" class="i">+                    &quot;ffmpeg_options&quot;: {
+</a><a href="#h0-0-232" id="h0-0-232" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-233" id="h0-0-233" class="i">+                            &quot;video_bitrate&quot;: {
+</a><a href="#h0-0-234" id="h0-0-234" class="i">+                                &quot;name&quot;: &quot;Videobitrate&quot;,
+</a><a href="#h0-0-235" id="h0-0-235" class="i">+                                &quot;description&quot;: &quot;Sett videobitraten (kbps)&quot;
+</a><a href="#h0-0-236" id="h0-0-236" class="i">+                            },
+</a><a href="#h0-0-237" id="h0-0-237" class="i">+                            &quot;threads&quot;: {
+</a><a href="#h0-0-238" id="h0-0-238" class="i">+                                &quot;name&quot;: &quot;Tråder&quot;
+</a><a href="#h0-0-239" id="h0-0-239" class="i">+                            },
+</a><a href="#h0-0-240" id="h0-0-240" class="i">+                            &quot;audio_bitrate&quot;: {
+</a><a href="#h0-0-241" id="h0-0-241" class="i">+                                &quot;name&quot;: &quot;Lydbitrate&quot;,
+</a><a href="#h0-0-242" id="h0-0-242" class="i">+                                &quot;description&quot;: &quot;Sett lydbitraten (kbps)&quot;
+</a><a href="#h0-0-243" id="h0-0-243" class="i">+                            },
+</a><a href="#h0-0-244" id="h0-0-244" class="i">+                            &quot;custom_video_codec&quot;: {
+</a><a href="#h0-0-245" id="h0-0-245" class="i">+                                &quot;name&quot;: &quot;Egendefinert videokodek&quot;
+</a><a href="#h0-0-246" id="h0-0-246" class="i">+                            },
+</a><a href="#h0-0-247" id="h0-0-247" class="i">+                            &quot;preset&quot;: {
+</a><a href="#h0-0-248" id="h0-0-248" class="i">+                                &quot;name&quot;: &quot;Forhåndsinnstilling&quot;
+</a><a href="#h0-0-249" id="h0-0-249" class="i">+                            }
+</a><a href="#h0-0-250" id="h0-0-250" class="i">+                        }
+</a><a href="#h0-0-251" id="h0-0-251" class="i">+                    },
+</a><a href="#h0-0-252" id="h0-0-252" class="i">+                    &quot;save_folder&quot;: {
+</a><a href="#h0-0-253" id="h0-0-253" class="i">+                        &quot;name&quot;: &quot;&quot;
+</a><a href="#h0-0-254" id="h0-0-254" class="i">+                    },
+</a><a href="#h0-0-255" id="h0-0-255" class="i">+                    &quot;custom_path_format&quot;: {
+</a><a href="#h0-0-256" id="h0-0-256" class="i">+                        &quot;name&quot;: &quot;Egendefinert stiformat&quot;
+</a><a href="#h0-0-257" id="h0-0-257" class="i">+                    },
+</a><a href="#h0-0-258" id="h0-0-258" class="i">+                    &quot;download_profile_pictures&quot;: {
+</a><a href="#h0-0-259" id="h0-0-259" class="i">+                        &quot;name&quot;: &quot;Last ned profilbilder&quot;
+</a><a href="#h0-0-260" id="h0-0-260" class="i">+                    },
+</a><a href="#h0-0-261" id="h0-0-261" class="i">+                    &quot;logging&quot;: {
+</a><a href="#h0-0-262" id="h0-0-262" class="i">+                        &quot;name&quot;: &quot;Logging&quot;
+</a><a href="#h0-0-263" id="h0-0-263" class="i">+                    }
+</a><a href="#h0-0-264" id="h0-0-264" class="i">+                },
+</a><a href="#h0-0-265" id="h0-0-265" class="i">+                &quot;name&quot;: &quot;Nedlaster&quot;
+</a><a href="#h0-0-266" id="h0-0-266" class="i">+            },
+</a><a href="#h0-0-267" id="h0-0-267" class="i">+            &quot;user_interface&quot;: {
+</a><a href="#h0-0-268" id="h0-0-268" class="i">+                &quot;properties&quot;: {
+</a><a href="#h0-0-269" id="h0-0-269" class="i">+                    &quot;bootstrap_override&quot;: {
+</a><a href="#h0-0-270" id="h0-0-270" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-271" id="h0-0-271" class="i">+                            &quot;home_tab&quot;: {
+</a><a href="#h0-0-272" id="h0-0-272" class="i">+                                &quot;name&quot;: &quot;Hjemmefane&quot;
+</a><a href="#h0-0-273" id="h0-0-273" class="i">+                            }
+</a><a href="#h0-0-274" id="h0-0-274" class="i">+                        }
+</a><a href="#h0-0-275" id="h0-0-275" class="i">+                    },
+</a><a href="#h0-0-276" id="h0-0-276" class="i">+                    &quot;customize_ui&quot;: {
+</a><a href="#h0-0-277" id="h0-0-277" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-278" id="h0-0-278" class="i">+                            &quot;colors&quot;: {
+</a><a href="#h0-0-279" id="h0-0-279" class="i">+                                &quot;properties&quot;: {
+</a><a href="#h0-0-280" id="h0-0-280" class="i">+                                    &quot;text_color&quot;: {
+</a><a href="#h0-0-281" id="h0-0-281" class="i">+                                        &quot;name&quot;: &quot;Hovedtekstfarge&quot;
+</a><a href="#h0-0-282" id="h0-0-282" class="i">+                                    }
+</a><a href="#h0-0-283" id="h0-0-283" class="i">+                                },
+</a><a href="#h0-0-284" id="h0-0-284" class="i">+                                &quot;name&quot;: &quot;Egendefinerte farger&quot;
+</a><a href="#h0-0-285" id="h0-0-285" class="i">+                            },
+</a><a href="#h0-0-286" id="h0-0-286" class="i">+                            &quot;theme_picker&quot;: {
+</a><a href="#h0-0-287" id="h0-0-287" class="i">+                                &quot;name&quot;: &quot;Draktvelger&quot;
+</a><a href="#h0-0-288" id="h0-0-288" class="i">+                            }
+</a><a href="#h0-0-289" id="h0-0-289" class="i">+                        },
+</a><a href="#h0-0-290" id="h0-0-290" class="i">+                        &quot;name&quot;: &quot;Farger&quot;
+</a><a href="#h0-0-291" id="h0-0-291" class="i">+                    },
+</a><a href="#h0-0-292" id="h0-0-292" class="i">+                    &quot;friend_feed_message_preview&quot;: {
+</a><a href="#h0-0-293" id="h0-0-293" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-294" id="h0-0-294" class="i">+                            &quot;amount&quot;: {
+</a><a href="#h0-0-295" id="h0-0-295" class="i">+                                &quot;name&quot;: &quot;Mengde&quot;
+</a><a href="#h0-0-296" id="h0-0-296" class="i">+                            }
+</a><a href="#h0-0-297" id="h0-0-297" class="i">+                        }
+</a><a href="#h0-0-298" id="h0-0-298" class="i">+                    }
+</a><a href="#h0-0-299" id="h0-0-299" class="i">+                },
+</a><a href="#h0-0-300" id="h0-0-300" class="i">+                &quot;name&quot;: &quot;Brukergrensesnitt&quot;
+</a><a href="#h0-0-301" id="h0-0-301" class="i">+            },
+</a><a href="#h0-0-302" id="h0-0-302" class="i">+            &quot;messaging&quot;: {
+</a><a href="#h0-0-303" id="h0-0-303" class="i">+                &quot;properties&quot;: {
+</a><a href="#h0-0-304" id="h0-0-304" class="i">+                    &quot;better_notifications&quot;: {
+</a><a href="#h0-0-305" id="h0-0-305" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-306" id="h0-0-306" class="i">+                            &quot;download_button&quot;: {
+</a><a href="#h0-0-307" id="h0-0-307" class="i">+                                &quot;name&quot;: &quot;Nedlastingsknapp&quot;
+</a><a href="#h0-0-308" id="h0-0-308" class="i">+                            },
+</a><a href="#h0-0-309" id="h0-0-309" class="i">+                            &quot;reply_button&quot;: {
+</a><a href="#h0-0-310" id="h0-0-310" class="i">+                                &quot;name&quot;: &quot;Svar-knapp&quot;,
+</a><a href="#h0-0-311" id="h0-0-311" class="i">+                                &quot;description&quot;: &quot;Legger til en svarknapp i merknaden&quot;
+</a><a href="#h0-0-312" id="h0-0-312" class="i">+                            },
+</a><a href="#h0-0-313" id="h0-0-313" class="i">+                            &quot;smart_replies&quot;: {
+</a><a href="#h0-0-314" id="h0-0-314" class="i">+                                &quot;name&quot;: &quot;Smart-svar&quot;
+</a><a href="#h0-0-315" id="h0-0-315" class="i">+                            },
+</a><a href="#h0-0-316" id="h0-0-316" class="i">+                            &quot;mark_as_read_button&quot;: {
+</a><a href="#h0-0-317" id="h0-0-317" class="i">+                                &quot;name&quot;: &quot;«Marker som lest»-knapp&quot;,
+</a><a href="#h0-0-318" id="h0-0-318" class="i">+                                &quot;description&quot;: &quot;Lar deg markere en melding som lest fra merknaden&quot;
+</a><a href="#h0-0-319" id="h0-0-319" class="i">+                            }
+</a><a href="#h0-0-320" id="h0-0-320" class="i">+                        }
+</a><a href="#h0-0-321" id="h0-0-321" class="i">+                    },
+</a><a href="#h0-0-322" id="h0-0-322" class="i">+                    &quot;half_swipe_notifier&quot;: {
+</a><a href="#h0-0-323" id="h0-0-323" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-324" id="h0-0-324" class="i">+                            &quot;max_duration&quot;: {
+</a><a href="#h0-0-325" id="h0-0-325" class="i">+                                &quot;name&quot;: &quot;Maksimal varighet&quot;
+</a><a href="#h0-0-326" id="h0-0-326" class="i">+                            }
+</a><a href="#h0-0-327" id="h0-0-327" class="i">+                        }
+</a><a href="#h0-0-328" id="h0-0-328" class="i">+                    },
+</a><a href="#h0-0-329" id="h0-0-329" class="i">+                    &quot;auto_save_messages_in_conversations&quot;: {
+</a><a href="#h0-0-330" id="h0-0-330" class="i">+                        &quot;name&quot;: &quot;Auto-lagring av meldinger&quot;,
+</a><a href="#h0-0-331" id="h0-0-331" class="i">+                        &quot;description&quot;: &quot;Lagrer alle meldinger i samtalen automatisk&quot;
+</a><a href="#h0-0-332" id="h0-0-332" class="i">+                    },
+</a><a href="#h0-0-333" id="h0-0-333" class="i">+                    &quot;message_logger&quot;: {
+</a><a href="#h0-0-334" id="h0-0-334" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-335" id="h0-0-335" class="i">+                            &quot;message_filter&quot;: {
+</a><a href="#h0-0-336" id="h0-0-336" class="i">+                                &quot;name&quot;: &quot;Meldingsfilter&quot;
+</a><a href="#h0-0-337" id="h0-0-337" class="i">+                            }
+</a><a href="#h0-0-338" id="h0-0-338" class="i">+                        }
+</a><a href="#h0-0-339" id="h0-0-339" class="i">+                    }
+</a><a href="#h0-0-340" id="h0-0-340" class="i">+                }
+</a><a href="#h0-0-341" id="h0-0-341" class="i">+            },
+</a><a href="#h0-0-342" id="h0-0-342" class="i">+            &quot;camera&quot;: {
+</a><a href="#h0-0-343" id="h0-0-343" class="i">+                &quot;name&quot;: &quot;Kamera&quot;
+</a><a href="#h0-0-344" id="h0-0-344" class="i">+            },
+</a><a href="#h0-0-345" id="h0-0-345" class="i">+            &quot;experimental&quot;: {
+</a><a href="#h0-0-346" id="h0-0-346" class="i">+                &quot;properties&quot;: {
+</a><a href="#h0-0-347" id="h0-0-347" class="i">+                    &quot;experimental_colors&quot;: {
+</a><a href="#h0-0-348" id="h0-0-348" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-349" id="h0-0-349" class="i">+                            &quot;ring_color&quot;: {
+</a><a href="#h0-0-350" id="h0-0-350" class="i">+                                &quot;name&quot;: &quot;Ringfarge&quot;
+</a><a href="#h0-0-351" id="h0-0-351" class="i">+                            },
+</a><a href="#h0-0-352" id="h0-0-352" class="i">+                            &quot;ring_start_color&quot;: {
+</a><a href="#h0-0-353" id="h0-0-353" class="i">+                                &quot;name&quot;: &quot;Ring-startfarge&quot;
+</a><a href="#h0-0-354" id="h0-0-354" class="i">+                            }
+</a><a href="#h0-0-355" id="h0-0-355" class="i">+                        }
+</a><a href="#h0-0-356" id="h0-0-356" class="i">+                    }
+</a><a href="#h0-0-357" id="h0-0-357" class="i">+                },
+</a><a href="#h0-0-358" id="h0-0-358" class="i">+                &quot;name&quot;: &quot;Eksperimentelt&quot;
+</a><a href="#h0-0-359" id="h0-0-359" class="i">+            },
+</a><a href="#h0-0-360" id="h0-0-360" class="i">+            &quot;global&quot;: {
+</a><a href="#h0-0-361" id="h0-0-361" class="i">+                &quot;properties&quot;: {
+</a><a href="#h0-0-362" id="h0-0-362" class="i">+                    &quot;better_location&quot;: {
+</a><a href="#h0-0-363" id="h0-0-363" class="i">+                        &quot;properties&quot;: {
+</a><a href="#h0-0-364" id="h0-0-364" class="i">+                            &quot;coordinates&quot;: {
+</a><a href="#h0-0-365" id="h0-0-365" class="i">+                                &quot;name&quot;: &quot;Koordinater&quot;
+</a><a href="#h0-0-366" id="h0-0-366" class="i">+                            }
+</a><a href="#h0-0-367" id="h0-0-367" class="i">+                        }
+</a><a href="#h0-0-368" id="h0-0-368" class="i">+                    }
+</a><a href="#h0-0-369" id="h0-0-369" class="i">+                }
+</a><a href="#h0-0-370" id="h0-0-370" class="i">+            },
+</a><a href="#h0-0-371" id="h0-0-371" class="i">+            &quot;scripting&quot;: {
+</a><a href="#h0-0-372" id="h0-0-372" class="i">+                &quot;name&quot;: &quot;Skripting&quot;
+</a><a href="#h0-0-373" id="h0-0-373" class="i">+            },
+</a><a href="#h0-0-374" id="h0-0-374" class="i">+            &quot;rules&quot;: {
+</a><a href="#h0-0-375" id="h0-0-375" class="i">+                &quot;name&quot;: &quot;Regler&quot;
+</a><a href="#h0-0-376" id="h0-0-376" class="i">+            },
+</a><a href="#h0-0-377" id="h0-0-377" class="i">+            &quot;streaks_reminder&quot;: {
+</a><a href="#h0-0-378" id="h0-0-378" class="i">+                &quot;properties&quot;: {
+</a><a href="#h0-0-379" id="h0-0-379" class="i">+                    &quot;interval&quot;: {
+</a><a href="#h0-0-380" id="h0-0-380" class="i">+                        &quot;name&quot;: &quot;Tidsrom&quot;
+</a><a href="#h0-0-381" id="h0-0-381" class="i">+                    }
+</a><a href="#h0-0-382" id="h0-0-382" class="i">+                }
+</a><a href="#h0-0-383" id="h0-0-383" class="i">+            }
+</a><a href="#h0-0-384" id="h0-0-384" class="i">+        },
+</a><a href="#h0-0-385" id="h0-0-385" class="i">+        &quot;options&quot;: {
+</a><a href="#h0-0-386" id="h0-0-386" class="i">+            &quot;logging&quot;: {
+</a><a href="#h0-0-387" id="h0-0-387" class="i">+                &quot;failure&quot;: &quot;Feil&quot;,
+</a><a href="#h0-0-388" id="h0-0-388" class="i">+                &quot;progress&quot;: &quot;Framdrift&quot;,
+</a><a href="#h0-0-389" id="h0-0-389" class="i">+                &quot;started&quot;: &quot;Startet&quot;,
+</a><a href="#h0-0-390" id="h0-0-390" class="i">+                &quot;success&quot;: &quot;Vellykket&quot;
+</a><a href="#h0-0-391" id="h0-0-391" class="i">+            },
+</a><a href="#h0-0-392" id="h0-0-392" class="i">+            &quot;disable_permission_requests&quot;: {
+</a><a href="#h0-0-393" id="h0-0-393" class="i">+                &quot;microphone&quot;: &quot;Mikrofon&quot;,
+</a><a href="#h0-0-394" id="h0-0-394" class="i">+                &quot;notifications&quot;: &quot;Merknader&quot;,
+</a><a href="#h0-0-395" id="h0-0-395" class="i">+                &quot;camera&quot;: &quot;Kamera&quot;
+</a><a href="#h0-0-396" id="h0-0-396" class="i">+            },
+</a><a href="#h0-0-397" id="h0-0-397" class="i">+            &quot;notifications&quot;: {
+</a><a href="#h0-0-398" id="h0-0-398" class="i">+                &quot;chat_screenshot&quot;: &quot;Skjermavbildning&quot;
+</a><a href="#h0-0-399" id="h0-0-399" class="i">+            },
+</a><a href="#h0-0-400" id="h0-0-400" class="i">+            &quot;home_tab&quot;: {
+</a><a href="#h0-0-401" id="h0-0-401" class="i">+                &quot;map&quot;: &quot;Kart&quot;,
+</a><a href="#h0-0-402" id="h0-0-402" class="i">+                &quot;camera&quot;: &quot;Kamera&quot;
+</a><a href="#h0-0-403" id="h0-0-403" class="i">+            },
+</a><a href="#h0-0-404" id="h0-0-404" class="i">+            &quot;auto_purge&quot;: {
+</a><a href="#h0-0-405" id="h0-0-405" class="i">+                &quot;never&quot;: &quot;Aldri&quot;
+</a><a href="#h0-0-406" id="h0-0-406" class="i">+            },
+</a><a href="#h0-0-407" id="h0-0-407" class="i">+            &quot;disable_story_sections&quot;: {
+</a><a href="#h0-0-408" id="h0-0-408" class="i">+                &quot;friends&quot;: &quot;Venner&quot;
+</a><a href="#h0-0-409" id="h0-0-409" class="i">+            }
+</a><a href="#h0-0-410" id="h0-0-410" class="i">+        },
+</a><a href="#h0-0-411" id="h0-0-411" class="i">+        &quot;notices&quot;: {
+</a><a href="#h0-0-412" id="h0-0-412" class="i">+            &quot;unstable&quot;: &quot;⚠ Ustabil&quot;,
+</a><a href="#h0-0-413" id="h0-0-413" class="i">+            &quot;ban_risk&quot;: &quot;⚠ Denne funksjonen kan utløse bannlysninger&quot;
+</a><a href="#h0-0-414" id="h0-0-414" class="i">+        }
+</a><a href="#h0-0-415" id="h0-0-415" class="i">+    },
+</a><a href="#h0-0-416" id="h0-0-416" class="i">+    &quot;scopes&quot;: {
+</a><a href="#h0-0-417" id="h0-0-417" class="i">+        &quot;friend&quot;: &quot;Venn&quot;,
+</a><a href="#h0-0-418" id="h0-0-418" class="i">+        &quot;group&quot;: &quot;Gruppe&quot;
+</a><a href="#h0-0-419" id="h0-0-419" class="i">+    },
+</a><a href="#h0-0-420" id="h0-0-420" class="i">+    &quot;actions&quot;: {
+</a><a href="#h0-0-421" id="h0-0-421" class="i">+        &quot;export_memories&quot;: {
+</a><a href="#h0-0-422" id="h0-0-422" class="i">+            &quot;name&quot;: &quot;Eksporter minner&quot;,
+</a><a href="#h0-0-423" id="h0-0-423" class="i">+            &quot;description&quot;: &quot;Eksporterer minner som en ZIP-fil&quot;
+</a><a href="#h0-0-424" id="h0-0-424" class="i">+        },
+</a><a href="#h0-0-425" id="h0-0-425" class="i">+        &quot;manage_friend_list&quot;: {
+</a><a href="#h0-0-426" id="h0-0-426" class="i">+            &quot;name&quot;: &quot;Håndter venneliste&quot;
+</a><a href="#h0-0-427" id="h0-0-427" class="i">+        },
+</a><a href="#h0-0-428" id="h0-0-428" class="i">+        &quot;export_chat_messages&quot;: {
+</a><a href="#h0-0-429" id="h0-0-429" class="i">+            &quot;name&quot;: &quot;Eksporter sludringsmeldinger&quot;
+</a><a href="#h0-0-430" id="h0-0-430" class="i">+        }
+</a><a href="#h0-0-431" id="h0-0-431" class="i">+    },
+</a><a href="#h0-0-432" id="h0-0-432" class="i">+    &quot;content_type&quot;: {
+</a><a href="#h0-0-433" id="h0-0-433" class="i">+        &quot;SHARE&quot;: &quot;Del&quot;,
+</a><a href="#h0-0-434" id="h0-0-434" class="i">+        &quot;STATUS&quot;: &quot;Status&quot;,
+</a><a href="#h0-0-435" id="h0-0-435" class="i">+        &quot;STICKER&quot;: &quot;Klistremerke&quot;,
+</a><a href="#h0-0-436" id="h0-0-436" class="i">+        &quot;STATUS_CONVERSATION_CAPTURE_SCREENSHOT&quot;: &quot;Skjermavbildning&quot;,
+</a><a href="#h0-0-437" id="h0-0-437" class="i">+        &quot;STATUS_COUNTDOWN&quot;: &quot;Nedtelling&quot;
+</a><a href="#h0-0-438" id="h0-0-438" class="i">+    },
+</a><a href="#h0-0-439" id="h0-0-439" class="i">+    &quot;media_download_source&quot;: {
+</a><a href="#h0-0-440" id="h0-0-440" class="i">+        &quot;none&quot;: &quot;Ingen&quot;
+</a><a href="#h0-0-441" id="h0-0-441" class="i">+    }
+</a><a href="#h0-0-442" id="h0-0-442" class="i">+}
+</a></pre>
+</div>
+</body>
+</html>

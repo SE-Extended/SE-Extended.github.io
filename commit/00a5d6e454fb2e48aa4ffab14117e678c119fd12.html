@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor(experimentalColors): move colors to custom colors - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/00a5d6e454fb2e48aa4ffab14117e678c119fd12.html">00a5d6e454fb2e48aa4ffab14117e678c119fd12</a>
+<b>parent</b> <a href="../commit/03f48f56e658320044401b126ee8ff1f777bfacc.html">03f48f56e658320044401b126ee8ff1f777bfacc</a>
+<b>Author:</b> bocajthomas &lt;<a href="mailto:bocajthomas274@gmail.com">bocajthomas274@gmail.com</a>&gt;
+<b>Date:</b>   Sun,  9 Jun 2024 17:57:57 +0100
+
+refactor(experimentalColors): move colors to custom colors
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">common/src/main/assets/lang/en_US.json</a></td><td> | </td><td class="num">28</td><td><span class="i">++++++++++++++</span><span class="d">--------------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a></td><td> | </td><td class="num">3</td><td><span class="i"></span><span class="d">---</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h2">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></td><td> | </td><td class="num">3</td><td><span class="i">+++</span><span class="d"></span></td></tr>
+<tr><td class="M">M</td><td><a href="#h3">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a></td><td> | </td><td class="num">6</td><td><span class="i">+++</span><span class="d">---</span></td></tr>
+</table></pre><pre>4 files changed, 20 insertions(+), 20 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a> b/<a href="../file/common/src/main/assets/lang/en_US.json.html">common/src/main/assets/lang/en_US.json</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -447,6 +447,10 @@
+</a>                                         &quot;name&quot;: &quot;Snaps Without Sound Text Color&quot;,
+                                         &quot;description&quot;: &quot;Changes the text color of ( New Snap ) on the friend feed\nNote: Video Snaps Only&quot;
+                                     },
+<a href="#h0-0-3" id="h0-0-3" class="i">+                                    &quot;action_sheet_description_text_color&quot;: {
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+                                        &quot;name&quot;: &quot;Action Menu Description Text Color&quot;,
+</a><a href="#h0-0-5" id="h0-0-5" class="i">+                                        &quot;description&quot;: &quot;Changes the text color of the description on the action menu&quot;
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+                                    },
+</a>                                     &quot;background_color&quot;: {
+                                         &quot;name&quot;: &quot;Background Color&quot;,
+                                         &quot;description&quot;: &quot;Changes Snapchats background color&quot;
+<a href="#h0-1" id="h0-1" class="h">@@ -455,9 +459,13 @@
+</a>                                         &quot;name&quot;: &quot;Background Surface Color&quot;,
+                                         &quot;description&quot;: &quot;Changes Snapchats background surface color&quot;
+                                     },
+<a href="#h0-1-3" id="h0-1-3" class="i">+                                    &quot;list_background_drawable&quot;: {
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+                                        &quot;name&quot;: &quot;Conversation list Background &quot;,
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+                                        &quot;description&quot;: &quot;Changes the background color of the conversation list\n This might break the friend feeds look&quot;
+</a><a href="#h0-1-6" id="h0-1-6" class="i">+                                    },
+</a>                                     &quot;friend_feed_conversations_line_color&quot;: {
+                                         &quot;name&quot;: &quot;Conversations Line Color&quot;,
+<a href="#h0-1-9" id="h0-1-9" class="d">-                                        &quot;description&quot;: &quot;Changes the line divider color that splits Conversations on the friend feed &quot;
+</a><a href="#h0-1-10" id="h0-1-10" class="i">+                                        &quot;description&quot;: &quot;Changes the line divider color that splits Conversations on the friend feed&quot;
+</a>                                     },
+                                     &quot;action_menu_background_color&quot;: {
+                                         &quot;name&quot;: &quot;Action Menu Background Color&quot;,
+<a href="#h0-2" id="h0-2" class="h">@@ -467,6 +475,10 @@
+</a>                                         &quot;name&quot;: &quot;Action Menu Round Background Color&quot;,
+                                         &quot;description&quot;: &quot;Changes Snapchats chat action menu round background color&quot;
+                                     },
+<a href="#h0-2-3" id="h0-2-3" class="i">+                                    &quot;sig_color_icon_primary&quot;: {
+</a><a href="#h0-2-4" id="h0-2-4" class="i">+                                        &quot;name&quot;: &quot;Action Menu Icon Color&quot;,
+</a><a href="#h0-2-5" id="h0-2-5" class="i">+                                        &quot;description&quot;: &quot;Changes the color of icons on chat action menu/friend feed menu&quot;
+</a><a href="#h0-2-6" id="h0-2-6" class="i">+                                    },
+</a>                                     &quot;camera_grid_lines&quot;: {
+                                         &quot;name&quot;: &quot;Camera Gridlines Color&quot;,
+                                         &quot;description&quot;: &quot;Changes Snapchats Gridlines color on the Camera Preview\nNote: Enable the grid on the my camera settings&quot;
+<a href="#h0-3" id="h0-3" class="h">@@ -1023,20 +1035,8 @@
+</a>                     },
+                     &quot;experimental_colors&quot;: {
+                         &quot;name&quot;: &quot;Experimental Color Options&quot;,
+<a href="#h0-3-3" id="h0-3-3" class="d">-                        &quot;description&quot;: &quot;Note: These color features are Experimental and therefore may cause your snapchat to look strange,\n\u26A0 Select `Custom Colors` on Theme picker to use&quot;,
+</a><a href="#h0-3-4" id="h0-3-4" class="i">+                        &quot;description&quot;: &quot;Note: These color features are Experimental and therefore may cause your snapchat to look strange,\nSelect `Custom Colors` on Theme picker to use&quot;,
+</a>                         &quot;properties&quot;: {
+<a href="#h0-3-6" id="h0-3-6" class="d">-                            &quot;list_background_drawable&quot;: {
+</a><a href="#h0-3-7" id="h0-3-7" class="d">-                                &quot;name&quot;: &quot;List Background Drawable&quot;,
+</a><a href="#h0-3-8" id="h0-3-8" class="d">-                                &quot;description&quot;: &quot;Changes the background color of the conversation tile&quot;
+</a><a href="#h0-3-9" id="h0-3-9" class="d">-                            },
+</a><a href="#h0-3-10" id="h0-3-10" class="d">-                            &quot;sig_color_icon_primary&quot;: {
+</a><a href="#h0-3-11" id="h0-3-11" class="d">-                                &quot;name&quot;: &quot;Sig Color Icon Primary&quot;,
+</a><a href="#h0-3-12" id="h0-3-12" class="d">-                                &quot;description&quot;: &quot;Changes the color of icons on action chat menu&quot;
+</a><a href="#h0-3-13" id="h0-3-13" class="d">-                            },
+</a><a href="#h0-3-14" id="h0-3-14" class="d">-                            &quot;action_sheet_description_text_color&quot;: {
+</a><a href="#h0-3-15" id="h0-3-15" class="d">-                                &quot;name&quot;: &quot;Action Sheet Description Text Color&quot;,
+</a><a href="#h0-3-16" id="h0-3-16" class="d">-                                &quot;description&quot;: &quot;Changes the text color of the description on the action sheet&quot;
+</a><a href="#h0-3-17" id="h0-3-17" class="d">-                            },
+</a>                             &quot;ring_color&quot;: {
+                                 &quot;name&quot;: &quot;Ring Color&quot;,
+                                 &quot;description&quot;: &quot;Does something to the color of something ;)&quot;
+<b>diff --git a/<a id="h1" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/Experimental.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -49,9 +49,6 @@ class Experimental : ConfigContainer() {
+</a>     }
+ 
+     class ExperimentalColors: ConfigContainer() {
+<a href="#h1-0-3" id="h1-0-3" class="d">-        val listBackgroundDrawable = color(&quot;list_background_drawable&quot;)
+</a><a href="#h1-0-4" id="h1-0-4" class="d">-        val sigColorIconPrimary = color(&quot;sig_color_icon_primary&quot;)
+</a><a href="#h1-0-5" id="h1-0-5" class="d">-        val actionSheetDescriptionTextColor = color(&quot;action_sheet_description_text_color&quot;)
+</a>         val ringColor = color(&quot;ring_color&quot;)
+         val sigColorIconSecondary = color(&quot;sig_color_icon_secondary&quot;)
+         val itemShapeFillColor = color(&quot;item_shape_fill_color&quot;)
+<b>diff --git a/<a id="h2" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/config/impl/UserInterfaceTweaks.kt</a></b>
+<a href="#h2-0" id="h2-0" class="h">@@ -25,11 +25,14 @@ class UserInterfaceTweaks : ConfigContainer() {
+</a>         val pendingSendingTextColor = color(&quot;pending_sending_text_color&quot;)
+         val snapWithSoundTextColor = color(&quot;snap_with_sound_text_color&quot;)
+         val snapWithoutSoundTextColor = color(&quot;snap_without_sound_text_color&quot;)
+<a href="#h2-0-3" id="h2-0-3" class="i">+        val actionSheetDescriptionTextColor = color(&quot;action_sheet_description_text_color&quot;)
+</a>         val backgroundColor = color(&quot;background_color&quot;)
+         val backgroundColorSurface = color(&quot;background_color_surface&quot;)
+<a href="#h2-0-6" id="h2-0-6" class="i">+        val listBackgroundDrawable = color(&quot;list_background_drawable&quot;)
+</a>         val friendFeedConversationsLineColor = color(&quot;friend_feed_conversations_line_color&quot;)
+         val actionMenuBackgroundColor = color(&quot;action_menu_background_color&quot;)
+         val actionMenuRoundBackgroundColor = color(&quot;action_menu_round_background_color&quot;)
+<a href="#h2-0-10" id="h2-0-10" class="i">+        val sigColorIconPrimary = color(&quot;sig_color_icon_primary&quot;)
+</a>         val cameraGridLines = color(&quot;camera_grid_lines&quot;)
+     }
+ 
+<b>diff --git a/<a id="h3" href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a> b/<a href="../file/core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt.html">core/src/main/kotlin/me/rhunk/snapenhance/core/features/impl/ui/CustomizeUI.kt</a></b>
+<a href="#h3-0" id="h3-0" class="h">@@ -38,9 +38,9 @@ class CustomizeUI: Feature(&quot;Customize UI&quot;, loadParams = FeatureLoadParams.ACTIVI
+</a>                 &quot;actionSheetBackgroundDrawable&quot; to colorsConfig.actionMenuBackgroundColor.getNullable(),
+                 &quot;actionSheetRoundedBackgroundDrawable&quot; to colorsConfig.actionMenuRoundBackgroundColor.getNullable(),
+                 &quot;sigExceptionColorCameraGridLines&quot; to colorsConfig.cameraGridLines.getNullable(),
+<a href="#h3-0-3" id="h3-0-3" class="d">-                &quot;listBackgroundDrawable&quot; to experimentalColors.listBackgroundDrawable.getNullable(),
+</a><a href="#h3-0-4" id="h3-0-4" class="d">-                &quot;sigColorIconPrimary&quot; to experimentalColors.sigColorIconPrimary.getNullable(),
+</a><a href="#h3-0-5" id="h3-0-5" class="d">-                &quot;actionSheetDescriptionTextColor&quot; to experimentalColors.actionSheetDescriptionTextColor.getNullable(),
+</a><a href="#h3-0-6" id="h3-0-6" class="i">+                &quot;listBackgroundDrawable&quot; to colorsConfig.listBackgroundDrawable.getNullable(),
+</a><a href="#h3-0-7" id="h3-0-7" class="i">+                &quot;sigColorIconPrimary&quot; to colorsConfig.sigColorIconPrimary.getNullable(),
+</a><a href="#h3-0-8" id="h3-0-8" class="i">+                &quot;actionSheetDescriptionTextColor&quot; to colorsConfig.actionSheetDescriptionTextColor.getNullable(),
+</a>                 &quot;ringColor&quot; to experimentalColors.ringColor.getNullable(),
+                 &quot;sigColorIconSecondary&quot; to experimentalColors.sigColorIconSecondary.getNullable(),
+                 &quot;itemShapeFillColor&quot; to experimentalColors.itemShapeFillColor.getNullable(),
+</pre>
+</div>
+</body>
+</html>

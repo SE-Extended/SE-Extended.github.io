@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>chore(ci): remove signature - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/97c8a50e786e207263d58c13d660f4f62b6ec896.html">97c8a50e786e207263d58c13d660f4f62b6ec896</a>
+<b>parent</b> <a href="../commit/f04372637aef456b99036fb241fcce000c1131a8.html">f04372637aef456b99036fb241fcce000c1131a8</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Mon,  3 Jun 2024 23:15:39 +0100
+
+chore(ci): remove signature
+
+Removes rhunks silly little thing ;)
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">.github/workflows/debug.yml</a></td><td> | </td><td class="num">57</td><td><span class="i"></span><span class="d">---------------------------------------------------------</span></td></tr>
+</table></pre><pre>1 file changed, 0 insertions(+), 57 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.github/workflows/debug.yml.html">.github/workflows/debug.yml</a> b/<a href="../file/.github/workflows/debug.yml.html">.github/workflows/debug.yml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -32,25 +32,6 @@ jobs:
+</a>       - name: Build
+         run: ./gradlew assembleArmv8Debug
+ 
+<a href="#h0-0-3" id="h0-0-3" class="d">-      - name: Sign APK
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-        id: sign_app
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-        uses: tiann/zipalign-sign-android-release@v1.1.4
+</a><a href="#h0-0-6" id="h0-0-6" class="d">-        with:
+</a><a href="#h0-0-7" id="h0-0-7" class="d">-          releaseDirectory: app/build/outputs/apk/armv8/debug/
+</a><a href="#h0-0-8" id="h0-0-8" class="d">-          signingKeyBase64: ${{ secrets.JAVA_KEYSTORE_DATA }}
+</a><a href="#h0-0-9" id="h0-0-9" class="d">-          alias: ${{ secrets.KEY_ALIAS }}
+</a><a href="#h0-0-10" id="h0-0-10" class="d">-          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+</a><a href="#h0-0-11" id="h0-0-11" class="d">-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+</a><a href="#h0-0-12" id="h0-0-12" class="d">-          zipAlign: true
+</a><a href="#h0-0-13" id="h0-0-13" class="d">-        env:
+</a><a href="#h0-0-14" id="h0-0-14" class="d">-          BUILD_TOOLS_VERSION: &quot;34.0.0&quot;
+</a><a href="#h0-0-15" id="h0-0-15" class="d">-
+</a><a href="#h0-0-16" id="h0-0-16" class="d">-      - name: Delete unsigned file
+</a><a href="#h0-0-17" id="h0-0-17" class="d">-        run: |
+</a><a href="#h0-0-18" id="h0-0-18" class="d">-          cd app/build/outputs/apk/armv8/debug/
+</a><a href="#h0-0-19" id="h0-0-19" class="d">-          shopt -s extglob
+</a><a href="#h0-0-20" id="h0-0-20" class="d">-          rm -rf !(*-signed*)
+</a><a href="#h0-0-21" id="h0-0-21" class="d">-
+</a>       - name: Build Version
+         run: ./gradlew getVersion
+ 
+<a href="#h0-1" id="h0-1" class="h">@@ -98,25 +79,6 @@ jobs:
+</a>       - name: Build
+         run: ./gradlew assembleArmv7Debug
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-      - name: Sign APK
+</a><a href="#h0-1-4" id="h0-1-4" class="d">-        id: sign_app
+</a><a href="#h0-1-5" id="h0-1-5" class="d">-        uses: tiann/zipalign-sign-android-release@v1.1.4
+</a><a href="#h0-1-6" id="h0-1-6" class="d">-        with:
+</a><a href="#h0-1-7" id="h0-1-7" class="d">-          releaseDirectory: app/build/outputs/apk/armv7/debug/
+</a><a href="#h0-1-8" id="h0-1-8" class="d">-          signingKeyBase64: ${{ secrets.JAVA_KEYSTORE_DATA }}
+</a><a href="#h0-1-9" id="h0-1-9" class="d">-          alias: ${{ secrets.KEY_ALIAS }}
+</a><a href="#h0-1-10" id="h0-1-10" class="d">-          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+</a><a href="#h0-1-11" id="h0-1-11" class="d">-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+</a><a href="#h0-1-12" id="h0-1-12" class="d">-          zipAlign: true
+</a><a href="#h0-1-13" id="h0-1-13" class="d">-        env:
+</a><a href="#h0-1-14" id="h0-1-14" class="d">-          BUILD_TOOLS_VERSION: &quot;34.0.0&quot;
+</a><a href="#h0-1-15" id="h0-1-15" class="d">-
+</a><a href="#h0-1-16" id="h0-1-16" class="d">-      - name: Delete unsigned file
+</a><a href="#h0-1-17" id="h0-1-17" class="d">-        run: |
+</a><a href="#h0-1-18" id="h0-1-18" class="d">-          cd app/build/outputs/apk/armv7/debug/
+</a><a href="#h0-1-19" id="h0-1-19" class="d">-          shopt -s extglob
+</a><a href="#h0-1-20" id="h0-1-20" class="d">-          rm -rf !(*-signed*)
+</a><a href="#h0-1-21" id="h0-1-21" class="d">-
+</a>       - name: Build Version
+         run: ./gradlew getVersion
+ 
+<a href="#h0-2" id="h0-2" class="h">@@ -164,25 +126,6 @@ jobs:
+</a>       - name: Build
+         run: ./gradlew assembleAllDebug
+ 
+<a href="#h0-2-3" id="h0-2-3" class="d">-      - name: Sign APK
+</a><a href="#h0-2-4" id="h0-2-4" class="d">-        id: sign_app
+</a><a href="#h0-2-5" id="h0-2-5" class="d">-        uses: tiann/zipalign-sign-android-release@v1.1.4
+</a><a href="#h0-2-6" id="h0-2-6" class="d">-        with:
+</a><a href="#h0-2-7" id="h0-2-7" class="d">-          releaseDirectory: app/build/outputs/apk/all/debug/
+</a><a href="#h0-2-8" id="h0-2-8" class="d">-          signingKeyBase64: ${{ secrets.JAVA_KEYSTORE_DATA }}
+</a><a href="#h0-2-9" id="h0-2-9" class="d">-          alias: ${{ secrets.KEY_ALIAS }}
+</a><a href="#h0-2-10" id="h0-2-10" class="d">-          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+</a><a href="#h0-2-11" id="h0-2-11" class="d">-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+</a><a href="#h0-2-12" id="h0-2-12" class="d">-          zipAlign: true
+</a><a href="#h0-2-13" id="h0-2-13" class="d">-        env:
+</a><a href="#h0-2-14" id="h0-2-14" class="d">-          BUILD_TOOLS_VERSION: &quot;34.0.0&quot;
+</a><a href="#h0-2-15" id="h0-2-15" class="d">-
+</a><a href="#h0-2-16" id="h0-2-16" class="d">-      - name: Delete unsigned file
+</a><a href="#h0-2-17" id="h0-2-17" class="d">-        run: |
+</a><a href="#h0-2-18" id="h0-2-18" class="d">-          cd app/build/outputs/apk/all/debug/
+</a><a href="#h0-2-19" id="h0-2-19" class="d">-          shopt -s extglob
+</a><a href="#h0-2-20" id="h0-2-20" class="d">-          rm -rf !(*-signed*)
+</a><a href="#h0-2-21" id="h0-2-21" class="d">-
+</a>       - name: Build Version
+         run: ./gradlew getVersion
+ 
+</pre>
+</div>
+</body>
+</html>

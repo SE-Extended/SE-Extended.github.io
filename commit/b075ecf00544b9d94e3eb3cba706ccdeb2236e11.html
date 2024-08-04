@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revert &quot;feat(scripting): custom module execution sides&quot; - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/b075ecf00544b9d94e3eb3cba706ccdeb2236e11.html">b075ecf00544b9d94e3eb3cba706ccdeb2236e11</a>
+<b>parent</b> <a href="../commit/ae9564a7ec2adbfd6fefbd3ff15af0fcc832fd81.html">ae9564a7ec2adbfd6fefbd3ff15af0fcc832fd81</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Fri, 28 Jun 2024 04:41:12 +0100
+
+Revert &quot;feat(scripting): custom module execution sides&quot;
+
+This reverts commit dca811daf4ba9f3194999494ddf184c5d4ccb31b.
+
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">app/src/main/kotlin/me/rhunk/snapenhance/scripting/RemoteScriptManager.kt</a></td><td> | </td><td class="num">14</td><td><span class="i">+++++</span><span class="d">---------</span></td></tr>
+<tr><td class="M">M</td><td><a href="#h1">common/src/main/kotlin/me/rhunk/snapenhance/common/scripting/type/ModuleInfo.kt</a></td><td> | </td><td class="num">2</td><td><span class="i"></span><span class="d">--</span></td></tr>
+</table></pre><pre>2 files changed, 5 insertions(+), 11 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/app/src/main/kotlin/me/rhunk/snapenhance/scripting/RemoteScriptManager.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/scripting/RemoteScriptManager.kt</a> b/<a href="../file/app/src/main/kotlin/me/rhunk/snapenhance/scripting/RemoteScriptManager.kt.html">app/src/main/kotlin/me/rhunk/snapenhance/scripting/RemoteScriptManager.kt</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -86,7 +86,7 @@ class RemoteScriptManager(
+</a>         }
+ 
+         sync()
+<a href="#h0-0-3" id="h0-0-3" class="d">-        getEnabledScripts(listOf(BindingSide.MANAGER.key)).forEach { name -&gt;
+</a><a href="#h0-0-4" id="h0-0-4" class="i">+        enabledScripts.forEach { name -&gt;
+</a>             runCatching {
+                 loadScript(name)
+             }.onFailure {
+<a href="#h0-1" id="h0-1" class="h">@@ -181,21 +181,17 @@ class RemoteScriptManager(
+</a>        }.getOrNull()
+     }
+ 
+<a href="#h0-1-3" id="h0-1-3" class="d">-    private fun getEnabledScripts(sides: List&lt;String&gt;): List&lt;String&gt; {
+</a><a href="#h0-1-4" id="h0-1-4" class="i">+
+</a><a href="#h0-1-5" id="h0-1-5" class="i">+    override fun getEnabledScripts(): List&lt;String&gt; {
+</a>         return runCatching {
+<a href="#h0-1-7" id="h0-1-7" class="d">-            getScriptFileNames().filter { name -&gt;
+</a><a href="#h0-1-8" id="h0-1-8" class="d">-                cachedModuleInfo[name]?.executionSides?.any { it in sides } ?: true &amp;&amp;
+</a><a href="#h0-1-9" id="h0-1-9" class="d">-                context.database.isScriptEnabled(cachedModuleInfo[name]?.name ?: return@filter false)
+</a><a href="#h0-1-10" id="h0-1-10" class="i">+            getScriptFileNames().filter {
+</a><a href="#h0-1-11" id="h0-1-11" class="i">+                context.database.isScriptEnabled(cachedModuleInfo[it]?.name ?: return@filter false)
+</a>             }
+         }.onFailure {
+             context.log.error(&quot;Failed to get enabled scripts&quot;, it)
+         }.getOrDefault(emptyList())
+     }
+ 
+<a href="#h0-1-18" id="h0-1-18" class="d">-    override fun getEnabledScripts(): List&lt;String&gt; {
+</a><a href="#h0-1-19" id="h0-1-19" class="d">-        return getEnabledScripts(listOf(BindingSide.CORE.key))
+</a><a href="#h0-1-20" id="h0-1-20" class="d">-    }
+</a><a href="#h0-1-21" id="h0-1-21" class="d">-
+</a>     override fun getScriptContent(moduleName: String): ParcelFileDescriptor? {
+         return getScriptInputStream(moduleName) { it?.toParcelFileDescriptor(context.coroutineScope) }
+     }
+<b>diff --git a/<a id="h1" href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/scripting/type/ModuleInfo.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/scripting/type/ModuleInfo.kt</a> b/<a href="../file/common/src/main/kotlin/me/rhunk/snapenhance/common/scripting/type/ModuleInfo.kt.html">common/src/main/kotlin/me/rhunk/snapenhance/common/scripting/type/ModuleInfo.kt</a></b>
+<a href="#h1-0" id="h1-0" class="h">@@ -12,7 +12,6 @@ data class ModuleInfo(
+</a>     val minSnapchatVersion: Long? = null,
+     val minSEVersion: Long? = null,
+     val grantedPermissions: List&lt;String&gt;,
+<a href="#h1-0-3" id="h1-0-3" class="d">-    val executionSides: List&lt;String&gt;? = null,
+</a> ) {
+     fun ensurePermissionGranted(permission: Permissions) {
+         if (!grantedPermissions.contains(permission.key)) {
+<a href="#h1-1" id="h1-1" class="h">@@ -54,6 +53,5 @@ fun BufferedReader.readModuleInfo(): ModuleInfo {
+</a>         minSnapchatVersion = properties[&quot;minSnapchatVersion&quot;]?.toLongOrNull(),
+         minSEVersion = properties[&quot;minSEVersion&quot;]?.toLongOrNull(),
+         grantedPermissions = properties[&quot;permissions&quot;]?.split(&quot;,&quot;)?.map { it.trim() } ?: emptyList(),
+<a href="#h1-1-3" id="h1-1-3" class="d">-        executionSides = properties[&quot;executionSides&quot;]?.lowercase()?.split(&quot;,&quot;)?.map { it.trim() },
+</a>     )
+ }
+</pre>
+</div>
+</body>
+</html>

@@ -3,24 +3,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HomeTab.kt - SnapEnhance - An Xposed module offering an enhanced Snapchat experience
+<title>HomeTab.kt - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </title>
 <link rel="icon" type="image/svg+xml" href="../../../../../../../../../../../../../logo.png"/>
 <link rel="alternate icon" href="../../../../../../../../../../../../../favicon.png"/>
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed" href="../../../../../../../../../../../../atom.xml" />
-<link rel="alternate" type="application/atom+xml" title="SnapEnhance Atom Feed (tags)" href="../../../../../../../../../../../../tags.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../../../../../../../../../../../../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../../../../../../../../../../../../tags.xml" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../style.css" />
 <link rel="stylesheet" type="text/css" href="../../../../../../../../../../../../../fonts.css" />
 </head>
 <body>
-<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../../../../../"><img src="../../../../../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SnapEnhance</strong><span class="desc"> - An Xposed module offering an enhanced Snapchat experience
+<div id="head"><table><tr><td><a class="logo" href="../../../../../../../../../../../../../"><img src="../../../../../../../../../../../../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
 </span>
 </td></tr></table>
 <p><a href="../../../../../../../../../../../../about.html">About</a> | <a href="../../../../../../../../../../../../log.html">Log</a> | <a href="../../../../../../../../../../../../files.html">Files</a> | <a href="../../../../../../../../../../../../refs.html">Refs</a> | <a href="../../../../../../../../../../../../file/.gitmodules.html">Submodules</a> | <a href="../../../../../../../../../../../../file/LICENSE.html">License</a></p>
 </div>
 <hr/>
 <div id="content">
-<p> HomeTab.kt (6700B) - <a href="../../../../../../../../../../../../raw/manager/src/main/kotlin/me/rhunk/snapenhance/manager/ui/tab/impl/HomeTab.kt">raw</a></p><hr/><pre id="blob">
+<p> HomeTab.kt (6701B) - <a href="../../../../../../../../../../../../raw/manager/src/main/kotlin/me/rhunk/snapenhance/manager/ui/tab/impl/HomeTab.kt">raw</a></p><hr/><pre id="blob">
 <a href="#l1" class="line" id="l1">      1</a> package me.rhunk.snapenhance.manager.ui.tab.impl
 <a href="#l2" class="line" id="l2">      2</a> 
 <a href="#l3" class="line" id="l3">      3</a> import android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE
@@ -86,7 +86,7 @@
 <a href="#l63" class="line" id="l63">     63</a>                     verticalAlignment = Alignment.CenterVertically
 <a href="#l64" class="line" id="l64">     64</a>                 ) {
 <a href="#l65" class="line" id="l65">     65</a>                     Column {
-<a href="#l66" class="line" id="l66">     66</a>                         Text(text = &quot;SnapEnhance&quot;, fontSize = 24.sp, color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold)
+<a href="#l66" class="line" id="l66">     66</a>                         Text(text = &quot;SE Extended&quot;, fontSize = 24.sp, color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold)
 <a href="#l67" class="line" id="l67">     67</a>                         snapEnhanceInfo?.let {
 <a href="#l68" class="line" id="l68">     68</a>                             Text(text = &quot;${it.versionName} (${it.longVersionCode}) - ${if ((it.applicationInfo.flags and FLAG_DEBUGGABLE) != 0) &quot;Debug&quot; else &quot;Release&quot;}&quot;, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
 <a href="#l69" class="line" id="l69">     69</a>                             Text(it.packageName, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -167,7 +167,8 @@
 <a href="#l144" class="line" id="l144">    144</a>             }
 <a href="#l145" class="line" id="l145">    145</a>         }
 <a href="#l146" class="line" id="l146">    146</a>     }
-<a href="#l147" class="line" id="l147">    147</a> }</pre>
+<a href="#l147" class="line" id="l147">    147</a> }
+</pre>
 </div>
 </body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>refactor: theme picker enhancement - SE-Extended - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</title>
+<link rel="icon" type="image/svg+xml" href="../../logo.png"/>
+<link rel="alternate icon" href="../../favicon.png"/>
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed" href="../atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="SE-Extended Atom Feed (tags)" href="../tags.xml" />
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<link rel="stylesheet" type="text/css" href="../../fonts.css" />
+</head>
+<body>
+<div id="head"><table><tr><td><a class="logo" href="../../"><img src="../../logo.png" alt="" width="32" height="32" /></a></td><td><strong>SE-Extended</strong><span class="desc"> - SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience
+</span>
+</td></tr></table>
+<p><a href="../about.html">About</a> | <a href="../log.html">Log</a> | <a href="../files.html">Files</a> | <a href="../refs.html">Refs</a> | <a href="../file/.gitmodules.html">Submodules</a> | <a href="../file/LICENSE.html">License</a></p>
+</div>
+<hr/>
+<div id="content">
+<pre><b>commit</b> <a href="../commit/45c055203f000772e531266f5143c92ce6784d43.html">45c055203f000772e531266f5143c92ce6784d43</a>
+<b>parent</b> <a href="../commit/81cddb3fbec299ac1f8bbdef73ee73069f1882e8.html">81cddb3fbec299ac1f8bbdef73ee73069f1882e8</a>
+<b>Author:</b> Jacob Thomas &lt;<a href="mailto:41988041+bocajthomas@users.noreply.github.com">41988041+bocajthomas@users.noreply.github.com</a>&gt;
+<b>Date:</b>   Sun,  2 Jun 2024 21:14:46 +0100
+
+refactor: theme picker enhancement
+<b>Diffstat:</b>
+<table><tr><td class="M">M</td><td><a href="#h0">.github/ISSUE_TEMPLATE/theme_picker_theme.yml</a></td><td> | </td><td class="num">19</td><td><span class="i">+++++++++++++++</span><span class="d">----</span></td></tr>
+</table></pre><pre>1 file changed, 15 insertions(+), 4 deletions(-)
+<hr/><b>diff --git a/<a id="h0" href="../file/.github/ISSUE_TEMPLATE/theme_picker_theme.yml.html">.github/ISSUE_TEMPLATE/theme_picker_theme.yml</a> b/<a href="../file/.github/ISSUE_TEMPLATE/theme_picker_theme.yml.html">.github/ISSUE_TEMPLATE/theme_picker_theme.yml</a></b>
+<a href="#h0-0" id="h0-0" class="h">@@ -9,16 +9,27 @@ body:
+</a>     id: description
+     attributes:
+       label: &quot;Description&quot;
+<a href="#h0-0-3" id="h0-0-3" class="d">-      description: Please input your theme, Include the hex color code, An example is below
+</a><a href="#h0-0-4" id="h0-0-4" class="d">-      placeholder: Name -  Magical Green, Background Color - ff17ff00
+</a><a href="#h0-0-5" id="h0-0-5" class="d">-      
+</a><a href="#h0-0-6" id="h0-0-6" class="i">+      description: Please input your theme, Include the hex color code, Change the Info above. 
+</a><a href="#h0-0-7" id="h0-0-7" class="i">+      value: |
+</a><a href="#h0-0-8" id="h0-0-8" class="i">+        Name: Magical Green
+</a><a href="#h0-0-9" id="h0-0-9" class="i">+        Main Text Color: #FF17FF00 
+</a><a href="#h0-0-10" id="h0-0-10" class="i">+        Main Friend Feed Text Color: #000000 
+</a><a href="#h0-0-11" id="h0-0-11" class="i">+        Secondary Friend Feed Text Color: #FF17FF00 
+</a><a href="#h0-0-12" id="h0-0-12" class="i">+        Snaps With Sound Text Color: #FF17FF00 
+</a><a href="#h0-0-13" id="h0-0-13" class="i">+        Snaps Without Sound Text Color: #FF17FF00 
+</a><a href="#h0-0-14" id="h0-0-14" class="i">+        Background Color: #FF17FF00 
+</a><a href="#h0-0-15" id="h0-0-15" class="i">+        Background Surface Color: #FF17FF00 
+</a><a href="#h0-0-16" id="h0-0-16" class="i">+        Conversations Line Color: #000000 
+</a><a href="#h0-0-17" id="h0-0-17" class="i">+        Action Menu Background Color: #FF17FF00 
+</a><a href="#h0-0-18" id="h0-0-18" class="i">+        Action Menu Round Background Color: #FF17FF00 
+</a><a href="#h0-0-19" id="h0-0-19" class="i">+        Camera Gridlines Color: #000000  
+</a>     validations:
+       required: true
+   - type: checkboxes
+     id: terms
+     attributes:
+       label: Agreement
+<a href="#h0-0-26" id="h0-0-26" class="d">-      description: Please Tick 
+</a><a href="#h0-0-27" id="h0-0-27" class="i">+      description: Make sure you tick, If it applies to you.
+</a>       options:
+         - label: Have you submitted This Theme correctly?
+           required: true
+</pre>
+</div>
+</body>
+</html>
