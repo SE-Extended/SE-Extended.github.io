@@ -28,7 +28,7 @@ jobs:
     - name: Clone SE Extended
       run: |
         git clone https://github.com/bocajthomas/SE-Extended
-        cd SE Extended
+        cd SE-Extended
         cd .git
         echo "SE Extended is a fork from the original SnapEnhance app offering an enhanced Snapchat experience" > description
     - name: Generate stagit web
